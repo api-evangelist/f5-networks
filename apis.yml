@@ -1,4 +1,6 @@
 name: F5 Networks
+segments:
+  - Gateways
 description: F5 Networks is a leader in application delivery networking technology that specializes in application availability, acceleration, and security solutions.
 image: https://www.f5.com/content/dam/f5-com/global-assets/images/f5-logo.svg
 created: '2024'
