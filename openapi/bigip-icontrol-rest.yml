@@ -1,0 +1,2769 @@
+openapi: 3.1.0
+info:
+  title: F5 BIG-IP iControl REST API
+  description: >-
+    The iControl REST API provides programmatic access to manage and configure
+    F5 BIG-IP devices. It enables automation of Local Traffic Manager (LTM)
+    resources including virtual servers, pools, nodes, pool members, and
+    profiles for application delivery, load balancing, and network management.
+  version: 15.1.0
+  contact:
+    name: F5 Support
+    email: support@f5.com
+    url: https://www.f5.com/company/contact/regional-offices
+  license:
+    name: Proprietary
+    url: https://www.f5.com/company/policies/terms-of-use
+  x-logo:
+    url: https://www.f5.com/content/dam/f5-com/global-assets/images/f5-logo.svg
+
+externalDocs:
+  description: F5 iControl REST API Documentation
+  url: https://clouddocs.f5.com/api/icontrol-rest/
+
+servers:
+  - url: https://{bigip_host}/mgmt/tm
+    description: BIG-IP Management Interface
+    variables:
+      bigip_host:
+        default: 192.168.1.245
+        description: Hostname or IP address of the BIG-IP device
+
+security:
+  - basicAuth: []
+  - tokenAuth: []
+
+tags:
+  - name: Virtual Servers
+    description: >-
+      Manage virtual servers that direct client traffic to appropriate
+      server pools based on configured rules and profiles.
+    externalDocs:
+      url: https://clouddocs.f5.com/api/icontrol-rest/APIRef_tm_ltm_virtual.html
+  - name: Pools
+    description: >-
+      Manage pools of backend servers for load distribution and health
+      monitoring.
+    externalDocs:
+      url: https://clouddocs.f5.com/api/icontrol-rest/APIRef_tm_ltm_pool.html
+  - name: Pool Members
+    description: >-
+      Manage individual members within a pool, including their health status,
+      session state, and load balancing weight.
+    externalDocs:
+      url: https://clouddocs.f5.com/api/icontrol-rest/APIRef_tm_ltm_pool_members.html
+  - name: Nodes
+    description: >-
+      Manage nodes representing individual backend servers by IP address
+      or FQDN.
+    externalDocs:
+      url: https://clouddocs.f5.com/api/icontrol-rest/APIRef_tm_ltm_node.html
+  - name: Profiles
+    description: >-
+      Manage profiles that define traffic handling behavior for virtual
+      servers, including HTTP, TCP, UDP, client SSL, and persistence profiles.
+
+paths:
+  /ltm/virtual:
+    get:
+      operationId: listVirtualServers
+      summary: List all virtual servers
+      description: >-
+        Returns a collection of all virtual server resources configured on
+        the BIG-IP system.
+      tags:
+        - Virtual Servers
+      parameters:
+        - $ref: '#/components/parameters/SelectParam'
+        - $ref: '#/components/parameters/FilterParam'
+        - $ref: '#/components/parameters/TopParam'
+        - $ref: '#/components/parameters/SkipParam'
+        - $ref: '#/components/parameters/ExpandSubcollectionsParam'
+      responses:
+        '200':
+          description: Successful retrieval of virtual server collection.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  kind:
+                    type: string
+                    example: tm:ltm:virtual:virtualcollectionstate
+                  selfLink:
+                    type: string
+                    format: uri
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/VirtualServer'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      operationId: createVirtualServer
+      summary: Create a virtual server
+      description: >-
+        Creates a new virtual server resource on the BIG-IP system. At minimum,
+        a name and destination address:port must be specified.
+      tags:
+        - Virtual Servers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VirtualServerCreate'
+      responses:
+        '200':
+          description: Virtual server created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VirtualServer'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /ltm/virtual/{virtualName}:
+    parameters:
+      - $ref: '#/components/parameters/VirtualNameParam'
+    get:
+      operationId: getVirtualServer
+      summary: Get a virtual server
+      description: Returns a single virtual server resource identified by name.
+      tags:
+        - Virtual Servers
+      parameters:
+        - $ref: '#/components/parameters/ExpandSubcollectionsParam'
+      responses:
+        '200':
+          description: Successful retrieval of the virtual server.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VirtualServer'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      operationId: updateVirtualServer
+      summary: Update a virtual server
+      description: >-
+        Replaces the entire virtual server resource. All writable properties
+        must be included in the request body.
+      tags:
+        - Virtual Servers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VirtualServerUpdate'
+      responses:
+        '200':
+          description: Virtual server updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VirtualServer'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    patch:
+      operationId: patchVirtualServer
+      summary: Patch a virtual server
+      description: >-
+        Partially updates a virtual server resource. Only specified properties
+        are modified.
+      tags:
+        - Virtual Servers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VirtualServerUpdate'
+      responses:
+        '200':
+          description: Virtual server patched successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VirtualServer'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      operationId: deleteVirtualServer
+      summary: Delete a virtual server
+      description: >-
+        Removes a virtual server resource from the BIG-IP system. Active
+        connections will be terminated.
+      tags:
+        - Virtual Servers
+      responses:
+        '200':
+          description: Virtual server deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /ltm/pool:
+    get:
+      operationId: listPools
+      summary: List all pools
+      description: >-
+        Returns a collection of all pool resources configured on the BIG-IP
+        system.
+      tags:
+        - Pools
+      parameters:
+        - $ref: '#/components/parameters/SelectParam'
+        - $ref: '#/components/parameters/FilterParam'
+        - $ref: '#/components/parameters/TopParam'
+        - $ref: '#/components/parameters/SkipParam'
+        - $ref: '#/components/parameters/ExpandSubcollectionsParam'
+      responses:
+        '200':
+          description: Successful retrieval of pool collection.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  kind:
+                    type: string
+                    example: tm:ltm:pool:poolcollectionstate
+                  selfLink:
+                    type: string
+                    format: uri
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Pool'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      operationId: createPool
+      summary: Create a pool
+      description: >-
+        Creates a new pool resource on the BIG-IP system. The pool name is
+        required; members and monitors can be specified during creation.
+      tags:
+        - Pools
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PoolCreate'
+      responses:
+        '200':
+          description: Pool created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pool'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /ltm/pool/{poolName}:
+    parameters:
+      - $ref: '#/components/parameters/PoolNameParam'
+    get:
+      operationId: getPool
+      summary: Get a pool
+      description: Returns a single pool resource identified by name.
+      tags:
+        - Pools
+      parameters:
+        - $ref: '#/components/parameters/ExpandSubcollectionsParam'
+      responses:
+        '200':
+          description: Successful retrieval of the pool.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pool'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      operationId: updatePool
+      summary: Update a pool
+      description: Replaces the entire pool resource configuration.
+      tags:
+        - Pools
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PoolUpdate'
+      responses:
+        '200':
+          description: Pool updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pool'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    patch:
+      operationId: patchPool
+      summary: Patch a pool
+      description: Partially updates a pool resource configuration.
+      tags:
+        - Pools
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PoolUpdate'
+      responses:
+        '200':
+          description: Pool patched successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pool'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      operationId: deletePool
+      summary: Delete a pool
+      description: >-
+        Removes a pool resource from the BIG-IP system. The pool must not
+        be referenced by any virtual server.
+      tags:
+        - Pools
+      responses:
+        '200':
+          description: Pool deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /ltm/pool/{poolName}/members:
+    parameters:
+      - $ref: '#/components/parameters/PoolNameParam'
+    get:
+      operationId: listPoolMembers
+      summary: List pool members
+      description: >-
+        Returns a collection of all members within the specified pool.
+      tags:
+        - Pool Members
+      parameters:
+        - $ref: '#/components/parameters/SelectParam'
+        - $ref: '#/components/parameters/FilterParam'
+      responses:
+        '200':
+          description: Successful retrieval of pool member collection.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  kind:
+                    type: string
+                    example: tm:ltm:pool:members:memberscollectionstate
+                  selfLink:
+                    type: string
+                    format: uri
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PoolMember'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      operationId: addPoolMember
+      summary: Add a pool member
+      description: >-
+        Adds a new member to the specified pool. The member name must be
+        in the format address:port (e.g., 10.0.0.1:80).
+      tags:
+        - Pool Members
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PoolMemberCreate'
+      responses:
+        '200':
+          description: Pool member added successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PoolMember'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /ltm/pool/{poolName}/members/{memberName}:
+    parameters:
+      - $ref: '#/components/parameters/PoolNameParam'
+      - $ref: '#/components/parameters/MemberNameParam'
+    get:
+      operationId: getPoolMember
+      summary: Get a pool member
+      description: Returns a single pool member identified by name.
+      tags:
+        - Pool Members
+      responses:
+        '200':
+          description: Successful retrieval of pool member.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PoolMember'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      operationId: updatePoolMember
+      summary: Update a pool member
+      description: Replaces the entire pool member resource configuration.
+      tags:
+        - Pool Members
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PoolMemberUpdate'
+      responses:
+        '200':
+          description: Pool member updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PoolMember'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    patch:
+      operationId: patchPoolMember
+      summary: Patch a pool member
+      description: Partially updates a pool member resource configuration.
+      tags:
+        - Pool Members
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PoolMemberUpdate'
+      responses:
+        '200':
+          description: Pool member patched successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PoolMember'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      operationId: deletePoolMember
+      summary: Delete a pool member
+      description: Removes a member from the specified pool.
+      tags:
+        - Pool Members
+      responses:
+        '200':
+          description: Pool member deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /ltm/node:
+    get:
+      operationId: listNodes
+      summary: List all nodes
+      description: >-
+        Returns a collection of all node resources configured on the BIG-IP
+        system.
+      tags:
+        - Nodes
+      parameters:
+        - $ref: '#/components/parameters/SelectParam'
+        - $ref: '#/components/parameters/FilterParam'
+        - $ref: '#/components/parameters/TopParam'
+        - $ref: '#/components/parameters/SkipParam'
+      responses:
+        '200':
+          description: Successful retrieval of node collection.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  kind:
+                    type: string
+                    example: tm:ltm:node:nodecollectionstate
+                  selfLink:
+                    type: string
+                    format: uri
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Node'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      operationId: createNode
+      summary: Create a node
+      description: >-
+        Creates a new node resource on the BIG-IP system. The name and
+        address are required for creation.
+      tags:
+        - Nodes
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodeCreate'
+      responses:
+        '200':
+          description: Node created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Node'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /ltm/node/{nodeName}:
+    parameters:
+      - $ref: '#/components/parameters/NodeNameParam'
+    get:
+      operationId: getNode
+      summary: Get a node
+      description: Returns a single node resource identified by name.
+      tags:
+        - Nodes
+      responses:
+        '200':
+          description: Successful retrieval of node.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Node'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      operationId: updateNode
+      summary: Update a node
+      description: Replaces the entire node resource configuration.
+      tags:
+        - Nodes
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodeUpdate'
+      responses:
+        '200':
+          description: Node updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Node'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    patch:
+      operationId: patchNode
+      summary: Patch a node
+      description: Partially updates a node resource configuration.
+      tags:
+        - Nodes
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodeUpdate'
+      responses:
+        '200':
+          description: Node patched successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Node'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      operationId: deleteNode
+      summary: Delete a node
+      description: >-
+        Removes a node resource from the BIG-IP system. The node must not
+        be referenced by any pool member.
+      tags:
+        - Nodes
+      responses:
+        '200':
+          description: Node deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /ltm/profile/http:
+    get:
+      operationId: listHttpProfiles
+      summary: List HTTP profiles
+      description: >-
+        Returns a collection of all HTTP profile resources configured on the
+        BIG-IP system.
+      tags:
+        - Profiles
+      parameters:
+        - $ref: '#/components/parameters/SelectParam'
+        - $ref: '#/components/parameters/FilterParam'
+      responses:
+        '200':
+          description: Successful retrieval of HTTP profile collection.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  kind:
+                    type: string
+                    example: tm:ltm:profile:http:httpcollectionstate
+                  selfLink:
+                    type: string
+                    format: uri
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/HttpProfile'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /ltm/profile/http/{profileName}:
+    parameters:
+      - $ref: '#/components/parameters/ProfileNameParam'
+    get:
+      operationId: getHttpProfile
+      summary: Get an HTTP profile
+      description: Returns a single HTTP profile resource identified by name.
+      tags:
+        - Profiles
+      responses:
+        '200':
+          description: Successful retrieval of the HTTP profile.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpProfile'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /ltm/profile/tcp:
+    get:
+      operationId: listTcpProfiles
+      summary: List TCP profiles
+      description: >-
+        Returns a collection of all TCP profile resources configured on the
+        BIG-IP system.
+      tags:
+        - Profiles
+      parameters:
+        - $ref: '#/components/parameters/SelectParam'
+        - $ref: '#/components/parameters/FilterParam'
+      responses:
+        '200':
+          description: Successful retrieval of TCP profile collection.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  kind:
+                    type: string
+                    example: tm:ltm:profile:tcp:tcpcollectionstate
+                  selfLink:
+                    type: string
+                    format: uri
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TcpProfile'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /ltm/profile/tcp/{profileName}:
+    parameters:
+      - $ref: '#/components/parameters/ProfileNameParam'
+    get:
+      operationId: getTcpProfile
+      summary: Get a TCP profile
+      description: Returns a single TCP profile resource identified by name.
+      tags:
+        - Profiles
+      responses:
+        '200':
+          description: Successful retrieval of the TCP profile.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TcpProfile'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /ltm/profile/client-ssl:
+    get:
+      operationId: listClientSslProfiles
+      summary: List Client SSL profiles
+      description: >-
+        Returns a collection of all Client SSL profile resources configured
+        on the BIG-IP system.
+      tags:
+        - Profiles
+      parameters:
+        - $ref: '#/components/parameters/SelectParam'
+        - $ref: '#/components/parameters/FilterParam'
+      responses:
+        '200':
+          description: Successful retrieval of Client SSL profile collection.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  kind:
+                    type: string
+                    example: tm:ltm:profile:client-ssl:client-sslcollectionstate
+                  selfLink:
+                    type: string
+                    format: uri
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ClientSslProfile'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /ltm/profile/client-ssl/{profileName}:
+    parameters:
+      - $ref: '#/components/parameters/ProfileNameParam'
+    get:
+      operationId: getClientSslProfile
+      summary: Get a Client SSL profile
+      description: Returns a single Client SSL profile resource identified by name.
+      tags:
+        - Profiles
+      responses:
+        '200':
+          description: Successful retrieval of the Client SSL profile.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientSslProfile'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /ltm/persistence/cookie:
+    get:
+      operationId: listCookiePersistenceProfiles
+      summary: List cookie persistence profiles
+      description: >-
+        Returns a collection of all cookie persistence profile resources.
+      tags:
+        - Profiles
+      parameters:
+        - $ref: '#/components/parameters/SelectParam'
+        - $ref: '#/components/parameters/FilterParam'
+      responses:
+        '200':
+          description: Successful retrieval of cookie persistence profiles.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  kind:
+                    type: string
+                    example: tm:ltm:persistence:cookie:cookiecollectionstate
+                  selfLink:
+                    type: string
+                    format: uri
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CookiePersistenceProfile'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /ltm/persistence/cookie/{profileName}:
+    parameters:
+      - $ref: '#/components/parameters/ProfileNameParam'
+    get:
+      operationId: getCookiePersistenceProfile
+      summary: Get a cookie persistence profile
+      description: >-
+        Returns a single cookie persistence profile resource identified
+        by name.
+      tags:
+        - Profiles
+      responses:
+        '200':
+          description: Successful retrieval of the cookie persistence profile.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CookiePersistenceProfile'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        HTTP Basic authentication using BIG-IP admin credentials. The
+        username and password are sent base64-encoded in the Authorization
+        header.
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: X-F5-Auth-Token
+      description: >-
+        Token-based authentication. Obtain a token by POSTing credentials
+        to /mgmt/shared/authn/login, then pass the token value in the
+        X-F5-Auth-Token header for subsequent requests.
+
+  parameters:
+    VirtualNameParam:
+      name: virtualName
+      in: path
+      required: true
+      description: >-
+        Name of the virtual server resource. Use ~Common~ prefix for
+        partition-qualified names (e.g., ~Common~my_virtual).
+      schema:
+        type: string
+      example: my_virtual_server
+
+    PoolNameParam:
+      name: poolName
+      in: path
+      required: true
+      description: >-
+        Name of the pool resource. Use ~Common~ prefix for
+        partition-qualified names.
+      schema:
+        type: string
+      example: my_pool
+
+    MemberNameParam:
+      name: memberName
+      in: path
+      required: true
+      description: >-
+        Name of the pool member in the format address:port
+        (e.g., 10.0.0.1:80).
+      schema:
+        type: string
+      example: '10.0.0.1:80'
+
+    NodeNameParam:
+      name: nodeName
+      in: path
+      required: true
+      description: >-
+        Name of the node resource. Can be the IP address or a
+        user-defined name.
+      schema:
+        type: string
+      example: '10.0.0.1'
+
+    ProfileNameParam:
+      name: profileName
+      in: path
+      required: true
+      description: Name of the profile resource.
+      schema:
+        type: string
+      example: my_http_profile
+
+    SelectParam:
+      name: $select
+      in: query
+      required: false
+      description: >-
+        Comma-separated list of property names to include in the response.
+      schema:
+        type: string
+      example: name,destination,pool
+
+    FilterParam:
+      name: $filter
+      in: query
+      required: false
+      description: OData filter expression to restrict returned resources.
+      schema:
+        type: string
+      example: partition eq Common
+
+    TopParam:
+      name: $top
+      in: query
+      required: false
+      description: Maximum number of resources to return.
+      schema:
+        type: integer
+        minimum: 1
+      example: 10
+
+    SkipParam:
+      name: $skip
+      in: query
+      required: false
+      description: Number of resources to skip before returning results.
+      schema:
+        type: integer
+        minimum: 0
+      example: 0
+
+    ExpandSubcollectionsParam:
+      name: expandSubcollections
+      in: query
+      required: false
+      description: >-
+        When set to true, expands all subcollections inline within the
+        response.
+      schema:
+        type: string
+        enum:
+          - 'true'
+          - 'false'
+      example: 'true'
+
+  schemas:
+    VirtualServer:
+      type: object
+      description: >-
+        A virtual server resource that directs client traffic to a pool
+        of backend servers based on an IP address and port combination.
+      properties:
+        kind:
+          type: string
+          description: Resource type identifier.
+          example: tm:ltm:virtual:virtualstate
+          readOnly: true
+        name:
+          type: string
+          description: Name of the virtual server resource.
+          example: my_virtual_server
+        fullPath:
+          type: string
+          description: Full path including partition.
+          example: /Common/my_virtual_server
+          readOnly: true
+        generation:
+          type: integer
+          description: Configuration generation counter.
+          readOnly: true
+        selfLink:
+          type: string
+          format: uri
+          description: Self-referencing URI for this resource.
+          readOnly: true
+        addressStatus:
+          type: string
+          description: >-
+            Whether the virtual contributes to the operational status of
+            the associated virtual address.
+          enum:
+            - 'yes'
+            - 'no'
+          default: 'yes'
+        autoLasthop:
+          type: string
+          description: >-
+            Automatic last hop setting for return traffic routing.
+          enum:
+            - default
+            - enabled
+            - disabled
+          default: default
+        cmpEnabled:
+          type: string
+          description: >-
+            Whether Clustered Multi-Processing (CMP) acceleration is
+            enabled.
+          enum:
+            - 'yes'
+            - 'no'
+          default: 'yes'
+        connectionLimit:
+          type: integer
+          description: >-
+            Maximum number of concurrent connections allowed. A value of
+            0 means unlimited.
+          minimum: 0
+          default: 0
+          example: 0
+        description:
+          type: string
+          description: User-defined description of the virtual server.
+          example: Production web virtual server
+        destination:
+          type: string
+          description: >-
+            Destination IP address and service port in the format
+            /partition/address:port or /partition/address.port.
+          example: /Common/10.0.0.100:80
+        disabled:
+          type: boolean
+          description: >-
+            When true, the virtual server does not accept new connections.
+        enabled:
+          type: boolean
+          description: >-
+            When true, the virtual server accepts and processes traffic.
+        fallbackPersistence:
+          type: string
+          description: >-
+            Persistence profile to use when the primary persistence method
+            fails.
+          example: /Common/source_addr
+        gtmScore:
+          type: integer
+          description: >-
+            Score value used by Global Traffic Manager for load balancing
+            decisions.
+          default: 0
+        ipProtocol:
+          type: string
+          description: IP protocol for the virtual server.
+          enum:
+            - tcp
+            - udp
+            - sctp
+            - any
+          example: tcp
+        mask:
+          type: string
+          description: >-
+            Network mask for the destination address. Use
+            255.255.255.255 for host-specific virtual servers.
+          example: 255.255.255.255
+        mirror:
+          type: string
+          description: >-
+            Whether connection and persistence mirroring is enabled for
+            high availability failover.
+          enum:
+            - enabled
+            - disabled
+          default: disabled
+        nat64:
+          type: string
+          description: Whether NAT64 translation is enabled.
+          enum:
+            - enabled
+            - disabled
+          default: disabled
+        partition:
+          type: string
+          description: Administrative partition containing this resource.
+          default: Common
+          example: Common
+        persist:
+          type: array
+          description: Persistence profiles applied to the virtual server.
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                example: cookie
+              tmDefault:
+                type: string
+                enum:
+                  - 'yes'
+                  - 'no'
+        pool:
+          type: string
+          description: >-
+            Default pool for directing traffic. Specified as a full path
+            (e.g., /Common/my_pool).
+          example: /Common/my_pool
+        profiles:
+          type: array
+          description: Profiles applied to the virtual server.
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                example: http
+              context:
+                type: string
+                enum:
+                  - all
+                  - clientside
+                  - serverside
+                example: all
+              fullPath:
+                type: string
+                example: /Common/http
+        rateLimit:
+          type: string
+          description: >-
+            Maximum number of connections per second. A value of disabled
+            or 0 means no limit.
+          default: disabled
+        rateLimitMode:
+          type: string
+          description: Scope of rate limiting.
+          enum:
+            - object
+            - object-source
+            - object-destination
+            - object-source-destination
+          default: object
+        rules:
+          type: array
+          description: iRules applied to the virtual server.
+          items:
+            type: string
+          example:
+            - /Common/my_irule
+        source:
+          type: string
+          description: >-
+            Source address filter. Only connections from this network
+            are accepted.
+          default: 0.0.0.0/0
+          example: 0.0.0.0/0
+        sourcePort:
+          type: string
+          description: Source port translation behavior.
+          enum:
+            - preserve
+            - preserve-strict
+            - change
+          default: preserve
+        synCookieStatus:
+          type: string
+          description: Current SYN Cookie protection status.
+          readOnly: true
+          enum:
+            - not-activated
+            - activated
+        translateAddress:
+          type: string
+          description: Whether address translation is enabled.
+          enum:
+            - enabled
+            - disabled
+          default: enabled
+        translatePort:
+          type: string
+          description: Whether port translation is enabled.
+          enum:
+            - enabled
+            - disabled
+          default: enabled
+        vlansEnabled:
+          type: boolean
+          description: Whether VLAN filtering is enabled.
+        vlansDisabled:
+          type: boolean
+          description: Whether the virtual server is disabled on listed VLANs.
+        vlans:
+          type: array
+          description: List of VLANs on which the virtual server is enabled or disabled.
+          items:
+            type: string
+          example:
+            - /Common/external
+        vsIndex:
+          type: integer
+          description: System-assigned index for the virtual server.
+          readOnly: true
+
+    VirtualServerCreate:
+      type: object
+      description: Request body for creating a new virtual server.
+      required:
+        - name
+        - destination
+      properties:
+        name:
+          type: string
+          description: Name of the virtual server.
+          example: my_virtual_server
+        partition:
+          type: string
+          description: Administrative partition.
+          default: Common
+        destination:
+          type: string
+          description: >-
+            Destination address and port in /partition/address:port format.
+          example: /Common/10.0.0.100:80
+        description:
+          type: string
+          description: User-defined description.
+        ipProtocol:
+          type: string
+          description: IP protocol.
+          enum:
+            - tcp
+            - udp
+            - sctp
+            - any
+          example: tcp
+        mask:
+          type: string
+          description: Destination network mask.
+          example: 255.255.255.255
+        pool:
+          type: string
+          description: Default pool full path.
+          example: /Common/my_pool
+        profiles:
+          type: array
+          description: Profiles to apply.
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              context:
+                type: string
+                enum:
+                  - all
+                  - clientside
+                  - serverside
+        persist:
+          type: array
+          description: Persistence profiles to apply.
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              tmDefault:
+                type: string
+                enum:
+                  - 'yes'
+                  - 'no'
+        source:
+          type: string
+          description: Source address filter.
+          default: 0.0.0.0/0
+        sourcePort:
+          type: string
+          description: Source port translation behavior.
+          enum:
+            - preserve
+            - preserve-strict
+            - change
+        translateAddress:
+          type: string
+          enum:
+            - enabled
+            - disabled
+        translatePort:
+          type: string
+          enum:
+            - enabled
+            - disabled
+        connectionLimit:
+          type: integer
+          minimum: 0
+        rules:
+          type: array
+          items:
+            type: string
+        vlans:
+          type: array
+          items:
+            type: string
+        vlansEnabled:
+          type: boolean
+        vlansDisabled:
+          type: boolean
+
+    VirtualServerUpdate:
+      type: object
+      description: Request body for updating a virtual server.
+      properties:
+        description:
+          type: string
+        destination:
+          type: string
+        ipProtocol:
+          type: string
+          enum:
+            - tcp
+            - udp
+            - sctp
+            - any
+        mask:
+          type: string
+        pool:
+          type: string
+        profiles:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              context:
+                type: string
+                enum:
+                  - all
+                  - clientside
+                  - serverside
+        persist:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              tmDefault:
+                type: string
+        source:
+          type: string
+        sourcePort:
+          type: string
+          enum:
+            - preserve
+            - preserve-strict
+            - change
+        translateAddress:
+          type: string
+          enum:
+            - enabled
+            - disabled
+        translatePort:
+          type: string
+          enum:
+            - enabled
+            - disabled
+        connectionLimit:
+          type: integer
+          minimum: 0
+        enabled:
+          type: boolean
+        disabled:
+          type: boolean
+        mirror:
+          type: string
+          enum:
+            - enabled
+            - disabled
+        rateLimit:
+          type: string
+        rules:
+          type: array
+          items:
+            type: string
+        vlans:
+          type: array
+          items:
+            type: string
+        vlansEnabled:
+          type: boolean
+        vlansDisabled:
+          type: boolean
+        fallbackPersistence:
+          type: string
+
+    Pool:
+      type: object
+      description: >-
+        A pool resource that contains a group of backend server members
+        used for load balancing traffic from virtual servers.
+      properties:
+        kind:
+          type: string
+          description: Resource type identifier.
+          example: tm:ltm:pool:poolstate
+          readOnly: true
+        name:
+          type: string
+          description: Name of the pool resource.
+          example: my_pool
+        fullPath:
+          type: string
+          description: Full path including partition.
+          example: /Common/my_pool
+          readOnly: true
+        generation:
+          type: integer
+          description: Configuration generation counter.
+          readOnly: true
+        selfLink:
+          type: string
+          format: uri
+          description: Self-referencing URI.
+          readOnly: true
+        allowNat:
+          type: string
+          description: Whether the pool can load balance NAT connections.
+          enum:
+            - 'yes'
+            - 'no'
+          default: 'yes'
+        allowSnat:
+          type: string
+          description: Whether the pool can load balance SNAT connections.
+          enum:
+            - 'yes'
+            - 'no'
+          default: 'yes'
+        description:
+          type: string
+          description: User-defined description.
+        ignorePersistedWeight:
+          type: string
+          description: >-
+            Whether to ignore persisted weight when calculating load
+            distribution.
+          enum:
+            - enabled
+            - disabled
+          default: disabled
+        ipTosToClient:
+          type: string
+          description: Type of Service level for client-bound outgoing packets.
+          default: pass-through
+        ipTosToServer:
+          type: string
+          description: Type of Service level for server-bound outgoing packets.
+          default: pass-through
+        linkQosToClient:
+          type: string
+          description: QoS level for outgoing packets to clients.
+          default: pass-through
+        linkQosToServer:
+          type: string
+          description: QoS level for outgoing packets to servers.
+          default: pass-through
+        loadBalancingMode:
+          type: string
+          description: Load balancing algorithm used to distribute traffic.
+          enum:
+            - round-robin
+            - ratio-member
+            - least-connections-member
+            - observed-member
+            - predictive-member
+            - ratio-node
+            - least-connections-node
+            - fastest-node
+            - observed-node
+            - predictive-node
+            - dynamic-ratio-node
+            - fastest-app-response
+            - least-sessions
+            - dynamic-ratio-member
+            - weighted-least-connections-member
+            - weighted-least-connections-node
+            - ratio-session
+            - ratio-least-connections-member
+            - ratio-least-connections-node
+          default: round-robin
+          example: round-robin
+        minActiveMembers:
+          type: integer
+          description: >-
+            Minimum number of active members for priority-group
+            activation.
+          minimum: 0
+          default: 0
+        minUpMembers:
+          type: integer
+          description: >-
+            Minimum number of operational pool members required before
+            action is taken.
+          minimum: 0
+          default: 0
+        minUpMembersAction:
+          type: string
+          description: >-
+            Action to take when the number of operational members falls
+            below the minimum.
+          enum:
+            - failover
+            - reboot
+            - restart-all
+          default: failover
+        minUpMembersChecking:
+          type: string
+          description: Whether minimum member monitoring is enabled.
+          enum:
+            - enabled
+            - disabled
+          default: disabled
+        monitor:
+          type: string
+          description: >-
+            Health monitor or monitor rule applied to pool members.
+            Specify multiple monitors with 'and' or 'min N of'.
+          example: /Common/http
+        partition:
+          type: string
+          description: Administrative partition.
+          default: Common
+        queueDepthLimit:
+          type: integer
+          description: Maximum number of connections queued per member.
+          minimum: 0
+          default: 0
+        queueOnConnectionLimit:
+          type: string
+          description: Whether to queue connections when limits are reached.
+          enum:
+            - enabled
+            - disabled
+          default: disabled
+        queueTimeLimit:
+          type: integer
+          description: Maximum time in milliseconds a connection can remain queued.
+          minimum: 0
+          default: 0
+        reselectTries:
+          type: integer
+          description: Number of reselection attempts after a passive failure.
+          minimum: 0
+          default: 0
+        serviceDownAction:
+          type: string
+          description: Action to take when all pool members are unavailable.
+          enum:
+            - none
+            - reset
+            - reselect
+            - drop
+          default: none
+        slowRampTime:
+          type: integer
+          description: >-
+            Time in seconds to gradually increase traffic to a newly
+            enabled member.
+          minimum: 0
+          default: 10
+        membersReference:
+          type: object
+          description: Reference to the pool members subcollection.
+          properties:
+            link:
+              type: string
+              format: uri
+            isSubcollection:
+              type: boolean
+          readOnly: true
+
+    PoolCreate:
+      type: object
+      description: Request body for creating a new pool.
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: Name of the pool.
+          example: my_pool
+        partition:
+          type: string
+          description: Administrative partition.
+          default: Common
+        description:
+          type: string
+        loadBalancingMode:
+          type: string
+          enum:
+            - round-robin
+            - ratio-member
+            - least-connections-member
+            - observed-member
+            - predictive-member
+            - ratio-node
+            - least-connections-node
+            - fastest-node
+            - observed-node
+            - predictive-node
+            - dynamic-ratio-node
+            - fastest-app-response
+            - least-sessions
+            - dynamic-ratio-member
+          default: round-robin
+        monitor:
+          type: string
+          example: /Common/http
+        members:
+          type: array
+          description: Initial pool members to add during creation.
+          items:
+            type: object
+            required:
+              - name
+            properties:
+              name:
+                type: string
+                description: Member name in address:port format.
+                example: '10.0.0.1:80'
+              address:
+                type: string
+              description:
+                type: string
+              ratio:
+                type: integer
+              priorityGroup:
+                type: integer
+              connectionLimit:
+                type: integer
+              monitor:
+                type: string
+        serviceDownAction:
+          type: string
+          enum:
+            - none
+            - reset
+            - reselect
+            - drop
+        slowRampTime:
+          type: integer
+          minimum: 0
+        allowNat:
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+        allowSnat:
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+
+    PoolUpdate:
+      type: object
+      description: Request body for updating a pool.
+      properties:
+        description:
+          type: string
+        loadBalancingMode:
+          type: string
+          enum:
+            - round-robin
+            - ratio-member
+            - least-connections-member
+            - observed-member
+            - predictive-member
+            - ratio-node
+            - least-connections-node
+            - fastest-node
+            - observed-node
+            - predictive-node
+            - dynamic-ratio-node
+            - fastest-app-response
+            - least-sessions
+            - dynamic-ratio-member
+        monitor:
+          type: string
+        serviceDownAction:
+          type: string
+          enum:
+            - none
+            - reset
+            - reselect
+            - drop
+        slowRampTime:
+          type: integer
+          minimum: 0
+        minActiveMembers:
+          type: integer
+          minimum: 0
+        allowNat:
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+        allowSnat:
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+
+    PoolMember:
+      type: object
+      description: >-
+        A pool member resource representing an individual backend server
+        within a pool, identified by address and port.
+      properties:
+        kind:
+          type: string
+          description: Resource type identifier.
+          example: tm:ltm:pool:members:membersstate
+          readOnly: true
+        name:
+          type: string
+          description: Member name in address:port format.
+          example: '10.0.0.1:80'
+        fullPath:
+          type: string
+          description: Full path including partition.
+          example: /Common/10.0.0.1:80
+          readOnly: true
+        generation:
+          type: integer
+          readOnly: true
+        selfLink:
+          type: string
+          format: uri
+          readOnly: true
+        address:
+          type: string
+          description: IP address of the pool member.
+          example: 10.0.0.1
+        connectionLimit:
+          type: integer
+          description: Maximum concurrent connections. 0 means unlimited.
+          minimum: 0
+          default: 0
+        description:
+          type: string
+          description: User-defined description.
+        dynamicRatio:
+          type: integer
+          description: Dynamic ratio for load balancing.
+          default: 1
+        ephemeral:
+          type: string
+          description: Whether this is a transient auto-discovered member.
+          readOnly: true
+          enum:
+            - 'true'
+            - 'false'
+          default: 'false'
+        inheritProfile:
+          type: string
+          description: >-
+            Whether the member inherits the encapsulation profile from
+            its parent pool.
+          enum:
+            - enabled
+            - disabled
+          default: enabled
+        logging:
+          type: string
+          description: Whether monitor actions are logged.
+          enum:
+            - enabled
+            - disabled
+          default: disabled
+        monitor:
+          type: string
+          description: Health monitor override for this member.
+          default: default
+        partition:
+          type: string
+          description: Administrative partition.
+          default: Common
+        priorityGroup:
+          type: integer
+          description: >-
+            Priority group number. Higher values receive traffic first
+            when priority-group activation is configured.
+          minimum: 0
+          default: 0
+        rateLimit:
+          type: string
+          description: Maximum connections per second. disabled means no limit.
+          default: disabled
+        ratio:
+          type: integer
+          description: Ratio weight for load balancing.
+          minimum: 1
+          default: 1
+        session:
+          type: string
+          description: Session availability state.
+          enum:
+            - user-enabled
+            - user-disabled
+            - monitor-enabled
+          default: user-enabled
+        state:
+          type: string
+          description: Operational state of the member.
+          enum:
+            - user-up
+            - user-down
+            - up
+            - down
+            - unchecked
+          example: up
+
+    PoolMemberCreate:
+      type: object
+      description: Request body for adding a new pool member.
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: >-
+            Member name in address:port format. If a node with the
+            address does not exist, one will be created.
+          example: '10.0.0.1:80'
+        address:
+          type: string
+          description: IP address if it differs from the name.
+        description:
+          type: string
+        connectionLimit:
+          type: integer
+          minimum: 0
+        monitor:
+          type: string
+        priorityGroup:
+          type: integer
+          minimum: 0
+        rateLimit:
+          type: string
+        ratio:
+          type: integer
+          minimum: 1
+        session:
+          type: string
+          enum:
+            - user-enabled
+            - user-disabled
+        state:
+          type: string
+          enum:
+            - user-up
+            - user-down
+
+    PoolMemberUpdate:
+      type: object
+      description: Request body for updating a pool member.
+      properties:
+        description:
+          type: string
+        connectionLimit:
+          type: integer
+          minimum: 0
+        monitor:
+          type: string
+        priorityGroup:
+          type: integer
+          minimum: 0
+        rateLimit:
+          type: string
+        ratio:
+          type: integer
+          minimum: 1
+        session:
+          type: string
+          enum:
+            - user-enabled
+            - user-disabled
+        state:
+          type: string
+          enum:
+            - user-up
+            - user-down
+
+    Node:
+      type: object
+      description: >-
+        A node resource representing an individual backend server by its
+        IP address or FQDN. Nodes are automatically created when pool
+        members are added, or can be created independently.
+      properties:
+        kind:
+          type: string
+          description: Resource type identifier.
+          example: tm:ltm:node:nodestate
+          readOnly: true
+        name:
+          type: string
+          description: Name of the node (typically the IP address).
+          example: '10.0.0.1'
+        fullPath:
+          type: string
+          description: Full path including partition.
+          example: /Common/10.0.0.1
+          readOnly: true
+        generation:
+          type: integer
+          readOnly: true
+        selfLink:
+          type: string
+          format: uri
+          readOnly: true
+        address:
+          type: string
+          description: IP address of the node.
+          example: 10.0.0.1
+        connectionLimit:
+          type: integer
+          description: Maximum concurrent connections. 0 means unlimited.
+          minimum: 0
+          default: 0
+        description:
+          type: string
+          description: User-defined description.
+        dynamicRatio:
+          type: integer
+          description: Dynamic ratio weight for load balancing.
+          default: 1
+        ephemeral:
+          type: string
+          description: Whether this is a transient auto-discovered node.
+          readOnly: true
+          enum:
+            - 'true'
+            - 'false'
+          default: 'false'
+        fqdn:
+          type: object
+          description: FQDN configuration for DNS-based node resolution.
+          properties:
+            addressFamily:
+              type: string
+              description: IP address family for DNS resolution.
+              enum:
+                - ipv4
+                - ipv6
+              default: ipv4
+            autopopulate:
+              type: string
+              description: >-
+                Whether to auto-populate the node with DNS lookup results.
+              enum:
+                - enabled
+                - disabled
+              default: disabled
+            downInterval:
+              type: integer
+              description: >-
+                Interval in seconds for DNS queries when the node is down.
+              default: 5
+            interval:
+              type: string
+              description: >-
+                Interval in seconds between DNS queries for the FQDN.
+              default: '3600'
+            tmName:
+              type: string
+              description: The FQDN value to resolve.
+        logging:
+          type: string
+          description: Whether monitor actions are logged.
+          enum:
+            - enabled
+            - disabled
+          default: disabled
+        monitor:
+          type: string
+          description: Health monitor applied to the node.
+          default: default
+        partition:
+          type: string
+          description: Administrative partition.
+          default: Common
+        rateLimit:
+          type: string
+          description: Maximum connections per second. 0 means no limit.
+          default: disabled
+        ratio:
+          type: integer
+          description: Fixed ratio weight for load balancing.
+          minimum: 1
+          default: 1
+        session:
+          type: string
+          description: Session availability state.
+          enum:
+            - user-enabled
+            - user-disabled
+            - monitor-enabled
+          default: user-enabled
+        state:
+          type: string
+          description: Operational state of the node.
+          enum:
+            - user-up
+            - user-down
+            - up
+            - down
+            - unchecked
+          example: up
+
+    NodeCreate:
+      type: object
+      description: Request body for creating a new node.
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: >-
+            Name of the node. If the name is an IP address, the address
+            property is optional.
+          example: '10.0.0.1'
+        address:
+          type: string
+          description: >-
+            IP address of the node. Required if the name is not an IP
+            address.
+          example: 10.0.0.1
+        partition:
+          type: string
+          default: Common
+        description:
+          type: string
+        connectionLimit:
+          type: integer
+          minimum: 0
+        monitor:
+          type: string
+        rateLimit:
+          type: string
+        ratio:
+          type: integer
+          minimum: 1
+        fqdn:
+          type: object
+          properties:
+            addressFamily:
+              type: string
+              enum:
+                - ipv4
+                - ipv6
+            autopopulate:
+              type: string
+              enum:
+                - enabled
+                - disabled
+            downInterval:
+              type: integer
+            interval:
+              type: string
+            tmName:
+              type: string
+
+    NodeUpdate:
+      type: object
+      description: Request body for updating a node.
+      properties:
+        description:
+          type: string
+        connectionLimit:
+          type: integer
+          minimum: 0
+        monitor:
+          type: string
+        rateLimit:
+          type: string
+        ratio:
+          type: integer
+          minimum: 1
+        session:
+          type: string
+          enum:
+            - user-enabled
+            - user-disabled
+        state:
+          type: string
+          enum:
+            - user-up
+            - user-down
+        logging:
+          type: string
+          enum:
+            - enabled
+            - disabled
+
+    HttpProfile:
+      type: object
+      description: >-
+        An HTTP profile that defines how the BIG-IP processes HTTP
+        traffic for a virtual server.
+      properties:
+        kind:
+          type: string
+          example: tm:ltm:profile:http:httpstate
+          readOnly: true
+        name:
+          type: string
+          example: http
+        fullPath:
+          type: string
+          readOnly: true
+        generation:
+          type: integer
+          readOnly: true
+        selfLink:
+          type: string
+          format: uri
+          readOnly: true
+        acceptXff:
+          type: string
+          description: Whether to accept X-Forwarded-For headers from clients.
+          enum:
+            - enabled
+            - disabled
+          default: disabled
+        appService:
+          type: string
+        basicAuthRealm:
+          type: string
+          description: Realm for HTTP Basic authentication challenges.
+          default: none
+        defaultsFrom:
+          type: string
+          description: Parent profile from which this profile inherits settings.
+          example: /Common/http
+        description:
+          type: string
+        encryptCookies:
+          type: array
+          description: List of cookie names to encrypt.
+          items:
+            type: string
+        enforcement:
+          type: object
+          properties:
+            maxHeaderCount:
+              type: integer
+              description: Maximum number of HTTP headers.
+              default: 64
+            maxHeaderSize:
+              type: integer
+              description: Maximum total header size in bytes.
+              default: 32768
+            pipeline:
+              type: string
+              description: Whether HTTP pipelining is allowed.
+              enum:
+                - allow
+                - reject
+                - pass-through
+        fallbackHost:
+          type: string
+          description: Fallback host for HTTP redirects.
+        fallbackStatusCodes:
+          type: array
+          description: HTTP status codes that trigger fallback redirection.
+          items:
+            type: string
+        headerErase:
+          type: string
+          description: Regular expression for headers to remove from responses.
+        headerInsert:
+          type: string
+          description: Header to insert into requests.
+        insertXforwardedFor:
+          type: string
+          description: Whether to insert an X-Forwarded-For header.
+          enum:
+            - enabled
+            - disabled
+          default: disabled
+        oneconnectTransformations:
+          type: string
+          description: Whether to rewrite HTTP connections for OneConnect.
+          enum:
+            - enabled
+            - disabled
+          default: enabled
+        redirectRewrite:
+          type: string
+          description: Redirect rewrite mode.
+          enum:
+            - none
+            - all
+            - matching
+            - nodes
+        requestChunking:
+          type: string
+          description: How to handle chunked requests.
+          enum:
+            - allow
+            - preserve
+            - rechunk
+            - selective
+        responseChunking:
+          type: string
+          description: How to handle chunked responses.
+          enum:
+            - allow
+            - preserve
+            - rechunk
+            - selective
+        serverAgentName:
+          type: string
+          description: Server agent string to include in responses.
+        viaHostName:
+          type: string
+          description: Hostname to use in Via headers.
+        viaRequest:
+          type: string
+          description: Via header handling for requests.
+          enum:
+            - append
+            - preserve
+            - remove
+        viaResponse:
+          type: string
+          description: Via header handling for responses.
+          enum:
+            - append
+            - preserve
+            - remove
+        xffAlternativeNames:
+          type: array
+          description: Alternative header names for X-Forwarded-For.
+          items:
+            type: string
+
+    TcpProfile:
+      type: object
+      description: >-
+        A TCP profile that defines how the BIG-IP processes TCP traffic,
+        including connection settings, timeouts, and optimization.
+      properties:
+        kind:
+          type: string
+          example: tm:ltm:profile:tcp:tcpstate
+          readOnly: true
+        name:
+          type: string
+          example: tcp
+        fullPath:
+          type: string
+          readOnly: true
+        generation:
+          type: integer
+          readOnly: true
+        selfLink:
+          type: string
+          format: uri
+          readOnly: true
+        abc:
+          type: string
+          description: Whether Appropriate Byte Counting is enabled.
+          enum:
+            - enabled
+            - disabled
+        ackOnPush:
+          type: string
+          description: Whether to send ACK on PUSH flag.
+          enum:
+            - enabled
+            - disabled
+        closeWaitTimeout:
+          type: integer
+          description: Timeout in seconds for CLOSE-WAIT state.
+        congestionControl:
+          type: string
+          description: TCP congestion control algorithm.
+          enum:
+            - high-speed
+            - cdg
+            - chd
+            - cubic
+            - illinois
+            - new-reno
+            - none
+            - reno
+            - scalable
+            - vegas
+            - westwood
+            - woodside
+        defaultsFrom:
+          type: string
+          description: Parent profile.
+          example: /Common/tcp
+        deferredAccept:
+          type: string
+          description: Whether to defer connection acceptance.
+          enum:
+            - enabled
+            - disabled
+        description:
+          type: string
+        finWaitTimeout:
+          type: integer
+          description: Timeout in seconds for FIN-WAIT state.
+        idleTimeout:
+          type: integer
+          description: >-
+            Idle timeout in seconds. Connections idle longer than this
+            value are closed.
+        initCwnd:
+          type: integer
+          description: Initial TCP congestion window size.
+        initRwnd:
+          type: integer
+          description: Initial TCP receive window size.
+        keepAliveInterval:
+          type: integer
+          description: Interval in seconds between TCP keep-alive probes.
+        maxRetrans:
+          type: integer
+          description: Maximum number of TCP retransmission attempts.
+        maxSegmentSize:
+          type: integer
+          description: Maximum segment size (MSS) in bytes.
+        nagle:
+          type: string
+          description: Nagle algorithm setting.
+          enum:
+            - auto
+            - enabled
+            - disabled
+        receiveWindowSize:
+          type: integer
+          description: TCP receive window size in bytes.
+        sendBufferSize:
+          type: integer
+          description: TCP send buffer size in bytes.
+        synMaxRetrans:
+          type: integer
+          description: Maximum SYN retransmission attempts.
+        timeWaitRecycle:
+          type: string
+          description: Whether to recycle TIME-WAIT connections.
+          enum:
+            - enabled
+            - disabled
+        timeWaitTimeout:
+          type: integer
+          description: Timeout in milliseconds for TIME-WAIT state.
+
+    ClientSslProfile:
+      type: object
+      description: >-
+        A Client SSL profile for managing SSL/TLS connections between
+        clients and the BIG-IP system.
+      properties:
+        kind:
+          type: string
+          example: tm:ltm:profile:client-ssl:client-sslstate
+          readOnly: true
+        name:
+          type: string
+          example: clientssl
+        fullPath:
+          type: string
+          readOnly: true
+        generation:
+          type: integer
+          readOnly: true
+        selfLink:
+          type: string
+          format: uri
+          readOnly: true
+        alertTimeout:
+          type: string
+          description: Alert timeout for SSL handshake.
+        allowNonSsl:
+          type: string
+          description: Whether to allow non-SSL connections.
+          enum:
+            - enabled
+            - disabled
+        cert:
+          type: string
+          description: Path to the SSL certificate file.
+          example: /Common/default.crt
+        certKeyChain:
+          type: array
+          description: Certificate and key chain pairs.
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              cert:
+                type: string
+              key:
+                type: string
+              chain:
+                type: string
+        ciphers:
+          type: string
+          description: Cipher suite string.
+          example: DEFAULT
+        defaultsFrom:
+          type: string
+          description: Parent profile.
+          example: /Common/clientssl
+        description:
+          type: string
+        key:
+          type: string
+          description: Path to the SSL private key file.
+          example: /Common/default.key
+        options:
+          type: array
+          description: SSL options.
+          items:
+            type: string
+        peerCertMode:
+          type: string
+          description: Client certificate verification mode.
+          enum:
+            - ignore
+            - require
+            - request
+        renegotiation:
+          type: string
+          description: Whether SSL renegotiation is allowed.
+          enum:
+            - enabled
+            - disabled
+        secureRenegotiation:
+          type: string
+          description: Secure renegotiation mode.
+          enum:
+            - require
+            - require-strict
+            - request
+        sniDefault:
+          type: string
+          description: Whether this is the default SNI profile.
+          enum:
+            - 'true'
+            - 'false'
+        sniRequire:
+          type: string
+          description: Whether SNI is required.
+          enum:
+            - 'true'
+            - 'false'
+        sslForwardProxy:
+          type: string
+          description: Whether SSL forward proxy is enabled.
+          enum:
+            - enabled
+            - disabled
+        uncleanShutdown:
+          type: string
+          description: How to handle unclean SSL shutdowns.
+          enum:
+            - enabled
+            - disabled
+
+    CookiePersistenceProfile:
+      type: object
+      description: >-
+        A cookie persistence profile that maintains session persistence
+        by inserting or reading HTTP cookies.
+      properties:
+        kind:
+          type: string
+          example: tm:ltm:persistence:cookie:cookiestate
+          readOnly: true
+        name:
+          type: string
+          example: cookie
+        fullPath:
+          type: string
+          readOnly: true
+        generation:
+          type: integer
+          readOnly: true
+        selfLink:
+          type: string
+          format: uri
+          readOnly: true
+        alwaysSend:
+          type: string
+          description: Whether to always send the cookie.
+          enum:
+            - enabled
+            - disabled
+        cookieEncryption:
+          type: string
+          description: Cookie encryption method.
+          enum:
+            - required
+            - preferred
+            - disabled
+        cookieName:
+          type: string
+          description: Name of the persistence cookie.
+        defaultsFrom:
+          type: string
+          description: Parent profile.
+          example: /Common/cookie
+        description:
+          type: string
+        expiration:
+          type: string
+          description: Cookie expiration time.
+          example: session
+        hashLength:
+          type: integer
+          description: Length of the cookie hash.
+        hashOffset:
+          type: integer
+          description: Offset for the cookie hash.
+        httponly:
+          type: string
+          description: Whether the cookie has the HttpOnly flag.
+          enum:
+            - enabled
+            - disabled
+        matchAcrossPools:
+          type: string
+          description: Whether to match persistence across pools.
+          enum:
+            - enabled
+            - disabled
+        matchAcrossServices:
+          type: string
+          description: Whether to match persistence across virtual servers.
+          enum:
+            - enabled
+            - disabled
+        matchAcrossVirtuals:
+          type: string
+          description: Whether to match persistence across all virtuals.
+          enum:
+            - enabled
+            - disabled
+        method:
+          type: string
+          description: Cookie persistence method.
+          enum:
+            - insert
+            - rewrite
+            - passive
+            - hash
+        mirror:
+          type: string
+          description: Whether to mirror persistence records.
+          enum:
+            - enabled
+            - disabled
+        overrideConnectionLimit:
+          type: string
+          description: Whether to override connection limits for persisted sessions.
+          enum:
+            - enabled
+            - disabled
+        secure:
+          type: string
+          description: Whether the cookie has the Secure flag.
+          enum:
+            - enabled
+            - disabled
+        timeout:
+          type: string
+          description: Persistence timeout in seconds.
+
+    ErrorResponse:
+      type: object
+      description: Standard error response from the iControl REST API.
+      properties:
+        code:
+          type: integer
+          description: HTTP status code.
+          example: 400
+        message:
+          type: string
+          description: Error message describing what went wrong.
+          example: 'The requested Pool (/Common/my_pool) was not found.'
+        errorStack:
+          type: array
+          description: Stack trace for debugging (when available).
+          items:
+            type: string
+        apiError:
+          type: integer
+          description: API-specific error code.
+
+  responses:
+    BadRequest:
+      description: >-
+        The request could not be processed due to invalid syntax or
+        missing required parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+    Unauthorized:
+      description: >-
+        Authentication failed. Provide valid credentials via Basic Auth
+        or X-F5-Auth-Token header.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+    NotFound:
+      description: The requested resource was not found on the BIG-IP system.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+    Conflict:
+      description: >-
+        The resource already exists or conflicts with an existing
+        configuration.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+    InternalServerError:
+      description: >-
+        An unexpected error occurred on the BIG-IP system while processing
+        the request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
