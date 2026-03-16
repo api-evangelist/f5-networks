@@ -4,7 +4,7 @@ segments:
 description: F5 Networks is a leader in application delivery networking technology that specializes in application availability, acceleration, and security solutions.
 image: https://www.f5.com/content/dam/f5-com/global-assets/images/f5-logo.svg
 created: '2024'
-modified: '2026-03-03'
+modified: '2026-03-16'
 specificationVersion: '0.18'
 url: https://www.f5.com/apis
 apis:
@@ -258,9 +258,8 @@ apis:
   - FN: NGINX Support
     email: nginx-support@f5.com
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
-  url: https://apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
 tags:
 - Application Delivery
 - Load Balancing
