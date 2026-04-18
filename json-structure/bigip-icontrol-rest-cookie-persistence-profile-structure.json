@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "CookiePersistenceProfile",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "fullPath": {
+      "type": "string"
+    },
+    "generation": {
+      "type": "integer"
+    },
+    "selfLink": {
+      "type": "string"
+    },
+    "alwaysSend": {
+      "type": "string"
+    },
+    "cookieEncryption": {
+      "type": "string"
+    },
+    "cookieName": {
+      "type": "string"
+    },
+    "defaultsFrom": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "expiration": {
+      "type": "string"
+    },
+    "hashLength": {
+      "type": "integer"
+    },
+    "hashOffset": {
+      "type": "integer"
+    },
+    "httponly": {
+      "type": "string"
+    },
+    "matchAcrossPools": {
+      "type": "string"
+    },
+    "matchAcrossServices": {
+      "type": "string"
+    },
+    "matchAcrossVirtuals": {
+      "type": "string"
+    },
+    "method": {
+      "type": "string"
+    },
+    "mirror": {
+      "type": "string"
+    },
+    "overrideConnectionLimit": {
+      "type": "string"
+    },
+    "secure": {
+      "type": "string"
+    },
+    "timeout": {
+      "type": "string"
+    }
+  }
+}

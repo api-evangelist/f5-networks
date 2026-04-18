@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "VirtualServerUpdate",
+  "type": "object",
+  "properties": {
+    "description": {
+      "type": "string"
+    },
+    "destination": {
+      "type": "string"
+    },
+    "ipProtocol": {
+      "type": "string"
+    },
+    "mask": {
+      "type": "string"
+    },
+    "pool": {
+      "type": "string"
+    },
+    "profiles": {
+      "type": "array"
+    },
+    "persist": {
+      "type": "array"
+    },
+    "source": {
+      "type": "string"
+    },
+    "sourcePort": {
+      "type": "string"
+    },
+    "translateAddress": {
+      "type": "string"
+    },
+    "translatePort": {
+      "type": "string"
+    },
+    "connectionLimit": {
+      "type": "integer"
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "disabled": {
+      "type": "boolean"
+    },
+    "mirror": {
+      "type": "string"
+    },
+    "rateLimit": {
+      "type": "string"
+    },
+    "rules": {
+      "type": "array"
+    },
+    "vlans": {
+      "type": "array"
+    },
+    "vlansEnabled": {
+      "type": "boolean"
+    },
+    "vlansDisabled": {
+      "type": "boolean"
+    },
+    "fallbackPersistence": {
+      "type": "string"
+    }
+  }
+}

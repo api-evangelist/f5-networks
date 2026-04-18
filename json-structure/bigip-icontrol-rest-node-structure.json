@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Node",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "fullPath": {
+      "type": "string"
+    },
+    "generation": {
+      "type": "integer"
+    },
+    "selfLink": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "connectionLimit": {
+      "type": "integer"
+    },
+    "description": {
+      "type": "string"
+    },
+    "dynamicRatio": {
+      "type": "integer"
+    },
+    "ephemeral": {
+      "type": "string"
+    },
+    "fqdn": {
+      "type": "object"
+    },
+    "logging": {
+      "type": "string"
+    },
+    "monitor": {
+      "type": "string"
+    },
+    "partition": {
+      "type": "string"
+    },
+    "rateLimit": {
+      "type": "string"
+    },
+    "ratio": {
+      "type": "integer"
+    },
+    "session": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    }
+  }
+}

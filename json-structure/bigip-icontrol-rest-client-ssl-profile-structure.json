@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "ClientSslProfile",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "fullPath": {
+      "type": "string"
+    },
+    "generation": {
+      "type": "integer"
+    },
+    "selfLink": {
+      "type": "string"
+    },
+    "alertTimeout": {
+      "type": "string"
+    },
+    "allowNonSsl": {
+      "type": "string"
+    },
+    "cert": {
+      "type": "string"
+    },
+    "certKeyChain": {
+      "type": "array"
+    },
+    "ciphers": {
+      "type": "string"
+    },
+    "defaultsFrom": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "key": {
+      "type": "string"
+    },
+    "options": {
+      "type": "array"
+    },
+    "peerCertMode": {
+      "type": "string"
+    },
+    "renegotiation": {
+      "type": "string"
+    },
+    "secureRenegotiation": {
+      "type": "string"
+    },
+    "sniDefault": {
+      "type": "string"
+    },
+    "sniRequire": {
+      "type": "string"
+    },
+    "sslForwardProxy": {
+      "type": "string"
+    },
+    "uncleanShutdown": {
+      "type": "string"
+    }
+  }
+}

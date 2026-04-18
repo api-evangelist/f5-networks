@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PoolCreate",
+  "type": "object",
+  "description": "Request body for creating a new pool.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the pool."
+    },
+    "partition": {
+      "type": "string",
+      "description": "Administrative partition."
+    },
+    "description": {
+      "type": "string"
+    },
+    "loadBalancingMode": {
+      "type": "string"
+    },
+    "monitor": {
+      "type": "string"
+    },
+    "members": {
+      "type": "array",
+      "description": "Initial pool members to add during creation."
+    },
+    "serviceDownAction": {
+      "type": "string"
+    },
+    "slowRampTime": {
+      "type": "integer"
+    },
+    "allowNat": {
+      "type": "string"
+    },
+    "allowSnat": {
+      "type": "string"
+    }
+  }
+}

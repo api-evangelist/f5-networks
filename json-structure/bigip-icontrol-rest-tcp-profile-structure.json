@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "TcpProfile",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "fullPath": {
+      "type": "string"
+    },
+    "generation": {
+      "type": "integer"
+    },
+    "selfLink": {
+      "type": "string"
+    },
+    "abc": {
+      "type": "string"
+    },
+    "ackOnPush": {
+      "type": "string"
+    },
+    "closeWaitTimeout": {
+      "type": "integer"
+    },
+    "congestionControl": {
+      "type": "string"
+    },
+    "defaultsFrom": {
+      "type": "string"
+    },
+    "deferredAccept": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "finWaitTimeout": {
+      "type": "integer"
+    },
+    "idleTimeout": {
+      "type": "integer"
+    },
+    "initCwnd": {
+      "type": "integer"
+    },
+    "initRwnd": {
+      "type": "integer"
+    },
+    "keepAliveInterval": {
+      "type": "integer"
+    },
+    "maxRetrans": {
+      "type": "integer"
+    },
+    "maxSegmentSize": {
+      "type": "integer"
+    },
+    "nagle": {
+      "type": "string"
+    },
+    "receiveWindowSize": {
+      "type": "integer"
+    },
+    "sendBufferSize": {
+      "type": "integer"
+    },
+    "synMaxRetrans": {
+      "type": "integer"
+    },
+    "timeWaitRecycle": {
+      "type": "string"
+    },
+    "timeWaitTimeout": {
+      "type": "integer"
+    }
+  }
+}

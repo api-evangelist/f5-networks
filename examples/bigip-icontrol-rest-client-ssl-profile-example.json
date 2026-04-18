@@ -1,0 +1,23 @@
+{
+  "kind": "example_value",
+  "name": "Example Title",
+  "fullPath": "example_value",
+  "generation": 10,
+  "selfLink": "example_value",
+  "alertTimeout": "example_value",
+  "allowNonSsl": "example_value",
+  "cert": "example_value",
+  "certKeyChain": [],
+  "ciphers": "example_value",
+  "defaultsFrom": "example_value",
+  "description": "A sample description.",
+  "key": "example_value",
+  "options": [],
+  "peerCertMode": "example_value",
+  "renegotiation": "example_value",
+  "secureRenegotiation": "example_value",
+  "sniDefault": "example_value",
+  "sniRequire": "example_value",
+  "sslForwardProxy": "example_value",
+  "uncleanShutdown": "example_value"
+}

@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pool",
+  "type": "object",
+  "description": "A pool resource that contains a group of backend server members used for load balancing traffic from virtual servers.",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "description": "Resource type identifier."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the pool resource."
+    },
+    "fullPath": {
+      "type": "string",
+      "description": "Full path including partition."
+    },
+    "generation": {
+      "type": "integer",
+      "description": "Configuration generation counter."
+    },
+    "selfLink": {
+      "type": "string",
+      "description": "Self-referencing URI."
+    },
+    "allowNat": {
+      "type": "string",
+      "description": "Whether the pool can load balance NAT connections."
+    },
+    "allowSnat": {
+      "type": "string",
+      "description": "Whether the pool can load balance SNAT connections."
+    },
+    "description": {
+      "type": "string",
+      "description": "User-defined description."
+    },
+    "ignorePersistedWeight": {
+      "type": "string",
+      "description": "Whether to ignore persisted weight when calculating load distribution."
+    },
+    "ipTosToClient": {
+      "type": "string",
+      "description": "Type of Service level for client-bound outgoing packets."
+    },
+    "ipTosToServer": {
+      "type": "string",
+      "description": "Type of Service level for server-bound outgoing packets."
+    },
+    "linkQosToClient": {
+      "type": "string",
+      "description": "QoS level for outgoing packets to clients."
+    },
+    "linkQosToServer": {
+      "type": "string",
+      "description": "QoS level for outgoing packets to servers."
+    },
+    "loadBalancingMode": {
+      "type": "string",
+      "description": "Load balancing algorithm used to distribute traffic."
+    },
+    "minActiveMembers": {
+      "type": "integer",
+      "description": "Minimum number of active members for priority-group activation."
+    },
+    "minUpMembers": {
+      "type": "integer",
+      "description": "Minimum number of operational pool members required before action is taken."
+    },
+    "minUpMembersAction": {
+      "type": "string",
+      "description": "Action to take when the number of operational members falls below the minimum."
+    },
+    "minUpMembersChecking": {
+      "type": "string",
+      "description": "Whether minimum member monitoring is enabled."
+    },
+    "monitor": {
+      "type": "string",
+      "description": "Health monitor or monitor rule applied to pool members. Specify multiple monitors with 'and' or 'min N of'."
+    },
+    "partition": {
+      "type": "string",
+      "description": "Administrative partition."
+    },
+    "queueDepthLimit": {
+      "type": "integer",
+      "description": "Maximum number of connections queued per member."
+    },
+    "queueOnConnectionLimit": {
+      "type": "string",
+      "description": "Whether to queue connections when limits are reached."
+    },
+    "queueTimeLimit": {
+      "type": "integer",
+      "description": "Maximum time in milliseconds a connection can remain queued."
+    },
+    "reselectTries": {
+      "type": "integer",
+      "description": "Number of reselection attempts after a passive failure."
+    },
+    "serviceDownAction": {
+      "type": "string",
+      "description": "Action to take when all pool members are unavailable."
+    },
+    "slowRampTime": {
+      "type": "integer",
+      "description": "Time in seconds to gradually increase traffic to a newly enabled member."
+    },
+    "membersReference": {
+      "type": "object",
+      "description": "Reference to the pool members subcollection."
+    }
+  }
+}

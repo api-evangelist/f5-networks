@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CookiePersistenceProfile",
+  "type": "object",
+  "description": "A cookie persistence profile that maintains session persistence by inserting or reading HTTP cookies.",
+  "properties": {
+    "kind": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "fullPath": {
+      "type": "string"
+    },
+    "generation": {
+      "type": "integer"
+    },
+    "selfLink": {
+      "type": "string"
+    },
+    "alwaysSend": {
+      "type": "string",
+      "description": "Whether to always send the cookie."
+    },
+    "cookieEncryption": {
+      "type": "string",
+      "description": "Cookie encryption method."
+    },
+    "cookieName": {
+      "type": "string",
+      "description": "Name of the persistence cookie."
+    },
+    "defaultsFrom": {
+      "type": "string",
+      "description": "Parent profile."
+    },
+    "description": {
+      "type": "string"
+    },
+    "expiration": {
+      "type": "string",
+      "description": "Cookie expiration time."
+    },
+    "hashLength": {
+      "type": "integer",
+      "description": "Length of the cookie hash."
+    },
+    "hashOffset": {
+      "type": "integer",
+      "description": "Offset for the cookie hash."
+    },
+    "httponly": {
+      "type": "string",
+      "description": "Whether the cookie has the HttpOnly flag."
+    },
+    "matchAcrossPools": {
+      "type": "string",
+      "description": "Whether to match persistence across pools."
+    },
+    "matchAcrossServices": {
+      "type": "string",
+      "description": "Whether to match persistence across virtual servers."
+    },
+    "matchAcrossVirtuals": {
+      "type": "string",
+      "description": "Whether to match persistence across all virtuals."
+    },
+    "method": {
+      "type": "string",
+      "description": "Cookie persistence method."
+    },
+    "mirror": {
+      "type": "string",
+      "description": "Whether to mirror persistence records."
+    },
+    "overrideConnectionLimit": {
+      "type": "string",
+      "description": "Whether to override connection limits for persisted sessions."
+    },
+    "secure": {
+      "type": "string",
+      "description": "Whether the cookie has the Secure flag."
+    },
+    "timeout": {
+      "type": "string",
+      "description": "Persistence timeout in seconds."
+    }
+  }
+}

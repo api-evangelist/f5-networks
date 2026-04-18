@@ -1,0 +1,21 @@
+{
+  "kind": "example_value",
+  "name": "Example Title",
+  "fullPath": "example_value",
+  "generation": 10,
+  "selfLink": "example_value",
+  "address": "example_value",
+  "connectionLimit": 10,
+  "description": "A sample description.",
+  "dynamicRatio": 10,
+  "ephemeral": "example_value",
+  "inheritProfile": "example_value",
+  "logging": "example_value",
+  "monitor": "example_value",
+  "partition": "example_value",
+  "priorityGroup": 10,
+  "rateLimit": "example_value",
+  "ratio": 10,
+  "session": "example_value",
+  "state": "example_value"
+}

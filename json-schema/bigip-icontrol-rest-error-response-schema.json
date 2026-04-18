@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ErrorResponse",
+  "type": "object",
+  "description": "Standard error response from the iControl REST API.",
+  "properties": {
+    "code": {
+      "type": "integer",
+      "description": "HTTP status code."
+    },
+    "message": {
+      "type": "string",
+      "description": "Error message describing what went wrong."
+    },
+    "errorStack": {
+      "type": "array",
+      "description": "Stack trace for debugging (when available)."
+    },
+    "apiError": {
+      "type": "integer",
+      "description": "API-specific error code."
+    }
+  }
+}

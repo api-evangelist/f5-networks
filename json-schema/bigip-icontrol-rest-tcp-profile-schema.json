@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TcpProfile",
+  "type": "object",
+  "description": "A TCP profile that defines how the BIG-IP processes TCP traffic, including connection settings, timeouts, and optimization.",
+  "properties": {
+    "kind": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "fullPath": {
+      "type": "string"
+    },
+    "generation": {
+      "type": "integer"
+    },
+    "selfLink": {
+      "type": "string"
+    },
+    "abc": {
+      "type": "string",
+      "description": "Whether Appropriate Byte Counting is enabled."
+    },
+    "ackOnPush": {
+      "type": "string",
+      "description": "Whether to send ACK on PUSH flag."
+    },
+    "closeWaitTimeout": {
+      "type": "integer",
+      "description": "Timeout in seconds for CLOSE-WAIT state."
+    },
+    "congestionControl": {
+      "type": "string",
+      "description": "TCP congestion control algorithm."
+    },
+    "defaultsFrom": {
+      "type": "string",
+      "description": "Parent profile."
+    },
+    "deferredAccept": {
+      "type": "string",
+      "description": "Whether to defer connection acceptance."
+    },
+    "description": {
+      "type": "string"
+    },
+    "finWaitTimeout": {
+      "type": "integer",
+      "description": "Timeout in seconds for FIN-WAIT state."
+    },
+    "idleTimeout": {
+      "type": "integer",
+      "description": "Idle timeout in seconds. Connections idle longer than this value are closed."
+    },
+    "initCwnd": {
+      "type": "integer",
+      "description": "Initial TCP congestion window size."
+    },
+    "initRwnd": {
+      "type": "integer",
+      "description": "Initial TCP receive window size."
+    },
+    "keepAliveInterval": {
+      "type": "integer",
+      "description": "Interval in seconds between TCP keep-alive probes."
+    },
+    "maxRetrans": {
+      "type": "integer",
+      "description": "Maximum number of TCP retransmission attempts."
+    },
+    "maxSegmentSize": {
+      "type": "integer",
+      "description": "Maximum segment size (MSS) in bytes."
+    },
+    "nagle": {
+      "type": "string",
+      "description": "Nagle algorithm setting."
+    },
+    "receiveWindowSize": {
+      "type": "integer",
+      "description": "TCP receive window size in bytes."
+    },
+    "sendBufferSize": {
+      "type": "integer",
+      "description": "TCP send buffer size in bytes."
+    },
+    "synMaxRetrans": {
+      "type": "integer",
+      "description": "Maximum SYN retransmission attempts."
+    },
+    "timeWaitRecycle": {
+      "type": "string",
+      "description": "Whether to recycle TIME-WAIT connections."
+    },
+    "timeWaitTimeout": {
+      "type": "integer",
+      "description": "Timeout in milliseconds for TIME-WAIT state."
+    }
+  }
+}

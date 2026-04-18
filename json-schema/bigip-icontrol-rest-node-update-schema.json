@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NodeUpdate",
+  "type": "object",
+  "description": "Request body for updating a node.",
+  "properties": {
+    "description": {
+      "type": "string"
+    },
+    "connectionLimit": {
+      "type": "integer"
+    },
+    "monitor": {
+      "type": "string"
+    },
+    "rateLimit": {
+      "type": "string"
+    },
+    "ratio": {
+      "type": "integer"
+    },
+    "session": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "logging": {
+      "type": "string"
+    }
+  }
+}

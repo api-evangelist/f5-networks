@@ -1,0 +1,12 @@
+name: f5-networks API Vocabulary
+provider: f5-networks
+created: '2026-04-18'
+modified: '2026-04-18'
+operations: 32
+schemas: 17
+tags:
+- Nodes
+- Pool Members
+- Pools
+- Profiles
+- Virtual Servers

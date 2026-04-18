@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "VirtualServerCreate",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "partition": {
+      "type": "string"
+    },
+    "destination": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "ipProtocol": {
+      "type": "string"
+    },
+    "mask": {
+      "type": "string"
+    },
+    "pool": {
+      "type": "string"
+    },
+    "profiles": {
+      "type": "array"
+    },
+    "persist": {
+      "type": "array"
+    },
+    "source": {
+      "type": "string"
+    },
+    "sourcePort": {
+      "type": "string"
+    },
+    "translateAddress": {
+      "type": "string"
+    },
+    "translatePort": {
+      "type": "string"
+    },
+    "connectionLimit": {
+      "type": "integer"
+    },
+    "rules": {
+      "type": "array"
+    },
+    "vlans": {
+      "type": "array"
+    },
+    "vlansEnabled": {
+      "type": "boolean"
+    },
+    "vlansDisabled": {
+      "type": "boolean"
+    }
+  }
+}

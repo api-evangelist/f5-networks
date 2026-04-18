@@ -1,12 +1,26 @@
 name: F5 Networks
-segments:
-  - Gateways
 description: F5 Networks is a leader in application delivery networking technology that specializes in application availability, acceleration, and security solutions.
 image: https://www.f5.com/content/dam/f5-com/global-assets/images/f5-logo.svg
-created: '2024'
-modified: '2026-03-16'
-specificationVersion: '0.18'
 url: https://www.f5.com/apis
+created: '2024'
+modified: '2026-04-18'
+specificationVersion: '0.18'
+type: Index
+access: 3rd-Party
+position: Consumer
+segments:
+  - Gateways
+tags:
+  - API Gateway
+  - Application Delivery
+  - Automation
+  - Edge Computing
+  - Kubernetes
+  - Load Balancing
+  - Multi-Cloud
+  - NGINX
+  - Security
+  - WAF
 apis:
   - name: F5 BIG-IP iControl REST API
     description: The iControl REST API provides programmatic access to manage and configure F5 BIG-IP devices. Enables automation of network, security, and application delivery services.
@@ -30,16 +44,20 @@ apis:
         url: json-schema/f5-virtual-server-schema.json
       - type: JSONLD
         url: json-ld/f5-networks-context.jsonld
+      - type: JSONLD
+        url: json-ld/bigip-icontrol-rest-context.jsonld
       - type: Authentication
         url: https://clouddocs.f5.com/api/icontrol-rest/Authentication.html
-      - type: API Reference
+      - type: APIReference
         url: https://clouddocs.f5.com/api/icontrol-rest/APIRef.html
-      - type: Getting Started
+      - type: GettingStarted
         url: https://clouddocs.f5.com/api/
       - type: SDK
         url: https://github.com/F5Networks/f5-icontrol-rest-python
+        title: Python SDK
       - type: SDK
         url: https://f5-sdk.readthedocs.io/
+        title: Python SDK Docs
     contact:
       - FN: F5 Support
         email: support@f5.com
@@ -58,17 +76,17 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.cloud.f5.com/docs/api
-      - type: Swagger
+      - type: OpenAPI
         url: https://docs.cloud.f5.com/docs/api/swagger
-      - type: API Console
+      - type: Console
         url: https://console.ves.volterra.io/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://docs.cloud.f5.com/docs/how-to/api-how-to
-      - type: API Reference
+      - type: APIReference
         url: https://docs.cloud.f5.com/docs-v2/reference/api-ref
       - type: Authentication
         url: https://docs.cloud.f5.com/docs-v2/api/authentication
-      - type: Change Log
+      - type: ChangeLog
         url: https://docs.cloud.f5.com/docs-v2/platform/changelogs/saas-release-notes
     contact:
       - FN: F5 Distributed Cloud Support
@@ -87,9 +105,9 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.nginx.com/nginx-management-suite/admin-guides/api/
-      - type: API Reference
+      - type: APIReference
         url: https://docs.nginx.com/nginx-management-suite/api-reference/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://docs.nginx.com/nginx-management-suite/getting-started/
     contact:
       - FN: NGINX Support
@@ -108,7 +126,7 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.f5.com/en-us/app-protect/api-reference
-      - type: Security Policies
+      - type: Security
         url: https://docs.f5.com/en-us/app-protect/security-policies
   - name: F5 BIG-IQ Centralized Management API
     description: REST API for BIG-IQ Centralized Management providing programmatic control over BIG-IP device management, licensing, monitoring, and analytics across your F5 infrastructure.
@@ -124,9 +142,9 @@ apis:
     properties:
       - type: Documentation
         url: https://clouddocs.f5.com/products/big-iq/mgmt-api/v0.0/
-      - type: API Reference
+      - type: APIReference
         url: https://clouddocs.f5.com/products/big-iq/mgmt-api/v0.0/ApiReferences/bigiq_public_api_ref/r_public_api_references.html
-      - type: Getting Started
+      - type: GettingStarted
         url: https://clouddocs.f5.com/products/big-iq/mgmt-api/v0.0/HowToSamples/bigiq_public_api_wf/t_bigiq_public_api_workflows.html
     contact:
       - FN: F5 Support
@@ -145,11 +163,11 @@ apis:
     properties:
       - type: Documentation
         url: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/
-      - type: API Reference
+      - type: APIReference
         url: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/refguide/as3-api.html
-      - type: Getting Started
+      - type: GettingStarted
         url: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/
-      - type: GitHubOrg
+      - type: GitHubRepository
         url: https://github.com/F5Networks/f5-appsvcs-extension
     contact:
       - FN: F5 Support
@@ -168,9 +186,9 @@ apis:
     properties:
       - type: Documentation
         url: https://clouddocs.f5.com/products/extensions/f5-declarative-onboarding/latest/
-      - type: API Reference
+      - type: APIReference
         url: https://clouddocs.f5.com/products/extensions/f5-declarative-onboarding/latest/apidocs.html
-      - type: Getting Started
+      - type: GettingStarted
         url: https://clouddocs.f5.com/products/extensions/f5-declarative-onboarding/latest/using-do.html
     contact:
       - FN: F5 Support
@@ -189,9 +207,9 @@ apis:
     properties:
       - type: Documentation
         url: https://clouddocs.f5.com/products/extensions/f5-telemetry-streaming/latest/
-      - type: API Reference
+      - type: APIReference
         url: https://clouddocs.f5.com/products/extensions/f5-telemetry-streaming/latest/rest-api-endpoints.html
-      - type: GitHubOrg
+      - type: GitHubRepository
         url: https://github.com/F5Networks/f5-telemetry-streaming
     contact:
       - FN: F5 Support
@@ -210,9 +228,9 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.nginx.com/nginx/
-      - type: API Reference
+      - type: APIReference
         url: https://docs.nginx.com/nginx/admin-guide/monitoring/live-activity-monitoring/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://docs.nginx.com/nginx/admin-guide/load-balancer/dynamic-configuration-api/
     contact:
       - FN: NGINX Support
@@ -231,7 +249,7 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.nginx.com/nginx-one-console/
-      - type: API Reference
+      - type: APIReference
         url: https://docs.nginx.com/nginx-one-console/api/api-reference-guide/
       - type: Authentication
         url: https://docs.nginx.com/nginx-one-console/api/authentication/
@@ -252,57 +270,91 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.nginx.com/nginx-ingress-controller/
-      - type: GitHubOrg
+      - type: GitHubRepository
         url: https://github.com/nginx/kubernetes-ingress
     contact:
       - FN: NGINX Support
         email: nginx-support@f5.com
+common:
+  - type: Documentation
+    url: https://docs.nginx.com/
+  - type: DeveloperPortal
+    url: https://clouddocs.f5.com/
+  - type: Blog
+    url: https://www.f5.com/company/blog
+  - type: GitHubOrganization
+    url: https://github.com/F5Networks
+  - type: GitHubOrganization
+    url: https://github.com/f5devcentral/
+    title: F5 DevCentral
+  - type: Support
+    url: https://support.f5.com/
+  - type: StatusPage
+    url: https://www.f5cloudstatus.com/
+  - type: TermsOfService
+    url: https://www.f5.com/company/policies/terms-of-use
+  - type: PrivacyPolicy
+    url: https://www.f5.com/company/policies/privacy-notice
+  - type: SignUp
+    url: https://account.f5.com/myf5
+  - type: Login
+    url: https://identity.account.f5.com/
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/f5
+  - type: X
+    url: https://twitter.com/f5networks
+  - type: YouTube
+    url: https://www.f5.com/resources/videos
+  - type: Features
+    data:
+      - name: Multi-Cloud Networking
+        description: Connect and secure applications across any cloud, data center, or edge environment with consistent policy and visibility.
+      - name: Application Delivery Controller
+        description: Advanced load balancing, traffic management, and application acceleration for high availability and performance.
+      - name: Web Application Firewall
+        description: Comprehensive protection against OWASP Top 10 threats, bot attacks, and API vulnerabilities.
+      - name: Infrastructure as Code
+        description: Declarative APIs (AS3, DO, TS) for automating BIG-IP configuration and application delivery.
+      - name: NGINX Reverse Proxy
+        description: High-performance reverse proxy, load balancing, and web serving for modern applications.
+      - name: API Gateway
+        description: Secure and manage API traffic with rate limiting, authentication, and traffic shaping.
+      - name: DDoS Protection
+        description: Volumetric and application-layer DDoS mitigation with always-on or on-demand protection.
+      - name: SSL/TLS Offloading
+        description: Centralized SSL/TLS certificate management and encryption offloading for improved performance.
+  - type: UseCases
+    data:
+      - name: Application Load Balancing
+        description: Distribute application traffic across servers for high availability, performance, and fault tolerance.
+      - name: Zero Trust Security
+        description: Implement zero trust architecture with identity-aware proxy, micro-segmentation, and continuous verification.
+      - name: Kubernetes Ingress
+        description: Manage ingress traffic for containerized applications with NGINX Ingress Controller in Kubernetes clusters.
+      - name: Multi-Cloud Application Delivery
+        description: Deliver applications consistently across AWS, Azure, GCP, and on-premises with unified policy management.
+      - name: API Security
+        description: Protect APIs from abuse, injection attacks, and unauthorized access with granular security policies.
+      - name: DevOps Automation
+        description: Automate network and security infrastructure provisioning using declarative APIs and CI/CD pipelines.
+  - type: Integrations
+    data:
+      - name: AWS
+        description: Deploy BIG-IP and Distributed Cloud services natively on AWS with CloudFormation templates and marketplace offerings.
+      - name: Azure
+        description: Integrate F5 solutions with Azure services including AKS, App Gateway, and Azure AD for cloud-native security.
+      - name: Google Cloud
+        description: Deploy F5 solutions on GCP with support for GKE, Cloud Load Balancing, and Anthos.
+      - name: Kubernetes
+        description: Native Kubernetes integration through NGINX Ingress Controller, Container Ingress Services, and Helm charts.
+      - name: Terraform
+        description: Infrastructure as Code support with official Terraform providers for BIG-IP and Distributed Cloud.
+      - name: Ansible
+        description: Ansible modules and roles for automating BIG-IP configuration, deployment, and orchestration.
+      - name: Splunk
+        description: Forward telemetry data to Splunk for centralized logging, analytics, and security monitoring.
+      - name: ServiceNow
+        description: ITSM integration for automated incident management and change control of F5 infrastructure.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
-tags:
-  - API Gateway
-  - Application Delivery
-  - Automation
-  - Edge Computing
-  - Kubernetes
-  - Load Balancing
-  - Multi-Cloud
-  - NGINX
-  - Security
-  - WAF
-include:
-  - name: Website
-    url: https://www.f5.com/
-  - name: About
-    url: https://www.f5.com/company
-  - name: Developer Portal
-    url: https://clouddocs.f5.com/
-  - name: Documentation
-    url: https://docs.nginx.com/
-  - name: Blog
-    url: https://www.f5.com/company/blog
-  - name: GitHub
-    url: https://github.com/F5Networks
-  - name: GitHub Organization
-    url: https://github.com/f5devcentral/
-  - name: Support Portal
-    url: https://support.f5.com/
-  - name: Community
-    url: https://community.f5.com/
-  - name: Status
-    url: https://www.f5cloudstatus.com/
-  - name: Terms of Service
-    url: https://www.f5.com/company/policies/terms-of-use
-  - name: Privacy Policy
-    url: https://www.f5.com/company/policies/privacy-notice
-  - name: Sign Up
-    url: https://account.f5.com/myf5
-  - name: Login
-    url: https://identity.account.f5.com/
-  - name: LinkedIn
-    url: https://www.linkedin.com/company/f5
-  - name: X
-    url: https://twitter.com/f5networks
-  - name: Videos
-    url: https://www.f5.com/resources/videos

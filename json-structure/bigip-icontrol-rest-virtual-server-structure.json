@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "VirtualServer",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "fullPath": {
+      "type": "string"
+    },
+    "generation": {
+      "type": "integer"
+    },
+    "selfLink": {
+      "type": "string"
+    },
+    "addressStatus": {
+      "type": "string"
+    },
+    "autoLasthop": {
+      "type": "string"
+    },
+    "cmpEnabled": {
+      "type": "string"
+    },
+    "connectionLimit": {
+      "type": "integer"
+    },
+    "description": {
+      "type": "string"
+    },
+    "destination": {
+      "type": "string"
+    },
+    "disabled": {
+      "type": "boolean"
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "fallbackPersistence": {
+      "type": "string"
+    },
+    "gtmScore": {
+      "type": "integer"
+    },
+    "ipProtocol": {
+      "type": "string"
+    },
+    "mask": {
+      "type": "string"
+    },
+    "mirror": {
+      "type": "string"
+    },
+    "nat64": {
+      "type": "string"
+    },
+    "partition": {
+      "type": "string"
+    },
+    "persist": {
+      "type": "array"
+    },
+    "pool": {
+      "type": "string"
+    },
+    "profiles": {
+      "type": "array"
+    },
+    "rateLimit": {
+      "type": "string"
+    },
+    "rateLimitMode": {
+      "type": "string"
+    },
+    "rules": {
+      "type": "array"
+    },
+    "source": {
+      "type": "string"
+    },
+    "sourcePort": {
+      "type": "string"
+    },
+    "synCookieStatus": {
+      "type": "string"
+    },
+    "translateAddress": {
+      "type": "string"
+    },
+    "translatePort": {
+      "type": "string"
+    },
+    "vlansEnabled": {
+      "type": "boolean"
+    },
+    "vlansDisabled": {
+      "type": "boolean"
+    },
+    "vlans": {
+      "type": "array"
+    },
+    "vsIndex": {
+      "type": "integer"
+    }
+  }
+}

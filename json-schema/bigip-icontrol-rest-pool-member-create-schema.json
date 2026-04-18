@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PoolMemberCreate",
+  "type": "object",
+  "description": "Request body for adding a new pool member.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Member name in address:port format. If a node with the address does not exist, one will be created."
+    },
+    "address": {
+      "type": "string",
+      "description": "IP address if it differs from the name."
+    },
+    "description": {
+      "type": "string"
+    },
+    "connectionLimit": {
+      "type": "integer"
+    },
+    "monitor": {
+      "type": "string"
+    },
+    "priorityGroup": {
+      "type": "integer"
+    },
+    "rateLimit": {
+      "type": "string"
+    },
+    "ratio": {
+      "type": "integer"
+    },
+    "session": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    }
+  }
+}

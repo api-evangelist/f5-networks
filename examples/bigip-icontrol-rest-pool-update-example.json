@@ -1,0 +1,10 @@
+{
+  "description": "A sample description.",
+  "loadBalancingMode": "example_value",
+  "monitor": "example_value",
+  "serviceDownAction": "example_value",
+  "slowRampTime": 10,
+  "minActiveMembers": 10,
+  "allowNat": "example_value",
+  "allowSnat": "example_value"
+}

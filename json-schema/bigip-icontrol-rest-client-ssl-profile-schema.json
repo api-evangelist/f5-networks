@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ClientSslProfile",
+  "type": "object",
+  "description": "A Client SSL profile for managing SSL/TLS connections between clients and the BIG-IP system.",
+  "properties": {
+    "kind": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "fullPath": {
+      "type": "string"
+    },
+    "generation": {
+      "type": "integer"
+    },
+    "selfLink": {
+      "type": "string"
+    },
+    "alertTimeout": {
+      "type": "string",
+      "description": "Alert timeout for SSL handshake."
+    },
+    "allowNonSsl": {
+      "type": "string",
+      "description": "Whether to allow non-SSL connections."
+    },
+    "cert": {
+      "type": "string",
+      "description": "Path to the SSL certificate file."
+    },
+    "certKeyChain": {
+      "type": "array",
+      "description": "Certificate and key chain pairs."
+    },
+    "ciphers": {
+      "type": "string",
+      "description": "Cipher suite string."
+    },
+    "defaultsFrom": {
+      "type": "string",
+      "description": "Parent profile."
+    },
+    "description": {
+      "type": "string"
+    },
+    "key": {
+      "type": "string",
+      "description": "Path to the SSL private key file."
+    },
+    "options": {
+      "type": "array",
+      "description": "SSL options."
+    },
+    "peerCertMode": {
+      "type": "string",
+      "description": "Client certificate verification mode."
+    },
+    "renegotiation": {
+      "type": "string",
+      "description": "Whether SSL renegotiation is allowed."
+    },
+    "secureRenegotiation": {
+      "type": "string",
+      "description": "Secure renegotiation mode."
+    },
+    "sniDefault": {
+      "type": "string",
+      "description": "Whether this is the default SNI profile."
+    },
+    "sniRequire": {
+      "type": "string",
+      "description": "Whether SNI is required."
+    },
+    "sslForwardProxy": {
+      "type": "string",
+      "description": "Whether SSL forward proxy is enabled."
+    },
+    "uncleanShutdown": {
+      "type": "string",
+      "description": "How to handle unclean SSL shutdowns."
+    }
+  }
+}

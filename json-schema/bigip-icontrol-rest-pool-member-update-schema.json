@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PoolMemberUpdate",
+  "type": "object",
+  "description": "Request body for updating a pool member.",
+  "properties": {
+    "description": {
+      "type": "string"
+    },
+    "connectionLimit": {
+      "type": "integer"
+    },
+    "monitor": {
+      "type": "string"
+    },
+    "priorityGroup": {
+      "type": "integer"
+    },
+    "rateLimit": {
+      "type": "string"
+    },
+    "ratio": {
+      "type": "integer"
+    },
+    "session": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    }
+  }
+}

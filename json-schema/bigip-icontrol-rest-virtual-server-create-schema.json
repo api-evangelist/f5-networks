@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VirtualServerCreate",
+  "type": "object",
+  "description": "Request body for creating a new virtual server.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the virtual server."
+    },
+    "partition": {
+      "type": "string",
+      "description": "Administrative partition."
+    },
+    "destination": {
+      "type": "string",
+      "description": "Destination address and port in /partition/address:port format."
+    },
+    "description": {
+      "type": "string",
+      "description": "User-defined description."
+    },
+    "ipProtocol": {
+      "type": "string",
+      "description": "IP protocol."
+    },
+    "mask": {
+      "type": "string",
+      "description": "Destination network mask."
+    },
+    "pool": {
+      "type": "string",
+      "description": "Default pool full path."
+    },
+    "profiles": {
+      "type": "array",
+      "description": "Profiles to apply."
+    },
+    "persist": {
+      "type": "array",
+      "description": "Persistence profiles to apply."
+    },
+    "source": {
+      "type": "string",
+      "description": "Source address filter."
+    },
+    "sourcePort": {
+      "type": "string",
+      "description": "Source port translation behavior."
+    },
+    "translateAddress": {
+      "type": "string"
+    },
+    "translatePort": {
+      "type": "string"
+    },
+    "connectionLimit": {
+      "type": "integer"
+    },
+    "rules": {
+      "type": "array"
+    },
+    "vlans": {
+      "type": "array"
+    },
+    "vlansEnabled": {
+      "type": "boolean"
+    },
+    "vlansDisabled": {
+      "type": "boolean"
+    }
+  }
+}

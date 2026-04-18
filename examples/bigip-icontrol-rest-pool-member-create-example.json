@@ -1,0 +1,12 @@
+{
+  "name": "Example Title",
+  "address": "example_value",
+  "description": "A sample description.",
+  "connectionLimit": 10,
+  "monitor": "example_value",
+  "priorityGroup": 10,
+  "rateLimit": "example_value",
+  "ratio": 10,
+  "session": "example_value",
+  "state": "example_value"
+}

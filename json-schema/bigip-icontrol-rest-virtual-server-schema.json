@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VirtualServer",
+  "type": "object",
+  "description": "A virtual server resource that directs client traffic to a pool of backend servers based on an IP address and port combination.",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "description": "Resource type identifier."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the virtual server resource."
+    },
+    "fullPath": {
+      "type": "string",
+      "description": "Full path including partition."
+    },
+    "generation": {
+      "type": "integer",
+      "description": "Configuration generation counter."
+    },
+    "selfLink": {
+      "type": "string",
+      "description": "Self-referencing URI for this resource."
+    },
+    "addressStatus": {
+      "type": "string",
+      "description": "Whether the virtual contributes to the operational status of the associated virtual address."
+    },
+    "autoLasthop": {
+      "type": "string",
+      "description": "Automatic last hop setting for return traffic routing."
+    },
+    "cmpEnabled": {
+      "type": "string",
+      "description": "Whether Clustered Multi-Processing (CMP) acceleration is enabled."
+    },
+    "connectionLimit": {
+      "type": "integer",
+      "description": "Maximum number of concurrent connections allowed. A value of 0 means unlimited."
+    },
+    "description": {
+      "type": "string",
+      "description": "User-defined description of the virtual server."
+    },
+    "destination": {
+      "type": "string",
+      "description": "Destination IP address and service port in the format /partition/address:port or /partition/address.port."
+    },
+    "disabled": {
+      "type": "boolean",
+      "description": "When true, the virtual server does not accept new connections."
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "When true, the virtual server accepts and processes traffic."
+    },
+    "fallbackPersistence": {
+      "type": "string",
+      "description": "Persistence profile to use when the primary persistence method fails."
+    },
+    "gtmScore": {
+      "type": "integer",
+      "description": "Score value used by Global Traffic Manager for load balancing decisions."
+    },
+    "ipProtocol": {
+      "type": "string",
+      "description": "IP protocol for the virtual server."
+    },
+    "mask": {
+      "type": "string",
+      "description": "Network mask for the destination address. Use 255.255.255.255 for host-specific virtual servers."
+    },
+    "mirror": {
+      "type": "string",
+      "description": "Whether connection and persistence mirroring is enabled for high availability failover."
+    },
+    "nat64": {
+      "type": "string",
+      "description": "Whether NAT64 translation is enabled."
+    },
+    "partition": {
+      "type": "string",
+      "description": "Administrative partition containing this resource."
+    },
+    "persist": {
+      "type": "array",
+      "description": "Persistence profiles applied to the virtual server."
+    },
+    "pool": {
+      "type": "string",
+      "description": "Default pool for directing traffic. Specified as a full path (e.g., /Common/my_pool)."
+    },
+    "profiles": {
+      "type": "array",
+      "description": "Profiles applied to the virtual server."
+    },
+    "rateLimit": {
+      "type": "string",
+      "description": "Maximum number of connections per second. A value of disabled or 0 means no limit."
+    },
+    "rateLimitMode": {
+      "type": "string",
+      "description": "Scope of rate limiting."
+    },
+    "rules": {
+      "type": "array",
+      "description": "iRules applied to the virtual server."
+    },
+    "source": {
+      "type": "string",
+      "description": "Source address filter. Only connections from this network are accepted."
+    },
+    "sourcePort": {
+      "type": "string",
+      "description": "Source port translation behavior."
+    },
+    "synCookieStatus": {
+      "type": "string",
+      "description": "Current SYN Cookie protection status."
+    },
+    "translateAddress": {
+      "type": "string",
+      "description": "Whether address translation is enabled."
+    },
+    "translatePort": {
+      "type": "string",
+      "description": "Whether port translation is enabled."
+    },
+    "vlansEnabled": {
+      "type": "boolean",
+      "description": "Whether VLAN filtering is enabled."
+    },
+    "vlansDisabled": {
+      "type": "boolean",
+      "description": "Whether the virtual server is disabled on listed VLANs."
+    },
+    "vlans": {
+      "type": "array",
+      "description": "List of VLANs on which the virtual server is enabled or disabled."
+    },
+    "vsIndex": {
+      "type": "integer",
+      "description": "System-assigned index for the virtual server."
+    }
+  }
+}

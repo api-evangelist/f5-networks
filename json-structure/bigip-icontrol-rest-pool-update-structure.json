@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "PoolUpdate",
+  "type": "object",
+  "properties": {
+    "description": {
+      "type": "string"
+    },
+    "loadBalancingMode": {
+      "type": "string"
+    },
+    "monitor": {
+      "type": "string"
+    },
+    "serviceDownAction": {
+      "type": "string"
+    },
+    "slowRampTime": {
+      "type": "integer"
+    },
+    "minActiveMembers": {
+      "type": "integer"
+    },
+    "allowNat": {
+      "type": "string"
+    },
+    "allowSnat": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Example Title",
+  "address": "example_value",
+  "partition": "example_value",
+  "description": "A sample description.",
+  "connectionLimit": 10,
+  "monitor": "example_value",
+  "rateLimit": "example_value",
+  "ratio": 10,
+  "fqdn": "example_value"
+}

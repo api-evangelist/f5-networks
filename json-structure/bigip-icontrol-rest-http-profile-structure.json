@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "HttpProfile",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "fullPath": {
+      "type": "string"
+    },
+    "generation": {
+      "type": "integer"
+    },
+    "selfLink": {
+      "type": "string"
+    },
+    "acceptXff": {
+      "type": "string"
+    },
+    "appService": {
+      "type": "string"
+    },
+    "basicAuthRealm": {
+      "type": "string"
+    },
+    "defaultsFrom": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "encryptCookies": {
+      "type": "array"
+    },
+    "enforcement": {
+      "type": "object"
+    },
+    "fallbackHost": {
+      "type": "string"
+    },
+    "fallbackStatusCodes": {
+      "type": "array"
+    },
+    "headerErase": {
+      "type": "string"
+    },
+    "headerInsert": {
+      "type": "string"
+    },
+    "insertXforwardedFor": {
+      "type": "string"
+    },
+    "oneconnectTransformations": {
+      "type": "string"
+    },
+    "redirectRewrite": {
+      "type": "string"
+    },
+    "requestChunking": {
+      "type": "string"
+    },
+    "responseChunking": {
+      "type": "string"
+    },
+    "serverAgentName": {
+      "type": "string"
+    },
+    "viaHostName": {
+      "type": "string"
+    },
+    "viaRequest": {
+      "type": "string"
+    },
+    "viaResponse": {
+      "type": "string"
+    },
+    "xffAlternativeNames": {
+      "type": "array"
+    }
+  }
+}

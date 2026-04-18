@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Pool",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "fullPath": {
+      "type": "string"
+    },
+    "generation": {
+      "type": "integer"
+    },
+    "selfLink": {
+      "type": "string"
+    },
+    "allowNat": {
+      "type": "string"
+    },
+    "allowSnat": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "ignorePersistedWeight": {
+      "type": "string"
+    },
+    "ipTosToClient": {
+      "type": "string"
+    },
+    "ipTosToServer": {
+      "type": "string"
+    },
+    "linkQosToClient": {
+      "type": "string"
+    },
+    "linkQosToServer": {
+      "type": "string"
+    },
+    "loadBalancingMode": {
+      "type": "string"
+    },
+    "minActiveMembers": {
+      "type": "integer"
+    },
+    "minUpMembers": {
+      "type": "integer"
+    },
+    "minUpMembersAction": {
+      "type": "string"
+    },
+    "minUpMembersChecking": {
+      "type": "string"
+    },
+    "monitor": {
+      "type": "string"
+    },
+    "partition": {
+      "type": "string"
+    },
+    "queueDepthLimit": {
+      "type": "integer"
+    },
+    "queueOnConnectionLimit": {
+      "type": "string"
+    },
+    "queueTimeLimit": {
+      "type": "integer"
+    },
+    "reselectTries": {
+      "type": "integer"
+    },
+    "serviceDownAction": {
+      "type": "string"
+    },
+    "slowRampTime": {
+      "type": "integer"
+    },
+    "membersReference": {
+      "type": "object"
+    }
+  }
+}

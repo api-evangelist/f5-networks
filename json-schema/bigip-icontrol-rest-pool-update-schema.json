@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PoolUpdate",
+  "type": "object",
+  "description": "Request body for updating a pool.",
+  "properties": {
+    "description": {
+      "type": "string"
+    },
+    "loadBalancingMode": {
+      "type": "string"
+    },
+    "monitor": {
+      "type": "string"
+    },
+    "serviceDownAction": {
+      "type": "string"
+    },
+    "slowRampTime": {
+      "type": "integer"
+    },
+    "minActiveMembers": {
+      "type": "integer"
+    },
+    "allowNat": {
+      "type": "string"
+    },
+    "allowSnat": {
+      "type": "string"
+    }
+  }
+}

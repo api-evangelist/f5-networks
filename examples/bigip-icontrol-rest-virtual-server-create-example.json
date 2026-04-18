@@ -1,0 +1,20 @@
+{
+  "name": "Example Title",
+  "partition": "example_value",
+  "destination": "example_value",
+  "description": "A sample description.",
+  "ipProtocol": "example_value",
+  "mask": "example_value",
+  "pool": "example_value",
+  "profiles": [],
+  "persist": [],
+  "source": "example_value",
+  "sourcePort": "example_value",
+  "translateAddress": "example_value",
+  "translatePort": "example_value",
+  "connectionLimit": 10,
+  "rules": [],
+  "vlans": [],
+  "vlansEnabled": true,
+  "vlansDisabled": true
+}

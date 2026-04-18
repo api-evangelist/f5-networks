@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PoolMember",
+  "type": "object",
+  "description": "A pool member resource representing an individual backend server within a pool, identified by address and port.",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "description": "Resource type identifier."
+    },
+    "name": {
+      "type": "string",
+      "description": "Member name in address:port format."
+    },
+    "fullPath": {
+      "type": "string",
+      "description": "Full path including partition."
+    },
+    "generation": {
+      "type": "integer"
+    },
+    "selfLink": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string",
+      "description": "IP address of the pool member."
+    },
+    "connectionLimit": {
+      "type": "integer",
+      "description": "Maximum concurrent connections. 0 means unlimited."
+    },
+    "description": {
+      "type": "string",
+      "description": "User-defined description."
+    },
+    "dynamicRatio": {
+      "type": "integer",
+      "description": "Dynamic ratio for load balancing."
+    },
+    "ephemeral": {
+      "type": "string",
+      "description": "Whether this is a transient auto-discovered member."
+    },
+    "inheritProfile": {
+      "type": "string",
+      "description": "Whether the member inherits the encapsulation profile from its parent pool."
+    },
+    "logging": {
+      "type": "string",
+      "description": "Whether monitor actions are logged."
+    },
+    "monitor": {
+      "type": "string",
+      "description": "Health monitor override for this member."
+    },
+    "partition": {
+      "type": "string",
+      "description": "Administrative partition."
+    },
+    "priorityGroup": {
+      "type": "integer",
+      "description": "Priority group number. Higher values receive traffic first when priority-group activation is configured."
+    },
+    "rateLimit": {
+      "type": "string",
+      "description": "Maximum connections per second. disabled means no limit."
+    },
+    "ratio": {
+      "type": "integer",
+      "description": "Ratio weight for load balancing."
+    },
+    "session": {
+      "type": "string",
+      "description": "Session availability state."
+    },
+    "state": {
+      "type": "string",
+      "description": "Operational state of the member."
+    }
+  }
+}

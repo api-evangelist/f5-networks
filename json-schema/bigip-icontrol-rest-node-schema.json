@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Node",
+  "type": "object",
+  "description": "A node resource representing an individual backend server by its IP address or FQDN. Nodes are automatically created when pool members are added, or can be created independently.",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "description": "Resource type identifier."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the node (typically the IP address)."
+    },
+    "fullPath": {
+      "type": "string",
+      "description": "Full path including partition."
+    },
+    "generation": {
+      "type": "integer"
+    },
+    "selfLink": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string",
+      "description": "IP address of the node."
+    },
+    "connectionLimit": {
+      "type": "integer",
+      "description": "Maximum concurrent connections. 0 means unlimited."
+    },
+    "description": {
+      "type": "string",
+      "description": "User-defined description."
+    },
+    "dynamicRatio": {
+      "type": "integer",
+      "description": "Dynamic ratio weight for load balancing."
+    },
+    "ephemeral": {
+      "type": "string",
+      "description": "Whether this is a transient auto-discovered node."
+    },
+    "fqdn": {
+      "type": "object",
+      "description": "FQDN configuration for DNS-based node resolution."
+    },
+    "logging": {
+      "type": "string",
+      "description": "Whether monitor actions are logged."
+    },
+    "monitor": {
+      "type": "string",
+      "description": "Health monitor applied to the node."
+    },
+    "partition": {
+      "type": "string",
+      "description": "Administrative partition."
+    },
+    "rateLimit": {
+      "type": "string",
+      "description": "Maximum connections per second. 0 means no limit."
+    },
+    "ratio": {
+      "type": "integer",
+      "description": "Fixed ratio weight for load balancing."
+    },
+    "session": {
+      "type": "string",
+      "description": "Session availability state."
+    },
+    "state": {
+      "type": "string",
+      "description": "Operational state of the node."
+    }
+  }
+}
