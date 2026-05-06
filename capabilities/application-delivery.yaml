@@ -1,465 +1,846 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "F5 Application Delivery"
-  description: "Unified workflow for managing application delivery infrastructure including virtual servers, server pools, backend nodes, and traffic profiles on F5 BIG-IP. Used by network administrators and DevOps engineers for load balancing configuration and application traffic management."
+  label: F5 Application Delivery
+  description: Unified workflow for managing application delivery infrastructure including virtual servers, server pools,
+    backend nodes, and traffic profiles on F5 BIG-IP. Used by network administrators and DevOps engineers for load balancing
+    configuration and application traffic management.
   tags:
-    - F5
-    - Application Delivery
-    - Load Balancing
-    - Network Management
-  created: "2026-04-18"
-  modified: "2026-04-18"
-
+  - F5
+  - Application Delivery
+  - Load Balancing
+  - Network Management
+  created: '2026-04-18'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      BIGIP_USERNAME: BIGIP_USERNAME
-      BIGIP_PASSWORD: BIGIP_PASSWORD
-
+- namespace: env
+  keys:
+    BIGIP_USERNAME: BIGIP_USERNAME
+    BIGIP_PASSWORD: BIGIP_PASSWORD
 capability:
   consumes:
-    - import: bigip-icontrol
-      location: ./shared/bigip-icontrol-rest.yaml
-
+  - type: http
+    namespace: bigip-icontrol
+    baseUri: https://{bigip_host}/mgmt/tm
+    description: F5 BIG-IP iControl REST API for managing LTM resources
+    authentication:
+      type: basic
+      username: '{{BIGIP_USERNAME}}'
+      password: '{{BIGIP_PASSWORD}}'
+    resources:
+    - name: virtual-servers
+      path: /ltm/virtual
+      description: Manage virtual servers for traffic direction
+      operations:
+      - name: list-virtual-servers
+        method: GET
+        description: List all virtual servers configured on the BIG-IP system
+        inputParameters:
+        - name: $select
+          in: query
+          type: string
+          required: false
+          description: Select specific properties to return
+        - name: $filter
+          in: query
+          type: string
+          required: false
+          description: Filter results by property values
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-virtual-server
+        method: POST
+        description: Create a new virtual server resource
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            name: '{{tools.name}}'
+            destination: '{{tools.destination}}'
+            pool: '{{tools.pool}}'
+    - name: virtual-server
+      path: /ltm/virtual/{virtualName}
+      description: Manage a specific virtual server
+      operations:
+      - name: get-virtual-server
+        method: GET
+        description: Get a specific virtual server by name
+        inputParameters:
+        - name: virtualName
+          in: path
+          type: string
+          required: true
+          description: Name of the virtual server
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: update-virtual-server
+        method: PUT
+        description: Update a virtual server configuration
+        inputParameters:
+        - name: virtualName
+          in: path
+          type: string
+          required: true
+          description: Name of the virtual server
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            pool: '{{tools.pool}}'
+            description: '{{tools.description}}'
+      - name: delete-virtual-server
+        method: DELETE
+        description: Delete a virtual server
+        inputParameters:
+        - name: virtualName
+          in: path
+          type: string
+          required: true
+          description: Name of the virtual server
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: pools
+      path: /ltm/pool
+      description: Manage pools of backend servers
+      operations:
+      - name: list-pools
+        method: GET
+        description: List all pools configured on the BIG-IP
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-pool
+        method: POST
+        description: Create a new pool
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            name: '{{tools.name}}'
+            monitor: '{{tools.monitor}}'
+    - name: pool
+      path: /ltm/pool/{poolName}
+      description: Manage a specific pool
+      operations:
+      - name: get-pool
+        method: GET
+        description: Get a specific pool by name
+        inputParameters:
+        - name: poolName
+          in: path
+          type: string
+          required: true
+          description: Name of the pool
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: update-pool
+        method: PUT
+        description: Update a pool configuration
+        inputParameters:
+        - name: poolName
+          in: path
+          type: string
+          required: true
+          description: Name of the pool
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            monitor: '{{tools.monitor}}'
+            loadBalancingMode: '{{tools.loadBalancingMode}}'
+      - name: delete-pool
+        method: DELETE
+        description: Delete a pool
+        inputParameters:
+        - name: poolName
+          in: path
+          type: string
+          required: true
+          description: Name of the pool
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: pool-members
+      path: /ltm/pool/{poolName}/members
+      description: Manage pool members within a pool
+      operations:
+      - name: list-pool-members
+        method: GET
+        description: List all members of a pool
+        inputParameters:
+        - name: poolName
+          in: path
+          type: string
+          required: true
+          description: Name of the pool
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: add-pool-member
+        method: POST
+        description: Add a member to a pool
+        inputParameters:
+        - name: poolName
+          in: path
+          type: string
+          required: true
+          description: Name of the pool
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            name: '{{tools.name}}'
+    - name: pool-member
+      path: /ltm/pool/{poolName}/members/{memberName}
+      description: Manage a specific pool member
+      operations:
+      - name: get-pool-member
+        method: GET
+        description: Get a specific pool member
+        inputParameters:
+        - name: poolName
+          in: path
+          type: string
+          required: true
+          description: Name of the pool
+        - name: memberName
+          in: path
+          type: string
+          required: true
+          description: Name of the pool member
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: update-pool-member
+        method: PUT
+        description: Update a pool member
+        inputParameters:
+        - name: poolName
+          in: path
+          type: string
+          required: true
+          description: Name of the pool
+        - name: memberName
+          in: path
+          type: string
+          required: true
+          description: Name of the pool member
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            session: '{{tools.session}}'
+      - name: delete-pool-member
+        method: DELETE
+        description: Remove a pool member
+        inputParameters:
+        - name: poolName
+          in: path
+          type: string
+          required: true
+          description: Name of the pool
+        - name: memberName
+          in: path
+          type: string
+          required: true
+          description: Name of the pool member
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: nodes
+      path: /ltm/node
+      description: Manage backend server nodes
+      operations:
+      - name: list-nodes
+        method: GET
+        description: List all nodes
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-node
+        method: POST
+        description: Create a new node
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            name: '{{tools.name}}'
+            address: '{{tools.address}}'
+    - name: node
+      path: /ltm/node/{nodeName}
+      description: Manage a specific node
+      operations:
+      - name: get-node
+        method: GET
+        description: Get a specific node
+        inputParameters:
+        - name: nodeName
+          in: path
+          type: string
+          required: true
+          description: Name of the node
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: update-node
+        method: PUT
+        description: Update a node
+        inputParameters:
+        - name: nodeName
+          in: path
+          type: string
+          required: true
+          description: Name of the node
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            session: '{{tools.session}}'
+            description: '{{tools.description}}'
+      - name: delete-node
+        method: DELETE
+        description: Delete a node
+        inputParameters:
+        - name: nodeName
+          in: path
+          type: string
+          required: true
+          description: Name of the node
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: profiles
+      path: /ltm/profile
+      description: Manage traffic handling profiles
+      operations:
+      - name: list-http-profiles
+        method: GET
+        description: List HTTP profiles
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: list-tcp-profiles
+        method: GET
+        description: List TCP profiles
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: list-client-ssl-profiles
+        method: GET
+        description: List client SSL profiles
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
   exposes:
-    - type: rest
-      port: 8080
-      namespace: f5-application-delivery-api
-      description: "Unified REST API for F5 BIG-IP application delivery management."
-      resources:
-        - path: /v1/virtual-servers
-          name: virtual-servers
-          description: "Manage virtual servers that direct client traffic"
-          operations:
-            - method: GET
-              name: list-virtual-servers
-              description: "List all virtual servers"
-              call: "bigip-icontrol.list-virtual-servers"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: create-virtual-server
-              description: "Create a new virtual server"
-              call: "bigip-icontrol.create-virtual-server"
-              with:
-                name: "rest.name"
-                destination: "rest.destination"
-                pool: "rest.pool"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/virtual-servers/{virtualName}
-          name: virtual-server
-          description: "Manage a specific virtual server"
-          operations:
-            - method: GET
-              name: get-virtual-server
-              description: "Get virtual server details"
-              call: "bigip-icontrol.get-virtual-server"
-              with:
-                virtualName: "rest.virtualName"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: PUT
-              name: update-virtual-server
-              description: "Update a virtual server"
-              call: "bigip-icontrol.update-virtual-server"
-              with:
-                virtualName: "rest.virtualName"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: DELETE
-              name: delete-virtual-server
-              description: "Delete a virtual server"
-              call: "bigip-icontrol.delete-virtual-server"
-              with:
-                virtualName: "rest.virtualName"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/pools
-          name: pools
-          description: "Manage server pools"
-          operations:
-            - method: GET
-              name: list-pools
-              description: "List all pools"
-              call: "bigip-icontrol.list-pools"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: create-pool
-              description: "Create a new pool"
-              call: "bigip-icontrol.create-pool"
-              with:
-                name: "rest.name"
-                monitor: "rest.monitor"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/pools/{poolName}
-          name: pool
-          description: "Manage a specific pool"
-          operations:
-            - method: GET
-              name: get-pool
-              description: "Get pool details"
-              call: "bigip-icontrol.get-pool"
-              with:
-                poolName: "rest.poolName"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: PUT
-              name: update-pool
-              description: "Update a pool"
-              call: "bigip-icontrol.update-pool"
-              with:
-                poolName: "rest.poolName"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: DELETE
-              name: delete-pool
-              description: "Delete a pool"
-              call: "bigip-icontrol.delete-pool"
-              with:
-                poolName: "rest.poolName"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/pools/{poolName}/members
-          name: pool-members
-          description: "Manage pool members"
-          operations:
-            - method: GET
-              name: list-pool-members
-              description: "List pool members"
-              call: "bigip-icontrol.list-pool-members"
-              with:
-                poolName: "rest.poolName"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: add-pool-member
-              description: "Add a pool member"
-              call: "bigip-icontrol.add-pool-member"
-              with:
-                poolName: "rest.poolName"
-                name: "rest.name"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/nodes
-          name: nodes
-          description: "Manage backend nodes"
-          operations:
-            - method: GET
-              name: list-nodes
-              description: "List all nodes"
-              call: "bigip-icontrol.list-nodes"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: create-node
-              description: "Create a node"
-              call: "bigip-icontrol.create-node"
-              with:
-                name: "rest.name"
-                address: "rest.address"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/nodes/{nodeName}
-          name: node
-          description: "Manage a specific node"
-          operations:
-            - method: GET
-              name: get-node
-              description: "Get node details"
-              call: "bigip-icontrol.get-node"
-              with:
-                nodeName: "rest.nodeName"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: PUT
-              name: update-node
-              description: "Update a node"
-              call: "bigip-icontrol.update-node"
-              with:
-                nodeName: "rest.nodeName"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: DELETE
-              name: delete-node
-              description: "Delete a node"
-              call: "bigip-icontrol.delete-node"
-              with:
-                nodeName: "rest.nodeName"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/profiles
-          name: profiles
-          description: "View traffic profiles"
-          operations:
-            - method: GET
-              name: list-http-profiles
-              description: "List HTTP profiles"
-              call: "bigip-icontrol.list-http-profiles"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9090
-      namespace: f5-application-delivery-mcp
-      transport: http
-      description: "MCP server for AI-assisted F5 BIG-IP application delivery management."
-      tools:
-        - name: list-virtual-servers
-          description: "List all virtual servers on the BIG-IP"
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "bigip-icontrol.list-virtual-servers"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-virtual-server
-          description: "Get details of a specific virtual server"
-          hints:
-            readOnly: true
-          call: "bigip-icontrol.get-virtual-server"
-          with:
-            virtualName: "tools.virtualName"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: create-virtual-server
-          description: "Create a new virtual server"
-          hints:
-            readOnly: false
-          call: "bigip-icontrol.create-virtual-server"
-          with:
-            name: "tools.name"
-            destination: "tools.destination"
-            pool: "tools.pool"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: update-virtual-server
-          description: "Update a virtual server"
-          hints:
-            readOnly: false
-            idempotent: true
-          call: "bigip-icontrol.update-virtual-server"
-          with:
-            virtualName: "tools.virtualName"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: delete-virtual-server
-          description: "Delete a virtual server"
-          hints:
-            destructive: true
-            idempotent: true
-          call: "bigip-icontrol.delete-virtual-server"
-          with:
-            virtualName: "tools.virtualName"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-pools
-          description: "List all server pools"
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "bigip-icontrol.list-pools"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-pool
-          description: "Get details of a specific pool"
-          hints:
-            readOnly: true
-          call: "bigip-icontrol.get-pool"
-          with:
-            poolName: "tools.poolName"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: create-pool
-          description: "Create a new pool"
-          hints:
-            readOnly: false
-          call: "bigip-icontrol.create-pool"
-          with:
-            name: "tools.name"
-            monitor: "tools.monitor"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: update-pool
-          description: "Update a pool"
-          hints:
-            readOnly: false
-            idempotent: true
-          call: "bigip-icontrol.update-pool"
-          with:
-            poolName: "tools.poolName"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: delete-pool
-          description: "Delete a pool"
-          hints:
-            destructive: true
-            idempotent: true
-          call: "bigip-icontrol.delete-pool"
-          with:
-            poolName: "tools.poolName"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-pool-members
-          description: "List members of a pool"
-          hints:
-            readOnly: true
-          call: "bigip-icontrol.list-pool-members"
-          with:
-            poolName: "tools.poolName"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: add-pool-member
-          description: "Add a member to a pool"
-          hints:
-            readOnly: false
-          call: "bigip-icontrol.add-pool-member"
-          with:
-            poolName: "tools.poolName"
-            name: "tools.name"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-pool-member
-          description: "Get details of a pool member"
-          hints:
-            readOnly: true
-          call: "bigip-icontrol.get-pool-member"
-          with:
-            poolName: "tools.poolName"
-            memberName: "tools.memberName"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: update-pool-member
-          description: "Update a pool member"
-          hints:
-            readOnly: false
-            idempotent: true
-          call: "bigip-icontrol.update-pool-member"
-          with:
-            poolName: "tools.poolName"
-            memberName: "tools.memberName"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: delete-pool-member
-          description: "Remove a pool member"
-          hints:
-            destructive: true
-            idempotent: true
-          call: "bigip-icontrol.delete-pool-member"
-          with:
-            poolName: "tools.poolName"
-            memberName: "tools.memberName"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-nodes
-          description: "List all backend nodes"
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "bigip-icontrol.list-nodes"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-node
-          description: "Get details of a specific node"
-          hints:
-            readOnly: true
-          call: "bigip-icontrol.get-node"
-          with:
-            nodeName: "tools.nodeName"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: create-node
-          description: "Create a new backend node"
-          hints:
-            readOnly: false
-          call: "bigip-icontrol.create-node"
-          with:
-            name: "tools.name"
-            address: "tools.address"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: update-node
-          description: "Update a node"
-          hints:
-            readOnly: false
-            idempotent: true
-          call: "bigip-icontrol.update-node"
-          with:
-            nodeName: "tools.nodeName"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: delete-node
-          description: "Delete a node"
-          hints:
-            destructive: true
-            idempotent: true
-          call: "bigip-icontrol.delete-node"
-          with:
-            nodeName: "tools.nodeName"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-http-profiles
-          description: "List HTTP traffic profiles"
-          hints:
-            readOnly: true
-          call: "bigip-icontrol.list-http-profiles"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-tcp-profiles
-          description: "List TCP traffic profiles"
-          hints:
-            readOnly: true
-          call: "bigip-icontrol.list-tcp-profiles"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-client-ssl-profiles
-          description: "List client SSL profiles"
-          hints:
-            readOnly: true
-          call: "bigip-icontrol.list-client-ssl-profiles"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8080
+    namespace: f5-application-delivery-api
+    description: Unified REST API for F5 BIG-IP application delivery management.
+    resources:
+    - path: /v1/virtual-servers
+      name: virtual-servers
+      description: Manage virtual servers that direct client traffic
+      operations:
+      - method: GET
+        name: list-virtual-servers
+        description: List all virtual servers
+        call: bigip-icontrol.list-virtual-servers
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create-virtual-server
+        description: Create a new virtual server
+        call: bigip-icontrol.create-virtual-server
+        with:
+          name: rest.name
+          destination: rest.destination
+          pool: rest.pool
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/virtual-servers/{virtualName}
+      name: virtual-server
+      description: Manage a specific virtual server
+      operations:
+      - method: GET
+        name: get-virtual-server
+        description: Get virtual server details
+        call: bigip-icontrol.get-virtual-server
+        with:
+          virtualName: rest.virtualName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: update-virtual-server
+        description: Update a virtual server
+        call: bigip-icontrol.update-virtual-server
+        with:
+          virtualName: rest.virtualName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete-virtual-server
+        description: Delete a virtual server
+        call: bigip-icontrol.delete-virtual-server
+        with:
+          virtualName: rest.virtualName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pools
+      name: pools
+      description: Manage server pools
+      operations:
+      - method: GET
+        name: list-pools
+        description: List all pools
+        call: bigip-icontrol.list-pools
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create-pool
+        description: Create a new pool
+        call: bigip-icontrol.create-pool
+        with:
+          name: rest.name
+          monitor: rest.monitor
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pools/{poolName}
+      name: pool
+      description: Manage a specific pool
+      operations:
+      - method: GET
+        name: get-pool
+        description: Get pool details
+        call: bigip-icontrol.get-pool
+        with:
+          poolName: rest.poolName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: update-pool
+        description: Update a pool
+        call: bigip-icontrol.update-pool
+        with:
+          poolName: rest.poolName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete-pool
+        description: Delete a pool
+        call: bigip-icontrol.delete-pool
+        with:
+          poolName: rest.poolName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pools/{poolName}/members
+      name: pool-members
+      description: Manage pool members
+      operations:
+      - method: GET
+        name: list-pool-members
+        description: List pool members
+        call: bigip-icontrol.list-pool-members
+        with:
+          poolName: rest.poolName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: add-pool-member
+        description: Add a pool member
+        call: bigip-icontrol.add-pool-member
+        with:
+          poolName: rest.poolName
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/nodes
+      name: nodes
+      description: Manage backend nodes
+      operations:
+      - method: GET
+        name: list-nodes
+        description: List all nodes
+        call: bigip-icontrol.list-nodes
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create-node
+        description: Create a node
+        call: bigip-icontrol.create-node
+        with:
+          name: rest.name
+          address: rest.address
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/nodes/{nodeName}
+      name: node
+      description: Manage a specific node
+      operations:
+      - method: GET
+        name: get-node
+        description: Get node details
+        call: bigip-icontrol.get-node
+        with:
+          nodeName: rest.nodeName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: update-node
+        description: Update a node
+        call: bigip-icontrol.update-node
+        with:
+          nodeName: rest.nodeName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete-node
+        description: Delete a node
+        call: bigip-icontrol.delete-node
+        with:
+          nodeName: rest.nodeName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/profiles
+      name: profiles
+      description: View traffic profiles
+      operations:
+      - method: GET
+        name: list-http-profiles
+        description: List HTTP profiles
+        call: bigip-icontrol.list-http-profiles
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: f5-application-delivery-mcp
+    transport: http
+    description: MCP server for AI-assisted F5 BIG-IP application delivery management.
+    tools:
+    - name: list-virtual-servers
+      description: List all virtual servers on the BIG-IP
+      hints:
+        readOnly: true
+        openWorld: true
+      call: bigip-icontrol.list-virtual-servers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-virtual-server
+      description: Get details of a specific virtual server
+      hints:
+        readOnly: true
+      call: bigip-icontrol.get-virtual-server
+      with:
+        virtualName: tools.virtualName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-virtual-server
+      description: Create a new virtual server
+      hints:
+        readOnly: false
+      call: bigip-icontrol.create-virtual-server
+      with:
+        name: tools.name
+        destination: tools.destination
+        pool: tools.pool
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-virtual-server
+      description: Update a virtual server
+      hints:
+        readOnly: false
+        idempotent: true
+      call: bigip-icontrol.update-virtual-server
+      with:
+        virtualName: tools.virtualName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-virtual-server
+      description: Delete a virtual server
+      hints:
+        destructive: true
+        idempotent: true
+      call: bigip-icontrol.delete-virtual-server
+      with:
+        virtualName: tools.virtualName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-pools
+      description: List all server pools
+      hints:
+        readOnly: true
+        openWorld: true
+      call: bigip-icontrol.list-pools
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-pool
+      description: Get details of a specific pool
+      hints:
+        readOnly: true
+      call: bigip-icontrol.get-pool
+      with:
+        poolName: tools.poolName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-pool
+      description: Create a new pool
+      hints:
+        readOnly: false
+      call: bigip-icontrol.create-pool
+      with:
+        name: tools.name
+        monitor: tools.monitor
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-pool
+      description: Update a pool
+      hints:
+        readOnly: false
+        idempotent: true
+      call: bigip-icontrol.update-pool
+      with:
+        poolName: tools.poolName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-pool
+      description: Delete a pool
+      hints:
+        destructive: true
+        idempotent: true
+      call: bigip-icontrol.delete-pool
+      with:
+        poolName: tools.poolName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-pool-members
+      description: List members of a pool
+      hints:
+        readOnly: true
+      call: bigip-icontrol.list-pool-members
+      with:
+        poolName: tools.poolName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-pool-member
+      description: Add a member to a pool
+      hints:
+        readOnly: false
+      call: bigip-icontrol.add-pool-member
+      with:
+        poolName: tools.poolName
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-pool-member
+      description: Get details of a pool member
+      hints:
+        readOnly: true
+      call: bigip-icontrol.get-pool-member
+      with:
+        poolName: tools.poolName
+        memberName: tools.memberName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-pool-member
+      description: Update a pool member
+      hints:
+        readOnly: false
+        idempotent: true
+      call: bigip-icontrol.update-pool-member
+      with:
+        poolName: tools.poolName
+        memberName: tools.memberName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-pool-member
+      description: Remove a pool member
+      hints:
+        destructive: true
+        idempotent: true
+      call: bigip-icontrol.delete-pool-member
+      with:
+        poolName: tools.poolName
+        memberName: tools.memberName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-nodes
+      description: List all backend nodes
+      hints:
+        readOnly: true
+        openWorld: true
+      call: bigip-icontrol.list-nodes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-node
+      description: Get details of a specific node
+      hints:
+        readOnly: true
+      call: bigip-icontrol.get-node
+      with:
+        nodeName: tools.nodeName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-node
+      description: Create a new backend node
+      hints:
+        readOnly: false
+      call: bigip-icontrol.create-node
+      with:
+        name: tools.name
+        address: tools.address
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-node
+      description: Update a node
+      hints:
+        readOnly: false
+        idempotent: true
+      call: bigip-icontrol.update-node
+      with:
+        nodeName: tools.nodeName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-node
+      description: Delete a node
+      hints:
+        destructive: true
+        idempotent: true
+      call: bigip-icontrol.delete-node
+      with:
+        nodeName: tools.nodeName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-http-profiles
+      description: List HTTP traffic profiles
+      hints:
+        readOnly: true
+      call: bigip-icontrol.list-http-profiles
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-tcp-profiles
+      description: List TCP traffic profiles
+      hints:
+        readOnly: true
+      call: bigip-icontrol.list-tcp-profiles
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-client-ssl-profiles
+      description: List client SSL profiles
+      hints:
+        readOnly: true
+      call: bigip-icontrol.list-client-ssl-profiles
+      outputParameters:
+      - type: object
+        mapping: $.
