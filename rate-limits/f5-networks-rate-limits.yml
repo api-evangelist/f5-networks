@@ -4,7 +4,8 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: F5 Networks
 providerId: f5-networks
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
   - API Gateway
   - Application Delivery
@@ -17,128 +18,59 @@ tags:
   - Security
   - WAF
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the F5 Networks API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+description: F5's API portfolio is split between customer-deployed management APIs (BIG-IP iControl REST,
+  AS3, DO, Telemetry, NGINX Plus, NGINX One, NGINX Management Suite, NGINX Ingress Controller, BIG-IQ)
+  and SaaS APIs (F5 Distributed Cloud Console, Essential App Protect). Customer-deployed APIs are bounded
+  by the deployed device/instance capacity, not a vendor-published rate ceiling. F5 Distributed Cloud
+  Console enforces per-tenant API throttling but does not publish numeric per-second limits in the public
+  docs; tenant administrators can configure throttling on data-plane traffic.
+notes: No published per-second numbers for either the management or SaaS API surfaces. Limits are tenant-/instance-bounded
+  and configured by the customer.
+sources:
+  - https://clouddocs.f5.com/api/icontrol-rest/
+  - https://docs.cloud.f5.com/docs/
+  - https://docs.nginx.com/nginx-management-suite/
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
+  serverError: 500
   serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - F5 BIG-IP iControl REST API
-      - F5 Distributed Cloud API
-      - F5 NGINX Management Suite API
-      - F5 Essential App Protect API
-      - F5 BIG-IQ Centralized Management API
-      - F5 BIG-IP Application Services 3 Extension API
-      - F5 Declarative Onboarding API
-      - F5 Telemetry Streaming API
-      - F5 NGINX Plus API
-      - F5 NGINX One Console API
-      - F5 NGINX Ingress Controller API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - F5 BIG-IP iControl REST API
-      - F5 Distributed Cloud API
-      - F5 NGINX Management Suite API
-      - F5 Essential App Protect API
-      - F5 BIG-IQ Centralized Management API
-      - F5 BIG-IP Application Services 3 Extension API
-      - F5 Declarative Onboarding API
-      - F5 Telemetry Streaming API
-      - F5 NGINX Plus API
-      - F5 NGINX One Console API
-      - F5 NGINX Ingress Controller API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - F5 BIG-IP iControl REST API
-      - F5 Distributed Cloud API
-      - F5 NGINX Management Suite API
-      - F5 Essential App Protect API
-      - F5 BIG-IQ Centralized Management API
-      - F5 BIG-IP Application Services 3 Extension API
-      - F5 Declarative Onboarding API
-      - F5 Telemetry Streaming API
-      - F5 NGINX Plus API
-      - F5 NGINX One Console API
-      - F5 NGINX Ingress Controller API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - F5 BIG-IP iControl REST API
-      - F5 Distributed Cloud API
-      - F5 NGINX Management Suite API
-      - F5 Essential App Protect API
-      - F5 BIG-IQ Centralized Management API
-      - F5 BIG-IP Application Services 3 Extension API
-      - F5 Declarative Onboarding API
-      - F5 Telemetry Streaming API
-      - F5 NGINX Plus API
-      - F5 NGINX One Console API
-      - F5 NGINX Ingress Controller API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - F5 BIG-IP iControl REST API
-      - F5 Distributed Cloud API
-      - F5 NGINX Management Suite API
-      - F5 Essential App Protect API
-      - F5 BIG-IQ Centralized Management API
-      - F5 BIG-IP Application Services 3 Extension API
-      - F5 Declarative Onboarding API
-      - F5 Telemetry Streaming API
-      - F5 NGINX Plus API
-      - F5 NGINX One Console API
-      - F5 NGINX Ingress Controller API
+  - name: BIG-IP management plane (iControl REST)
+    scope: device
+    metric: varies
+    limit: bounded by BIG-IP control-plane capacity (hardware model or VE size); not a published number
+  - name: AS3 / Declarative Onboarding declarations
+    scope: device
+    metric: varies
+    limit: serialized through control plane; submit + poll task pattern
+  - name: NGINX Plus / NGINX Management Suite API
+    scope: instance
+    metric: varies
+    limit: bounded by the deployed NGINX Plus instance; consult sizing guide for the deployed flavor
+  - name: F5 Distributed Cloud Console API
+    scope: tenant
+    metric: varies
+    limit: per-tenant throttling enforced by the SaaS control plane; numbers not published publicly
+  - name: F5 Essential App Protect API
+    scope: tenant
+    metric: varies
+    limit: per-tenant; not publicly published
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Async task pattern
+    description: AS3, DO, BIG-IQ, and Distributed Cloud long-running operations return a task URL; poll
+      it for status rather than retrying the submit.
+  - name: Token authentication
+    description: Use token auth on iControl REST (POST /mgmt/shared/authn/login); use API tokens / certificate
+      auth on Distributed Cloud Console; rotate before expiry.
+  - name: Backoff with jitter
+    description: 429/5xx responses indicate transient overload — back off exponentially with jitter on
+      idempotent reads.
+  - name: Customer-configured rate limiting
+    description: BIG-IP and Distributed Cloud both expose rate-limit policy as a feature on the data plane;
+      this is a tool the customer configures for their own consumers, not a vendor-imposed ceiling.
+  - name: Sizing guides
+    description: For deployed products (BIG-IP, NGINX Plus, BIG-IQ), throughput is bounded by the licensed
+      form factor — refer to F5 sizing guides for the platform in use.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
