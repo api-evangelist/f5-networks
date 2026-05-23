@@ -1,0 +1,52 @@
+{
+  "operationId": "getHttpProfile",
+  "method": "GET",
+  "path": "/ltm/profile/http/{profileName}",
+  "summary": "Get an Http Profile",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Gethttpprofile200Example",
+      "example": {
+        "kind": "example_value",
+        "name": "Example Title",
+        "fullPath": "example_value",
+        "generation": 10,
+        "selfLink": "https://www.example.com",
+        "acceptXff": "enabled",
+        "appService": "example_value",
+        "basicAuthRealm": "example_value",
+        "defaultsFrom": "example_value",
+        "description": "A sample description.",
+        "encryptCookies": [
+          "example_value"
+        ],
+        "enforcement": {
+          "maxHeaderCount": 10,
+          "maxHeaderSize": 10,
+          "pipeline": "allow"
+        },
+        "fallbackHost": "example_value",
+        "fallbackStatusCodes": [
+          "example_value"
+        ],
+        "headerErase": "example_value",
+        "headerInsert": "example_value",
+        "insertXforwardedFor": "enabled",
+        "oneconnectTransformations": "enabled",
+        "redirectRewrite": "none",
+        "requestChunking": "allow",
+        "responseChunking": "allow",
+        "serverAgentName": "example_value",
+        "viaHostName": "example_value",
+        "viaRequest": "append",
+        "viaResponse": "append",
+        "xffAlternativeNames": [
+          "example_value"
+        ]
+      }
+    }
+  ]
+}

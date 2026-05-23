@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/NodeCreate",
+  "title": "NodeCreate",
+  "type": "object",
+  "description": "Request body for creating a new node.",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the node. If the name is an IP address, the address property is optional.",
+      "example": "10.0.0.1"
+    },
+    "address": {
+      "type": "string",
+      "description": "IP address of the node. Required if the name is not an IP address.",
+      "example": "10.0.0.1"
+    },
+    "partition": {
+      "type": "string",
+      "default": "Common",
+      "example": "example_value"
+    },
+    "description": {
+      "type": "string",
+      "example": "A sample description."
+    },
+    "connectionLimit": {
+      "type": "integer",
+      "minimum": 0,
+      "example": 10
+    },
+    "monitor": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "rateLimit": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "ratio": {
+      "type": "integer",
+      "minimum": 1,
+      "example": 10
+    },
+    "fqdn": {
+      "type": "object",
+      "properties": {
+        "addressFamily": {
+          "type": "string",
+          "enum": [
+            "ipv4",
+            "ipv6"
+          ]
+        },
+        "autopopulate": {
+          "type": "string",
+          "enum": [
+            "enabled",
+            "disabled"
+          ]
+        },
+        "downInterval": {
+          "type": "integer"
+        },
+        "interval": {
+          "type": "string"
+        },
+        "tmName": {
+          "type": "string"
+        }
+      },
+      "example": "example_value"
+    }
+  }
+}

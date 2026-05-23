@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ErrorResponse",
+  "title": "ErrorResponse",
+  "type": "object",
+  "description": "Standard error response from the iControl REST API.",
+  "properties": {
+    "code": {
+      "type": "integer",
+      "description": "HTTP status code.",
+      "example": 400
+    },
+    "message": {
+      "type": "string",
+      "description": "Error message describing what went wrong.",
+      "example": "The requested Pool (/Common/my_pool) was not found."
+    },
+    "errorStack": {
+      "type": "array",
+      "description": "Stack trace for debugging (when available).",
+      "items": {
+        "type": "string"
+      },
+      "example": []
+    },
+    "apiError": {
+      "type": "integer",
+      "description": "API-specific error code.",
+      "example": 10
+    }
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PoolCreate",
+  "title": "PoolCreate",
+  "type": "object",
+  "description": "Request body for creating a new pool.",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the pool.",
+      "example": "my_pool"
+    },
+    "partition": {
+      "type": "string",
+      "description": "Administrative partition.",
+      "default": "Common",
+      "example": "example_value"
+    },
+    "description": {
+      "type": "string",
+      "example": "A sample description."
+    },
+    "loadBalancingMode": {
+      "type": "string",
+      "enum": [
+        "round-robin",
+        "ratio-member",
+        "least-connections-member",
+        "observed-member",
+        "predictive-member",
+        "ratio-node",
+        "least-connections-node",
+        "fastest-node",
+        "observed-node",
+        "predictive-node",
+        "dynamic-ratio-node",
+        "fastest-app-response",
+        "least-sessions",
+        "dynamic-ratio-member"
+      ],
+      "default": "round-robin",
+      "example": "round-robin"
+    },
+    "monitor": {
+      "type": "string",
+      "example": "/Common/http"
+    },
+    "members": {
+      "type": "array",
+      "description": "Initial pool members to add during creation.",
+      "items": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Member name in address:port format.",
+            "example": "10.0.0.1:80"
+          },
+          "address": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "ratio": {
+            "type": "integer"
+          },
+          "priorityGroup": {
+            "type": "integer"
+          },
+          "connectionLimit": {
+            "type": "integer"
+          },
+          "monitor": {
+            "type": "string"
+          }
+        }
+      },
+      "example": []
+    },
+    "serviceDownAction": {
+      "type": "string",
+      "enum": [
+        "none",
+        "reset",
+        "reselect",
+        "drop"
+      ],
+      "example": "none"
+    },
+    "slowRampTime": {
+      "type": "integer",
+      "minimum": 0,
+      "example": 10
+    },
+    "allowNat": {
+      "type": "string",
+      "enum": [
+        "yes",
+        "no"
+      ],
+      "example": "yes"
+    },
+    "allowSnat": {
+      "type": "string",
+      "enum": [
+        "yes",
+        "no"
+      ],
+      "example": "yes"
+    }
+  }
+}

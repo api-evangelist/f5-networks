@@ -1,0 +1,65 @@
+{
+  "operationId": "listVirtualServers",
+  "method": "GET",
+  "path": "/ltm/virtual",
+  "summary": "List All Virtual Servers",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listvirtualservers200Example",
+      "example": {
+        "kind": "example_value",
+        "selfLink": "https://www.example.com",
+        "items": [
+          {
+            "kind": "example_value",
+            "name": "Example Title",
+            "fullPath": "example_value",
+            "generation": 10,
+            "selfLink": "https://www.example.com",
+            "addressStatus": "yes",
+            "autoLasthop": "default",
+            "cmpEnabled": "yes",
+            "connectionLimit": 10,
+            "description": "A sample description.",
+            "destination": "example_value",
+            "disabled": true,
+            "enabled": true,
+            "fallbackPersistence": "example_value",
+            "gtmScore": 10,
+            "ipProtocol": "tcp",
+            "mask": "example_value",
+            "mirror": "enabled",
+            "nat64": "enabled",
+            "partition": "example_value",
+            "persist": [
+              {}
+            ],
+            "pool": "example_value",
+            "profiles": [
+              {}
+            ],
+            "rateLimit": "example_value",
+            "rateLimitMode": "object",
+            "rules": [
+              {}
+            ],
+            "source": "example_value",
+            "sourcePort": "preserve",
+            "synCookieStatus": "not-activated",
+            "translateAddress": "enabled",
+            "translatePort": "enabled",
+            "vlansEnabled": true,
+            "vlansDisabled": true,
+            "vlans": [
+              {}
+            ],
+            "vsIndex": 10
+          }
+        ]
+      }
+    }
+  ]
+}

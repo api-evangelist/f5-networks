@@ -1,0 +1,40 @@
+{
+  "operationId": "getNode",
+  "method": "GET",
+  "path": "/ltm/node/{nodeName}",
+  "summary": "Get a Node",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getnode200Example",
+      "example": {
+        "kind": "example_value",
+        "name": "Example Title",
+        "fullPath": "example_value",
+        "generation": 10,
+        "selfLink": "https://www.example.com",
+        "address": "example_value",
+        "connectionLimit": 10,
+        "description": "A sample description.",
+        "dynamicRatio": 10,
+        "ephemeral": "true",
+        "fqdn": {
+          "addressFamily": "ipv4",
+          "autopopulate": "enabled",
+          "downInterval": 10,
+          "interval": "example_value",
+          "tmName": "example_value"
+        },
+        "logging": "enabled",
+        "monitor": "example_value",
+        "partition": "example_value",
+        "rateLimit": "example_value",
+        "ratio": 10,
+        "session": "user-enabled",
+        "state": "user-up"
+      }
+    }
+  ]
+}

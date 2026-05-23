@@ -1,0 +1,17 @@
+name: F5 Networks Domain Vocabulary
+provider: F5 Networks
+providerId: f5-networks
+description: Tag-derived vocabulary for the F5 Networks API surface; sourced from openapi/ tags.
+terms:
+- term: Virtual Servers
+  description: Manage virtual servers that direct client traffic to appropriate server pools based on configured rules and
+    profiles.
+- term: Pools
+  description: Manage pools of backend servers for load distribution and health monitoring.
+- term: Pool Members
+  description: Manage individual members within a pool, including their health status, session state, and load balancing weight.
+- term: Nodes
+  description: Manage nodes representing individual backend servers by IP address or FQDN.
+- term: Profiles
+  description: Manage profiles that define traffic handling behavior for virtual servers, including HTTP, TCP, UDP, client
+    SSL, and persistence profiles.

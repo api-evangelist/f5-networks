@@ -1,0 +1,47 @@
+{
+  "operationId": "listTcpProfiles",
+  "method": "GET",
+  "path": "/ltm/profile/tcp",
+  "summary": "List Tcp Profiles",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listtcpprofiles200Example",
+      "example": {
+        "kind": "example_value",
+        "selfLink": "https://www.example.com",
+        "items": [
+          {
+            "kind": "example_value",
+            "name": "Example Title",
+            "fullPath": "example_value",
+            "generation": 10,
+            "selfLink": "https://www.example.com",
+            "abc": "enabled",
+            "ackOnPush": "enabled",
+            "closeWaitTimeout": 10,
+            "congestionControl": "high-speed",
+            "defaultsFrom": "example_value",
+            "deferredAccept": "enabled",
+            "description": "A sample description.",
+            "finWaitTimeout": 10,
+            "idleTimeout": 10,
+            "initCwnd": 10,
+            "initRwnd": 10,
+            "keepAliveInterval": 10,
+            "maxRetrans": 10,
+            "maxSegmentSize": 10,
+            "nagle": "auto",
+            "receiveWindowSize": 10,
+            "sendBufferSize": 10,
+            "synMaxRetrans": 10,
+            "timeWaitRecycle": "enabled",
+            "timeWaitTimeout": 10
+          }
+        ]
+      }
+    }
+  ]
+}

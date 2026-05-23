@@ -1,0 +1,52 @@
+{
+  "operationId": "listPools",
+  "method": "GET",
+  "path": "/ltm/pool",
+  "summary": "List All Pools",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listpools200Example",
+      "example": {
+        "kind": "example_value",
+        "selfLink": "https://www.example.com",
+        "items": [
+          {
+            "kind": "example_value",
+            "name": "Example Title",
+            "fullPath": "example_value",
+            "generation": 10,
+            "selfLink": "https://www.example.com",
+            "allowNat": "yes",
+            "allowSnat": "yes",
+            "description": "A sample description.",
+            "ignorePersistedWeight": "enabled",
+            "ipTosToClient": "example_value",
+            "ipTosToServer": "example_value",
+            "linkQosToClient": "example_value",
+            "linkQosToServer": "example_value",
+            "loadBalancingMode": "round-robin",
+            "minActiveMembers": 10,
+            "minUpMembers": 10,
+            "minUpMembersAction": "failover",
+            "minUpMembersChecking": "enabled",
+            "monitor": "example_value",
+            "partition": "example_value",
+            "queueDepthLimit": 10,
+            "queueOnConnectionLimit": "enabled",
+            "queueTimeLimit": 10,
+            "reselectTries": 10,
+            "serviceDownAction": "none",
+            "slowRampTime": 10,
+            "membersReference": {
+              "link": "https://www.example.com",
+              "isSubcollection": true
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

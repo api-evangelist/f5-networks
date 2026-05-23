@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CookiePersistenceProfile",
+  "title": "CookiePersistenceProfile",
+  "type": "object",
+  "description": "A cookie persistence profile that maintains session persistence by inserting or reading HTTP cookies.",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "example": "tm:ltm:persistence:cookie:cookiestate",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string",
+      "example": "cookie"
+    },
+    "fullPath": {
+      "type": "string",
+      "readOnly": true,
+      "example": "example_value"
+    },
+    "generation": {
+      "type": "integer",
+      "readOnly": true,
+      "example": 10
+    },
+    "selfLink": {
+      "type": "string",
+      "format": "uri",
+      "readOnly": true,
+      "example": "https://www.example.com"
+    },
+    "alwaysSend": {
+      "type": "string",
+      "description": "Whether to always send the cookie.",
+      "enum": [
+        "enabled",
+        "disabled"
+      ],
+      "example": "enabled"
+    },
+    "cookieEncryption": {
+      "type": "string",
+      "description": "Cookie encryption method.",
+      "enum": [
+        "required",
+        "preferred",
+        "disabled"
+      ],
+      "example": "required"
+    },
+    "cookieName": {
+      "type": "string",
+      "description": "Name of the persistence cookie.",
+      "example": "example_value"
+    },
+    "defaultsFrom": {
+      "type": "string",
+      "description": "Parent profile.",
+      "example": "/Common/cookie"
+    },
+    "description": {
+      "type": "string",
+      "example": "A sample description."
+    },
+    "expiration": {
+      "type": "string",
+      "description": "Cookie expiration time.",
+      "example": "session"
+    },
+    "hashLength": {
+      "type": "integer",
+      "description": "Length of the cookie hash.",
+      "example": 10
+    },
+    "hashOffset": {
+      "type": "integer",
+      "description": "Offset for the cookie hash.",
+      "example": 10
+    },
+    "httponly": {
+      "type": "string",
+      "description": "Whether the cookie has the HttpOnly flag.",
+      "enum": [
+        "enabled",
+        "disabled"
+      ],
+      "example": "enabled"
+    },
+    "matchAcrossPools": {
+      "type": "string",
+      "description": "Whether to match persistence across pools.",
+      "enum": [
+        "enabled",
+        "disabled"
+      ],
+      "example": "enabled"
+    },
+    "matchAcrossServices": {
+      "type": "string",
+      "description": "Whether to match persistence across virtual servers.",
+      "enum": [
+        "enabled",
+        "disabled"
+      ],
+      "example": "enabled"
+    },
+    "matchAcrossVirtuals": {
+      "type": "string",
+      "description": "Whether to match persistence across all virtuals.",
+      "enum": [
+        "enabled",
+        "disabled"
+      ],
+      "example": "enabled"
+    },
+    "method": {
+      "type": "string",
+      "description": "Cookie persistence method.",
+      "enum": [
+        "insert",
+        "rewrite",
+        "passive",
+        "hash"
+      ],
+      "example": "insert"
+    },
+    "mirror": {
+      "type": "string",
+      "description": "Whether to mirror persistence records.",
+      "enum": [
+        "enabled",
+        "disabled"
+      ],
+      "example": "enabled"
+    },
+    "overrideConnectionLimit": {
+      "type": "string",
+      "description": "Whether to override connection limits for persisted sessions.",
+      "enum": [
+        "enabled",
+        "disabled"
+      ],
+      "example": "enabled"
+    },
+    "secure": {
+      "type": "string",
+      "description": "Whether the cookie has the Secure flag.",
+      "enum": [
+        "enabled",
+        "disabled"
+      ],
+      "example": "enabled"
+    },
+    "timeout": {
+      "type": "string",
+      "description": "Persistence timeout in seconds.",
+      "example": "example_value"
+    }
+  }
+}

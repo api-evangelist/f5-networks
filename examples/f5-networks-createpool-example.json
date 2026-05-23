@@ -1,0 +1,73 @@
+{
+  "operationId": "createPool",
+  "method": "POST",
+  "path": "/ltm/pool",
+  "summary": "Create a Pool",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CreatepoolRequestExample",
+      "example": {
+        "name": "Example Title",
+        "partition": "example_value",
+        "description": "A sample description.",
+        "loadBalancingMode": "round-robin",
+        "monitor": "example_value",
+        "members": [
+          {
+            "name": "Example Title",
+            "address": "example_value",
+            "description": "A sample description.",
+            "ratio": 10,
+            "priorityGroup": 10,
+            "connectionLimit": 10,
+            "monitor": "example_value"
+          }
+        ],
+        "serviceDownAction": "none",
+        "slowRampTime": 10,
+        "allowNat": "yes",
+        "allowSnat": "yes"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Createpool200Example",
+      "example": {
+        "kind": "example_value",
+        "name": "Example Title",
+        "fullPath": "example_value",
+        "generation": 10,
+        "selfLink": "https://www.example.com",
+        "allowNat": "yes",
+        "allowSnat": "yes",
+        "description": "A sample description.",
+        "ignorePersistedWeight": "enabled",
+        "ipTosToClient": "example_value",
+        "ipTosToServer": "example_value",
+        "linkQosToClient": "example_value",
+        "linkQosToServer": "example_value",
+        "loadBalancingMode": "round-robin",
+        "minActiveMembers": 10,
+        "minUpMembers": 10,
+        "minUpMembersAction": "failover",
+        "minUpMembersChecking": "enabled",
+        "monitor": "example_value",
+        "partition": "example_value",
+        "queueDepthLimit": 10,
+        "queueOnConnectionLimit": "enabled",
+        "queueTimeLimit": 10,
+        "reselectTries": 10,
+        "serviceDownAction": "none",
+        "slowRampTime": 10,
+        "membersReference": {
+          "link": "https://www.example.com",
+          "isSubcollection": true
+        }
+      }
+    }
+  ]
+}

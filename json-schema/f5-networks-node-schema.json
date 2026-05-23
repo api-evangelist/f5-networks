@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Node",
+  "title": "Node",
+  "type": "object",
+  "description": "A node resource representing an individual backend server by its IP address or FQDN. Nodes are automatically created when pool members are added, or can be created independently.",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "description": "Resource type identifier.",
+      "example": "tm:ltm:node:nodestate",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the node (typically the IP address).",
+      "example": "10.0.0.1"
+    },
+    "fullPath": {
+      "type": "string",
+      "description": "Full path including partition.",
+      "example": "/Common/10.0.0.1",
+      "readOnly": true
+    },
+    "generation": {
+      "type": "integer",
+      "readOnly": true,
+      "example": 10
+    },
+    "selfLink": {
+      "type": "string",
+      "format": "uri",
+      "readOnly": true,
+      "example": "https://www.example.com"
+    },
+    "address": {
+      "type": "string",
+      "description": "IP address of the node.",
+      "example": "10.0.0.1"
+    },
+    "connectionLimit": {
+      "type": "integer",
+      "description": "Maximum concurrent connections. 0 means unlimited.",
+      "minimum": 0,
+      "default": 0,
+      "example": 10
+    },
+    "description": {
+      "type": "string",
+      "description": "User-defined description.",
+      "example": "A sample description."
+    },
+    "dynamicRatio": {
+      "type": "integer",
+      "description": "Dynamic ratio weight for load balancing.",
+      "default": 1,
+      "example": 10
+    },
+    "ephemeral": {
+      "type": "string",
+      "description": "Whether this is a transient auto-discovered node.",
+      "readOnly": true,
+      "enum": [
+        "true",
+        "false"
+      ],
+      "default": "false",
+      "example": "true"
+    },
+    "fqdn": {
+      "type": "object",
+      "description": "FQDN configuration for DNS-based node resolution.",
+      "properties": {
+        "addressFamily": {
+          "type": "string",
+          "description": "IP address family for DNS resolution.",
+          "enum": [
+            "ipv4",
+            "ipv6"
+          ],
+          "default": "ipv4"
+        },
+        "autopopulate": {
+          "type": "string",
+          "description": "Whether to auto-populate the node with DNS lookup results.",
+          "enum": [
+            "enabled",
+            "disabled"
+          ],
+          "default": "disabled"
+        },
+        "downInterval": {
+          "type": "integer",
+          "description": "Interval in seconds for DNS queries when the node is down.",
+          "default": 5
+        },
+        "interval": {
+          "type": "string",
+          "description": "Interval in seconds between DNS queries for the FQDN.",
+          "default": "3600"
+        },
+        "tmName": {
+          "type": "string",
+          "description": "The FQDN value to resolve."
+        }
+      },
+      "example": "example_value"
+    },
+    "logging": {
+      "type": "string",
+      "description": "Whether monitor actions are logged.",
+      "enum": [
+        "enabled",
+        "disabled"
+      ],
+      "default": "disabled",
+      "example": "enabled"
+    },
+    "monitor": {
+      "type": "string",
+      "description": "Health monitor applied to the node.",
+      "default": "default",
+      "example": "example_value"
+    },
+    "partition": {
+      "type": "string",
+      "description": "Administrative partition.",
+      "default": "Common",
+      "example": "example_value"
+    },
+    "rateLimit": {
+      "type": "string",
+      "description": "Maximum connections per second. 0 means no limit.",
+      "default": "disabled",
+      "example": "example_value"
+    },
+    "ratio": {
+      "type": "integer",
+      "description": "Fixed ratio weight for load balancing.",
+      "minimum": 1,
+      "default": 1,
+      "example": 10
+    },
+    "session": {
+      "type": "string",
+      "description": "Session availability state.",
+      "enum": [
+        "user-enabled",
+        "user-disabled",
+        "monitor-enabled"
+      ],
+      "default": "user-enabled",
+      "example": "user-enabled"
+    },
+    "state": {
+      "type": "string",
+      "description": "Operational state of the node.",
+      "enum": [
+        "user-up",
+        "user-down",
+        "up",
+        "down",
+        "unchecked"
+      ],
+      "example": "up"
+    }
+  }
+}

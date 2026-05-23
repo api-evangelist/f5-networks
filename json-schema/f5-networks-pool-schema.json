@@ -1,0 +1,236 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Pool",
+  "title": "Pool",
+  "type": "object",
+  "description": "A pool resource that contains a group of backend server members used for load balancing traffic from virtual servers.",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "description": "Resource type identifier.",
+      "example": "tm:ltm:pool:poolstate",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the pool resource.",
+      "example": "my_pool"
+    },
+    "fullPath": {
+      "type": "string",
+      "description": "Full path including partition.",
+      "example": "/Common/my_pool",
+      "readOnly": true
+    },
+    "generation": {
+      "type": "integer",
+      "description": "Configuration generation counter.",
+      "readOnly": true,
+      "example": 10
+    },
+    "selfLink": {
+      "type": "string",
+      "format": "uri",
+      "description": "Self-referencing URI.",
+      "readOnly": true,
+      "example": "https://www.example.com"
+    },
+    "allowNat": {
+      "type": "string",
+      "description": "Whether the pool can load balance NAT connections.",
+      "enum": [
+        "yes",
+        "no"
+      ],
+      "default": "yes",
+      "example": "yes"
+    },
+    "allowSnat": {
+      "type": "string",
+      "description": "Whether the pool can load balance SNAT connections.",
+      "enum": [
+        "yes",
+        "no"
+      ],
+      "default": "yes",
+      "example": "yes"
+    },
+    "description": {
+      "type": "string",
+      "description": "User-defined description.",
+      "example": "A sample description."
+    },
+    "ignorePersistedWeight": {
+      "type": "string",
+      "description": "Whether to ignore persisted weight when calculating load distribution.",
+      "enum": [
+        "enabled",
+        "disabled"
+      ],
+      "default": "disabled",
+      "example": "enabled"
+    },
+    "ipTosToClient": {
+      "type": "string",
+      "description": "Type of Service level for client-bound outgoing packets.",
+      "default": "pass-through",
+      "example": "example_value"
+    },
+    "ipTosToServer": {
+      "type": "string",
+      "description": "Type of Service level for server-bound outgoing packets.",
+      "default": "pass-through",
+      "example": "example_value"
+    },
+    "linkQosToClient": {
+      "type": "string",
+      "description": "QoS level for outgoing packets to clients.",
+      "default": "pass-through",
+      "example": "example_value"
+    },
+    "linkQosToServer": {
+      "type": "string",
+      "description": "QoS level for outgoing packets to servers.",
+      "default": "pass-through",
+      "example": "example_value"
+    },
+    "loadBalancingMode": {
+      "type": "string",
+      "description": "Load balancing algorithm used to distribute traffic.",
+      "enum": [
+        "round-robin",
+        "ratio-member",
+        "least-connections-member",
+        "observed-member",
+        "predictive-member",
+        "ratio-node",
+        "least-connections-node",
+        "fastest-node",
+        "observed-node",
+        "predictive-node",
+        "dynamic-ratio-node",
+        "fastest-app-response",
+        "least-sessions",
+        "dynamic-ratio-member",
+        "weighted-least-connections-member",
+        "weighted-least-connections-node",
+        "ratio-session",
+        "ratio-least-connections-member",
+        "ratio-least-connections-node"
+      ],
+      "default": "round-robin",
+      "example": "round-robin"
+    },
+    "minActiveMembers": {
+      "type": "integer",
+      "description": "Minimum number of active members for priority-group activation.",
+      "minimum": 0,
+      "default": 0,
+      "example": 10
+    },
+    "minUpMembers": {
+      "type": "integer",
+      "description": "Minimum number of operational pool members required before action is taken.",
+      "minimum": 0,
+      "default": 0,
+      "example": 10
+    },
+    "minUpMembersAction": {
+      "type": "string",
+      "description": "Action to take when the number of operational members falls below the minimum.",
+      "enum": [
+        "failover",
+        "reboot",
+        "restart-all"
+      ],
+      "default": "failover",
+      "example": "failover"
+    },
+    "minUpMembersChecking": {
+      "type": "string",
+      "description": "Whether minimum member monitoring is enabled.",
+      "enum": [
+        "enabled",
+        "disabled"
+      ],
+      "default": "disabled",
+      "example": "enabled"
+    },
+    "monitor": {
+      "type": "string",
+      "description": "Health monitor or monitor rule applied to pool members. Specify multiple monitors with 'and' or 'min N of'.",
+      "example": "/Common/http"
+    },
+    "partition": {
+      "type": "string",
+      "description": "Administrative partition.",
+      "default": "Common",
+      "example": "example_value"
+    },
+    "queueDepthLimit": {
+      "type": "integer",
+      "description": "Maximum number of connections queued per member.",
+      "minimum": 0,
+      "default": 0,
+      "example": 10
+    },
+    "queueOnConnectionLimit": {
+      "type": "string",
+      "description": "Whether to queue connections when limits are reached.",
+      "enum": [
+        "enabled",
+        "disabled"
+      ],
+      "default": "disabled",
+      "example": "enabled"
+    },
+    "queueTimeLimit": {
+      "type": "integer",
+      "description": "Maximum time in milliseconds a connection can remain queued.",
+      "minimum": 0,
+      "default": 0,
+      "example": 10
+    },
+    "reselectTries": {
+      "type": "integer",
+      "description": "Number of reselection attempts after a passive failure.",
+      "minimum": 0,
+      "default": 0,
+      "example": 10
+    },
+    "serviceDownAction": {
+      "type": "string",
+      "description": "Action to take when all pool members are unavailable.",
+      "enum": [
+        "none",
+        "reset",
+        "reselect",
+        "drop"
+      ],
+      "default": "none",
+      "example": "none"
+    },
+    "slowRampTime": {
+      "type": "integer",
+      "description": "Time in seconds to gradually increase traffic to a newly enabled member.",
+      "minimum": 0,
+      "default": 10,
+      "example": 10
+    },
+    "membersReference": {
+      "type": "object",
+      "description": "Reference to the pool members subcollection.",
+      "properties": {
+        "link": {
+          "type": "string",
+          "format": "uri"
+        },
+        "isSubcollection": {
+          "type": "boolean"
+        }
+      },
+      "readOnly": true,
+      "example": "example_value"
+    }
+  }
+}

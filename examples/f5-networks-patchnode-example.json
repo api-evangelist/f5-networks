@@ -1,0 +1,55 @@
+{
+  "operationId": "patchNode",
+  "method": "PATCH",
+  "path": "/ltm/node/{nodeName}",
+  "summary": "Patch a Node",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "PatchnodeRequestExample",
+      "example": {
+        "description": "A sample description.",
+        "connectionLimit": 10,
+        "monitor": "example_value",
+        "rateLimit": "example_value",
+        "ratio": 10,
+        "session": "user-enabled",
+        "state": "user-up",
+        "logging": "enabled"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Patchnode200Example",
+      "example": {
+        "kind": "example_value",
+        "name": "Example Title",
+        "fullPath": "example_value",
+        "generation": 10,
+        "selfLink": "https://www.example.com",
+        "address": "example_value",
+        "connectionLimit": 10,
+        "description": "A sample description.",
+        "dynamicRatio": 10,
+        "ephemeral": "true",
+        "fqdn": {
+          "addressFamily": "ipv4",
+          "autopopulate": "enabled",
+          "downInterval": 10,
+          "interval": "example_value",
+          "tmName": "example_value"
+        },
+        "logging": "enabled",
+        "monitor": "example_value",
+        "partition": "example_value",
+        "rateLimit": "example_value",
+        "ratio": 10,
+        "session": "user-enabled",
+        "state": "user-up"
+      }
+    }
+  ]
+}

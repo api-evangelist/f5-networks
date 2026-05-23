@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PoolUpdate",
+  "title": "PoolUpdate",
+  "type": "object",
+  "description": "Request body for updating a pool.",
+  "properties": {
+    "description": {
+      "type": "string",
+      "example": "A sample description."
+    },
+    "loadBalancingMode": {
+      "type": "string",
+      "enum": [
+        "round-robin",
+        "ratio-member",
+        "least-connections-member",
+        "observed-member",
+        "predictive-member",
+        "ratio-node",
+        "least-connections-node",
+        "fastest-node",
+        "observed-node",
+        "predictive-node",
+        "dynamic-ratio-node",
+        "fastest-app-response",
+        "least-sessions",
+        "dynamic-ratio-member"
+      ],
+      "example": "round-robin"
+    },
+    "monitor": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "serviceDownAction": {
+      "type": "string",
+      "enum": [
+        "none",
+        "reset",
+        "reselect",
+        "drop"
+      ],
+      "example": "none"
+    },
+    "slowRampTime": {
+      "type": "integer",
+      "minimum": 0,
+      "example": 10
+    },
+    "minActiveMembers": {
+      "type": "integer",
+      "minimum": 0,
+      "example": 10
+    },
+    "allowNat": {
+      "type": "string",
+      "enum": [
+        "yes",
+        "no"
+      ],
+      "example": "yes"
+    },
+    "allowSnat": {
+      "type": "string",
+      "enum": [
+        "yes",
+        "no"
+      ],
+      "example": "yes"
+    }
+  }
+}

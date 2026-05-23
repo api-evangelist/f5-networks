@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/HttpProfile",
+  "title": "HttpProfile",
+  "type": "object",
+  "description": "An HTTP profile that defines how the BIG-IP processes HTTP traffic for a virtual server.",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "example": "tm:ltm:profile:http:httpstate",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string",
+      "example": "http"
+    },
+    "fullPath": {
+      "type": "string",
+      "readOnly": true,
+      "example": "example_value"
+    },
+    "generation": {
+      "type": "integer",
+      "readOnly": true,
+      "example": 10
+    },
+    "selfLink": {
+      "type": "string",
+      "format": "uri",
+      "readOnly": true,
+      "example": "https://www.example.com"
+    },
+    "acceptXff": {
+      "type": "string",
+      "description": "Whether to accept X-Forwarded-For headers from clients.",
+      "enum": [
+        "enabled",
+        "disabled"
+      ],
+      "default": "disabled",
+      "example": "enabled"
+    },
+    "appService": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "basicAuthRealm": {
+      "type": "string",
+      "description": "Realm for HTTP Basic authentication challenges.",
+      "default": "none",
+      "example": "example_value"
+    },
+    "defaultsFrom": {
+      "type": "string",
+      "description": "Parent profile from which this profile inherits settings.",
+      "example": "/Common/http"
+    },
+    "description": {
+      "type": "string",
+      "example": "A sample description."
+    },
+    "encryptCookies": {
+      "type": "array",
+      "description": "List of cookie names to encrypt.",
+      "items": {
+        "type": "string"
+      },
+      "example": []
+    },
+    "enforcement": {
+      "type": "object",
+      "properties": {
+        "maxHeaderCount": {
+          "type": "integer",
+          "description": "Maximum number of HTTP headers.",
+          "default": 64
+        },
+        "maxHeaderSize": {
+          "type": "integer",
+          "description": "Maximum total header size in bytes.",
+          "default": 32768
+        },
+        "pipeline": {
+          "type": "string",
+          "description": "Whether HTTP pipelining is allowed.",
+          "enum": [
+            "allow",
+            "reject",
+            "pass-through"
+          ]
+        }
+      },
+      "example": "example_value"
+    },
+    "fallbackHost": {
+      "type": "string",
+      "description": "Fallback host for HTTP redirects.",
+      "example": "example_value"
+    },
+    "fallbackStatusCodes": {
+      "type": "array",
+      "description": "HTTP status codes that trigger fallback redirection.",
+      "items": {
+        "type": "string"
+      },
+      "example": []
+    },
+    "headerErase": {
+      "type": "string",
+      "description": "Regular expression for headers to remove from responses.",
+      "example": "example_value"
+    },
+    "headerInsert": {
+      "type": "string",
+      "description": "Header to insert into requests.",
+      "example": "example_value"
+    },
+    "insertXforwardedFor": {
+      "type": "string",
+      "description": "Whether to insert an X-Forwarded-For header.",
+      "enum": [
+        "enabled",
+        "disabled"
+      ],
+      "default": "disabled",
+      "example": "enabled"
+    },
+    "oneconnectTransformations": {
+      "type": "string",
+      "description": "Whether to rewrite HTTP connections for OneConnect.",
+      "enum": [
+        "enabled",
+        "disabled"
+      ],
+      "default": "enabled",
+      "example": "enabled"
+    },
+    "redirectRewrite": {
+      "type": "string",
+      "description": "Redirect rewrite mode.",
+      "enum": [
+        "none",
+        "all",
+        "matching",
+        "nodes"
+      ],
+      "example": "none"
+    },
+    "requestChunking": {
+      "type": "string",
+      "description": "How to handle chunked requests.",
+      "enum": [
+        "allow",
+        "preserve",
+        "rechunk",
+        "selective"
+      ],
+      "example": "allow"
+    },
+    "responseChunking": {
+      "type": "string",
+      "description": "How to handle chunked responses.",
+      "enum": [
+        "allow",
+        "preserve",
+        "rechunk",
+        "selective"
+      ],
+      "example": "allow"
+    },
+    "serverAgentName": {
+      "type": "string",
+      "description": "Server agent string to include in responses.",
+      "example": "example_value"
+    },
+    "viaHostName": {
+      "type": "string",
+      "description": "Hostname to use in Via headers.",
+      "example": "example_value"
+    },
+    "viaRequest": {
+      "type": "string",
+      "description": "Via header handling for requests.",
+      "enum": [
+        "append",
+        "preserve",
+        "remove"
+      ],
+      "example": "append"
+    },
+    "viaResponse": {
+      "type": "string",
+      "description": "Via header handling for responses.",
+      "enum": [
+        "append",
+        "preserve",
+        "remove"
+      ],
+      "example": "append"
+    },
+    "xffAlternativeNames": {
+      "type": "array",
+      "description": "Alternative header names for X-Forwarded-For.",
+      "items": {
+        "type": "string"
+      },
+      "example": []
+    }
+  }
+}

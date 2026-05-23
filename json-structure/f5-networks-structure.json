@@ -1,0 +1,411 @@
+{
+  "provider": "F5 Networks",
+  "providerId": "f5-networks",
+  "kind": "json-structure",
+  "description": "Structural overview of the F5 Networks API surface; extracted from openapi/.",
+  "schemaCount": 17,
+  "operationCount": 32,
+  "schemas": [
+    {
+      "name": "VirtualServer",
+      "type": "object",
+      "propertyCount": 35,
+      "required": []
+    },
+    {
+      "name": "VirtualServerCreate",
+      "type": "object",
+      "propertyCount": 18,
+      "required": [
+        "name",
+        "destination"
+      ]
+    },
+    {
+      "name": "VirtualServerUpdate",
+      "type": "object",
+      "propertyCount": 21,
+      "required": []
+    },
+    {
+      "name": "Pool",
+      "type": "object",
+      "propertyCount": 27,
+      "required": []
+    },
+    {
+      "name": "PoolCreate",
+      "type": "object",
+      "propertyCount": 10,
+      "required": [
+        "name"
+      ]
+    },
+    {
+      "name": "PoolUpdate",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "PoolMember",
+      "type": "object",
+      "propertyCount": 19,
+      "required": []
+    },
+    {
+      "name": "PoolMemberCreate",
+      "type": "object",
+      "propertyCount": 10,
+      "required": [
+        "name"
+      ]
+    },
+    {
+      "name": "PoolMemberUpdate",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "Node",
+      "type": "object",
+      "propertyCount": 18,
+      "required": []
+    },
+    {
+      "name": "NodeCreate",
+      "type": "object",
+      "propertyCount": 9,
+      "required": [
+        "name"
+      ]
+    },
+    {
+      "name": "NodeUpdate",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "HttpProfile",
+      "type": "object",
+      "propertyCount": 26,
+      "required": []
+    },
+    {
+      "name": "TcpProfile",
+      "type": "object",
+      "propertyCount": 25,
+      "required": []
+    },
+    {
+      "name": "ClientSslProfile",
+      "type": "object",
+      "propertyCount": 21,
+      "required": []
+    },
+    {
+      "name": "CookiePersistenceProfile",
+      "type": "object",
+      "propertyCount": 22,
+      "required": []
+    },
+    {
+      "name": "ErrorResponse",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/ltm/virtual",
+      "operationId": "listVirtualServers",
+      "summary": "List All Virtual Servers",
+      "tags": [
+        "Virtual Servers"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ltm/virtual",
+      "operationId": "createVirtualServer",
+      "summary": "Create a Virtual Server",
+      "tags": [
+        "Virtual Servers"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ltm/virtual/{virtualName}",
+      "operationId": "getVirtualServer",
+      "summary": "Get a Virtual Server",
+      "tags": [
+        "Virtual Servers"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/ltm/virtual/{virtualName}",
+      "operationId": "updateVirtualServer",
+      "summary": "Update a Virtual Server",
+      "tags": [
+        "Virtual Servers"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/ltm/virtual/{virtualName}",
+      "operationId": "deleteVirtualServer",
+      "summary": "Delete a Virtual Server",
+      "tags": [
+        "Virtual Servers"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/ltm/virtual/{virtualName}",
+      "operationId": "patchVirtualServer",
+      "summary": "Patch a Virtual Server",
+      "tags": [
+        "Virtual Servers"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ltm/pool",
+      "operationId": "listPools",
+      "summary": "List All Pools",
+      "tags": [
+        "Pools"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ltm/pool",
+      "operationId": "createPool",
+      "summary": "Create a Pool",
+      "tags": [
+        "Pools"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ltm/pool/{poolName}",
+      "operationId": "getPool",
+      "summary": "Get a Pool",
+      "tags": [
+        "Pools"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/ltm/pool/{poolName}",
+      "operationId": "updatePool",
+      "summary": "Update a Pool",
+      "tags": [
+        "Pools"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/ltm/pool/{poolName}",
+      "operationId": "deletePool",
+      "summary": "Delete a Pool",
+      "tags": [
+        "Pools"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/ltm/pool/{poolName}",
+      "operationId": "patchPool",
+      "summary": "Patch a Pool",
+      "tags": [
+        "Pools"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ltm/pool/{poolName}/members",
+      "operationId": "listPoolMembers",
+      "summary": "List Pool Members",
+      "tags": [
+        "Pool Members"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ltm/pool/{poolName}/members",
+      "operationId": "addPoolMember",
+      "summary": "Add a Pool Member",
+      "tags": [
+        "Pool Members"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ltm/pool/{poolName}/members/{memberName}",
+      "operationId": "getPoolMember",
+      "summary": "Get a Pool Member",
+      "tags": [
+        "Pool Members"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/ltm/pool/{poolName}/members/{memberName}",
+      "operationId": "updatePoolMember",
+      "summary": "Update a Pool Member",
+      "tags": [
+        "Pool Members"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/ltm/pool/{poolName}/members/{memberName}",
+      "operationId": "deletePoolMember",
+      "summary": "Delete a Pool Member",
+      "tags": [
+        "Pool Members"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/ltm/pool/{poolName}/members/{memberName}",
+      "operationId": "patchPoolMember",
+      "summary": "Patch a Pool Member",
+      "tags": [
+        "Pool Members"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ltm/node",
+      "operationId": "listNodes",
+      "summary": "List All Nodes",
+      "tags": [
+        "Nodes"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ltm/node",
+      "operationId": "createNode",
+      "summary": "Create a Node",
+      "tags": [
+        "Nodes"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ltm/node/{nodeName}",
+      "operationId": "getNode",
+      "summary": "Get a Node",
+      "tags": [
+        "Nodes"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/ltm/node/{nodeName}",
+      "operationId": "updateNode",
+      "summary": "Update a Node",
+      "tags": [
+        "Nodes"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/ltm/node/{nodeName}",
+      "operationId": "deleteNode",
+      "summary": "Delete a Node",
+      "tags": [
+        "Nodes"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/ltm/node/{nodeName}",
+      "operationId": "patchNode",
+      "summary": "Patch a Node",
+      "tags": [
+        "Nodes"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ltm/profile/http",
+      "operationId": "listHttpProfiles",
+      "summary": "List Http Profiles",
+      "tags": [
+        "Profiles"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ltm/profile/http/{profileName}",
+      "operationId": "getHttpProfile",
+      "summary": "Get an Http Profile",
+      "tags": [
+        "Profiles"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ltm/profile/tcp",
+      "operationId": "listTcpProfiles",
+      "summary": "List Tcp Profiles",
+      "tags": [
+        "Profiles"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ltm/profile/tcp/{profileName}",
+      "operationId": "getTcpProfile",
+      "summary": "Get a Tcp Profile",
+      "tags": [
+        "Profiles"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ltm/profile/client-ssl",
+      "operationId": "listClientSslProfiles",
+      "summary": "List Client Ssl Profiles",
+      "tags": [
+        "Profiles"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ltm/profile/client-ssl/{profileName}",
+      "operationId": "getClientSslProfile",
+      "summary": "Get a Client Ssl Profile",
+      "tags": [
+        "Profiles"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ltm/persistence/cookie",
+      "operationId": "listCookiePersistenceProfiles",
+      "summary": "List Cookie Persistence Profiles",
+      "tags": [
+        "Profiles"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ltm/persistence/cookie/{profileName}",
+      "operationId": "getCookiePersistenceProfile",
+      "summary": "Get a Cookie Persistence Profile",
+      "tags": [
+        "Profiles"
+      ]
+    }
+  ]
+}

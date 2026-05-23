@@ -1,0 +1,108 @@
+{
+  "operationId": "patchVirtualServer",
+  "method": "PATCH",
+  "path": "/ltm/virtual/{virtualName}",
+  "summary": "Patch a Virtual Server",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "PatchvirtualserverRequestExample",
+      "example": {
+        "description": "A sample description.",
+        "destination": "example_value",
+        "ipProtocol": "tcp",
+        "mask": "example_value",
+        "pool": "example_value",
+        "profiles": [
+          {
+            "name": "Example Title",
+            "context": "all"
+          }
+        ],
+        "persist": [
+          {
+            "name": "Example Title",
+            "tmDefault": "example_value"
+          }
+        ],
+        "source": "example_value",
+        "sourcePort": "preserve",
+        "translateAddress": "enabled",
+        "translatePort": "enabled",
+        "connectionLimit": 10,
+        "enabled": true,
+        "disabled": true,
+        "mirror": "enabled",
+        "rateLimit": "example_value",
+        "rules": [
+          "example_value"
+        ],
+        "vlans": [
+          "example_value"
+        ],
+        "vlansEnabled": true,
+        "vlansDisabled": true,
+        "fallbackPersistence": "example_value"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Patchvirtualserver200Example",
+      "example": {
+        "kind": "example_value",
+        "name": "Example Title",
+        "fullPath": "example_value",
+        "generation": 10,
+        "selfLink": "https://www.example.com",
+        "addressStatus": "yes",
+        "autoLasthop": "default",
+        "cmpEnabled": "yes",
+        "connectionLimit": 10,
+        "description": "A sample description.",
+        "destination": "example_value",
+        "disabled": true,
+        "enabled": true,
+        "fallbackPersistence": "example_value",
+        "gtmScore": 10,
+        "ipProtocol": "tcp",
+        "mask": "example_value",
+        "mirror": "enabled",
+        "nat64": "enabled",
+        "partition": "example_value",
+        "persist": [
+          {
+            "name": "Example Title",
+            "tmDefault": "yes"
+          }
+        ],
+        "pool": "example_value",
+        "profiles": [
+          {
+            "name": "Example Title",
+            "context": "all",
+            "fullPath": "example_value"
+          }
+        ],
+        "rateLimit": "example_value",
+        "rateLimitMode": "object",
+        "rules": [
+          "example_value"
+        ],
+        "source": "example_value",
+        "sourcePort": "preserve",
+        "synCookieStatus": "not-activated",
+        "translateAddress": "enabled",
+        "translatePort": "enabled",
+        "vlansEnabled": true,
+        "vlansDisabled": true,
+        "vlans": [
+          "example_value"
+        ],
+        "vsIndex": 10
+      }
+    }
+  ]
+}

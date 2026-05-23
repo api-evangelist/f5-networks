@@ -1,0 +1,44 @@
+{
+  "operationId": "listCookiePersistenceProfiles",
+  "method": "GET",
+  "path": "/ltm/persistence/cookie",
+  "summary": "List Cookie Persistence Profiles",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listcookiepersistenceprofiles200Example",
+      "example": {
+        "kind": "example_value",
+        "selfLink": "https://www.example.com",
+        "items": [
+          {
+            "kind": "example_value",
+            "name": "Example Title",
+            "fullPath": "example_value",
+            "generation": 10,
+            "selfLink": "https://www.example.com",
+            "alwaysSend": "enabled",
+            "cookieEncryption": "required",
+            "cookieName": "example_value",
+            "defaultsFrom": "example_value",
+            "description": "A sample description.",
+            "expiration": "example_value",
+            "hashLength": 10,
+            "hashOffset": 10,
+            "httponly": "enabled",
+            "matchAcrossPools": "enabled",
+            "matchAcrossServices": "enabled",
+            "matchAcrossVirtuals": "enabled",
+            "method": "insert",
+            "mirror": "enabled",
+            "overrideConnectionLimit": "enabled",
+            "secure": "enabled",
+            "timeout": "example_value"
+          }
+        ]
+      }
+    }
+  ]
+}

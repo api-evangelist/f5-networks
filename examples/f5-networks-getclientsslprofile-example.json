@@ -1,0 +1,46 @@
+{
+  "operationId": "getClientSslProfile",
+  "method": "GET",
+  "path": "/ltm/profile/client-ssl/{profileName}",
+  "summary": "Get a Client Ssl Profile",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getclientsslprofile200Example",
+      "example": {
+        "kind": "example_value",
+        "name": "Example Title",
+        "fullPath": "example_value",
+        "generation": 10,
+        "selfLink": "https://www.example.com",
+        "alertTimeout": "example_value",
+        "allowNonSsl": "enabled",
+        "cert": "example_value",
+        "certKeyChain": [
+          {
+            "name": "Example Title",
+            "cert": "example_value",
+            "key": "example_value",
+            "chain": "example_value"
+          }
+        ],
+        "ciphers": "example_value",
+        "defaultsFrom": "example_value",
+        "description": "A sample description.",
+        "key": "example_value",
+        "options": [
+          "example_value"
+        ],
+        "peerCertMode": "ignore",
+        "renegotiation": "enabled",
+        "secureRenegotiation": "require",
+        "sniDefault": "true",
+        "sniRequire": "true",
+        "sslForwardProxy": "enabled",
+        "uncleanShutdown": "enabled"
+      }
+    }
+  ]
+}

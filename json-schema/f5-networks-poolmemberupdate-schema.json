@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PoolMemberUpdate",
+  "title": "PoolMemberUpdate",
+  "type": "object",
+  "description": "Request body for updating a pool member.",
+  "properties": {
+    "description": {
+      "type": "string",
+      "example": "A sample description."
+    },
+    "connectionLimit": {
+      "type": "integer",
+      "minimum": 0,
+      "example": 10
+    },
+    "monitor": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "priorityGroup": {
+      "type": "integer",
+      "minimum": 0,
+      "example": 10
+    },
+    "rateLimit": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "ratio": {
+      "type": "integer",
+      "minimum": 1,
+      "example": 10
+    },
+    "session": {
+      "type": "string",
+      "enum": [
+        "user-enabled",
+        "user-disabled"
+      ],
+      "example": "user-enabled"
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "user-up",
+        "user-down"
+      ],
+      "example": "user-up"
+    }
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PoolMember",
+  "title": "PoolMember",
+  "type": "object",
+  "description": "A pool member resource representing an individual backend server within a pool, identified by address and port.",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "description": "Resource type identifier.",
+      "example": "tm:ltm:pool:members:membersstate",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string",
+      "description": "Member name in address:port format.",
+      "example": "10.0.0.1:80"
+    },
+    "fullPath": {
+      "type": "string",
+      "description": "Full path including partition.",
+      "example": "/Common/10.0.0.1:80",
+      "readOnly": true
+    },
+    "generation": {
+      "type": "integer",
+      "readOnly": true,
+      "example": 10
+    },
+    "selfLink": {
+      "type": "string",
+      "format": "uri",
+      "readOnly": true,
+      "example": "https://www.example.com"
+    },
+    "address": {
+      "type": "string",
+      "description": "IP address of the pool member.",
+      "example": "10.0.0.1"
+    },
+    "connectionLimit": {
+      "type": "integer",
+      "description": "Maximum concurrent connections. 0 means unlimited.",
+      "minimum": 0,
+      "default": 0,
+      "example": 10
+    },
+    "description": {
+      "type": "string",
+      "description": "User-defined description.",
+      "example": "A sample description."
+    },
+    "dynamicRatio": {
+      "type": "integer",
+      "description": "Dynamic ratio for load balancing.",
+      "default": 1,
+      "example": 10
+    },
+    "ephemeral": {
+      "type": "string",
+      "description": "Whether this is a transient auto-discovered member.",
+      "readOnly": true,
+      "enum": [
+        "true",
+        "false"
+      ],
+      "default": "false",
+      "example": "true"
+    },
+    "inheritProfile": {
+      "type": "string",
+      "description": "Whether the member inherits the encapsulation profile from its parent pool.",
+      "enum": [
+        "enabled",
+        "disabled"
+      ],
+      "default": "enabled",
+      "example": "enabled"
+    },
+    "logging": {
+      "type": "string",
+      "description": "Whether monitor actions are logged.",
+      "enum": [
+        "enabled",
+        "disabled"
+      ],
+      "default": "disabled",
+      "example": "enabled"
+    },
+    "monitor": {
+      "type": "string",
+      "description": "Health monitor override for this member.",
+      "default": "default",
+      "example": "example_value"
+    },
+    "partition": {
+      "type": "string",
+      "description": "Administrative partition.",
+      "default": "Common",
+      "example": "example_value"
+    },
+    "priorityGroup": {
+      "type": "integer",
+      "description": "Priority group number. Higher values receive traffic first when priority-group activation is configured.",
+      "minimum": 0,
+      "default": 0,
+      "example": 10
+    },
+    "rateLimit": {
+      "type": "string",
+      "description": "Maximum connections per second. disabled means no limit.",
+      "default": "disabled",
+      "example": "example_value"
+    },
+    "ratio": {
+      "type": "integer",
+      "description": "Ratio weight for load balancing.",
+      "minimum": 1,
+      "default": 1,
+      "example": 10
+    },
+    "session": {
+      "type": "string",
+      "description": "Session availability state.",
+      "enum": [
+        "user-enabled",
+        "user-disabled",
+        "monitor-enabled"
+      ],
+      "default": "user-enabled",
+      "example": "user-enabled"
+    },
+    "state": {
+      "type": "string",
+      "description": "Operational state of the member.",
+      "enum": [
+        "user-up",
+        "user-down",
+        "up",
+        "down",
+        "unchecked"
+      ],
+      "example": "up"
+    }
+  }
+}
