@@ -1,0 +1,827 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "F5 BIG-IP iControl REST API",
+    "version": "15.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Virtual Servers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Virtual Servers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/virtual",
+            "params": [
+              {
+                "name": "$select",
+                "value": "name,destination,pool",
+                "type": "query",
+                "description": "Comma-separated list of property names to include in the response."
+              },
+              {
+                "name": "$filter",
+                "value": "partition eq Common",
+                "type": "query",
+                "description": "OData filter expression to restrict returned resources."
+              },
+              {
+                "name": "$top",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of resources to return."
+              },
+              {
+                "name": "$skip",
+                "value": "0",
+                "type": "query",
+                "description": "Number of resources to skip before returning results."
+              },
+              {
+                "name": "expandSubcollections",
+                "value": "true",
+                "type": "query",
+                "description": "When set to true, expands all subcollections inline within the response."
+              }
+            ]
+          },
+          "docs": "Returns a collection of all virtual server resources configured on the BIG-IP system."
+        },
+        {
+          "info": {
+            "name": "Create a Virtual Server",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/virtual",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new virtual server resource on the BIG-IP system. At minimum, a name and destination address:port must be specified."
+        },
+        {
+          "info": {
+            "name": "Get a Virtual Server",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/virtual/:virtualName",
+            "params": [
+              {
+                "name": "virtualName",
+                "value": "my_virtual_server",
+                "type": "path",
+                "description": "Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+              },
+              {
+                "name": "expandSubcollections",
+                "value": "true",
+                "type": "query",
+                "description": "When set to true, expands all subcollections inline within the response."
+              }
+            ]
+          },
+          "docs": "Returns a single virtual server resource identified by name."
+        },
+        {
+          "info": {
+            "name": "Update a Virtual Server",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/virtual/:virtualName",
+            "params": [
+              {
+                "name": "virtualName",
+                "value": "my_virtual_server",
+                "type": "path",
+                "description": "Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replaces the entire virtual server resource. All writable properties must be included in the request body."
+        },
+        {
+          "info": {
+            "name": "Patch a Virtual Server",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/virtual/:virtualName",
+            "params": [
+              {
+                "name": "virtualName",
+                "value": "my_virtual_server",
+                "type": "path",
+                "description": "Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Partially updates a virtual server resource. Only specified properties are modified."
+        },
+        {
+          "info": {
+            "name": "Delete a Virtual Server",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/virtual/:virtualName",
+            "params": [
+              {
+                "name": "virtualName",
+                "value": "my_virtual_server",
+                "type": "path",
+                "description": "Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+              }
+            ]
+          },
+          "docs": "Removes a virtual server resource from the BIG-IP system. Active connections will be terminated."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Pools",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Pools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/pool",
+            "params": [
+              {
+                "name": "$select",
+                "value": "name,destination,pool",
+                "type": "query",
+                "description": "Comma-separated list of property names to include in the response."
+              },
+              {
+                "name": "$filter",
+                "value": "partition eq Common",
+                "type": "query",
+                "description": "OData filter expression to restrict returned resources."
+              },
+              {
+                "name": "$top",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of resources to return."
+              },
+              {
+                "name": "$skip",
+                "value": "0",
+                "type": "query",
+                "description": "Number of resources to skip before returning results."
+              },
+              {
+                "name": "expandSubcollections",
+                "value": "true",
+                "type": "query",
+                "description": "When set to true, expands all subcollections inline within the response."
+              }
+            ]
+          },
+          "docs": "Returns a collection of all pool resources configured on the BIG-IP system."
+        },
+        {
+          "info": {
+            "name": "Create a Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/pool",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new pool resource on the BIG-IP system. The pool name is required; members and monitors can be specified during creation."
+        },
+        {
+          "info": {
+            "name": "Get a Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/pool/:poolName",
+            "params": [
+              {
+                "name": "poolName",
+                "value": "my_pool",
+                "type": "path",
+                "description": "Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+              },
+              {
+                "name": "expandSubcollections",
+                "value": "true",
+                "type": "query",
+                "description": "When set to true, expands all subcollections inline within the response."
+              }
+            ]
+          },
+          "docs": "Returns a single pool resource identified by name."
+        },
+        {
+          "info": {
+            "name": "Update a Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/pool/:poolName",
+            "params": [
+              {
+                "name": "poolName",
+                "value": "my_pool",
+                "type": "path",
+                "description": "Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replaces the entire pool resource configuration."
+        },
+        {
+          "info": {
+            "name": "Patch a Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/pool/:poolName",
+            "params": [
+              {
+                "name": "poolName",
+                "value": "my_pool",
+                "type": "path",
+                "description": "Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Partially updates a pool resource configuration."
+        },
+        {
+          "info": {
+            "name": "Delete a Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/pool/:poolName",
+            "params": [
+              {
+                "name": "poolName",
+                "value": "my_pool",
+                "type": "path",
+                "description": "Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+              }
+            ]
+          },
+          "docs": "Removes a pool resource from the BIG-IP system. The pool must not be referenced by any virtual server."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Pool Members",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Pool Members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/pool/:poolName/members",
+            "params": [
+              {
+                "name": "poolName",
+                "value": "my_pool",
+                "type": "path",
+                "description": "Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+              },
+              {
+                "name": "$select",
+                "value": "name,destination,pool",
+                "type": "query",
+                "description": "Comma-separated list of property names to include in the response."
+              },
+              {
+                "name": "$filter",
+                "value": "partition eq Common",
+                "type": "query",
+                "description": "OData filter expression to restrict returned resources."
+              }
+            ]
+          },
+          "docs": "Returns a collection of all members within the specified pool."
+        },
+        {
+          "info": {
+            "name": "Add a Pool Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/pool/:poolName/members",
+            "params": [
+              {
+                "name": "poolName",
+                "value": "my_pool",
+                "type": "path",
+                "description": "Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a new member to the specified pool. The member name must be in the format address:port (e.g., 10.0.0.1:80)."
+        },
+        {
+          "info": {
+            "name": "Get a Pool Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/pool/:poolName/members/:memberName",
+            "params": [
+              {
+                "name": "poolName",
+                "value": "my_pool",
+                "type": "path",
+                "description": "Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+              },
+              {
+                "name": "memberName",
+                "value": "10.0.0.1:80",
+                "type": "path",
+                "description": "Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+              }
+            ]
+          },
+          "docs": "Returns a single pool member identified by name."
+        },
+        {
+          "info": {
+            "name": "Update a Pool Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/pool/:poolName/members/:memberName",
+            "params": [
+              {
+                "name": "poolName",
+                "value": "my_pool",
+                "type": "path",
+                "description": "Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+              },
+              {
+                "name": "memberName",
+                "value": "10.0.0.1:80",
+                "type": "path",
+                "description": "Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replaces the entire pool member resource configuration."
+        },
+        {
+          "info": {
+            "name": "Patch a Pool Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/pool/:poolName/members/:memberName",
+            "params": [
+              {
+                "name": "poolName",
+                "value": "my_pool",
+                "type": "path",
+                "description": "Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+              },
+              {
+                "name": "memberName",
+                "value": "10.0.0.1:80",
+                "type": "path",
+                "description": "Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Partially updates a pool member resource configuration."
+        },
+        {
+          "info": {
+            "name": "Delete a Pool Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/pool/:poolName/members/:memberName",
+            "params": [
+              {
+                "name": "poolName",
+                "value": "my_pool",
+                "type": "path",
+                "description": "Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+              },
+              {
+                "name": "memberName",
+                "value": "10.0.0.1:80",
+                "type": "path",
+                "description": "Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+              }
+            ]
+          },
+          "docs": "Removes a member from the specified pool."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Nodes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Nodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/node",
+            "params": [
+              {
+                "name": "$select",
+                "value": "name,destination,pool",
+                "type": "query",
+                "description": "Comma-separated list of property names to include in the response."
+              },
+              {
+                "name": "$filter",
+                "value": "partition eq Common",
+                "type": "query",
+                "description": "OData filter expression to restrict returned resources."
+              },
+              {
+                "name": "$top",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of resources to return."
+              },
+              {
+                "name": "$skip",
+                "value": "0",
+                "type": "query",
+                "description": "Number of resources to skip before returning results."
+              }
+            ]
+          },
+          "docs": "Returns a collection of all node resources configured on the BIG-IP system."
+        },
+        {
+          "info": {
+            "name": "Create a Node",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/node",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new node resource on the BIG-IP system. The name and address are required for creation."
+        },
+        {
+          "info": {
+            "name": "Get a Node",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/node/:nodeName",
+            "params": [
+              {
+                "name": "nodeName",
+                "value": "10.0.0.1",
+                "type": "path",
+                "description": "Name of the node resource. Can be the IP address or a user-defined name."
+              }
+            ]
+          },
+          "docs": "Returns a single node resource identified by name."
+        },
+        {
+          "info": {
+            "name": "Update a Node",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/node/:nodeName",
+            "params": [
+              {
+                "name": "nodeName",
+                "value": "10.0.0.1",
+                "type": "path",
+                "description": "Name of the node resource. Can be the IP address or a user-defined name."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replaces the entire node resource configuration."
+        },
+        {
+          "info": {
+            "name": "Patch a Node",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/node/:nodeName",
+            "params": [
+              {
+                "name": "nodeName",
+                "value": "10.0.0.1",
+                "type": "path",
+                "description": "Name of the node resource. Can be the IP address or a user-defined name."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Partially updates a node resource configuration."
+        },
+        {
+          "info": {
+            "name": "Delete a Node",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/node/:nodeName",
+            "params": [
+              {
+                "name": "nodeName",
+                "value": "10.0.0.1",
+                "type": "path",
+                "description": "Name of the node resource. Can be the IP address or a user-defined name."
+              }
+            ]
+          },
+          "docs": "Removes a node resource from the BIG-IP system. The node must not be referenced by any pool member."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Profiles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Http Profiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/profile/http",
+            "params": [
+              {
+                "name": "$select",
+                "value": "name,destination,pool",
+                "type": "query",
+                "description": "Comma-separated list of property names to include in the response."
+              },
+              {
+                "name": "$filter",
+                "value": "partition eq Common",
+                "type": "query",
+                "description": "OData filter expression to restrict returned resources."
+              }
+            ]
+          },
+          "docs": "Returns a collection of all HTTP profile resources configured on the BIG-IP system."
+        },
+        {
+          "info": {
+            "name": "Get an Http Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/profile/http/:profileName",
+            "params": [
+              {
+                "name": "profileName",
+                "value": "my_http_profile",
+                "type": "path",
+                "description": "Name of the profile resource."
+              }
+            ]
+          },
+          "docs": "Returns a single HTTP profile resource identified by name."
+        },
+        {
+          "info": {
+            "name": "List Tcp Profiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/profile/tcp",
+            "params": [
+              {
+                "name": "$select",
+                "value": "name,destination,pool",
+                "type": "query",
+                "description": "Comma-separated list of property names to include in the response."
+              },
+              {
+                "name": "$filter",
+                "value": "partition eq Common",
+                "type": "query",
+                "description": "OData filter expression to restrict returned resources."
+              }
+            ]
+          },
+          "docs": "Returns a collection of all TCP profile resources configured on the BIG-IP system."
+        },
+        {
+          "info": {
+            "name": "Get a Tcp Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/profile/tcp/:profileName",
+            "params": [
+              {
+                "name": "profileName",
+                "value": "my_http_profile",
+                "type": "path",
+                "description": "Name of the profile resource."
+              }
+            ]
+          },
+          "docs": "Returns a single TCP profile resource identified by name."
+        },
+        {
+          "info": {
+            "name": "List Client Ssl Profiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/profile/client-ssl",
+            "params": [
+              {
+                "name": "$select",
+                "value": "name,destination,pool",
+                "type": "query",
+                "description": "Comma-separated list of property names to include in the response."
+              },
+              {
+                "name": "$filter",
+                "value": "partition eq Common",
+                "type": "query",
+                "description": "OData filter expression to restrict returned resources."
+              }
+            ]
+          },
+          "docs": "Returns a collection of all Client SSL profile resources configured on the BIG-IP system."
+        },
+        {
+          "info": {
+            "name": "Get a Client Ssl Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/profile/client-ssl/:profileName",
+            "params": [
+              {
+                "name": "profileName",
+                "value": "my_http_profile",
+                "type": "path",
+                "description": "Name of the profile resource."
+              }
+            ]
+          },
+          "docs": "Returns a single Client SSL profile resource identified by name."
+        },
+        {
+          "info": {
+            "name": "List Cookie Persistence Profiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/persistence/cookie",
+            "params": [
+              {
+                "name": "$select",
+                "value": "name,destination,pool",
+                "type": "query",
+                "description": "Comma-separated list of property names to include in the response."
+              },
+              {
+                "name": "$filter",
+                "value": "partition eq Common",
+                "type": "query",
+                "description": "OData filter expression to restrict returned resources."
+              }
+            ]
+          },
+          "docs": "Returns a collection of all cookie persistence profile resources."
+        },
+        {
+          "info": {
+            "name": "Get a Cookie Persistence Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/persistence/cookie/:profileName",
+            "params": [
+              {
+                "name": "profileName",
+                "value": "my_http_profile",
+                "type": "path",
+                "description": "Name of the profile resource."
+              }
+            ]
+          },
+          "docs": "Returns a single cookie persistence profile resource identified by name."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
