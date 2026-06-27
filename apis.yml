@@ -56,10 +56,10 @@ apis:
         url: https://clouddocs.f5.com/api/icontrol-rest/APIRef.html
       - type: GettingStarted
         url: https://clouddocs.f5.com/api/
-      - type: SDK
+      - type: SDKs
         url: https://github.com/F5Networks/f5-icontrol-rest-python
         title: Python SDK
-      - type: SDK
+      - type: SDKs
         url: https://f5-sdk.readthedocs.io/
         title: Python SDK Docs
     contact:
@@ -319,7 +319,7 @@ common:
     url: https://www.f5.com/company/policies/terms-of-use
   - type: PrivacyPolicy
     url: https://www.f5.com/company/policies/privacy-notice
-  - type: SignUp
+  - type: Signup
     url: https://account.f5.com/myf5
   - type: Login
     url: https://identity.account.f5.com/
