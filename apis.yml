@@ -300,6 +300,12 @@ apis:
       - FN: NGINX Support
         email: nginx-support@f5.com
 common:
+  - type: TrustCenter
+    url: security/f5-networks-trust-center.yml
+  - type: DomainSecurity
+    url: security/f5-networks-domain-security.yml
+  - type: Authentication
+    url: authentication/f5-networks-authentication.yml
   - type: Documentation
     url: https://docs.nginx.com/
   - type: DeveloperPortal

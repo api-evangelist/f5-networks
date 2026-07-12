@@ -1,0 +1,25 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/bigip-icontrol-rest.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic authentication using BIG-IP admin credentials. The username and password
+    are sent base64-encoded in the Authorization header.
+  sources:
+  - openapi/bigip-icontrol-rest.yml
+- name: tokenAuth
+  type: apiKey
+  in: header
+  parameter: X-F5-Auth-Token
+  description: Token-based authentication. Obtain a token by POSTing credentials to /mgmt/shared/authn/login,
+    then pass the token value in the X-F5-Auth-Token header for subsequent requests.
+  sources:
+  - openapi/bigip-icontrol-rest.yml
