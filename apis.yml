@@ -300,6 +300,8 @@ apis:
       - FN: NGINX Support
         email: nginx-support@f5.com
 common:
+  - type: AgenticAccess
+    url: agentic-access/f5-networks-agentic-access.yml
   - type: TrustCenter
     url: security/f5-networks-trust-center.yml
   - type: DomainSecurity
