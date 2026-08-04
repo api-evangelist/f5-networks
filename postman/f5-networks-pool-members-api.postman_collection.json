@@ -1,0 +1,2153 @@
+{
+  "info": {
+    "_postman_id": "662ad553-ebc5-4a79-a185-bde2c378da7b",
+    "name": "F5 BIG-IP iControl REST Nodes Pool Members API",
+    "description": "The iControl REST API provides programmatic access to manage and configure F5 BIG-IP devices. It enables automation of Local Traffic Manager (LTM) resources including virtual servers, pools, nodes, pool members, and profiles for application delivery, load balancing, and network management.\n\nContact Support:\n Name: F5 Support\n Email: support@f5.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:35:24.000Z",
+    "updatedAt": "2026-07-28T01:35:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-662ad553-ebc5-4a79-a185-bde2c378da7b"
+  },
+  "item": [
+    {
+      "name": "ltm",
+      "item": [
+        {
+          "name": "pool",
+          "item": [
+            {
+              "name": "{poolName}",
+              "item": [
+                {
+                  "name": "members",
+                  "item": [
+                    {
+                      "name": "{memberName}",
+                      "item": [
+                        {
+                          "name": "Get a Pool Member",
+                          "id": "99bc9012-77a9-43c5-9dcb-7aca8fcccb38",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/pool/:poolName/members/:memberName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "pool",
+                                ":poolName",
+                                "members",
+                                ":memberName"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "6b3eca81-9674-4d0b-b2f0-90a3f4691da6",
+                                  "key": "poolName",
+                                  "value": "<string>",
+                                  "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                                },
+                                {
+                                  "id": "ec00b269-87a4-49c4-a2cf-28f611ee04a2",
+                                  "key": "memberName",
+                                  "value": "<string>",
+                                  "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                                }
+                              ]
+                            },
+                            "description": "Returns a single pool member identified by name."
+                          },
+                          "response": [
+                            {
+                              "id": "8f6baed8-f44a-4e08-b9ed-e725c927e9f8",
+                              "name": "Successful retrieval of pool member.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/ltm/pool/:poolName/members/:memberName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ltm",
+                                    "pool",
+                                    ":poolName",
+                                    "members",
+                                    ":memberName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "poolName"
+                                    },
+                                    {
+                                      "key": "memberName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"kind\": \"<string>\",\n  \"name\": \"<string>\",\n  \"fullPath\": \"<string>\",\n  \"generation\": \"<integer>\",\n  \"selfLink\": \"<uri>\",\n  \"address\": \"<string>\",\n  \"connectionLimit\": 0,\n  \"description\": \"<string>\",\n  \"dynamicRatio\": 1,\n  \"ephemeral\": \"false\",\n  \"inheritProfile\": \"enabled\",\n  \"logging\": \"disabled\",\n  \"monitor\": \"default\",\n  \"partition\": \"Common\",\n  \"priorityGroup\": 0,\n  \"rateLimit\": \"disabled\",\n  \"ratio\": 1,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\"\n}",
+                              "createdAt": "2026-07-28T01:35:24.000Z",
+                              "updatedAt": "2026-07-28T01:35:24.000Z",
+                              "uid": "35240-8f6baed8-f44a-4e08-b9ed-e725c927e9f8"
+                            },
+                            {
+                              "id": "4e184941-c1a5-4ad8-9f8f-997426c1595a",
+                              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/ltm/pool/:poolName/members/:memberName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ltm",
+                                    "pool",
+                                    ":poolName",
+                                    "members",
+                                    ":memberName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "poolName"
+                                    },
+                                    {
+                                      "key": "memberName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T01:35:24.000Z",
+                              "updatedAt": "2026-07-28T01:35:24.000Z",
+                              "uid": "35240-4e184941-c1a5-4ad8-9f8f-997426c1595a"
+                            },
+                            {
+                              "id": "8f6f3223-1db2-485f-b698-79fc88d7d6b6",
+                              "name": "The requested resource was not found on the BIG-IP system.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/ltm/pool/:poolName/members/:memberName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ltm",
+                                    "pool",
+                                    ":poolName",
+                                    "members",
+                                    ":memberName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "poolName"
+                                    },
+                                    {
+                                      "key": "memberName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T01:35:24.000Z",
+                              "updatedAt": "2026-07-28T01:35:24.000Z",
+                              "uid": "35240-8f6f3223-1db2-485f-b698-79fc88d7d6b6"
+                            },
+                            {
+                              "id": "bed1511d-9a6d-4ff7-af7f-bc1f4dae7bed",
+                              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/ltm/pool/:poolName/members/:memberName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ltm",
+                                    "pool",
+                                    ":poolName",
+                                    "members",
+                                    ":memberName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "poolName"
+                                    },
+                                    {
+                                      "key": "memberName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T01:35:24.000Z",
+                              "updatedAt": "2026-07-28T01:35:24.000Z",
+                              "uid": "35240-bed1511d-9a6d-4ff7-af7f-bc1f4dae7bed"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:35:24.000Z",
+                          "updatedAt": "2026-07-28T01:35:24.000Z",
+                          "uid": "35240-99bc9012-77a9-43c5-9dcb-7aca8fcccb38"
+                        },
+                        {
+                          "name": "Update a Pool Member",
+                          "id": "6b787f0f-8469-4b1c-9335-f70458cf5a9b",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"priorityGroup\": \"<integer>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-disabled\",\n  \"state\": \"user-up\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/pool/:poolName/members/:memberName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "pool",
+                                ":poolName",
+                                "members",
+                                ":memberName"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "9a37a863-196b-4197-aa87-2fdb3aa6e396",
+                                  "key": "poolName",
+                                  "value": "<string>",
+                                  "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                                },
+                                {
+                                  "id": "ebaef4a4-70c4-4b85-97f9-138304edbc8c",
+                                  "key": "memberName",
+                                  "value": "<string>",
+                                  "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                                }
+                              ]
+                            },
+                            "description": "Replaces the entire pool member resource configuration."
+                          },
+                          "response": [
+                            {
+                              "id": "618ae775-5d39-4ea3-9d11-6ff1fadaa546",
+                              "name": "Pool member updated successfully.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"priorityGroup\": \"<integer>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-disabled\",\n  \"state\": \"user-up\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/ltm/pool/:poolName/members/:memberName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ltm",
+                                    "pool",
+                                    ":poolName",
+                                    "members",
+                                    ":memberName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "poolName"
+                                    },
+                                    {
+                                      "key": "memberName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"kind\": \"<string>\",\n  \"name\": \"<string>\",\n  \"fullPath\": \"<string>\",\n  \"generation\": \"<integer>\",\n  \"selfLink\": \"<uri>\",\n  \"address\": \"<string>\",\n  \"connectionLimit\": 0,\n  \"description\": \"<string>\",\n  \"dynamicRatio\": 1,\n  \"ephemeral\": \"false\",\n  \"inheritProfile\": \"enabled\",\n  \"logging\": \"disabled\",\n  \"monitor\": \"default\",\n  \"partition\": \"Common\",\n  \"priorityGroup\": 0,\n  \"rateLimit\": \"disabled\",\n  \"ratio\": 1,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\"\n}",
+                              "createdAt": "2026-07-28T01:35:24.000Z",
+                              "updatedAt": "2026-07-28T01:35:24.000Z",
+                              "uid": "35240-618ae775-5d39-4ea3-9d11-6ff1fadaa546"
+                            },
+                            {
+                              "id": "03a0df85-cf21-42af-8342-34fb8f1d7144",
+                              "name": "The request could not be processed due to invalid syntax or missing required parameters.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"priorityGroup\": \"<integer>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-disabled\",\n  \"state\": \"user-up\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/ltm/pool/:poolName/members/:memberName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ltm",
+                                    "pool",
+                                    ":poolName",
+                                    "members",
+                                    ":memberName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "poolName"
+                                    },
+                                    {
+                                      "key": "memberName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T01:35:24.000Z",
+                              "updatedAt": "2026-07-28T01:35:24.000Z",
+                              "uid": "35240-03a0df85-cf21-42af-8342-34fb8f1d7144"
+                            },
+                            {
+                              "id": "8f773f48-0907-4402-8a09-d75f3d2d938d",
+                              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"priorityGroup\": \"<integer>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-disabled\",\n  \"state\": \"user-up\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/ltm/pool/:poolName/members/:memberName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ltm",
+                                    "pool",
+                                    ":poolName",
+                                    "members",
+                                    ":memberName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "poolName"
+                                    },
+                                    {
+                                      "key": "memberName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T01:35:24.000Z",
+                              "updatedAt": "2026-07-28T01:35:24.000Z",
+                              "uid": "35240-8f773f48-0907-4402-8a09-d75f3d2d938d"
+                            },
+                            {
+                              "id": "e8387c73-8dba-4aff-99f9-da653eaaac50",
+                              "name": "The requested resource was not found on the BIG-IP system.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"priorityGroup\": \"<integer>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-disabled\",\n  \"state\": \"user-up\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/ltm/pool/:poolName/members/:memberName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ltm",
+                                    "pool",
+                                    ":poolName",
+                                    "members",
+                                    ":memberName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "poolName"
+                                    },
+                                    {
+                                      "key": "memberName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T01:35:24.000Z",
+                              "updatedAt": "2026-07-28T01:35:24.000Z",
+                              "uid": "35240-e8387c73-8dba-4aff-99f9-da653eaaac50"
+                            },
+                            {
+                              "id": "4c76d19a-bd9a-4b95-b4e6-d70a57619596",
+                              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"priorityGroup\": \"<integer>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-disabled\",\n  \"state\": \"user-up\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/ltm/pool/:poolName/members/:memberName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ltm",
+                                    "pool",
+                                    ":poolName",
+                                    "members",
+                                    ":memberName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "poolName"
+                                    },
+                                    {
+                                      "key": "memberName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T01:35:24.000Z",
+                              "updatedAt": "2026-07-28T01:35:24.000Z",
+                              "uid": "35240-4c76d19a-bd9a-4b95-b4e6-d70a57619596"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:35:24.000Z",
+                          "updatedAt": "2026-07-28T01:35:24.000Z",
+                          "uid": "35240-6b787f0f-8469-4b1c-9335-f70458cf5a9b"
+                        },
+                        {
+                          "name": "Patch a Pool Member",
+                          "id": "589af355-932e-4baf-ac64-7390917a04bc",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"priorityGroup\": \"<integer>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-disabled\",\n  \"state\": \"user-up\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/pool/:poolName/members/:memberName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "pool",
+                                ":poolName",
+                                "members",
+                                ":memberName"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "97c9e2e2-ebaa-423d-a56a-a1261ae204ea",
+                                  "key": "poolName",
+                                  "value": "<string>",
+                                  "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                                },
+                                {
+                                  "id": "b324b02d-309e-4189-9168-6a164f947b1d",
+                                  "key": "memberName",
+                                  "value": "<string>",
+                                  "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                                }
+                              ]
+                            },
+                            "description": "Partially updates a pool member resource configuration."
+                          },
+                          "response": [
+                            {
+                              "id": "52910b29-16b9-4ffa-93dd-fe8b151a4515",
+                              "name": "Pool member patched successfully.",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"priorityGroup\": \"<integer>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-disabled\",\n  \"state\": \"user-up\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/ltm/pool/:poolName/members/:memberName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ltm",
+                                    "pool",
+                                    ":poolName",
+                                    "members",
+                                    ":memberName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "poolName"
+                                    },
+                                    {
+                                      "key": "memberName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"kind\": \"<string>\",\n  \"name\": \"<string>\",\n  \"fullPath\": \"<string>\",\n  \"generation\": \"<integer>\",\n  \"selfLink\": \"<uri>\",\n  \"address\": \"<string>\",\n  \"connectionLimit\": 0,\n  \"description\": \"<string>\",\n  \"dynamicRatio\": 1,\n  \"ephemeral\": \"false\",\n  \"inheritProfile\": \"enabled\",\n  \"logging\": \"disabled\",\n  \"monitor\": \"default\",\n  \"partition\": \"Common\",\n  \"priorityGroup\": 0,\n  \"rateLimit\": \"disabled\",\n  \"ratio\": 1,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\"\n}",
+                              "createdAt": "2026-07-28T01:35:24.000Z",
+                              "updatedAt": "2026-07-28T01:35:24.000Z",
+                              "uid": "35240-52910b29-16b9-4ffa-93dd-fe8b151a4515"
+                            },
+                            {
+                              "id": "9540fc7b-b411-4496-8298-7ae8eb869d5f",
+                              "name": "The request could not be processed due to invalid syntax or missing required parameters.",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"priorityGroup\": \"<integer>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-disabled\",\n  \"state\": \"user-up\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/ltm/pool/:poolName/members/:memberName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ltm",
+                                    "pool",
+                                    ":poolName",
+                                    "members",
+                                    ":memberName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "poolName"
+                                    },
+                                    {
+                                      "key": "memberName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T01:35:24.000Z",
+                              "updatedAt": "2026-07-28T01:35:24.000Z",
+                              "uid": "35240-9540fc7b-b411-4496-8298-7ae8eb869d5f"
+                            },
+                            {
+                              "id": "80e94ed2-7950-4790-bbce-81071d9401b4",
+                              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"priorityGroup\": \"<integer>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-disabled\",\n  \"state\": \"user-up\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/ltm/pool/:poolName/members/:memberName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ltm",
+                                    "pool",
+                                    ":poolName",
+                                    "members",
+                                    ":memberName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "poolName"
+                                    },
+                                    {
+                                      "key": "memberName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T01:35:24.000Z",
+                              "updatedAt": "2026-07-28T01:35:24.000Z",
+                              "uid": "35240-80e94ed2-7950-4790-bbce-81071d9401b4"
+                            },
+                            {
+                              "id": "dcc128cd-d2ce-4904-9eb1-7cb892f813cb",
+                              "name": "The requested resource was not found on the BIG-IP system.",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"priorityGroup\": \"<integer>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-disabled\",\n  \"state\": \"user-up\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/ltm/pool/:poolName/members/:memberName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ltm",
+                                    "pool",
+                                    ":poolName",
+                                    "members",
+                                    ":memberName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "poolName"
+                                    },
+                                    {
+                                      "key": "memberName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T01:35:24.000Z",
+                              "updatedAt": "2026-07-28T01:35:24.000Z",
+                              "uid": "35240-dcc128cd-d2ce-4904-9eb1-7cb892f813cb"
+                            },
+                            {
+                              "id": "6cd5ce76-ebe8-47ec-bf5d-451d74ba18bf",
+                              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"priorityGroup\": \"<integer>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-disabled\",\n  \"state\": \"user-up\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/ltm/pool/:poolName/members/:memberName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ltm",
+                                    "pool",
+                                    ":poolName",
+                                    "members",
+                                    ":memberName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "poolName"
+                                    },
+                                    {
+                                      "key": "memberName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T01:35:24.000Z",
+                              "updatedAt": "2026-07-28T01:35:24.000Z",
+                              "uid": "35240-6cd5ce76-ebe8-47ec-bf5d-451d74ba18bf"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:35:24.000Z",
+                          "updatedAt": "2026-07-28T01:35:24.000Z",
+                          "uid": "35240-589af355-932e-4baf-ac64-7390917a04bc"
+                        },
+                        {
+                          "name": "Delete a Pool Member",
+                          "id": "28d81dcd-3fd6-46aa-9ebe-c2c14c7b2a04",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/pool/:poolName/members/:memberName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "pool",
+                                ":poolName",
+                                "members",
+                                ":memberName"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "7f7685a2-158b-4946-b0b9-9b05587d93ef",
+                                  "key": "poolName",
+                                  "value": "<string>",
+                                  "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                                },
+                                {
+                                  "id": "5fb56ae3-c27d-47d4-9a1b-da8b4e3c40e5",
+                                  "key": "memberName",
+                                  "value": "<string>",
+                                  "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                                }
+                              ]
+                            },
+                            "description": "Removes a member from the specified pool."
+                          },
+                          "response": [
+                            {
+                              "id": "acd7289c-9fd2-4698-a912-20b82d9f689c",
+                              "name": "Pool member deleted successfully.",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/ltm/pool/:poolName/members/:memberName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ltm",
+                                    "pool",
+                                    ":poolName",
+                                    "members",
+                                    ":memberName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "poolName"
+                                    },
+                                    {
+                                      "key": "memberName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:35:24.000Z",
+                              "updatedAt": "2026-07-28T01:35:24.000Z",
+                              "uid": "35240-acd7289c-9fd2-4698-a912-20b82d9f689c"
+                            },
+                            {
+                              "id": "44d85e38-9797-41ff-8ca4-aa9ad472b60c",
+                              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/ltm/pool/:poolName/members/:memberName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ltm",
+                                    "pool",
+                                    ":poolName",
+                                    "members",
+                                    ":memberName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "poolName"
+                                    },
+                                    {
+                                      "key": "memberName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T01:35:24.000Z",
+                              "updatedAt": "2026-07-28T01:35:24.000Z",
+                              "uid": "35240-44d85e38-9797-41ff-8ca4-aa9ad472b60c"
+                            },
+                            {
+                              "id": "32ef7cb9-ff8c-427d-b04b-e94d788d6738",
+                              "name": "The requested resource was not found on the BIG-IP system.",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/ltm/pool/:poolName/members/:memberName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ltm",
+                                    "pool",
+                                    ":poolName",
+                                    "members",
+                                    ":memberName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "poolName"
+                                    },
+                                    {
+                                      "key": "memberName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T01:35:24.000Z",
+                              "updatedAt": "2026-07-28T01:35:24.000Z",
+                              "uid": "35240-32ef7cb9-ff8c-427d-b04b-e94d788d6738"
+                            },
+                            {
+                              "id": "80a49032-fe24-4946-9d7b-1167b93cb174",
+                              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/ltm/pool/:poolName/members/:memberName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ltm",
+                                    "pool",
+                                    ":poolName",
+                                    "members",
+                                    ":memberName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "poolName"
+                                    },
+                                    {
+                                      "key": "memberName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T01:35:24.000Z",
+                              "updatedAt": "2026-07-28T01:35:24.000Z",
+                              "uid": "35240-80a49032-fe24-4946-9d7b-1167b93cb174"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:35:24.000Z",
+                          "updatedAt": "2026-07-28T01:35:24.000Z",
+                          "uid": "35240-28d81dcd-3fd6-46aa-9ebe-c2c14c7b2a04"
+                        }
+                      ],
+                      "id": "f0c675f2-5a7a-4731-b606-5293683e7730",
+                      "createdAt": "2026-07-28T01:35:24.000Z",
+                      "updatedAt": "2026-07-28T01:35:24.000Z",
+                      "uid": "35240-f0c675f2-5a7a-4731-b606-5293683e7730"
+                    },
+                    {
+                      "name": "List Pool Members",
+                      "id": "86839c22-926c-4cc7-94a0-1c3f32bf30f2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/pool/:poolName/members?$select=<string>&$filter=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "pool",
+                            ":poolName",
+                            "members"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of property names to include in the response.",
+                              "key": "$select",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "OData filter expression to restrict returned resources.",
+                              "key": "$filter",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "df8b0e26-7c60-4518-8548-a9731088caee",
+                              "key": "poolName",
+                              "value": "<string>",
+                              "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                            }
+                          ]
+                        },
+                        "description": "Returns a collection of all members within the specified pool."
+                      },
+                      "response": [
+                        {
+                          "id": "efbb80fb-f593-4fe8-85be-cdf063381af1",
+                          "name": "Successful retrieval of pool member collection.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/pool/:poolName/members?$select=<string>&$filter=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "pool",
+                                ":poolName",
+                                "members"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Comma-separated list of property names to include in the response.",
+                                  "key": "$select",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "OData filter expression to restrict returned resources.",
+                                  "key": "$filter",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "poolName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"kind\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"items\": [\n    {\n      \"kind\": \"<string>\",\n      \"name\": \"<string>\",\n      \"fullPath\": \"<string>\",\n      \"generation\": \"<integer>\",\n      \"selfLink\": \"<uri>\",\n      \"address\": \"<string>\",\n      \"connectionLimit\": 0,\n      \"description\": \"<string>\",\n      \"dynamicRatio\": 1,\n      \"ephemeral\": \"false\",\n      \"inheritProfile\": \"enabled\",\n      \"logging\": \"disabled\",\n      \"monitor\": \"default\",\n      \"partition\": \"Common\",\n      \"priorityGroup\": 0,\n      \"rateLimit\": \"disabled\",\n      \"ratio\": 1,\n      \"session\": \"user-enabled\",\n      \"state\": \"down\"\n    },\n    {\n      \"kind\": \"<string>\",\n      \"name\": \"<string>\",\n      \"fullPath\": \"<string>\",\n      \"generation\": \"<integer>\",\n      \"selfLink\": \"<uri>\",\n      \"address\": \"<string>\",\n      \"connectionLimit\": 0,\n      \"description\": \"<string>\",\n      \"dynamicRatio\": 1,\n      \"ephemeral\": \"false\",\n      \"inheritProfile\": \"enabled\",\n      \"logging\": \"disabled\",\n      \"monitor\": \"default\",\n      \"partition\": \"Common\",\n      \"priorityGroup\": 0,\n      \"rateLimit\": \"disabled\",\n      \"ratio\": 1,\n      \"session\": \"user-enabled\",\n      \"state\": \"unchecked\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:35:24.000Z",
+                          "updatedAt": "2026-07-28T01:35:24.000Z",
+                          "uid": "35240-efbb80fb-f593-4fe8-85be-cdf063381af1"
+                        },
+                        {
+                          "id": "7af28f5e-9d93-4c8a-8ea0-38372d7d52c5",
+                          "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/pool/:poolName/members?$select=<string>&$filter=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "pool",
+                                ":poolName",
+                                "members"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Comma-separated list of property names to include in the response.",
+                                  "key": "$select",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "OData filter expression to restrict returned resources.",
+                                  "key": "$filter",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "poolName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T01:35:24.000Z",
+                          "updatedAt": "2026-07-28T01:35:24.000Z",
+                          "uid": "35240-7af28f5e-9d93-4c8a-8ea0-38372d7d52c5"
+                        },
+                        {
+                          "id": "46547a8a-6f43-450c-95d9-ba5dbf1d99bd",
+                          "name": "The requested resource was not found on the BIG-IP system.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/pool/:poolName/members?$select=<string>&$filter=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "pool",
+                                ":poolName",
+                                "members"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Comma-separated list of property names to include in the response.",
+                                  "key": "$select",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "OData filter expression to restrict returned resources.",
+                                  "key": "$filter",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "poolName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T01:35:24.000Z",
+                          "updatedAt": "2026-07-28T01:35:24.000Z",
+                          "uid": "35240-46547a8a-6f43-450c-95d9-ba5dbf1d99bd"
+                        },
+                        {
+                          "id": "4d3f3f68-880b-4479-8e0f-8d64ed647eb5",
+                          "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/pool/:poolName/members?$select=<string>&$filter=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "pool",
+                                ":poolName",
+                                "members"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Comma-separated list of property names to include in the response.",
+                                  "key": "$select",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "OData filter expression to restrict returned resources.",
+                                  "key": "$filter",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "poolName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T01:35:24.000Z",
+                          "updatedAt": "2026-07-28T01:35:24.000Z",
+                          "uid": "35240-4d3f3f68-880b-4479-8e0f-8d64ed647eb5"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:35:24.000Z",
+                      "updatedAt": "2026-07-28T01:35:24.000Z",
+                      "uid": "35240-86839c22-926c-4cc7-94a0-1c3f32bf30f2"
+                    },
+                    {
+                      "name": "Add a Pool Member",
+                      "id": "18a87470-b24d-4d2e-90ae-956a1da8031f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"priorityGroup\": \"<integer>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/pool/:poolName/members",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "pool",
+                            ":poolName",
+                            "members"
+                          ],
+                          "variable": [
+                            {
+                              "id": "1459b3df-d8e2-4671-bfd6-50bd59f86e12",
+                              "key": "poolName",
+                              "value": "<string>",
+                              "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                            }
+                          ]
+                        },
+                        "description": "Adds a new member to the specified pool. The member name must be in the format address:port (e.g., 10.0.0.1:80)."
+                      },
+                      "response": [
+                        {
+                          "id": "4ac8abb8-3ab1-4705-82e4-9083f31b963a",
+                          "name": "Pool member added successfully.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"priorityGroup\": \"<integer>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/pool/:poolName/members",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "pool",
+                                ":poolName",
+                                "members"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "poolName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"kind\": \"<string>\",\n  \"name\": \"<string>\",\n  \"fullPath\": \"<string>\",\n  \"generation\": \"<integer>\",\n  \"selfLink\": \"<uri>\",\n  \"address\": \"<string>\",\n  \"connectionLimit\": 0,\n  \"description\": \"<string>\",\n  \"dynamicRatio\": 1,\n  \"ephemeral\": \"false\",\n  \"inheritProfile\": \"enabled\",\n  \"logging\": \"disabled\",\n  \"monitor\": \"default\",\n  \"partition\": \"Common\",\n  \"priorityGroup\": 0,\n  \"rateLimit\": \"disabled\",\n  \"ratio\": 1,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\"\n}",
+                          "createdAt": "2026-07-28T01:35:24.000Z",
+                          "updatedAt": "2026-07-28T01:35:24.000Z",
+                          "uid": "35240-4ac8abb8-3ab1-4705-82e4-9083f31b963a"
+                        },
+                        {
+                          "id": "2fb35f6d-13be-410d-a999-774f156e5c6b",
+                          "name": "The request could not be processed due to invalid syntax or missing required parameters.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"priorityGroup\": \"<integer>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/pool/:poolName/members",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "pool",
+                                ":poolName",
+                                "members"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "poolName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T01:35:24.000Z",
+                          "updatedAt": "2026-07-28T01:35:24.000Z",
+                          "uid": "35240-2fb35f6d-13be-410d-a999-774f156e5c6b"
+                        },
+                        {
+                          "id": "e2233945-10e0-4c3a-8762-b22c136988f9",
+                          "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"priorityGroup\": \"<integer>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/pool/:poolName/members",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "pool",
+                                ":poolName",
+                                "members"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "poolName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T01:35:24.000Z",
+                          "updatedAt": "2026-07-28T01:35:24.000Z",
+                          "uid": "35240-e2233945-10e0-4c3a-8762-b22c136988f9"
+                        },
+                        {
+                          "id": "8e084412-8065-4524-9da5-42d56fd86583",
+                          "name": "The requested resource was not found on the BIG-IP system.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"priorityGroup\": \"<integer>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/pool/:poolName/members",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "pool",
+                                ":poolName",
+                                "members"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "poolName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T01:35:24.000Z",
+                          "updatedAt": "2026-07-28T01:35:24.000Z",
+                          "uid": "35240-8e084412-8065-4524-9da5-42d56fd86583"
+                        },
+                        {
+                          "id": "3a1dc08a-b6bc-466d-8c07-b9dc6b2de57f",
+                          "name": "The resource already exists or conflicts with an existing configuration.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"priorityGroup\": \"<integer>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/pool/:poolName/members",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "pool",
+                                ":poolName",
+                                "members"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "poolName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T01:35:24.000Z",
+                          "updatedAt": "2026-07-28T01:35:24.000Z",
+                          "uid": "35240-3a1dc08a-b6bc-466d-8c07-b9dc6b2de57f"
+                        },
+                        {
+                          "id": "8bef06c9-bf6a-4bb6-ad0d-f5f232acd3a0",
+                          "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"priorityGroup\": \"<integer>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/pool/:poolName/members",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "pool",
+                                ":poolName",
+                                "members"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "poolName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T01:35:24.000Z",
+                          "updatedAt": "2026-07-28T01:35:24.000Z",
+                          "uid": "35240-8bef06c9-bf6a-4bb6-ad0d-f5f232acd3a0"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:35:24.000Z",
+                      "updatedAt": "2026-07-28T01:35:24.000Z",
+                      "uid": "35240-18a87470-b24d-4d2e-90ae-956a1da8031f"
+                    }
+                  ],
+                  "id": "3821e998-b1b2-453e-8dd8-09f1a983e18f",
+                  "createdAt": "2026-07-28T01:35:24.000Z",
+                  "updatedAt": "2026-07-28T01:35:24.000Z",
+                  "uid": "35240-3821e998-b1b2-453e-8dd8-09f1a983e18f"
+                }
+              ],
+              "id": "27cdea59-e551-4b20-a256-458cb009daea",
+              "createdAt": "2026-07-28T01:35:24.000Z",
+              "updatedAt": "2026-07-28T01:35:24.000Z",
+              "uid": "35240-27cdea59-e551-4b20-a256-458cb009daea"
+            }
+          ],
+          "id": "ccea4950-80ba-433f-9436-fb8cf53fd049",
+          "createdAt": "2026-07-28T01:35:24.000Z",
+          "updatedAt": "2026-07-28T01:35:24.000Z",
+          "uid": "35240-ccea4950-80ba-433f-9436-fb8cf53fd049"
+        }
+      ],
+      "id": "cb9bb512-14f3-46a1-b169-11c7017f7d2d",
+      "createdAt": "2026-07-28T01:35:24.000Z",
+      "updatedAt": "2026-07-28T01:35:24.000Z",
+      "uid": "35240-cb9bb512-14f3-46a1-b169-11c7017f7d2d"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "bigip_host",
+      "value": "192.168.1.245"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{bigip_host}}/mgmt/tm"
+    }
+  ]
+}

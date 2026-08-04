@@ -1,0 +1,1906 @@
+{
+  "info": {
+    "_postman_id": "2982c3c8-624e-4f2b-91c9-c51d720a0bd0",
+    "name": "F5 BIG-IP iControl REST Nodes Pools API",
+    "description": "The iControl REST API provides programmatic access to manage and configure F5 BIG-IP devices. It enables automation of Local Traffic Manager (LTM) resources including virtual servers, pools, nodes, pool members, and profiles for application delivery, load balancing, and network management.\n\nContact Support:\n Name: F5 Support\n Email: support@f5.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:35:26.000Z",
+    "updatedAt": "2026-07-28T01:35:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2982c3c8-624e-4f2b-91c9-c51d720a0bd0"
+  },
+  "item": [
+    {
+      "name": "ltm",
+      "item": [
+        {
+          "name": "pool",
+          "item": [
+            {
+              "name": "{poolName}",
+              "item": [
+                {
+                  "name": "Get a Pool",
+                  "id": "b62eccf8-0cdb-4101-a68a-745fbb1f50d4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/pool/:poolName?expandSubcollections=true",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "pool",
+                        ":poolName"
+                      ],
+                      "query": [
+                        {
+                          "description": "When set to true, expands all subcollections inline within the response.",
+                          "key": "expandSubcollections",
+                          "value": "true"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "65b9e49f-afeb-42ab-8573-cca85546c2b3",
+                          "key": "poolName",
+                          "value": "<string>",
+                          "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                        }
+                      ]
+                    },
+                    "description": "Returns a single pool resource identified by name."
+                  },
+                  "response": [
+                    {
+                      "id": "edef9b27-84ad-47d0-b785-b70b5999bab8",
+                      "name": "Successful retrieval of the pool.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/pool/:poolName?expandSubcollections=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "pool",
+                            ":poolName"
+                          ],
+                          "query": [
+                            {
+                              "description": "When set to true, expands all subcollections inline within the response.",
+                              "key": "expandSubcollections",
+                              "value": "true"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "poolName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"name\": \"<string>\",\n  \"fullPath\": \"<string>\",\n  \"generation\": \"<integer>\",\n  \"selfLink\": \"<uri>\",\n  \"allowNat\": \"yes\",\n  \"allowSnat\": \"yes\",\n  \"description\": \"<string>\",\n  \"ignorePersistedWeight\": \"disabled\",\n  \"ipTosToClient\": \"pass-through\",\n  \"ipTosToServer\": \"pass-through\",\n  \"linkQosToClient\": \"pass-through\",\n  \"linkQosToServer\": \"pass-through\",\n  \"loadBalancingMode\": \"round-robin\",\n  \"minActiveMembers\": 0,\n  \"minUpMembers\": 0,\n  \"minUpMembersAction\": \"failover\",\n  \"minUpMembersChecking\": \"disabled\",\n  \"monitor\": \"<string>\",\n  \"partition\": \"Common\",\n  \"queueDepthLimit\": 0,\n  \"queueOnConnectionLimit\": \"disabled\",\n  \"queueTimeLimit\": 0,\n  \"reselectTries\": 0,\n  \"serviceDownAction\": \"none\",\n  \"slowRampTime\": 10,\n  \"membersReference\": {\n    \"link\": \"<uri>\",\n    \"isSubcollection\": \"<boolean>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:35:27.000Z",
+                      "updatedAt": "2026-07-28T01:35:27.000Z",
+                      "uid": "35240-edef9b27-84ad-47d0-b785-b70b5999bab8"
+                    },
+                    {
+                      "id": "85d98e9e-f853-4d93-918f-897a0f22d982",
+                      "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/pool/:poolName?expandSubcollections=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "pool",
+                            ":poolName"
+                          ],
+                          "query": [
+                            {
+                              "description": "When set to true, expands all subcollections inline within the response.",
+                              "key": "expandSubcollections",
+                              "value": "true"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "poolName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:27.000Z",
+                      "updatedAt": "2026-07-28T01:35:27.000Z",
+                      "uid": "35240-85d98e9e-f853-4d93-918f-897a0f22d982"
+                    },
+                    {
+                      "id": "d3ed09af-133d-4f9a-a912-4422f4946d4f",
+                      "name": "The requested resource was not found on the BIG-IP system.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/pool/:poolName?expandSubcollections=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "pool",
+                            ":poolName"
+                          ],
+                          "query": [
+                            {
+                              "description": "When set to true, expands all subcollections inline within the response.",
+                              "key": "expandSubcollections",
+                              "value": "true"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "poolName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:27.000Z",
+                      "updatedAt": "2026-07-28T01:35:27.000Z",
+                      "uid": "35240-d3ed09af-133d-4f9a-a912-4422f4946d4f"
+                    },
+                    {
+                      "id": "34e5a02d-dd43-43f4-a4ab-56cfd7b57701",
+                      "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/pool/:poolName?expandSubcollections=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "pool",
+                            ":poolName"
+                          ],
+                          "query": [
+                            {
+                              "description": "When set to true, expands all subcollections inline within the response.",
+                              "key": "expandSubcollections",
+                              "value": "true"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "poolName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:27.000Z",
+                      "updatedAt": "2026-07-28T01:35:27.000Z",
+                      "uid": "35240-34e5a02d-dd43-43f4-a4ab-56cfd7b57701"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:35:26.000Z",
+                  "updatedAt": "2026-07-28T01:35:26.000Z",
+                  "uid": "35240-b62eccf8-0cdb-4101-a68a-745fbb1f50d4"
+                },
+                {
+                  "name": "Update a Pool",
+                  "id": "60887a66-64fb-4744-9ae4-f74c84c7959a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"loadBalancingMode\": \"dynamic-ratio-node\",\n  \"monitor\": \"<string>\",\n  \"serviceDownAction\": \"drop\",\n  \"slowRampTime\": \"<integer>\",\n  \"minActiveMembers\": \"<integer>\",\n  \"allowNat\": \"no\",\n  \"allowSnat\": \"no\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/pool/:poolName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "pool",
+                        ":poolName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "fc1e05b3-afd7-4d63-a245-a4a65139b3c9",
+                          "key": "poolName",
+                          "value": "<string>",
+                          "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                        }
+                      ]
+                    },
+                    "description": "Replaces the entire pool resource configuration."
+                  },
+                  "response": [
+                    {
+                      "id": "6b4913f8-f597-4987-8150-228778d3feb8",
+                      "name": "Pool updated successfully.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"loadBalancingMode\": \"dynamic-ratio-node\",\n  \"monitor\": \"<string>\",\n  \"serviceDownAction\": \"drop\",\n  \"slowRampTime\": \"<integer>\",\n  \"minActiveMembers\": \"<integer>\",\n  \"allowNat\": \"no\",\n  \"allowSnat\": \"no\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/pool/:poolName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "pool",
+                            ":poolName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "poolName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"name\": \"<string>\",\n  \"fullPath\": \"<string>\",\n  \"generation\": \"<integer>\",\n  \"selfLink\": \"<uri>\",\n  \"allowNat\": \"yes\",\n  \"allowSnat\": \"yes\",\n  \"description\": \"<string>\",\n  \"ignorePersistedWeight\": \"disabled\",\n  \"ipTosToClient\": \"pass-through\",\n  \"ipTosToServer\": \"pass-through\",\n  \"linkQosToClient\": \"pass-through\",\n  \"linkQosToServer\": \"pass-through\",\n  \"loadBalancingMode\": \"round-robin\",\n  \"minActiveMembers\": 0,\n  \"minUpMembers\": 0,\n  \"minUpMembersAction\": \"failover\",\n  \"minUpMembersChecking\": \"disabled\",\n  \"monitor\": \"<string>\",\n  \"partition\": \"Common\",\n  \"queueDepthLimit\": 0,\n  \"queueOnConnectionLimit\": \"disabled\",\n  \"queueTimeLimit\": 0,\n  \"reselectTries\": 0,\n  \"serviceDownAction\": \"none\",\n  \"slowRampTime\": 10,\n  \"membersReference\": {\n    \"link\": \"<uri>\",\n    \"isSubcollection\": \"<boolean>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:35:27.000Z",
+                      "updatedAt": "2026-07-28T01:35:27.000Z",
+                      "uid": "35240-6b4913f8-f597-4987-8150-228778d3feb8"
+                    },
+                    {
+                      "id": "e470885f-5d51-40eb-a126-2687021430d6",
+                      "name": "The request could not be processed due to invalid syntax or missing required parameters.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"loadBalancingMode\": \"dynamic-ratio-node\",\n  \"monitor\": \"<string>\",\n  \"serviceDownAction\": \"drop\",\n  \"slowRampTime\": \"<integer>\",\n  \"minActiveMembers\": \"<integer>\",\n  \"allowNat\": \"no\",\n  \"allowSnat\": \"no\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/pool/:poolName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "pool",
+                            ":poolName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "poolName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:27.000Z",
+                      "updatedAt": "2026-07-28T01:35:27.000Z",
+                      "uid": "35240-e470885f-5d51-40eb-a126-2687021430d6"
+                    },
+                    {
+                      "id": "0666890a-e2e6-4e47-a24e-8bc8fb6e3dde",
+                      "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"loadBalancingMode\": \"dynamic-ratio-node\",\n  \"monitor\": \"<string>\",\n  \"serviceDownAction\": \"drop\",\n  \"slowRampTime\": \"<integer>\",\n  \"minActiveMembers\": \"<integer>\",\n  \"allowNat\": \"no\",\n  \"allowSnat\": \"no\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/pool/:poolName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "pool",
+                            ":poolName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "poolName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:27.000Z",
+                      "updatedAt": "2026-07-28T01:35:27.000Z",
+                      "uid": "35240-0666890a-e2e6-4e47-a24e-8bc8fb6e3dde"
+                    },
+                    {
+                      "id": "8abc8cec-2741-4f3c-bcc3-381b4ecb6670",
+                      "name": "The requested resource was not found on the BIG-IP system.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"loadBalancingMode\": \"dynamic-ratio-node\",\n  \"monitor\": \"<string>\",\n  \"serviceDownAction\": \"drop\",\n  \"slowRampTime\": \"<integer>\",\n  \"minActiveMembers\": \"<integer>\",\n  \"allowNat\": \"no\",\n  \"allowSnat\": \"no\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/pool/:poolName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "pool",
+                            ":poolName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "poolName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:27.000Z",
+                      "updatedAt": "2026-07-28T01:35:27.000Z",
+                      "uid": "35240-8abc8cec-2741-4f3c-bcc3-381b4ecb6670"
+                    },
+                    {
+                      "id": "4ea39620-518c-442f-b4a6-3a92e6aafe5f",
+                      "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"loadBalancingMode\": \"dynamic-ratio-node\",\n  \"monitor\": \"<string>\",\n  \"serviceDownAction\": \"drop\",\n  \"slowRampTime\": \"<integer>\",\n  \"minActiveMembers\": \"<integer>\",\n  \"allowNat\": \"no\",\n  \"allowSnat\": \"no\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/pool/:poolName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "pool",
+                            ":poolName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "poolName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:27.000Z",
+                      "updatedAt": "2026-07-28T01:35:27.000Z",
+                      "uid": "35240-4ea39620-518c-442f-b4a6-3a92e6aafe5f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:35:26.000Z",
+                  "updatedAt": "2026-07-28T01:35:26.000Z",
+                  "uid": "35240-60887a66-64fb-4744-9ae4-f74c84c7959a"
+                },
+                {
+                  "name": "Patch a Pool",
+                  "id": "917bc333-5831-4f53-80be-9487a24b9679",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"loadBalancingMode\": \"dynamic-ratio-node\",\n  \"monitor\": \"<string>\",\n  \"serviceDownAction\": \"drop\",\n  \"slowRampTime\": \"<integer>\",\n  \"minActiveMembers\": \"<integer>\",\n  \"allowNat\": \"no\",\n  \"allowSnat\": \"no\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/pool/:poolName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "pool",
+                        ":poolName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f8eacf62-4a5b-4b9c-9e70-0d373d367aa7",
+                          "key": "poolName",
+                          "value": "<string>",
+                          "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                        }
+                      ]
+                    },
+                    "description": "Partially updates a pool resource configuration."
+                  },
+                  "response": [
+                    {
+                      "id": "f6fe94bc-a293-4f0e-82b6-1763f37f9864",
+                      "name": "Pool patched successfully.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"loadBalancingMode\": \"dynamic-ratio-node\",\n  \"monitor\": \"<string>\",\n  \"serviceDownAction\": \"drop\",\n  \"slowRampTime\": \"<integer>\",\n  \"minActiveMembers\": \"<integer>\",\n  \"allowNat\": \"no\",\n  \"allowSnat\": \"no\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/pool/:poolName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "pool",
+                            ":poolName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "poolName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"name\": \"<string>\",\n  \"fullPath\": \"<string>\",\n  \"generation\": \"<integer>\",\n  \"selfLink\": \"<uri>\",\n  \"allowNat\": \"yes\",\n  \"allowSnat\": \"yes\",\n  \"description\": \"<string>\",\n  \"ignorePersistedWeight\": \"disabled\",\n  \"ipTosToClient\": \"pass-through\",\n  \"ipTosToServer\": \"pass-through\",\n  \"linkQosToClient\": \"pass-through\",\n  \"linkQosToServer\": \"pass-through\",\n  \"loadBalancingMode\": \"round-robin\",\n  \"minActiveMembers\": 0,\n  \"minUpMembers\": 0,\n  \"minUpMembersAction\": \"failover\",\n  \"minUpMembersChecking\": \"disabled\",\n  \"monitor\": \"<string>\",\n  \"partition\": \"Common\",\n  \"queueDepthLimit\": 0,\n  \"queueOnConnectionLimit\": \"disabled\",\n  \"queueTimeLimit\": 0,\n  \"reselectTries\": 0,\n  \"serviceDownAction\": \"none\",\n  \"slowRampTime\": 10,\n  \"membersReference\": {\n    \"link\": \"<uri>\",\n    \"isSubcollection\": \"<boolean>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:35:27.000Z",
+                      "updatedAt": "2026-07-28T01:35:27.000Z",
+                      "uid": "35240-f6fe94bc-a293-4f0e-82b6-1763f37f9864"
+                    },
+                    {
+                      "id": "f59a01c1-ef8e-4cfe-a7f3-c001fad0614f",
+                      "name": "The request could not be processed due to invalid syntax or missing required parameters.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"loadBalancingMode\": \"dynamic-ratio-node\",\n  \"monitor\": \"<string>\",\n  \"serviceDownAction\": \"drop\",\n  \"slowRampTime\": \"<integer>\",\n  \"minActiveMembers\": \"<integer>\",\n  \"allowNat\": \"no\",\n  \"allowSnat\": \"no\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/pool/:poolName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "pool",
+                            ":poolName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "poolName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:27.000Z",
+                      "updatedAt": "2026-07-28T01:35:27.000Z",
+                      "uid": "35240-f59a01c1-ef8e-4cfe-a7f3-c001fad0614f"
+                    },
+                    {
+                      "id": "2bb9672d-405e-4adf-b2ed-f9bb4d626d73",
+                      "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"loadBalancingMode\": \"dynamic-ratio-node\",\n  \"monitor\": \"<string>\",\n  \"serviceDownAction\": \"drop\",\n  \"slowRampTime\": \"<integer>\",\n  \"minActiveMembers\": \"<integer>\",\n  \"allowNat\": \"no\",\n  \"allowSnat\": \"no\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/pool/:poolName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "pool",
+                            ":poolName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "poolName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:27.000Z",
+                      "updatedAt": "2026-07-28T01:35:27.000Z",
+                      "uid": "35240-2bb9672d-405e-4adf-b2ed-f9bb4d626d73"
+                    },
+                    {
+                      "id": "3ae4e5dc-03c8-41b4-9d74-670bbd0a10d6",
+                      "name": "The requested resource was not found on the BIG-IP system.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"loadBalancingMode\": \"dynamic-ratio-node\",\n  \"monitor\": \"<string>\",\n  \"serviceDownAction\": \"drop\",\n  \"slowRampTime\": \"<integer>\",\n  \"minActiveMembers\": \"<integer>\",\n  \"allowNat\": \"no\",\n  \"allowSnat\": \"no\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/pool/:poolName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "pool",
+                            ":poolName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "poolName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:27.000Z",
+                      "updatedAt": "2026-07-28T01:35:27.000Z",
+                      "uid": "35240-3ae4e5dc-03c8-41b4-9d74-670bbd0a10d6"
+                    },
+                    {
+                      "id": "978337fa-ecad-45f1-825e-537a86fa405b",
+                      "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"loadBalancingMode\": \"dynamic-ratio-node\",\n  \"monitor\": \"<string>\",\n  \"serviceDownAction\": \"drop\",\n  \"slowRampTime\": \"<integer>\",\n  \"minActiveMembers\": \"<integer>\",\n  \"allowNat\": \"no\",\n  \"allowSnat\": \"no\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/pool/:poolName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "pool",
+                            ":poolName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "poolName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:27.000Z",
+                      "updatedAt": "2026-07-28T01:35:27.000Z",
+                      "uid": "35240-978337fa-ecad-45f1-825e-537a86fa405b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:35:26.000Z",
+                  "updatedAt": "2026-07-28T01:35:26.000Z",
+                  "uid": "35240-917bc333-5831-4f53-80be-9487a24b9679"
+                },
+                {
+                  "name": "Delete a Pool",
+                  "id": "b2845674-19cc-47a0-ac5a-fc7f7b95a336",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/pool/:poolName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "pool",
+                        ":poolName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7f2892ba-f1fb-4f03-bba1-9f58a9d4bcc1",
+                          "key": "poolName",
+                          "value": "<string>",
+                          "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                        }
+                      ]
+                    },
+                    "description": "Removes a pool resource from the BIG-IP system. The pool must not be referenced by any virtual server."
+                  },
+                  "response": [
+                    {
+                      "id": "4d766584-5bcf-4f1e-a6a7-b2efc3cd036b",
+                      "name": "Pool deleted successfully.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/pool/:poolName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "pool",
+                            ":poolName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "poolName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:35:27.000Z",
+                      "updatedAt": "2026-07-28T01:35:27.000Z",
+                      "uid": "35240-4d766584-5bcf-4f1e-a6a7-b2efc3cd036b"
+                    },
+                    {
+                      "id": "844136b0-c558-4b32-89e1-ec7b8f68c300",
+                      "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/pool/:poolName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "pool",
+                            ":poolName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "poolName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:27.000Z",
+                      "updatedAt": "2026-07-28T01:35:27.000Z",
+                      "uid": "35240-844136b0-c558-4b32-89e1-ec7b8f68c300"
+                    },
+                    {
+                      "id": "3c94b67e-ce4d-4a3d-945a-28e9ce04a747",
+                      "name": "The requested resource was not found on the BIG-IP system.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/pool/:poolName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "pool",
+                            ":poolName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "poolName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:27.000Z",
+                      "updatedAt": "2026-07-28T01:35:27.000Z",
+                      "uid": "35240-3c94b67e-ce4d-4a3d-945a-28e9ce04a747"
+                    },
+                    {
+                      "id": "c816cdf1-e0cb-44b5-8881-cb6982912b3f",
+                      "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/pool/:poolName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "pool",
+                            ":poolName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "poolName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:27.000Z",
+                      "updatedAt": "2026-07-28T01:35:27.000Z",
+                      "uid": "35240-c816cdf1-e0cb-44b5-8881-cb6982912b3f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:35:26.000Z",
+                  "updatedAt": "2026-07-28T01:35:26.000Z",
+                  "uid": "35240-b2845674-19cc-47a0-ac5a-fc7f7b95a336"
+                }
+              ],
+              "id": "b9af1483-cc98-449c-8366-bf1e22cb2cd5",
+              "createdAt": "2026-07-28T01:35:26.000Z",
+              "updatedAt": "2026-07-28T01:35:26.000Z",
+              "uid": "35240-b9af1483-cc98-449c-8366-bf1e22cb2cd5"
+            },
+            {
+              "name": "List All Pools",
+              "id": "ef853857-3a7d-4232-9eee-acd33a5b5ed5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ltm/pool?$select=<string>&$filter=<string>&$top=<integer>&$skip=<integer>&expandSubcollections=true",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ltm",
+                    "pool"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of property names to include in the response.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "OData filter expression to restrict returned resources.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of resources to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of resources to skip before returning results.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "When set to true, expands all subcollections inline within the response.",
+                      "key": "expandSubcollections",
+                      "value": "true"
+                    }
+                  ]
+                },
+                "description": "Returns a collection of all pool resources configured on the BIG-IP system."
+              },
+              "response": [
+                {
+                  "id": "98b87ae6-9acd-4609-bb61-44eee55b5bf1",
+                  "name": "Successful retrieval of pool collection.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/pool?$select=<string>&$filter=<string>&$top=<integer>&$skip=<integer>&expandSubcollections=true",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "pool"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of property names to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "OData filter expression to restrict returned resources.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of resources to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of resources to skip before returning results.",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "When set to true, expands all subcollections inline within the response.",
+                          "key": "expandSubcollections",
+                          "value": "true"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"items\": [\n    {\n      \"kind\": \"<string>\",\n      \"name\": \"<string>\",\n      \"fullPath\": \"<string>\",\n      \"generation\": \"<integer>\",\n      \"selfLink\": \"<uri>\",\n      \"allowNat\": \"yes\",\n      \"allowSnat\": \"yes\",\n      \"description\": \"<string>\",\n      \"ignorePersistedWeight\": \"disabled\",\n      \"ipTosToClient\": \"pass-through\",\n      \"ipTosToServer\": \"pass-through\",\n      \"linkQosToClient\": \"pass-through\",\n      \"linkQosToServer\": \"pass-through\",\n      \"loadBalancingMode\": \"round-robin\",\n      \"minActiveMembers\": 0,\n      \"minUpMembers\": 0,\n      \"minUpMembersAction\": \"failover\",\n      \"minUpMembersChecking\": \"disabled\",\n      \"monitor\": \"<string>\",\n      \"partition\": \"Common\",\n      \"queueDepthLimit\": 0,\n      \"queueOnConnectionLimit\": \"disabled\",\n      \"queueTimeLimit\": 0,\n      \"reselectTries\": 0,\n      \"serviceDownAction\": \"none\",\n      \"slowRampTime\": 10,\n      \"membersReference\": {\n        \"link\": \"<uri>\",\n        \"isSubcollection\": \"<boolean>\"\n      }\n    },\n    {\n      \"kind\": \"<string>\",\n      \"name\": \"<string>\",\n      \"fullPath\": \"<string>\",\n      \"generation\": \"<integer>\",\n      \"selfLink\": \"<uri>\",\n      \"allowNat\": \"yes\",\n      \"allowSnat\": \"yes\",\n      \"description\": \"<string>\",\n      \"ignorePersistedWeight\": \"disabled\",\n      \"ipTosToClient\": \"pass-through\",\n      \"ipTosToServer\": \"pass-through\",\n      \"linkQosToClient\": \"pass-through\",\n      \"linkQosToServer\": \"pass-through\",\n      \"loadBalancingMode\": \"round-robin\",\n      \"minActiveMembers\": 0,\n      \"minUpMembers\": 0,\n      \"minUpMembersAction\": \"failover\",\n      \"minUpMembersChecking\": \"disabled\",\n      \"monitor\": \"<string>\",\n      \"partition\": \"Common\",\n      \"queueDepthLimit\": 0,\n      \"queueOnConnectionLimit\": \"disabled\",\n      \"queueTimeLimit\": 0,\n      \"reselectTries\": 0,\n      \"serviceDownAction\": \"none\",\n      \"slowRampTime\": 10,\n      \"membersReference\": {\n        \"link\": \"<uri>\",\n        \"isSubcollection\": \"<boolean>\"\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:35:27.000Z",
+                  "updatedAt": "2026-07-28T01:35:27.000Z",
+                  "uid": "35240-98b87ae6-9acd-4609-bb61-44eee55b5bf1"
+                },
+                {
+                  "id": "7aad04f9-dc8a-4f1a-816d-803b7ddab2a0",
+                  "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/pool?$select=<string>&$filter=<string>&$top=<integer>&$skip=<integer>&expandSubcollections=true",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "pool"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of property names to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "OData filter expression to restrict returned resources.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of resources to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of resources to skip before returning results.",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "When set to true, expands all subcollections inline within the response.",
+                          "key": "expandSubcollections",
+                          "value": "true"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:35:27.000Z",
+                  "updatedAt": "2026-07-28T01:35:27.000Z",
+                  "uid": "35240-7aad04f9-dc8a-4f1a-816d-803b7ddab2a0"
+                },
+                {
+                  "id": "35d8061c-edd0-4d20-bd92-e0a46ad02399",
+                  "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/pool?$select=<string>&$filter=<string>&$top=<integer>&$skip=<integer>&expandSubcollections=true",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "pool"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of property names to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "OData filter expression to restrict returned resources.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of resources to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of resources to skip before returning results.",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "When set to true, expands all subcollections inline within the response.",
+                          "key": "expandSubcollections",
+                          "value": "true"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:35:27.000Z",
+                  "updatedAt": "2026-07-28T01:35:27.000Z",
+                  "uid": "35240-35d8061c-edd0-4d20-bd92-e0a46ad02399"
+                }
+              ],
+              "createdAt": "2026-07-28T01:35:26.000Z",
+              "updatedAt": "2026-07-28T01:35:26.000Z",
+              "uid": "35240-ef853857-3a7d-4232-9eee-acd33a5b5ed5"
+            },
+            {
+              "name": "Create a Pool",
+              "id": "237fe73c-47a3-4a53-b591-f34a7c31acd7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"partition\": \"Common\",\n  \"description\": \"<string>\",\n  \"loadBalancingMode\": \"round-robin\",\n  \"monitor\": \"<string>\",\n  \"members\": [\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"description\": \"<string>\",\n      \"ratio\": \"<integer>\",\n      \"priorityGroup\": \"<integer>\",\n      \"connectionLimit\": \"<integer>\",\n      \"monitor\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"description\": \"<string>\",\n      \"ratio\": \"<integer>\",\n      \"priorityGroup\": \"<integer>\",\n      \"connectionLimit\": \"<integer>\",\n      \"monitor\": \"<string>\"\n    }\n  ],\n  \"serviceDownAction\": \"drop\",\n  \"slowRampTime\": \"<integer>\",\n  \"allowNat\": \"yes\",\n  \"allowSnat\": \"no\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ltm/pool",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ltm",
+                    "pool"
+                  ]
+                },
+                "description": "Creates a new pool resource on the BIG-IP system. The pool name is required; members and monitors can be specified during creation."
+              },
+              "response": [
+                {
+                  "id": "7bbd33b2-e789-4c3a-a448-9129c3f5d104",
+                  "name": "Pool created successfully.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"partition\": \"Common\",\n  \"description\": \"<string>\",\n  \"loadBalancingMode\": \"round-robin\",\n  \"monitor\": \"<string>\",\n  \"members\": [\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"description\": \"<string>\",\n      \"ratio\": \"<integer>\",\n      \"priorityGroup\": \"<integer>\",\n      \"connectionLimit\": \"<integer>\",\n      \"monitor\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"description\": \"<string>\",\n      \"ratio\": \"<integer>\",\n      \"priorityGroup\": \"<integer>\",\n      \"connectionLimit\": \"<integer>\",\n      \"monitor\": \"<string>\"\n    }\n  ],\n  \"serviceDownAction\": \"drop\",\n  \"slowRampTime\": \"<integer>\",\n  \"allowNat\": \"yes\",\n  \"allowSnat\": \"no\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/pool",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "pool"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"name\": \"<string>\",\n  \"fullPath\": \"<string>\",\n  \"generation\": \"<integer>\",\n  \"selfLink\": \"<uri>\",\n  \"allowNat\": \"yes\",\n  \"allowSnat\": \"yes\",\n  \"description\": \"<string>\",\n  \"ignorePersistedWeight\": \"disabled\",\n  \"ipTosToClient\": \"pass-through\",\n  \"ipTosToServer\": \"pass-through\",\n  \"linkQosToClient\": \"pass-through\",\n  \"linkQosToServer\": \"pass-through\",\n  \"loadBalancingMode\": \"round-robin\",\n  \"minActiveMembers\": 0,\n  \"minUpMembers\": 0,\n  \"minUpMembersAction\": \"failover\",\n  \"minUpMembersChecking\": \"disabled\",\n  \"monitor\": \"<string>\",\n  \"partition\": \"Common\",\n  \"queueDepthLimit\": 0,\n  \"queueOnConnectionLimit\": \"disabled\",\n  \"queueTimeLimit\": 0,\n  \"reselectTries\": 0,\n  \"serviceDownAction\": \"none\",\n  \"slowRampTime\": 10,\n  \"membersReference\": {\n    \"link\": \"<uri>\",\n    \"isSubcollection\": \"<boolean>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:35:27.000Z",
+                  "updatedAt": "2026-07-28T01:35:27.000Z",
+                  "uid": "35240-7bbd33b2-e789-4c3a-a448-9129c3f5d104"
+                },
+                {
+                  "id": "4c425e17-0a6f-4758-9f74-ebf01518decf",
+                  "name": "The request could not be processed due to invalid syntax or missing required parameters.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"partition\": \"Common\",\n  \"description\": \"<string>\",\n  \"loadBalancingMode\": \"round-robin\",\n  \"monitor\": \"<string>\",\n  \"members\": [\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"description\": \"<string>\",\n      \"ratio\": \"<integer>\",\n      \"priorityGroup\": \"<integer>\",\n      \"connectionLimit\": \"<integer>\",\n      \"monitor\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"description\": \"<string>\",\n      \"ratio\": \"<integer>\",\n      \"priorityGroup\": \"<integer>\",\n      \"connectionLimit\": \"<integer>\",\n      \"monitor\": \"<string>\"\n    }\n  ],\n  \"serviceDownAction\": \"drop\",\n  \"slowRampTime\": \"<integer>\",\n  \"allowNat\": \"yes\",\n  \"allowSnat\": \"no\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/pool",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "pool"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:35:27.000Z",
+                  "updatedAt": "2026-07-28T01:35:27.000Z",
+                  "uid": "35240-4c425e17-0a6f-4758-9f74-ebf01518decf"
+                },
+                {
+                  "id": "c4163fd5-e516-4f35-9dda-76f9d6e21b8b",
+                  "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"partition\": \"Common\",\n  \"description\": \"<string>\",\n  \"loadBalancingMode\": \"round-robin\",\n  \"monitor\": \"<string>\",\n  \"members\": [\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"description\": \"<string>\",\n      \"ratio\": \"<integer>\",\n      \"priorityGroup\": \"<integer>\",\n      \"connectionLimit\": \"<integer>\",\n      \"monitor\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"description\": \"<string>\",\n      \"ratio\": \"<integer>\",\n      \"priorityGroup\": \"<integer>\",\n      \"connectionLimit\": \"<integer>\",\n      \"monitor\": \"<string>\"\n    }\n  ],\n  \"serviceDownAction\": \"drop\",\n  \"slowRampTime\": \"<integer>\",\n  \"allowNat\": \"yes\",\n  \"allowSnat\": \"no\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/pool",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "pool"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:35:27.000Z",
+                  "updatedAt": "2026-07-28T01:35:27.000Z",
+                  "uid": "35240-c4163fd5-e516-4f35-9dda-76f9d6e21b8b"
+                },
+                {
+                  "id": "b0400559-967d-4bf6-a983-e759bac9df35",
+                  "name": "The resource already exists or conflicts with an existing configuration.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"partition\": \"Common\",\n  \"description\": \"<string>\",\n  \"loadBalancingMode\": \"round-robin\",\n  \"monitor\": \"<string>\",\n  \"members\": [\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"description\": \"<string>\",\n      \"ratio\": \"<integer>\",\n      \"priorityGroup\": \"<integer>\",\n      \"connectionLimit\": \"<integer>\",\n      \"monitor\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"description\": \"<string>\",\n      \"ratio\": \"<integer>\",\n      \"priorityGroup\": \"<integer>\",\n      \"connectionLimit\": \"<integer>\",\n      \"monitor\": \"<string>\"\n    }\n  ],\n  \"serviceDownAction\": \"drop\",\n  \"slowRampTime\": \"<integer>\",\n  \"allowNat\": \"yes\",\n  \"allowSnat\": \"no\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/pool",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "pool"
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:35:27.000Z",
+                  "updatedAt": "2026-07-28T01:35:27.000Z",
+                  "uid": "35240-b0400559-967d-4bf6-a983-e759bac9df35"
+                },
+                {
+                  "id": "13d7d22a-8d3f-4ae6-af59-8f92b01e1164",
+                  "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"partition\": \"Common\",\n  \"description\": \"<string>\",\n  \"loadBalancingMode\": \"round-robin\",\n  \"monitor\": \"<string>\",\n  \"members\": [\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"description\": \"<string>\",\n      \"ratio\": \"<integer>\",\n      \"priorityGroup\": \"<integer>\",\n      \"connectionLimit\": \"<integer>\",\n      \"monitor\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"description\": \"<string>\",\n      \"ratio\": \"<integer>\",\n      \"priorityGroup\": \"<integer>\",\n      \"connectionLimit\": \"<integer>\",\n      \"monitor\": \"<string>\"\n    }\n  ],\n  \"serviceDownAction\": \"drop\",\n  \"slowRampTime\": \"<integer>\",\n  \"allowNat\": \"yes\",\n  \"allowSnat\": \"no\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/pool",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "pool"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:35:27.000Z",
+                  "updatedAt": "2026-07-28T01:35:27.000Z",
+                  "uid": "35240-13d7d22a-8d3f-4ae6-af59-8f92b01e1164"
+                }
+              ],
+              "createdAt": "2026-07-28T01:35:26.000Z",
+              "updatedAt": "2026-07-28T01:35:26.000Z",
+              "uid": "35240-237fe73c-47a3-4a53-b591-f34a7c31acd7"
+            }
+          ],
+          "id": "cbe19c0c-d2b9-44a6-a556-a0e419690389",
+          "createdAt": "2026-07-28T01:35:26.000Z",
+          "updatedAt": "2026-07-28T01:35:26.000Z",
+          "uid": "35240-cbe19c0c-d2b9-44a6-a556-a0e419690389"
+        }
+      ],
+      "id": "631bd30b-a09b-4295-9bb6-878f4f5df0d0",
+      "createdAt": "2026-07-28T01:35:26.000Z",
+      "updatedAt": "2026-07-28T01:35:26.000Z",
+      "uid": "35240-631bd30b-a09b-4295-9bb6-878f4f5df0d0"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "bigip_host",
+      "value": "192.168.1.245"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{bigip_host}}/mgmt/tm"
+    }
+  ]
+}

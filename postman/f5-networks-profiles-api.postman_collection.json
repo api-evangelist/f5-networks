@@ -1,0 +1,1958 @@
+{
+  "info": {
+    "_postman_id": "a686fc85-0827-4112-be7b-19a089b1a14a",
+    "name": "F5 BIG-IP iControl REST Nodes Profiles API",
+    "description": "The iControl REST API provides programmatic access to manage and configure F5 BIG-IP devices. It enables automation of Local Traffic Manager (LTM) resources including virtual servers, pools, nodes, pool members, and profiles for application delivery, load balancing, and network management.\n\nContact Support:\n Name: F5 Support\n Email: support@f5.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:35:27.000Z",
+    "updatedAt": "2026-07-28T01:35:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a686fc85-0827-4112-be7b-19a089b1a14a"
+  },
+  "item": [
+    {
+      "name": "ltm",
+      "item": [
+        {
+          "name": "profile",
+          "item": [
+            {
+              "name": "http",
+              "item": [
+                {
+                  "name": "{profileName}",
+                  "item": [
+                    {
+                      "name": "Get an Http Profile",
+                      "id": "d7d75e9d-0560-4fc0-83a9-fead0ed980b0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/profile/http/:profileName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "profile",
+                            "http",
+                            ":profileName"
+                          ],
+                          "variable": [
+                            {
+                              "id": "7d2ee346-49a4-4e1a-bef0-f0d5f7da3782",
+                              "key": "profileName",
+                              "value": "<string>",
+                              "description": "(Required) Name of the profile resource."
+                            }
+                          ]
+                        },
+                        "description": "Returns a single HTTP profile resource identified by name."
+                      },
+                      "response": [
+                        {
+                          "id": "eb116cc4-e370-4f3a-b86e-344f6b964522",
+                          "name": "Successful retrieval of the HTTP profile.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/profile/http/:profileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "profile",
+                                "http",
+                                ":profileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "profileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"kind\": \"<string>\",\n  \"name\": \"<string>\",\n  \"fullPath\": \"<string>\",\n  \"generation\": \"<integer>\",\n  \"selfLink\": \"<uri>\",\n  \"acceptXff\": \"disabled\",\n  \"appService\": \"<string>\",\n  \"basicAuthRealm\": \"none\",\n  \"defaultsFrom\": \"<string>\",\n  \"description\": \"<string>\",\n  \"encryptCookies\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enforcement\": {\n    \"maxHeaderCount\": 64,\n    \"maxHeaderSize\": 32768,\n    \"pipeline\": \"reject\"\n  },\n  \"fallbackHost\": \"<string>\",\n  \"fallbackStatusCodes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"headerErase\": \"<string>\",\n  \"headerInsert\": \"<string>\",\n  \"insertXforwardedFor\": \"disabled\",\n  \"oneconnectTransformations\": \"enabled\",\n  \"redirectRewrite\": \"nodes\",\n  \"requestChunking\": \"selective\",\n  \"responseChunking\": \"preserve\",\n  \"serverAgentName\": \"<string>\",\n  \"viaHostName\": \"<string>\",\n  \"viaRequest\": \"append\",\n  \"viaResponse\": \"remove\",\n  \"xffAlternativeNames\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "createdAt": "2026-07-28T01:35:28.000Z",
+                          "updatedAt": "2026-07-28T01:35:28.000Z",
+                          "uid": "35240-eb116cc4-e370-4f3a-b86e-344f6b964522"
+                        },
+                        {
+                          "id": "611e5a26-72f4-4955-a8fc-e08519e01d12",
+                          "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/profile/http/:profileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "profile",
+                                "http",
+                                ":profileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "profileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T01:35:28.000Z",
+                          "updatedAt": "2026-07-28T01:35:28.000Z",
+                          "uid": "35240-611e5a26-72f4-4955-a8fc-e08519e01d12"
+                        },
+                        {
+                          "id": "77fb5219-1626-45be-9d83-f8630bd5f027",
+                          "name": "The requested resource was not found on the BIG-IP system.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/profile/http/:profileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "profile",
+                                "http",
+                                ":profileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "profileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T01:35:28.000Z",
+                          "updatedAt": "2026-07-28T01:35:28.000Z",
+                          "uid": "35240-77fb5219-1626-45be-9d83-f8630bd5f027"
+                        },
+                        {
+                          "id": "577a8e10-a55d-404a-83a8-8eef5c0ab7e0",
+                          "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/profile/http/:profileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "profile",
+                                "http",
+                                ":profileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "profileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T01:35:28.000Z",
+                          "updatedAt": "2026-07-28T01:35:28.000Z",
+                          "uid": "35240-577a8e10-a55d-404a-83a8-8eef5c0ab7e0"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:35:28.000Z",
+                      "updatedAt": "2026-07-28T01:35:28.000Z",
+                      "uid": "35240-d7d75e9d-0560-4fc0-83a9-fead0ed980b0"
+                    }
+                  ],
+                  "id": "21573bc8-6a4f-4419-84d1-c9fc157a9b7b",
+                  "createdAt": "2026-07-28T01:35:28.000Z",
+                  "updatedAt": "2026-07-28T01:35:28.000Z",
+                  "uid": "35240-21573bc8-6a4f-4419-84d1-c9fc157a9b7b"
+                },
+                {
+                  "name": "List Http Profiles",
+                  "id": "cd331c0f-fe5a-4892-ba1f-4a84f2194342",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/profile/http?$select=<string>&$filter=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "profile",
+                        "http"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of property names to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "OData filter expression to restrict returned resources.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Returns a collection of all HTTP profile resources configured on the BIG-IP system."
+                  },
+                  "response": [
+                    {
+                      "id": "5668a79c-bd94-48f9-aee0-2b0ada50305e",
+                      "name": "Successful retrieval of HTTP profile collection.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/profile/http?$select=<string>&$filter=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "profile",
+                            "http"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of property names to include in the response.",
+                              "key": "$select",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "OData filter expression to restrict returned resources.",
+                              "key": "$filter",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"items\": [\n    {\n      \"kind\": \"<string>\",\n      \"name\": \"<string>\",\n      \"fullPath\": \"<string>\",\n      \"generation\": \"<integer>\",\n      \"selfLink\": \"<uri>\",\n      \"acceptXff\": \"disabled\",\n      \"appService\": \"<string>\",\n      \"basicAuthRealm\": \"none\",\n      \"defaultsFrom\": \"<string>\",\n      \"description\": \"<string>\",\n      \"encryptCookies\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enforcement\": {\n        \"maxHeaderCount\": 64,\n        \"maxHeaderSize\": 32768,\n        \"pipeline\": \"allow\"\n      },\n      \"fallbackHost\": \"<string>\",\n      \"fallbackStatusCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"headerErase\": \"<string>\",\n      \"headerInsert\": \"<string>\",\n      \"insertXforwardedFor\": \"disabled\",\n      \"oneconnectTransformations\": \"enabled\",\n      \"redirectRewrite\": \"matching\",\n      \"requestChunking\": \"allow\",\n      \"responseChunking\": \"selective\",\n      \"serverAgentName\": \"<string>\",\n      \"viaHostName\": \"<string>\",\n      \"viaRequest\": \"append\",\n      \"viaResponse\": \"append\",\n      \"xffAlternativeNames\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"kind\": \"<string>\",\n      \"name\": \"<string>\",\n      \"fullPath\": \"<string>\",\n      \"generation\": \"<integer>\",\n      \"selfLink\": \"<uri>\",\n      \"acceptXff\": \"disabled\",\n      \"appService\": \"<string>\",\n      \"basicAuthRealm\": \"none\",\n      \"defaultsFrom\": \"<string>\",\n      \"description\": \"<string>\",\n      \"encryptCookies\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enforcement\": {\n        \"maxHeaderCount\": 64,\n        \"maxHeaderSize\": 32768,\n        \"pipeline\": \"allow\"\n      },\n      \"fallbackHost\": \"<string>\",\n      \"fallbackStatusCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"headerErase\": \"<string>\",\n      \"headerInsert\": \"<string>\",\n      \"insertXforwardedFor\": \"disabled\",\n      \"oneconnectTransformations\": \"enabled\",\n      \"redirectRewrite\": \"nodes\",\n      \"requestChunking\": \"allow\",\n      \"responseChunking\": \"rechunk\",\n      \"serverAgentName\": \"<string>\",\n      \"viaHostName\": \"<string>\",\n      \"viaRequest\": \"remove\",\n      \"viaResponse\": \"remove\",\n      \"xffAlternativeNames\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:35:28.000Z",
+                      "updatedAt": "2026-07-28T01:35:28.000Z",
+                      "uid": "35240-5668a79c-bd94-48f9-aee0-2b0ada50305e"
+                    },
+                    {
+                      "id": "04740a8a-e8b7-42e8-92d4-aa6d9e71c858",
+                      "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/profile/http?$select=<string>&$filter=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "profile",
+                            "http"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of property names to include in the response.",
+                              "key": "$select",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "OData filter expression to restrict returned resources.",
+                              "key": "$filter",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:28.000Z",
+                      "updatedAt": "2026-07-28T01:35:28.000Z",
+                      "uid": "35240-04740a8a-e8b7-42e8-92d4-aa6d9e71c858"
+                    },
+                    {
+                      "id": "d996035a-6c39-4942-81dc-a9c9536f5d9c",
+                      "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/profile/http?$select=<string>&$filter=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "profile",
+                            "http"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of property names to include in the response.",
+                              "key": "$select",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "OData filter expression to restrict returned resources.",
+                              "key": "$filter",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:28.000Z",
+                      "updatedAt": "2026-07-28T01:35:28.000Z",
+                      "uid": "35240-d996035a-6c39-4942-81dc-a9c9536f5d9c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:35:28.000Z",
+                  "updatedAt": "2026-07-28T01:35:28.000Z",
+                  "uid": "35240-cd331c0f-fe5a-4892-ba1f-4a84f2194342"
+                }
+              ],
+              "id": "99adb97b-eb03-4bdd-b570-82f5cf3807d8",
+              "createdAt": "2026-07-28T01:35:28.000Z",
+              "updatedAt": "2026-07-28T01:35:28.000Z",
+              "uid": "35240-99adb97b-eb03-4bdd-b570-82f5cf3807d8"
+            },
+            {
+              "name": "tcp",
+              "item": [
+                {
+                  "name": "{profileName}",
+                  "item": [
+                    {
+                      "name": "Get a Tcp Profile",
+                      "id": "ac29cc14-5497-4ec1-a335-e66089d9b610",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/profile/tcp/:profileName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "profile",
+                            "tcp",
+                            ":profileName"
+                          ],
+                          "variable": [
+                            {
+                              "id": "b21cb4c9-547f-4947-91e2-e0ddc2a835a2",
+                              "key": "profileName",
+                              "value": "<string>",
+                              "description": "(Required) Name of the profile resource."
+                            }
+                          ]
+                        },
+                        "description": "Returns a single TCP profile resource identified by name."
+                      },
+                      "response": [
+                        {
+                          "id": "b5396f2e-c25b-48de-85e0-4e65cd59adbe",
+                          "name": "Successful retrieval of the TCP profile.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/profile/tcp/:profileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "profile",
+                                "tcp",
+                                ":profileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "profileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"kind\": \"<string>\",\n  \"name\": \"<string>\",\n  \"fullPath\": \"<string>\",\n  \"generation\": \"<integer>\",\n  \"selfLink\": \"<uri>\",\n  \"abc\": \"enabled\",\n  \"ackOnPush\": \"disabled\",\n  \"closeWaitTimeout\": \"<integer>\",\n  \"congestionControl\": \"cdg\",\n  \"defaultsFrom\": \"<string>\",\n  \"deferredAccept\": \"disabled\",\n  \"description\": \"<string>\",\n  \"finWaitTimeout\": \"<integer>\",\n  \"idleTimeout\": \"<integer>\",\n  \"initCwnd\": \"<integer>\",\n  \"initRwnd\": \"<integer>\",\n  \"keepAliveInterval\": \"<integer>\",\n  \"maxRetrans\": \"<integer>\",\n  \"maxSegmentSize\": \"<integer>\",\n  \"nagle\": \"enabled\",\n  \"receiveWindowSize\": \"<integer>\",\n  \"sendBufferSize\": \"<integer>\",\n  \"synMaxRetrans\": \"<integer>\",\n  \"timeWaitRecycle\": \"disabled\",\n  \"timeWaitTimeout\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T01:35:28.000Z",
+                          "updatedAt": "2026-07-28T01:35:28.000Z",
+                          "uid": "35240-b5396f2e-c25b-48de-85e0-4e65cd59adbe"
+                        },
+                        {
+                          "id": "58fbb109-4b66-48a6-b14c-dcebf473ad2e",
+                          "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/profile/tcp/:profileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "profile",
+                                "tcp",
+                                ":profileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "profileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T01:35:28.000Z",
+                          "updatedAt": "2026-07-28T01:35:28.000Z",
+                          "uid": "35240-58fbb109-4b66-48a6-b14c-dcebf473ad2e"
+                        },
+                        {
+                          "id": "b3d67e00-50b3-459d-a77b-0ffcc27a2980",
+                          "name": "The requested resource was not found on the BIG-IP system.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/profile/tcp/:profileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "profile",
+                                "tcp",
+                                ":profileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "profileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T01:35:28.000Z",
+                          "updatedAt": "2026-07-28T01:35:28.000Z",
+                          "uid": "35240-b3d67e00-50b3-459d-a77b-0ffcc27a2980"
+                        },
+                        {
+                          "id": "e5e5246e-087c-4d9f-accf-3f5118b3aa82",
+                          "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/profile/tcp/:profileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "profile",
+                                "tcp",
+                                ":profileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "profileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T01:35:28.000Z",
+                          "updatedAt": "2026-07-28T01:35:28.000Z",
+                          "uid": "35240-e5e5246e-087c-4d9f-accf-3f5118b3aa82"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:35:28.000Z",
+                      "updatedAt": "2026-07-28T01:35:28.000Z",
+                      "uid": "35240-ac29cc14-5497-4ec1-a335-e66089d9b610"
+                    }
+                  ],
+                  "id": "4a6d0137-8a93-42ff-acec-17f62678a17b",
+                  "createdAt": "2026-07-28T01:35:28.000Z",
+                  "updatedAt": "2026-07-28T01:35:28.000Z",
+                  "uid": "35240-4a6d0137-8a93-42ff-acec-17f62678a17b"
+                },
+                {
+                  "name": "List Tcp Profiles",
+                  "id": "0bda5017-2f0a-4f1c-a2b7-d9fad3b49ac5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/profile/tcp?$select=<string>&$filter=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "profile",
+                        "tcp"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of property names to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "OData filter expression to restrict returned resources.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Returns a collection of all TCP profile resources configured on the BIG-IP system."
+                  },
+                  "response": [
+                    {
+                      "id": "448156c5-1467-4b68-92d1-0b3b4023a025",
+                      "name": "Successful retrieval of TCP profile collection.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/profile/tcp?$select=<string>&$filter=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "profile",
+                            "tcp"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of property names to include in the response.",
+                              "key": "$select",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "OData filter expression to restrict returned resources.",
+                              "key": "$filter",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"items\": [\n    {\n      \"kind\": \"<string>\",\n      \"name\": \"<string>\",\n      \"fullPath\": \"<string>\",\n      \"generation\": \"<integer>\",\n      \"selfLink\": \"<uri>\",\n      \"abc\": \"disabled\",\n      \"ackOnPush\": \"enabled\",\n      \"closeWaitTimeout\": \"<integer>\",\n      \"congestionControl\": \"high-speed\",\n      \"defaultsFrom\": \"<string>\",\n      \"deferredAccept\": \"enabled\",\n      \"description\": \"<string>\",\n      \"finWaitTimeout\": \"<integer>\",\n      \"idleTimeout\": \"<integer>\",\n      \"initCwnd\": \"<integer>\",\n      \"initRwnd\": \"<integer>\",\n      \"keepAliveInterval\": \"<integer>\",\n      \"maxRetrans\": \"<integer>\",\n      \"maxSegmentSize\": \"<integer>\",\n      \"nagle\": \"auto\",\n      \"receiveWindowSize\": \"<integer>\",\n      \"sendBufferSize\": \"<integer>\",\n      \"synMaxRetrans\": \"<integer>\",\n      \"timeWaitRecycle\": \"disabled\",\n      \"timeWaitTimeout\": \"<integer>\"\n    },\n    {\n      \"kind\": \"<string>\",\n      \"name\": \"<string>\",\n      \"fullPath\": \"<string>\",\n      \"generation\": \"<integer>\",\n      \"selfLink\": \"<uri>\",\n      \"abc\": \"enabled\",\n      \"ackOnPush\": \"enabled\",\n      \"closeWaitTimeout\": \"<integer>\",\n      \"congestionControl\": \"high-speed\",\n      \"defaultsFrom\": \"<string>\",\n      \"deferredAccept\": \"disabled\",\n      \"description\": \"<string>\",\n      \"finWaitTimeout\": \"<integer>\",\n      \"idleTimeout\": \"<integer>\",\n      \"initCwnd\": \"<integer>\",\n      \"initRwnd\": \"<integer>\",\n      \"keepAliveInterval\": \"<integer>\",\n      \"maxRetrans\": \"<integer>\",\n      \"maxSegmentSize\": \"<integer>\",\n      \"nagle\": \"enabled\",\n      \"receiveWindowSize\": \"<integer>\",\n      \"sendBufferSize\": \"<integer>\",\n      \"synMaxRetrans\": \"<integer>\",\n      \"timeWaitRecycle\": \"enabled\",\n      \"timeWaitTimeout\": \"<integer>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:35:28.000Z",
+                      "updatedAt": "2026-07-28T01:35:28.000Z",
+                      "uid": "35240-448156c5-1467-4b68-92d1-0b3b4023a025"
+                    },
+                    {
+                      "id": "f252a440-b469-411d-92b7-957b27d3ef0f",
+                      "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/profile/tcp?$select=<string>&$filter=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "profile",
+                            "tcp"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of property names to include in the response.",
+                              "key": "$select",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "OData filter expression to restrict returned resources.",
+                              "key": "$filter",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:28.000Z",
+                      "updatedAt": "2026-07-28T01:35:28.000Z",
+                      "uid": "35240-f252a440-b469-411d-92b7-957b27d3ef0f"
+                    },
+                    {
+                      "id": "5fcb5fd1-bd3c-4e19-bcc3-668c7e4b1c23",
+                      "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/profile/tcp?$select=<string>&$filter=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "profile",
+                            "tcp"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of property names to include in the response.",
+                              "key": "$select",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "OData filter expression to restrict returned resources.",
+                              "key": "$filter",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:28.000Z",
+                      "updatedAt": "2026-07-28T01:35:28.000Z",
+                      "uid": "35240-5fcb5fd1-bd3c-4e19-bcc3-668c7e4b1c23"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:35:28.000Z",
+                  "updatedAt": "2026-07-28T01:35:28.000Z",
+                  "uid": "35240-0bda5017-2f0a-4f1c-a2b7-d9fad3b49ac5"
+                }
+              ],
+              "id": "dfcb732c-83dd-4985-86d2-bc1275fb62fd",
+              "createdAt": "2026-07-28T01:35:28.000Z",
+              "updatedAt": "2026-07-28T01:35:28.000Z",
+              "uid": "35240-dfcb732c-83dd-4985-86d2-bc1275fb62fd"
+            },
+            {
+              "name": "client-ssl",
+              "item": [
+                {
+                  "name": "{profileName}",
+                  "item": [
+                    {
+                      "name": "Get a Client Ssl Profile",
+                      "id": "7f300f10-1df2-4cd7-a01b-339a59d5a39c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/profile/client-ssl/:profileName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "profile",
+                            "client-ssl",
+                            ":profileName"
+                          ],
+                          "variable": [
+                            {
+                              "id": "c11a6a69-99aa-4025-84af-b2a874d0e63b",
+                              "key": "profileName",
+                              "value": "<string>",
+                              "description": "(Required) Name of the profile resource."
+                            }
+                          ]
+                        },
+                        "description": "Returns a single Client SSL profile resource identified by name."
+                      },
+                      "response": [
+                        {
+                          "id": "74364b5a-c62b-438c-b6df-cd87a6ad6bf3",
+                          "name": "Successful retrieval of the Client SSL profile.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/profile/client-ssl/:profileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "profile",
+                                "client-ssl",
+                                ":profileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "profileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"kind\": \"<string>\",\n  \"name\": \"<string>\",\n  \"fullPath\": \"<string>\",\n  \"generation\": \"<integer>\",\n  \"selfLink\": \"<uri>\",\n  \"alertTimeout\": \"<string>\",\n  \"allowNonSsl\": \"disabled\",\n  \"cert\": \"<string>\",\n  \"certKeyChain\": [\n    {\n      \"name\": \"<string>\",\n      \"cert\": \"<string>\",\n      \"key\": \"<string>\",\n      \"chain\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"cert\": \"<string>\",\n      \"key\": \"<string>\",\n      \"chain\": \"<string>\"\n    }\n  ],\n  \"ciphers\": \"<string>\",\n  \"defaultsFrom\": \"<string>\",\n  \"description\": \"<string>\",\n  \"key\": \"<string>\",\n  \"options\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"peerCertMode\": \"request\",\n  \"renegotiation\": \"enabled\",\n  \"secureRenegotiation\": \"require\",\n  \"sniDefault\": \"true\",\n  \"sniRequire\": \"false\",\n  \"sslForwardProxy\": \"disabled\",\n  \"uncleanShutdown\": \"disabled\"\n}",
+                          "createdAt": "2026-07-28T01:35:28.000Z",
+                          "updatedAt": "2026-07-28T01:35:28.000Z",
+                          "uid": "35240-74364b5a-c62b-438c-b6df-cd87a6ad6bf3"
+                        },
+                        {
+                          "id": "3b34ebce-7dfe-4a57-b98b-93506349fc53",
+                          "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/profile/client-ssl/:profileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "profile",
+                                "client-ssl",
+                                ":profileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "profileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T01:35:28.000Z",
+                          "updatedAt": "2026-07-28T01:35:28.000Z",
+                          "uid": "35240-3b34ebce-7dfe-4a57-b98b-93506349fc53"
+                        },
+                        {
+                          "id": "ccb94a92-4e47-4a3d-8c76-3601002aece1",
+                          "name": "The requested resource was not found on the BIG-IP system.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/profile/client-ssl/:profileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "profile",
+                                "client-ssl",
+                                ":profileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "profileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T01:35:28.000Z",
+                          "updatedAt": "2026-07-28T01:35:28.000Z",
+                          "uid": "35240-ccb94a92-4e47-4a3d-8c76-3601002aece1"
+                        },
+                        {
+                          "id": "d8c957cf-d721-4f22-97de-9edda15eac9e",
+                          "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/profile/client-ssl/:profileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "profile",
+                                "client-ssl",
+                                ":profileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "profileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T01:35:28.000Z",
+                          "updatedAt": "2026-07-28T01:35:28.000Z",
+                          "uid": "35240-d8c957cf-d721-4f22-97de-9edda15eac9e"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:35:28.000Z",
+                      "updatedAt": "2026-07-28T01:35:28.000Z",
+                      "uid": "35240-7f300f10-1df2-4cd7-a01b-339a59d5a39c"
+                    }
+                  ],
+                  "id": "d761b2ca-01ca-462c-8c7a-5b1906b3fd60",
+                  "createdAt": "2026-07-28T01:35:28.000Z",
+                  "updatedAt": "2026-07-28T01:35:28.000Z",
+                  "uid": "35240-d761b2ca-01ca-462c-8c7a-5b1906b3fd60"
+                },
+                {
+                  "name": "List Client Ssl Profiles",
+                  "id": "69f9a9f1-082f-4d75-8d1a-dac0d6a1f609",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/profile/client-ssl?$select=<string>&$filter=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "profile",
+                        "client-ssl"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of property names to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "OData filter expression to restrict returned resources.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Returns a collection of all Client SSL profile resources configured on the BIG-IP system."
+                  },
+                  "response": [
+                    {
+                      "id": "e68d3ab6-a395-4f40-8af5-a891df294396",
+                      "name": "Successful retrieval of Client SSL profile collection.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/profile/client-ssl?$select=<string>&$filter=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "profile",
+                            "client-ssl"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of property names to include in the response.",
+                              "key": "$select",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "OData filter expression to restrict returned resources.",
+                              "key": "$filter",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"items\": [\n    {\n      \"kind\": \"<string>\",\n      \"name\": \"<string>\",\n      \"fullPath\": \"<string>\",\n      \"generation\": \"<integer>\",\n      \"selfLink\": \"<uri>\",\n      \"alertTimeout\": \"<string>\",\n      \"allowNonSsl\": \"disabled\",\n      \"cert\": \"<string>\",\n      \"certKeyChain\": [\n        {\n          \"name\": \"<string>\",\n          \"cert\": \"<string>\",\n          \"key\": \"<string>\",\n          \"chain\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"cert\": \"<string>\",\n          \"key\": \"<string>\",\n          \"chain\": \"<string>\"\n        }\n      ],\n      \"ciphers\": \"<string>\",\n      \"defaultsFrom\": \"<string>\",\n      \"description\": \"<string>\",\n      \"key\": \"<string>\",\n      \"options\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"peerCertMode\": \"require\",\n      \"renegotiation\": \"enabled\",\n      \"secureRenegotiation\": \"request\",\n      \"sniDefault\": \"false\",\n      \"sniRequire\": \"false\",\n      \"sslForwardProxy\": \"disabled\",\n      \"uncleanShutdown\": \"enabled\"\n    },\n    {\n      \"kind\": \"<string>\",\n      \"name\": \"<string>\",\n      \"fullPath\": \"<string>\",\n      \"generation\": \"<integer>\",\n      \"selfLink\": \"<uri>\",\n      \"alertTimeout\": \"<string>\",\n      \"allowNonSsl\": \"enabled\",\n      \"cert\": \"<string>\",\n      \"certKeyChain\": [\n        {\n          \"name\": \"<string>\",\n          \"cert\": \"<string>\",\n          \"key\": \"<string>\",\n          \"chain\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"cert\": \"<string>\",\n          \"key\": \"<string>\",\n          \"chain\": \"<string>\"\n        }\n      ],\n      \"ciphers\": \"<string>\",\n      \"defaultsFrom\": \"<string>\",\n      \"description\": \"<string>\",\n      \"key\": \"<string>\",\n      \"options\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"peerCertMode\": \"ignore\",\n      \"renegotiation\": \"disabled\",\n      \"secureRenegotiation\": \"require\",\n      \"sniDefault\": \"true\",\n      \"sniRequire\": \"false\",\n      \"sslForwardProxy\": \"disabled\",\n      \"uncleanShutdown\": \"enabled\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:35:28.000Z",
+                      "updatedAt": "2026-07-28T01:35:28.000Z",
+                      "uid": "35240-e68d3ab6-a395-4f40-8af5-a891df294396"
+                    },
+                    {
+                      "id": "a019406b-b74a-475d-80fc-6c89d0f4fea5",
+                      "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/profile/client-ssl?$select=<string>&$filter=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "profile",
+                            "client-ssl"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of property names to include in the response.",
+                              "key": "$select",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "OData filter expression to restrict returned resources.",
+                              "key": "$filter",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:28.000Z",
+                      "updatedAt": "2026-07-28T01:35:28.000Z",
+                      "uid": "35240-a019406b-b74a-475d-80fc-6c89d0f4fea5"
+                    },
+                    {
+                      "id": "1ec9d4f0-d614-458a-b720-f1f8663b4ca1",
+                      "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/profile/client-ssl?$select=<string>&$filter=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "profile",
+                            "client-ssl"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of property names to include in the response.",
+                              "key": "$select",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "OData filter expression to restrict returned resources.",
+                              "key": "$filter",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:28.000Z",
+                      "updatedAt": "2026-07-28T01:35:28.000Z",
+                      "uid": "35240-1ec9d4f0-d614-458a-b720-f1f8663b4ca1"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:35:28.000Z",
+                  "updatedAt": "2026-07-28T01:35:28.000Z",
+                  "uid": "35240-69f9a9f1-082f-4d75-8d1a-dac0d6a1f609"
+                }
+              ],
+              "id": "ba68baec-b04f-43e0-9f66-930d2451131b",
+              "createdAt": "2026-07-28T01:35:28.000Z",
+              "updatedAt": "2026-07-28T01:35:28.000Z",
+              "uid": "35240-ba68baec-b04f-43e0-9f66-930d2451131b"
+            }
+          ],
+          "id": "97c7bb08-991d-4bfd-b04c-bc7b8920317b",
+          "createdAt": "2026-07-28T01:35:28.000Z",
+          "updatedAt": "2026-07-28T01:35:28.000Z",
+          "uid": "35240-97c7bb08-991d-4bfd-b04c-bc7b8920317b"
+        },
+        {
+          "name": "persistence",
+          "item": [
+            {
+              "name": "cookie",
+              "item": [
+                {
+                  "name": "{profileName}",
+                  "item": [
+                    {
+                      "name": "Get a Cookie Persistence Profile",
+                      "id": "5168fbcf-a117-4c16-83a3-b27c1dc77f52",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/persistence/cookie/:profileName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "persistence",
+                            "cookie",
+                            ":profileName"
+                          ],
+                          "variable": [
+                            {
+                              "id": "b301d1a0-da38-4fa0-a980-5e6b10a53e4a",
+                              "key": "profileName",
+                              "value": "<string>",
+                              "description": "(Required) Name of the profile resource."
+                            }
+                          ]
+                        },
+                        "description": "Returns a single cookie persistence profile resource identified by name."
+                      },
+                      "response": [
+                        {
+                          "id": "744cca1c-3768-4df2-8bff-e7e7da582899",
+                          "name": "Successful retrieval of the cookie persistence profile.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/persistence/cookie/:profileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "persistence",
+                                "cookie",
+                                ":profileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "profileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"kind\": \"<string>\",\n  \"name\": \"<string>\",\n  \"fullPath\": \"<string>\",\n  \"generation\": \"<integer>\",\n  \"selfLink\": \"<uri>\",\n  \"alwaysSend\": \"disabled\",\n  \"cookieEncryption\": \"disabled\",\n  \"cookieName\": \"<string>\",\n  \"defaultsFrom\": \"<string>\",\n  \"description\": \"<string>\",\n  \"expiration\": \"<string>\",\n  \"hashLength\": \"<integer>\",\n  \"hashOffset\": \"<integer>\",\n  \"httponly\": \"enabled\",\n  \"matchAcrossPools\": \"enabled\",\n  \"matchAcrossServices\": \"enabled\",\n  \"matchAcrossVirtuals\": \"enabled\",\n  \"method\": \"rewrite\",\n  \"mirror\": \"disabled\",\n  \"overrideConnectionLimit\": \"enabled\",\n  \"secure\": \"enabled\",\n  \"timeout\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:35:28.000Z",
+                          "updatedAt": "2026-07-28T01:35:28.000Z",
+                          "uid": "35240-744cca1c-3768-4df2-8bff-e7e7da582899"
+                        },
+                        {
+                          "id": "88f1a976-cc86-4782-8a1f-42e64f6ddd38",
+                          "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/persistence/cookie/:profileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "persistence",
+                                "cookie",
+                                ":profileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "profileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T01:35:28.000Z",
+                          "updatedAt": "2026-07-28T01:35:28.000Z",
+                          "uid": "35240-88f1a976-cc86-4782-8a1f-42e64f6ddd38"
+                        },
+                        {
+                          "id": "88292532-f76d-485d-ac97-ecdfa16f16d8",
+                          "name": "The requested resource was not found on the BIG-IP system.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/persistence/cookie/:profileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "persistence",
+                                "cookie",
+                                ":profileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "profileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T01:35:28.000Z",
+                          "updatedAt": "2026-07-28T01:35:28.000Z",
+                          "uid": "35240-88292532-f76d-485d-ac97-ecdfa16f16d8"
+                        },
+                        {
+                          "id": "c07756b9-0581-4ee1-9372-1504048caabb",
+                          "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ltm/persistence/cookie/:profileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ltm",
+                                "persistence",
+                                "cookie",
+                                ":profileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "profileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T01:35:28.000Z",
+                          "updatedAt": "2026-07-28T01:35:28.000Z",
+                          "uid": "35240-c07756b9-0581-4ee1-9372-1504048caabb"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:35:28.000Z",
+                      "updatedAt": "2026-07-28T01:35:28.000Z",
+                      "uid": "35240-5168fbcf-a117-4c16-83a3-b27c1dc77f52"
+                    }
+                  ],
+                  "id": "4aaebbc4-42cb-4b99-9e48-c4098942529e",
+                  "createdAt": "2026-07-28T01:35:28.000Z",
+                  "updatedAt": "2026-07-28T01:35:28.000Z",
+                  "uid": "35240-4aaebbc4-42cb-4b99-9e48-c4098942529e"
+                },
+                {
+                  "name": "List Cookie Persistence Profiles",
+                  "id": "db22e026-a28d-48f8-84f3-27f8c0b66d50",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/persistence/cookie?$select=<string>&$filter=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "persistence",
+                        "cookie"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of property names to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "OData filter expression to restrict returned resources.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Returns a collection of all cookie persistence profile resources."
+                  },
+                  "response": [
+                    {
+                      "id": "7bf60c35-df46-4185-b910-d0da867bea63",
+                      "name": "Successful retrieval of cookie persistence profiles.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/persistence/cookie?$select=<string>&$filter=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "persistence",
+                            "cookie"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of property names to include in the response.",
+                              "key": "$select",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "OData filter expression to restrict returned resources.",
+                              "key": "$filter",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"items\": [\n    {\n      \"kind\": \"<string>\",\n      \"name\": \"<string>\",\n      \"fullPath\": \"<string>\",\n      \"generation\": \"<integer>\",\n      \"selfLink\": \"<uri>\",\n      \"alwaysSend\": \"enabled\",\n      \"cookieEncryption\": \"preferred\",\n      \"cookieName\": \"<string>\",\n      \"defaultsFrom\": \"<string>\",\n      \"description\": \"<string>\",\n      \"expiration\": \"<string>\",\n      \"hashLength\": \"<integer>\",\n      \"hashOffset\": \"<integer>\",\n      \"httponly\": \"disabled\",\n      \"matchAcrossPools\": \"disabled\",\n      \"matchAcrossServices\": \"enabled\",\n      \"matchAcrossVirtuals\": \"enabled\",\n      \"method\": \"hash\",\n      \"mirror\": \"enabled\",\n      \"overrideConnectionLimit\": \"enabled\",\n      \"secure\": \"disabled\",\n      \"timeout\": \"<string>\"\n    },\n    {\n      \"kind\": \"<string>\",\n      \"name\": \"<string>\",\n      \"fullPath\": \"<string>\",\n      \"generation\": \"<integer>\",\n      \"selfLink\": \"<uri>\",\n      \"alwaysSend\": \"disabled\",\n      \"cookieEncryption\": \"preferred\",\n      \"cookieName\": \"<string>\",\n      \"defaultsFrom\": \"<string>\",\n      \"description\": \"<string>\",\n      \"expiration\": \"<string>\",\n      \"hashLength\": \"<integer>\",\n      \"hashOffset\": \"<integer>\",\n      \"httponly\": \"disabled\",\n      \"matchAcrossPools\": \"disabled\",\n      \"matchAcrossServices\": \"enabled\",\n      \"matchAcrossVirtuals\": \"enabled\",\n      \"method\": \"rewrite\",\n      \"mirror\": \"disabled\",\n      \"overrideConnectionLimit\": \"enabled\",\n      \"secure\": \"enabled\",\n      \"timeout\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:35:28.000Z",
+                      "updatedAt": "2026-07-28T01:35:28.000Z",
+                      "uid": "35240-7bf60c35-df46-4185-b910-d0da867bea63"
+                    },
+                    {
+                      "id": "a40583da-d2bb-4534-af5c-da2fcf47b534",
+                      "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/persistence/cookie?$select=<string>&$filter=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "persistence",
+                            "cookie"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of property names to include in the response.",
+                              "key": "$select",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "OData filter expression to restrict returned resources.",
+                              "key": "$filter",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:28.000Z",
+                      "updatedAt": "2026-07-28T01:35:28.000Z",
+                      "uid": "35240-a40583da-d2bb-4534-af5c-da2fcf47b534"
+                    },
+                    {
+                      "id": "bd903913-f988-45e8-948b-749e64eb3ba3",
+                      "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/persistence/cookie?$select=<string>&$filter=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "persistence",
+                            "cookie"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of property names to include in the response.",
+                              "key": "$select",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "OData filter expression to restrict returned resources.",
+                              "key": "$filter",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:28.000Z",
+                      "updatedAt": "2026-07-28T01:35:28.000Z",
+                      "uid": "35240-bd903913-f988-45e8-948b-749e64eb3ba3"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:35:28.000Z",
+                  "updatedAt": "2026-07-28T01:35:28.000Z",
+                  "uid": "35240-db22e026-a28d-48f8-84f3-27f8c0b66d50"
+                }
+              ],
+              "id": "200264ac-7bcb-4677-ad4c-a368bc8b420b",
+              "createdAt": "2026-07-28T01:35:28.000Z",
+              "updatedAt": "2026-07-28T01:35:28.000Z",
+              "uid": "35240-200264ac-7bcb-4677-ad4c-a368bc8b420b"
+            }
+          ],
+          "id": "25050100-b7fd-4db7-a1c1-3f6e9566ae7f",
+          "createdAt": "2026-07-28T01:35:28.000Z",
+          "updatedAt": "2026-07-28T01:35:28.000Z",
+          "uid": "35240-25050100-b7fd-4db7-a1c1-3f6e9566ae7f"
+        }
+      ],
+      "id": "694798a2-19d8-4cc0-8155-7f132af978e7",
+      "createdAt": "2026-07-28T01:35:28.000Z",
+      "updatedAt": "2026-07-28T01:35:28.000Z",
+      "uid": "35240-694798a2-19d8-4cc0-8155-7f132af978e7"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "bigip_host",
+      "value": "192.168.1.245"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{bigip_host}}/mgmt/tm"
+    }
+  ]
+}

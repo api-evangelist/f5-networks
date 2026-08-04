@@ -1,0 +1,22 @@
+{
+  "provider": "f5-networks",
+  "sources": [
+    "f5-networks-nodes-api-openapi.yml",
+    "f5-networks-pool-members-api-openapi.yml",
+    "f5-networks-pools-api-openapi.yml",
+    "f5-networks-profiles-api-openapi.yml",
+    "f5-networks-virtual-servers-api-openapi.yml"
+  ],
+  "outputs": [
+    "f5-networks-nodes-api-openapi.yml",
+    "f5-networks-pool-members-api-openapi.yml",
+    "f5-networks-pools-api-openapi.yml",
+    "f5-networks-profiles-api-openapi.yml",
+    "f5-networks-virtual-servers-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,1906 @@
+{
+  "info": {
+    "_postman_id": "0ebd1dd3-298e-424d-87c4-389a2ed55f8b",
+    "name": "F5 BIG-IP iControl REST Nodes Virtual Servers API",
+    "description": "The iControl REST API provides programmatic access to manage and configure F5 BIG-IP devices. It enables automation of Local Traffic Manager (LTM) resources including virtual servers, pools, nodes, pool members, and profiles for application delivery, load balancing, and network management.\n\nContact Support:\n Name: F5 Support\n Email: support@f5.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:35:29.000Z",
+    "updatedAt": "2026-07-28T01:35:30.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0ebd1dd3-298e-424d-87c4-389a2ed55f8b"
+  },
+  "item": [
+    {
+      "name": "ltm",
+      "item": [
+        {
+          "name": "virtual",
+          "item": [
+            {
+              "name": "{virtualName}",
+              "item": [
+                {
+                  "name": "Get a Virtual Server",
+                  "id": "cef6db47-db35-4630-9ebe-97f555ad4705",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/virtual/:virtualName?expandSubcollections=true",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "virtual",
+                        ":virtualName"
+                      ],
+                      "query": [
+                        {
+                          "description": "When set to true, expands all subcollections inline within the response.",
+                          "key": "expandSubcollections",
+                          "value": "true"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "85df8caa-72fb-4324-9e8b-17e65ae11753",
+                          "key": "virtualName",
+                          "value": "<string>",
+                          "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                        }
+                      ]
+                    },
+                    "description": "Returns a single virtual server resource identified by name."
+                  },
+                  "response": [
+                    {
+                      "id": "8b470495-c9fb-448d-a6c6-4258b9e3cd4a",
+                      "name": "Successful retrieval of the virtual server.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/virtual/:virtualName?expandSubcollections=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "virtual",
+                            ":virtualName"
+                          ],
+                          "query": [
+                            {
+                              "description": "When set to true, expands all subcollections inline within the response.",
+                              "key": "expandSubcollections",
+                              "value": "true"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "virtualName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"name\": \"<string>\",\n  \"fullPath\": \"<string>\",\n  \"generation\": \"<integer>\",\n  \"selfLink\": \"<uri>\",\n  \"addressStatus\": \"yes\",\n  \"autoLasthop\": \"default\",\n  \"cmpEnabled\": \"yes\",\n  \"connectionLimit\": 0,\n  \"description\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"enabled\": \"<boolean>\",\n  \"fallbackPersistence\": \"<string>\",\n  \"gtmScore\": 0,\n  \"ipProtocol\": \"sctp\",\n  \"mask\": \"<string>\",\n  \"mirror\": \"disabled\",\n  \"nat64\": \"disabled\",\n  \"partition\": \"Common\",\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"no\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"no\"\n    }\n  ],\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"serverside\",\n      \"fullPath\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"clientside\",\n      \"fullPath\": \"<string>\"\n    }\n  ],\n  \"rateLimit\": \"disabled\",\n  \"rateLimitMode\": \"object\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"source\": \"0.0.0.0/0\",\n  \"sourcePort\": \"preserve\",\n  \"synCookieStatus\": \"not-activated\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\",\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vsIndex\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:30.000Z",
+                      "updatedAt": "2026-07-28T01:35:30.000Z",
+                      "uid": "35240-8b470495-c9fb-448d-a6c6-4258b9e3cd4a"
+                    },
+                    {
+                      "id": "0f5b3694-891f-47f7-b61d-3e074026e959",
+                      "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/virtual/:virtualName?expandSubcollections=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "virtual",
+                            ":virtualName"
+                          ],
+                          "query": [
+                            {
+                              "description": "When set to true, expands all subcollections inline within the response.",
+                              "key": "expandSubcollections",
+                              "value": "true"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "virtualName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:30.000Z",
+                      "updatedAt": "2026-07-28T01:35:30.000Z",
+                      "uid": "35240-0f5b3694-891f-47f7-b61d-3e074026e959"
+                    },
+                    {
+                      "id": "fb3edaff-d695-4da2-b405-3bd8c240e254",
+                      "name": "The requested resource was not found on the BIG-IP system.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/virtual/:virtualName?expandSubcollections=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "virtual",
+                            ":virtualName"
+                          ],
+                          "query": [
+                            {
+                              "description": "When set to true, expands all subcollections inline within the response.",
+                              "key": "expandSubcollections",
+                              "value": "true"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "virtualName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:30.000Z",
+                      "updatedAt": "2026-07-28T01:35:30.000Z",
+                      "uid": "35240-fb3edaff-d695-4da2-b405-3bd8c240e254"
+                    },
+                    {
+                      "id": "fa287c11-a70b-47c7-9e14-bb08975394ca",
+                      "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/virtual/:virtualName?expandSubcollections=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "virtual",
+                            ":virtualName"
+                          ],
+                          "query": [
+                            {
+                              "description": "When set to true, expands all subcollections inline within the response.",
+                              "key": "expandSubcollections",
+                              "value": "true"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "virtualName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:30.000Z",
+                      "updatedAt": "2026-07-28T01:35:30.000Z",
+                      "uid": "35240-fa287c11-a70b-47c7-9e14-bb08975394ca"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:35:30.000Z",
+                  "updatedAt": "2026-07-28T01:35:30.000Z",
+                  "uid": "35240-cef6db47-db35-4630-9ebe-97f555ad4705"
+                },
+                {
+                  "name": "Update a Virtual Server",
+                  "id": "750f8426-50df-45a3-b80c-250751980efa",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"ipProtocol\": \"udp\",\n  \"mask\": \"<string>\",\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"serverside\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"clientside\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"sourcePort\": \"preserve-strict\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"disabled\",\n  \"connectionLimit\": \"<integer>\",\n  \"enabled\": \"<boolean>\",\n  \"disabled\": \"<boolean>\",\n  \"mirror\": \"enabled\",\n  \"rateLimit\": \"<string>\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\",\n  \"fallbackPersistence\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/virtual/:virtualName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "virtual",
+                        ":virtualName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3d57120f-b487-4ccf-a406-9838eb0d4041",
+                          "key": "virtualName",
+                          "value": "<string>",
+                          "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                        }
+                      ]
+                    },
+                    "description": "Replaces the entire virtual server resource. All writable properties must be included in the request body."
+                  },
+                  "response": [
+                    {
+                      "id": "4f11fc27-9a00-43a2-8864-c77a94f1dc73",
+                      "name": "Virtual server updated successfully.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"ipProtocol\": \"udp\",\n  \"mask\": \"<string>\",\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"serverside\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"clientside\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"sourcePort\": \"preserve-strict\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"disabled\",\n  \"connectionLimit\": \"<integer>\",\n  \"enabled\": \"<boolean>\",\n  \"disabled\": \"<boolean>\",\n  \"mirror\": \"enabled\",\n  \"rateLimit\": \"<string>\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\",\n  \"fallbackPersistence\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/virtual/:virtualName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "virtual",
+                            ":virtualName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "virtualName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"name\": \"<string>\",\n  \"fullPath\": \"<string>\",\n  \"generation\": \"<integer>\",\n  \"selfLink\": \"<uri>\",\n  \"addressStatus\": \"yes\",\n  \"autoLasthop\": \"default\",\n  \"cmpEnabled\": \"yes\",\n  \"connectionLimit\": 0,\n  \"description\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"enabled\": \"<boolean>\",\n  \"fallbackPersistence\": \"<string>\",\n  \"gtmScore\": 0,\n  \"ipProtocol\": \"sctp\",\n  \"mask\": \"<string>\",\n  \"mirror\": \"disabled\",\n  \"nat64\": \"disabled\",\n  \"partition\": \"Common\",\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"no\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"no\"\n    }\n  ],\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"serverside\",\n      \"fullPath\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"clientside\",\n      \"fullPath\": \"<string>\"\n    }\n  ],\n  \"rateLimit\": \"disabled\",\n  \"rateLimitMode\": \"object\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"source\": \"0.0.0.0/0\",\n  \"sourcePort\": \"preserve\",\n  \"synCookieStatus\": \"not-activated\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\",\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vsIndex\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:30.000Z",
+                      "updatedAt": "2026-07-28T01:35:30.000Z",
+                      "uid": "35240-4f11fc27-9a00-43a2-8864-c77a94f1dc73"
+                    },
+                    {
+                      "id": "d1a9f9f8-398a-46db-b2cf-c7b1335db5f5",
+                      "name": "The request could not be processed due to invalid syntax or missing required parameters.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"ipProtocol\": \"udp\",\n  \"mask\": \"<string>\",\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"serverside\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"clientside\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"sourcePort\": \"preserve-strict\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"disabled\",\n  \"connectionLimit\": \"<integer>\",\n  \"enabled\": \"<boolean>\",\n  \"disabled\": \"<boolean>\",\n  \"mirror\": \"enabled\",\n  \"rateLimit\": \"<string>\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\",\n  \"fallbackPersistence\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/virtual/:virtualName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "virtual",
+                            ":virtualName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "virtualName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:30.000Z",
+                      "updatedAt": "2026-07-28T01:35:30.000Z",
+                      "uid": "35240-d1a9f9f8-398a-46db-b2cf-c7b1335db5f5"
+                    },
+                    {
+                      "id": "2e7d284f-0e3b-41c8-9e9f-c453a3abb0df",
+                      "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"ipProtocol\": \"udp\",\n  \"mask\": \"<string>\",\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"serverside\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"clientside\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"sourcePort\": \"preserve-strict\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"disabled\",\n  \"connectionLimit\": \"<integer>\",\n  \"enabled\": \"<boolean>\",\n  \"disabled\": \"<boolean>\",\n  \"mirror\": \"enabled\",\n  \"rateLimit\": \"<string>\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\",\n  \"fallbackPersistence\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/virtual/:virtualName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "virtual",
+                            ":virtualName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "virtualName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:30.000Z",
+                      "updatedAt": "2026-07-28T01:35:30.000Z",
+                      "uid": "35240-2e7d284f-0e3b-41c8-9e9f-c453a3abb0df"
+                    },
+                    {
+                      "id": "b017e834-d30d-4379-be3b-48d4795db1f9",
+                      "name": "The requested resource was not found on the BIG-IP system.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"ipProtocol\": \"udp\",\n  \"mask\": \"<string>\",\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"serverside\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"clientside\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"sourcePort\": \"preserve-strict\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"disabled\",\n  \"connectionLimit\": \"<integer>\",\n  \"enabled\": \"<boolean>\",\n  \"disabled\": \"<boolean>\",\n  \"mirror\": \"enabled\",\n  \"rateLimit\": \"<string>\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\",\n  \"fallbackPersistence\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/virtual/:virtualName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "virtual",
+                            ":virtualName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "virtualName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:30.000Z",
+                      "updatedAt": "2026-07-28T01:35:30.000Z",
+                      "uid": "35240-b017e834-d30d-4379-be3b-48d4795db1f9"
+                    },
+                    {
+                      "id": "f44cefe6-62cb-445c-bb1a-313b9bd6ff24",
+                      "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"ipProtocol\": \"udp\",\n  \"mask\": \"<string>\",\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"serverside\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"clientside\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"sourcePort\": \"preserve-strict\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"disabled\",\n  \"connectionLimit\": \"<integer>\",\n  \"enabled\": \"<boolean>\",\n  \"disabled\": \"<boolean>\",\n  \"mirror\": \"enabled\",\n  \"rateLimit\": \"<string>\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\",\n  \"fallbackPersistence\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/virtual/:virtualName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "virtual",
+                            ":virtualName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "virtualName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:30.000Z",
+                      "updatedAt": "2026-07-28T01:35:30.000Z",
+                      "uid": "35240-f44cefe6-62cb-445c-bb1a-313b9bd6ff24"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:35:30.000Z",
+                  "updatedAt": "2026-07-28T01:35:30.000Z",
+                  "uid": "35240-750f8426-50df-45a3-b80c-250751980efa"
+                },
+                {
+                  "name": "Patch a Virtual Server",
+                  "id": "4044ca63-7385-4d84-900d-ff12992b06a0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"ipProtocol\": \"udp\",\n  \"mask\": \"<string>\",\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"serverside\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"clientside\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"sourcePort\": \"preserve-strict\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"disabled\",\n  \"connectionLimit\": \"<integer>\",\n  \"enabled\": \"<boolean>\",\n  \"disabled\": \"<boolean>\",\n  \"mirror\": \"enabled\",\n  \"rateLimit\": \"<string>\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\",\n  \"fallbackPersistence\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/virtual/:virtualName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "virtual",
+                        ":virtualName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "fffc983c-d309-4e3a-99f0-5de60989581c",
+                          "key": "virtualName",
+                          "value": "<string>",
+                          "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                        }
+                      ]
+                    },
+                    "description": "Partially updates a virtual server resource. Only specified properties are modified."
+                  },
+                  "response": [
+                    {
+                      "id": "b219e0f1-ef93-41b9-80fd-e1c2d43e4684",
+                      "name": "Virtual server patched successfully.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"ipProtocol\": \"udp\",\n  \"mask\": \"<string>\",\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"serverside\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"clientside\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"sourcePort\": \"preserve-strict\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"disabled\",\n  \"connectionLimit\": \"<integer>\",\n  \"enabled\": \"<boolean>\",\n  \"disabled\": \"<boolean>\",\n  \"mirror\": \"enabled\",\n  \"rateLimit\": \"<string>\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\",\n  \"fallbackPersistence\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/virtual/:virtualName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "virtual",
+                            ":virtualName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "virtualName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"name\": \"<string>\",\n  \"fullPath\": \"<string>\",\n  \"generation\": \"<integer>\",\n  \"selfLink\": \"<uri>\",\n  \"addressStatus\": \"yes\",\n  \"autoLasthop\": \"default\",\n  \"cmpEnabled\": \"yes\",\n  \"connectionLimit\": 0,\n  \"description\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"enabled\": \"<boolean>\",\n  \"fallbackPersistence\": \"<string>\",\n  \"gtmScore\": 0,\n  \"ipProtocol\": \"sctp\",\n  \"mask\": \"<string>\",\n  \"mirror\": \"disabled\",\n  \"nat64\": \"disabled\",\n  \"partition\": \"Common\",\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"no\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"no\"\n    }\n  ],\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"serverside\",\n      \"fullPath\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"clientside\",\n      \"fullPath\": \"<string>\"\n    }\n  ],\n  \"rateLimit\": \"disabled\",\n  \"rateLimitMode\": \"object\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"source\": \"0.0.0.0/0\",\n  \"sourcePort\": \"preserve\",\n  \"synCookieStatus\": \"not-activated\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\",\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vsIndex\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:30.000Z",
+                      "updatedAt": "2026-07-28T01:35:30.000Z",
+                      "uid": "35240-b219e0f1-ef93-41b9-80fd-e1c2d43e4684"
+                    },
+                    {
+                      "id": "5f6b96d8-3bc3-4932-bacb-d4cff0803a3b",
+                      "name": "The request could not be processed due to invalid syntax or missing required parameters.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"ipProtocol\": \"udp\",\n  \"mask\": \"<string>\",\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"serverside\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"clientside\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"sourcePort\": \"preserve-strict\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"disabled\",\n  \"connectionLimit\": \"<integer>\",\n  \"enabled\": \"<boolean>\",\n  \"disabled\": \"<boolean>\",\n  \"mirror\": \"enabled\",\n  \"rateLimit\": \"<string>\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\",\n  \"fallbackPersistence\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/virtual/:virtualName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "virtual",
+                            ":virtualName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "virtualName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:30.000Z",
+                      "updatedAt": "2026-07-28T01:35:30.000Z",
+                      "uid": "35240-5f6b96d8-3bc3-4932-bacb-d4cff0803a3b"
+                    },
+                    {
+                      "id": "4dffa5f2-277f-4667-be18-0bb0d28db07c",
+                      "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"ipProtocol\": \"udp\",\n  \"mask\": \"<string>\",\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"serverside\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"clientside\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"sourcePort\": \"preserve-strict\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"disabled\",\n  \"connectionLimit\": \"<integer>\",\n  \"enabled\": \"<boolean>\",\n  \"disabled\": \"<boolean>\",\n  \"mirror\": \"enabled\",\n  \"rateLimit\": \"<string>\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\",\n  \"fallbackPersistence\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/virtual/:virtualName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "virtual",
+                            ":virtualName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "virtualName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:30.000Z",
+                      "updatedAt": "2026-07-28T01:35:30.000Z",
+                      "uid": "35240-4dffa5f2-277f-4667-be18-0bb0d28db07c"
+                    },
+                    {
+                      "id": "91a3513a-fdc4-459f-a868-5a6af923ed27",
+                      "name": "The requested resource was not found on the BIG-IP system.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"ipProtocol\": \"udp\",\n  \"mask\": \"<string>\",\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"serverside\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"clientside\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"sourcePort\": \"preserve-strict\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"disabled\",\n  \"connectionLimit\": \"<integer>\",\n  \"enabled\": \"<boolean>\",\n  \"disabled\": \"<boolean>\",\n  \"mirror\": \"enabled\",\n  \"rateLimit\": \"<string>\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\",\n  \"fallbackPersistence\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/virtual/:virtualName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "virtual",
+                            ":virtualName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "virtualName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:30.000Z",
+                      "updatedAt": "2026-07-28T01:35:30.000Z",
+                      "uid": "35240-91a3513a-fdc4-459f-a868-5a6af923ed27"
+                    },
+                    {
+                      "id": "4aa603aa-d237-46f9-9856-98ec84a14e70",
+                      "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"ipProtocol\": \"udp\",\n  \"mask\": \"<string>\",\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"serverside\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"clientside\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"sourcePort\": \"preserve-strict\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"disabled\",\n  \"connectionLimit\": \"<integer>\",\n  \"enabled\": \"<boolean>\",\n  \"disabled\": \"<boolean>\",\n  \"mirror\": \"enabled\",\n  \"rateLimit\": \"<string>\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\",\n  \"fallbackPersistence\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/virtual/:virtualName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "virtual",
+                            ":virtualName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "virtualName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:30.000Z",
+                      "updatedAt": "2026-07-28T01:35:30.000Z",
+                      "uid": "35240-4aa603aa-d237-46f9-9856-98ec84a14e70"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:35:30.000Z",
+                  "updatedAt": "2026-07-28T01:35:30.000Z",
+                  "uid": "35240-4044ca63-7385-4d84-900d-ff12992b06a0"
+                },
+                {
+                  "name": "Delete a Virtual Server",
+                  "id": "a2613af5-198d-4527-ad38-576c6c00da31",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/virtual/:virtualName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "virtual",
+                        ":virtualName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e50f1728-c98e-4581-b730-66c3833d7222",
+                          "key": "virtualName",
+                          "value": "<string>",
+                          "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                        }
+                      ]
+                    },
+                    "description": "Removes a virtual server resource from the BIG-IP system. Active connections will be terminated."
+                  },
+                  "response": [
+                    {
+                      "id": "c2bac275-6cb6-4a43-a15c-e7942218d5c4",
+                      "name": "Virtual server deleted successfully.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/virtual/:virtualName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "virtual",
+                            ":virtualName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "virtualName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:35:30.000Z",
+                      "updatedAt": "2026-07-28T01:35:30.000Z",
+                      "uid": "35240-c2bac275-6cb6-4a43-a15c-e7942218d5c4"
+                    },
+                    {
+                      "id": "11bdb280-4dba-4c0d-b3a7-4102abb837e3",
+                      "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/virtual/:virtualName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "virtual",
+                            ":virtualName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "virtualName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:30.000Z",
+                      "updatedAt": "2026-07-28T01:35:30.000Z",
+                      "uid": "35240-11bdb280-4dba-4c0d-b3a7-4102abb837e3"
+                    },
+                    {
+                      "id": "895b5bc0-9b81-407b-8ed9-e648cacef969",
+                      "name": "The requested resource was not found on the BIG-IP system.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/virtual/:virtualName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "virtual",
+                            ":virtualName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "virtualName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:30.000Z",
+                      "updatedAt": "2026-07-28T01:35:30.000Z",
+                      "uid": "35240-895b5bc0-9b81-407b-8ed9-e648cacef969"
+                    },
+                    {
+                      "id": "ac059c75-0987-43e1-8cb3-6dbc3335a013",
+                      "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/virtual/:virtualName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "virtual",
+                            ":virtualName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "virtualName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:30.000Z",
+                      "updatedAt": "2026-07-28T01:35:30.000Z",
+                      "uid": "35240-ac059c75-0987-43e1-8cb3-6dbc3335a013"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:35:30.000Z",
+                  "updatedAt": "2026-07-28T01:35:30.000Z",
+                  "uid": "35240-a2613af5-198d-4527-ad38-576c6c00da31"
+                }
+              ],
+              "id": "cab34f58-898e-4f98-917e-529ad24ede34",
+              "createdAt": "2026-07-28T01:35:30.000Z",
+              "updatedAt": "2026-07-28T01:35:30.000Z",
+              "uid": "35240-cab34f58-898e-4f98-917e-529ad24ede34"
+            },
+            {
+              "name": "List All Virtual Servers",
+              "id": "0fb88a6e-0051-404e-bca9-993c8837c362",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ltm/virtual?$select=<string>&$filter=<string>&$top=<integer>&$skip=<integer>&expandSubcollections=true",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ltm",
+                    "virtual"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of property names to include in the response.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "OData filter expression to restrict returned resources.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of resources to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of resources to skip before returning results.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "When set to true, expands all subcollections inline within the response.",
+                      "key": "expandSubcollections",
+                      "value": "true"
+                    }
+                  ]
+                },
+                "description": "Returns a collection of all virtual server resources configured on the BIG-IP system."
+              },
+              "response": [
+                {
+                  "id": "0c809917-569a-48ac-a080-fde85247bb18",
+                  "name": "Successful retrieval of virtual server collection.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/virtual?$select=<string>&$filter=<string>&$top=<integer>&$skip=<integer>&expandSubcollections=true",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "virtual"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of property names to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "OData filter expression to restrict returned resources.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of resources to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of resources to skip before returning results.",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "When set to true, expands all subcollections inline within the response.",
+                          "key": "expandSubcollections",
+                          "value": "true"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"items\": [\n    {\n      \"kind\": \"<string>\",\n      \"name\": \"<string>\",\n      \"fullPath\": \"<string>\",\n      \"generation\": \"<integer>\",\n      \"selfLink\": \"<uri>\",\n      \"addressStatus\": \"yes\",\n      \"autoLasthop\": \"default\",\n      \"cmpEnabled\": \"yes\",\n      \"connectionLimit\": 0,\n      \"description\": \"<string>\",\n      \"destination\": \"<string>\",\n      \"disabled\": \"<boolean>\",\n      \"enabled\": \"<boolean>\",\n      \"fallbackPersistence\": \"<string>\",\n      \"gtmScore\": 0,\n      \"ipProtocol\": \"sctp\",\n      \"mask\": \"<string>\",\n      \"mirror\": \"disabled\",\n      \"nat64\": \"disabled\",\n      \"partition\": \"Common\",\n      \"persist\": [\n        {\n          \"name\": \"<string>\",\n          \"tmDefault\": \"no\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"tmDefault\": \"yes\"\n        }\n      ],\n      \"pool\": \"<string>\",\n      \"profiles\": [\n        {\n          \"name\": \"<string>\",\n          \"context\": \"serverside\",\n          \"fullPath\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"context\": \"all\",\n          \"fullPath\": \"<string>\"\n        }\n      ],\n      \"rateLimit\": \"disabled\",\n      \"rateLimitMode\": \"object\",\n      \"rules\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"source\": \"0.0.0.0/0\",\n      \"sourcePort\": \"preserve\",\n      \"synCookieStatus\": \"not-activated\",\n      \"translateAddress\": \"enabled\",\n      \"translatePort\": \"enabled\",\n      \"vlansEnabled\": \"<boolean>\",\n      \"vlansDisabled\": \"<boolean>\",\n      \"vlans\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"vsIndex\": \"<integer>\"\n    },\n    {\n      \"kind\": \"<string>\",\n      \"name\": \"<string>\",\n      \"fullPath\": \"<string>\",\n      \"generation\": \"<integer>\",\n      \"selfLink\": \"<uri>\",\n      \"addressStatus\": \"yes\",\n      \"autoLasthop\": \"default\",\n      \"cmpEnabled\": \"yes\",\n      \"connectionLimit\": 0,\n      \"description\": \"<string>\",\n      \"destination\": \"<string>\",\n      \"disabled\": \"<boolean>\",\n      \"enabled\": \"<boolean>\",\n      \"fallbackPersistence\": \"<string>\",\n      \"gtmScore\": 0,\n      \"ipProtocol\": \"tcp\",\n      \"mask\": \"<string>\",\n      \"mirror\": \"disabled\",\n      \"nat64\": \"disabled\",\n      \"partition\": \"Common\",\n      \"persist\": [\n        {\n          \"name\": \"<string>\",\n          \"tmDefault\": \"no\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"tmDefault\": \"no\"\n        }\n      ],\n      \"pool\": \"<string>\",\n      \"profiles\": [\n        {\n          \"name\": \"<string>\",\n          \"context\": \"all\",\n          \"fullPath\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"context\": \"all\",\n          \"fullPath\": \"<string>\"\n        }\n      ],\n      \"rateLimit\": \"disabled\",\n      \"rateLimitMode\": \"object\",\n      \"rules\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"source\": \"0.0.0.0/0\",\n      \"sourcePort\": \"preserve\",\n      \"synCookieStatus\": \"not-activated\",\n      \"translateAddress\": \"enabled\",\n      \"translatePort\": \"enabled\",\n      \"vlansEnabled\": \"<boolean>\",\n      \"vlansDisabled\": \"<boolean>\",\n      \"vlans\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"vsIndex\": \"<integer>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:35:30.000Z",
+                  "updatedAt": "2026-07-28T01:35:30.000Z",
+                  "uid": "35240-0c809917-569a-48ac-a080-fde85247bb18"
+                },
+                {
+                  "id": "13119674-90a0-41dc-bbe7-06a457aabe42",
+                  "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/virtual?$select=<string>&$filter=<string>&$top=<integer>&$skip=<integer>&expandSubcollections=true",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "virtual"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of property names to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "OData filter expression to restrict returned resources.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of resources to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of resources to skip before returning results.",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "When set to true, expands all subcollections inline within the response.",
+                          "key": "expandSubcollections",
+                          "value": "true"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:35:30.000Z",
+                  "updatedAt": "2026-07-28T01:35:30.000Z",
+                  "uid": "35240-13119674-90a0-41dc-bbe7-06a457aabe42"
+                },
+                {
+                  "id": "e4504feb-9b8f-44fc-9031-4d88acf87435",
+                  "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/virtual?$select=<string>&$filter=<string>&$top=<integer>&$skip=<integer>&expandSubcollections=true",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "virtual"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of property names to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "OData filter expression to restrict returned resources.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of resources to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of resources to skip before returning results.",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "When set to true, expands all subcollections inline within the response.",
+                          "key": "expandSubcollections",
+                          "value": "true"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:35:30.000Z",
+                  "updatedAt": "2026-07-28T01:35:30.000Z",
+                  "uid": "35240-e4504feb-9b8f-44fc-9031-4d88acf87435"
+                }
+              ],
+              "createdAt": "2026-07-28T01:35:30.000Z",
+              "updatedAt": "2026-07-28T01:35:30.000Z",
+              "uid": "35240-0fb88a6e-0051-404e-bca9-993c8837c362"
+            },
+            {
+              "name": "Create a Virtual Server",
+              "id": "8c2a60e7-2dcd-4574-969e-ec1c3188c41e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"partition\": \"Common\",\n  \"description\": \"<string>\",\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"<string>\",\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"all\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"clientside\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"no\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"yes\"\n    }\n  ],\n  \"source\": \"0.0.0.0/0\",\n  \"sourcePort\": \"preserve\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"connectionLimit\": \"<integer>\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ltm/virtual",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ltm",
+                    "virtual"
+                  ]
+                },
+                "description": "Creates a new virtual server resource on the BIG-IP system. At minimum, a name and destination address:port must be specified."
+              },
+              "response": [
+                {
+                  "id": "adcb9f8b-49d6-4107-9f5d-054f820933ce",
+                  "name": "Virtual server created successfully.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"partition\": \"Common\",\n  \"description\": \"<string>\",\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"<string>\",\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"all\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"clientside\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"no\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"yes\"\n    }\n  ],\n  \"source\": \"0.0.0.0/0\",\n  \"sourcePort\": \"preserve\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"connectionLimit\": \"<integer>\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/virtual",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "virtual"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"name\": \"<string>\",\n  \"fullPath\": \"<string>\",\n  \"generation\": \"<integer>\",\n  \"selfLink\": \"<uri>\",\n  \"addressStatus\": \"yes\",\n  \"autoLasthop\": \"default\",\n  \"cmpEnabled\": \"yes\",\n  \"connectionLimit\": 0,\n  \"description\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"enabled\": \"<boolean>\",\n  \"fallbackPersistence\": \"<string>\",\n  \"gtmScore\": 0,\n  \"ipProtocol\": \"sctp\",\n  \"mask\": \"<string>\",\n  \"mirror\": \"disabled\",\n  \"nat64\": \"disabled\",\n  \"partition\": \"Common\",\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"no\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"no\"\n    }\n  ],\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"serverside\",\n      \"fullPath\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"clientside\",\n      \"fullPath\": \"<string>\"\n    }\n  ],\n  \"rateLimit\": \"disabled\",\n  \"rateLimitMode\": \"object\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"source\": \"0.0.0.0/0\",\n  \"sourcePort\": \"preserve\",\n  \"synCookieStatus\": \"not-activated\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\",\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vsIndex\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:35:30.000Z",
+                  "updatedAt": "2026-07-28T01:35:30.000Z",
+                  "uid": "35240-adcb9f8b-49d6-4107-9f5d-054f820933ce"
+                },
+                {
+                  "id": "36c27fbe-86cc-4ad7-b212-c98109a3b744",
+                  "name": "The request could not be processed due to invalid syntax or missing required parameters.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"partition\": \"Common\",\n  \"description\": \"<string>\",\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"<string>\",\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"all\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"clientside\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"no\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"yes\"\n    }\n  ],\n  \"source\": \"0.0.0.0/0\",\n  \"sourcePort\": \"preserve\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"connectionLimit\": \"<integer>\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/virtual",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "virtual"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:35:30.000Z",
+                  "updatedAt": "2026-07-28T01:35:30.000Z",
+                  "uid": "35240-36c27fbe-86cc-4ad7-b212-c98109a3b744"
+                },
+                {
+                  "id": "5471f9ef-90ff-4f5e-b7bd-506b3aca459b",
+                  "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"partition\": \"Common\",\n  \"description\": \"<string>\",\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"<string>\",\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"all\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"clientside\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"no\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"yes\"\n    }\n  ],\n  \"source\": \"0.0.0.0/0\",\n  \"sourcePort\": \"preserve\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"connectionLimit\": \"<integer>\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/virtual",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "virtual"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:35:30.000Z",
+                  "updatedAt": "2026-07-28T01:35:30.000Z",
+                  "uid": "35240-5471f9ef-90ff-4f5e-b7bd-506b3aca459b"
+                },
+                {
+                  "id": "64aee814-0777-4f29-a41e-761f30eeea3c",
+                  "name": "The resource already exists or conflicts with an existing configuration.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"partition\": \"Common\",\n  \"description\": \"<string>\",\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"<string>\",\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"all\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"clientside\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"no\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"yes\"\n    }\n  ],\n  \"source\": \"0.0.0.0/0\",\n  \"sourcePort\": \"preserve\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"connectionLimit\": \"<integer>\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/virtual",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "virtual"
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:35:30.000Z",
+                  "updatedAt": "2026-07-28T01:35:30.000Z",
+                  "uid": "35240-64aee814-0777-4f29-a41e-761f30eeea3c"
+                },
+                {
+                  "id": "178e4da5-7564-4278-9aa7-5dc2c7206cf5",
+                  "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"partition\": \"Common\",\n  \"description\": \"<string>\",\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"<string>\",\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"all\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"clientside\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"no\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"yes\"\n    }\n  ],\n  \"source\": \"0.0.0.0/0\",\n  \"sourcePort\": \"preserve\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"connectionLimit\": \"<integer>\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/virtual",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "virtual"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:35:30.000Z",
+                  "updatedAt": "2026-07-28T01:35:30.000Z",
+                  "uid": "35240-178e4da5-7564-4278-9aa7-5dc2c7206cf5"
+                }
+              ],
+              "createdAt": "2026-07-28T01:35:30.000Z",
+              "updatedAt": "2026-07-28T01:35:30.000Z",
+              "uid": "35240-8c2a60e7-2dcd-4574-969e-ec1c3188c41e"
+            }
+          ],
+          "id": "a7a177ab-f26b-4ddf-af82-c349caef122e",
+          "createdAt": "2026-07-28T01:35:30.000Z",
+          "updatedAt": "2026-07-28T01:35:30.000Z",
+          "uid": "35240-a7a177ab-f26b-4ddf-af82-c349caef122e"
+        }
+      ],
+      "id": "f85f9f4f-fcfd-4ec8-b280-169df08a4e95",
+      "createdAt": "2026-07-28T01:35:30.000Z",
+      "updatedAt": "2026-07-28T01:35:30.000Z",
+      "uid": "35240-f85f9f4f-fcfd-4ec8-b280-169df08a4e95"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "bigip_host",
+      "value": "192.168.1.245"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{bigip_host}}/mgmt/tm"
+    }
+  ]
+}

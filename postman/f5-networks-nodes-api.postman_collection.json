@@ -1,0 +1,1851 @@
+{
+  "info": {
+    "_postman_id": "2810e7eb-014f-4013-bc3b-45909bce0eb0",
+    "name": "F5 BIG-IP iControl REST Nodes API",
+    "description": "The iControl REST API provides programmatic access to manage and configure F5 BIG-IP devices. It enables automation of Local Traffic Manager (LTM) resources including virtual servers, pools, nodes, pool members, and profiles for application delivery, load balancing, and network management.\n\nContact Support:\n Name: F5 Support\n Email: support@f5.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:35:23.000Z",
+    "updatedAt": "2026-07-28T01:35:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2810e7eb-014f-4013-bc3b-45909bce0eb0"
+  },
+  "item": [
+    {
+      "name": "ltm",
+      "item": [
+        {
+          "name": "node",
+          "item": [
+            {
+              "name": "{nodeName}",
+              "item": [
+                {
+                  "name": "Get a Node",
+                  "id": "d1ab8331-bd5f-4a40-bad1-952aa34f9ac4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/node/:nodeName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "node",
+                        ":nodeName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "2ec602b8-89d3-43a4-b755-11b229629961",
+                          "key": "nodeName",
+                          "value": "<string>",
+                          "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                        }
+                      ]
+                    },
+                    "description": "Returns a single node resource identified by name."
+                  },
+                  "response": [
+                    {
+                      "id": "e8ccfe60-3ecd-4906-b570-b17e2b80c602",
+                      "name": "Successful retrieval of node.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/node/:nodeName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "node",
+                            ":nodeName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "nodeName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"name\": \"<string>\",\n  \"fullPath\": \"<string>\",\n  \"generation\": \"<integer>\",\n  \"selfLink\": \"<uri>\",\n  \"address\": \"<string>\",\n  \"connectionLimit\": 0,\n  \"description\": \"<string>\",\n  \"dynamicRatio\": 1,\n  \"ephemeral\": \"false\",\n  \"fqdn\": {\n    \"addressFamily\": \"ipv4\",\n    \"autopopulate\": \"disabled\",\n    \"downInterval\": 5,\n    \"interval\": \"3600\",\n    \"tmName\": \"<string>\"\n  },\n  \"logging\": \"disabled\",\n  \"monitor\": \"default\",\n  \"partition\": \"Common\",\n  \"rateLimit\": \"disabled\",\n  \"ratio\": 1,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\"\n}",
+                      "createdAt": "2026-07-28T01:35:23.000Z",
+                      "updatedAt": "2026-07-28T01:35:23.000Z",
+                      "uid": "35240-e8ccfe60-3ecd-4906-b570-b17e2b80c602"
+                    },
+                    {
+                      "id": "22f91eb7-0a7c-4972-808d-27392b8c9587",
+                      "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/node/:nodeName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "node",
+                            ":nodeName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "nodeName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:23.000Z",
+                      "updatedAt": "2026-07-28T01:35:23.000Z",
+                      "uid": "35240-22f91eb7-0a7c-4972-808d-27392b8c9587"
+                    },
+                    {
+                      "id": "c346a9b3-116f-4b94-b5c0-6dacc44b7338",
+                      "name": "The requested resource was not found on the BIG-IP system.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/node/:nodeName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "node",
+                            ":nodeName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "nodeName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:23.000Z",
+                      "updatedAt": "2026-07-28T01:35:23.000Z",
+                      "uid": "35240-c346a9b3-116f-4b94-b5c0-6dacc44b7338"
+                    },
+                    {
+                      "id": "7ca1add7-8ef3-484a-92bf-db4818fc0ef5",
+                      "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/node/:nodeName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "node",
+                            ":nodeName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "nodeName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:23.000Z",
+                      "updatedAt": "2026-07-28T01:35:23.000Z",
+                      "uid": "35240-7ca1add7-8ef3-484a-92bf-db4818fc0ef5"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:35:23.000Z",
+                  "updatedAt": "2026-07-28T01:35:23.000Z",
+                  "uid": "35240-d1ab8331-bd5f-4a40-bad1-952aa34f9ac4"
+                },
+                {
+                  "name": "Update a Node",
+                  "id": "c7c4d5d4-3d85-40c5-b744-2b496cc8180a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\",\n  \"logging\": \"enabled\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/node/:nodeName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "node",
+                        ":nodeName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "93389d27-bbf9-447e-b0c4-a6ead782e592",
+                          "key": "nodeName",
+                          "value": "<string>",
+                          "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                        }
+                      ]
+                    },
+                    "description": "Replaces the entire node resource configuration."
+                  },
+                  "response": [
+                    {
+                      "id": "5c1da8ac-c482-472f-bd3b-d751481df4d6",
+                      "name": "Node updated successfully.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\",\n  \"logging\": \"enabled\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/node/:nodeName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "node",
+                            ":nodeName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "nodeName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"name\": \"<string>\",\n  \"fullPath\": \"<string>\",\n  \"generation\": \"<integer>\",\n  \"selfLink\": \"<uri>\",\n  \"address\": \"<string>\",\n  \"connectionLimit\": 0,\n  \"description\": \"<string>\",\n  \"dynamicRatio\": 1,\n  \"ephemeral\": \"false\",\n  \"fqdn\": {\n    \"addressFamily\": \"ipv4\",\n    \"autopopulate\": \"disabled\",\n    \"downInterval\": 5,\n    \"interval\": \"3600\",\n    \"tmName\": \"<string>\"\n  },\n  \"logging\": \"disabled\",\n  \"monitor\": \"default\",\n  \"partition\": \"Common\",\n  \"rateLimit\": \"disabled\",\n  \"ratio\": 1,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\"\n}",
+                      "createdAt": "2026-07-28T01:35:23.000Z",
+                      "updatedAt": "2026-07-28T01:35:23.000Z",
+                      "uid": "35240-5c1da8ac-c482-472f-bd3b-d751481df4d6"
+                    },
+                    {
+                      "id": "1aaba903-730a-4536-bf39-6144dc5da5dc",
+                      "name": "The request could not be processed due to invalid syntax or missing required parameters.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\",\n  \"logging\": \"enabled\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/node/:nodeName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "node",
+                            ":nodeName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "nodeName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:23.000Z",
+                      "updatedAt": "2026-07-28T01:35:23.000Z",
+                      "uid": "35240-1aaba903-730a-4536-bf39-6144dc5da5dc"
+                    },
+                    {
+                      "id": "f27548dd-a69a-42e0-a9ee-d4760382598d",
+                      "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\",\n  \"logging\": \"enabled\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/node/:nodeName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "node",
+                            ":nodeName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "nodeName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:23.000Z",
+                      "updatedAt": "2026-07-28T01:35:23.000Z",
+                      "uid": "35240-f27548dd-a69a-42e0-a9ee-d4760382598d"
+                    },
+                    {
+                      "id": "327d90ba-1068-43c6-aa41-c48edf89353d",
+                      "name": "The requested resource was not found on the BIG-IP system.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\",\n  \"logging\": \"enabled\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/node/:nodeName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "node",
+                            ":nodeName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "nodeName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:23.000Z",
+                      "updatedAt": "2026-07-28T01:35:23.000Z",
+                      "uid": "35240-327d90ba-1068-43c6-aa41-c48edf89353d"
+                    },
+                    {
+                      "id": "7e2f9b29-ef68-41d3-bbac-2022e261a34c",
+                      "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\",\n  \"logging\": \"enabled\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/node/:nodeName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "node",
+                            ":nodeName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "nodeName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:23.000Z",
+                      "updatedAt": "2026-07-28T01:35:23.000Z",
+                      "uid": "35240-7e2f9b29-ef68-41d3-bbac-2022e261a34c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:35:23.000Z",
+                  "updatedAt": "2026-07-28T01:35:23.000Z",
+                  "uid": "35240-c7c4d5d4-3d85-40c5-b744-2b496cc8180a"
+                },
+                {
+                  "name": "Patch a Node",
+                  "id": "c532a801-0cd6-489c-b150-b9491a888393",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\",\n  \"logging\": \"enabled\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/node/:nodeName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "node",
+                        ":nodeName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "bea586e1-08fb-4fee-8f8d-0d64c1629cf3",
+                          "key": "nodeName",
+                          "value": "<string>",
+                          "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                        }
+                      ]
+                    },
+                    "description": "Partially updates a node resource configuration."
+                  },
+                  "response": [
+                    {
+                      "id": "3d005967-e8c4-4c24-8f7f-6dcfe7266409",
+                      "name": "Node patched successfully.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\",\n  \"logging\": \"enabled\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/node/:nodeName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "node",
+                            ":nodeName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "nodeName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"name\": \"<string>\",\n  \"fullPath\": \"<string>\",\n  \"generation\": \"<integer>\",\n  \"selfLink\": \"<uri>\",\n  \"address\": \"<string>\",\n  \"connectionLimit\": 0,\n  \"description\": \"<string>\",\n  \"dynamicRatio\": 1,\n  \"ephemeral\": \"false\",\n  \"fqdn\": {\n    \"addressFamily\": \"ipv4\",\n    \"autopopulate\": \"disabled\",\n    \"downInterval\": 5,\n    \"interval\": \"3600\",\n    \"tmName\": \"<string>\"\n  },\n  \"logging\": \"disabled\",\n  \"monitor\": \"default\",\n  \"partition\": \"Common\",\n  \"rateLimit\": \"disabled\",\n  \"ratio\": 1,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\"\n}",
+                      "createdAt": "2026-07-28T01:35:23.000Z",
+                      "updatedAt": "2026-07-28T01:35:23.000Z",
+                      "uid": "35240-3d005967-e8c4-4c24-8f7f-6dcfe7266409"
+                    },
+                    {
+                      "id": "fb9b32a2-b17e-4c1d-8299-bc71d57c7102",
+                      "name": "The request could not be processed due to invalid syntax or missing required parameters.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\",\n  \"logging\": \"enabled\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/node/:nodeName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "node",
+                            ":nodeName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "nodeName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:23.000Z",
+                      "updatedAt": "2026-07-28T01:35:23.000Z",
+                      "uid": "35240-fb9b32a2-b17e-4c1d-8299-bc71d57c7102"
+                    },
+                    {
+                      "id": "46216f20-d2e1-44db-9f21-adacaca3186f",
+                      "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\",\n  \"logging\": \"enabled\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/node/:nodeName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "node",
+                            ":nodeName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "nodeName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:23.000Z",
+                      "updatedAt": "2026-07-28T01:35:23.000Z",
+                      "uid": "35240-46216f20-d2e1-44db-9f21-adacaca3186f"
+                    },
+                    {
+                      "id": "794c41fe-4115-4e7c-8575-46a18702031c",
+                      "name": "The requested resource was not found on the BIG-IP system.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\",\n  \"logging\": \"enabled\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/node/:nodeName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "node",
+                            ":nodeName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "nodeName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:23.000Z",
+                      "updatedAt": "2026-07-28T01:35:23.000Z",
+                      "uid": "35240-794c41fe-4115-4e7c-8575-46a18702031c"
+                    },
+                    {
+                      "id": "a8061233-2c4a-4b6b-b386-d99a8da6a71c",
+                      "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\",\n  \"logging\": \"enabled\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/node/:nodeName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "node",
+                            ":nodeName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "nodeName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:23.000Z",
+                      "updatedAt": "2026-07-28T01:35:23.000Z",
+                      "uid": "35240-a8061233-2c4a-4b6b-b386-d99a8da6a71c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:35:23.000Z",
+                  "updatedAt": "2026-07-28T01:35:23.000Z",
+                  "uid": "35240-c532a801-0cd6-489c-b150-b9491a888393"
+                },
+                {
+                  "name": "Delete a Node",
+                  "id": "dc3feeb0-0086-4a8e-9a2d-eadde3ccc851",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/node/:nodeName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "node",
+                        ":nodeName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "72f4c5ee-693c-4e15-8e42-1f46b81c2212",
+                          "key": "nodeName",
+                          "value": "<string>",
+                          "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                        }
+                      ]
+                    },
+                    "description": "Removes a node resource from the BIG-IP system. The node must not be referenced by any pool member."
+                  },
+                  "response": [
+                    {
+                      "id": "24bb045f-f46e-40b7-8fe8-440a8c228684",
+                      "name": "Node deleted successfully.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/node/:nodeName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "node",
+                            ":nodeName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "nodeName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:35:23.000Z",
+                      "updatedAt": "2026-07-28T01:35:23.000Z",
+                      "uid": "35240-24bb045f-f46e-40b7-8fe8-440a8c228684"
+                    },
+                    {
+                      "id": "9db6d00b-0653-4e9b-953c-43fa07063eb9",
+                      "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/node/:nodeName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "node",
+                            ":nodeName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "nodeName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:23.000Z",
+                      "updatedAt": "2026-07-28T01:35:23.000Z",
+                      "uid": "35240-9db6d00b-0653-4e9b-953c-43fa07063eb9"
+                    },
+                    {
+                      "id": "a2329b87-0b4a-4176-a959-3c80d8d74e03",
+                      "name": "The requested resource was not found on the BIG-IP system.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/node/:nodeName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "node",
+                            ":nodeName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "nodeName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:23.000Z",
+                      "updatedAt": "2026-07-28T01:35:23.000Z",
+                      "uid": "35240-a2329b87-0b4a-4176-a959-3c80d8d74e03"
+                    },
+                    {
+                      "id": "f4d4356b-69e7-4100-897c-5eb185c71384",
+                      "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ltm/node/:nodeName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ltm",
+                            "node",
+                            ":nodeName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "nodeName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:35:23.000Z",
+                      "updatedAt": "2026-07-28T01:35:23.000Z",
+                      "uid": "35240-f4d4356b-69e7-4100-897c-5eb185c71384"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:35:23.000Z",
+                  "updatedAt": "2026-07-28T01:35:23.000Z",
+                  "uid": "35240-dc3feeb0-0086-4a8e-9a2d-eadde3ccc851"
+                }
+              ],
+              "id": "01b57491-481a-43ee-a354-ae77e62d186d",
+              "createdAt": "2026-07-28T01:35:23.000Z",
+              "updatedAt": "2026-07-28T01:35:23.000Z",
+              "uid": "35240-01b57491-481a-43ee-a354-ae77e62d186d"
+            },
+            {
+              "name": "List All Nodes",
+              "id": "5aa2e548-7dec-4ae7-ab6b-0f84e63eee46",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ltm/node?$select=<string>&$filter=<string>&$top=<integer>&$skip=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ltm",
+                    "node"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of property names to include in the response.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "OData filter expression to restrict returned resources.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of resources to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of resources to skip before returning results.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    }
+                  ]
+                },
+                "description": "Returns a collection of all node resources configured on the BIG-IP system."
+              },
+              "response": [
+                {
+                  "id": "bafe7662-e807-49a3-81d2-091fa3ed67dd",
+                  "name": "Successful retrieval of node collection.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/node?$select=<string>&$filter=<string>&$top=<integer>&$skip=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "node"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of property names to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "OData filter expression to restrict returned resources.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of resources to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of resources to skip before returning results.",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"items\": [\n    {\n      \"kind\": \"<string>\",\n      \"name\": \"<string>\",\n      \"fullPath\": \"<string>\",\n      \"generation\": \"<integer>\",\n      \"selfLink\": \"<uri>\",\n      \"address\": \"<string>\",\n      \"connectionLimit\": 0,\n      \"description\": \"<string>\",\n      \"dynamicRatio\": 1,\n      \"ephemeral\": \"false\",\n      \"fqdn\": {\n        \"addressFamily\": \"ipv4\",\n        \"autopopulate\": \"disabled\",\n        \"downInterval\": 5,\n        \"interval\": \"3600\",\n        \"tmName\": \"<string>\"\n      },\n      \"logging\": \"disabled\",\n      \"monitor\": \"default\",\n      \"partition\": \"Common\",\n      \"rateLimit\": \"disabled\",\n      \"ratio\": 1,\n      \"session\": \"user-enabled\",\n      \"state\": \"user-up\"\n    },\n    {\n      \"kind\": \"<string>\",\n      \"name\": \"<string>\",\n      \"fullPath\": \"<string>\",\n      \"generation\": \"<integer>\",\n      \"selfLink\": \"<uri>\",\n      \"address\": \"<string>\",\n      \"connectionLimit\": 0,\n      \"description\": \"<string>\",\n      \"dynamicRatio\": 1,\n      \"ephemeral\": \"false\",\n      \"fqdn\": {\n        \"addressFamily\": \"ipv4\",\n        \"autopopulate\": \"disabled\",\n        \"downInterval\": 5,\n        \"interval\": \"3600\",\n        \"tmName\": \"<string>\"\n      },\n      \"logging\": \"disabled\",\n      \"monitor\": \"default\",\n      \"partition\": \"Common\",\n      \"rateLimit\": \"disabled\",\n      \"ratio\": 1,\n      \"session\": \"user-enabled\",\n      \"state\": \"down\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:35:23.000Z",
+                  "updatedAt": "2026-07-28T01:35:23.000Z",
+                  "uid": "35240-bafe7662-e807-49a3-81d2-091fa3ed67dd"
+                },
+                {
+                  "id": "11bb0115-0ade-467c-8478-739364a945a6",
+                  "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/node?$select=<string>&$filter=<string>&$top=<integer>&$skip=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "node"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of property names to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "OData filter expression to restrict returned resources.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of resources to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of resources to skip before returning results.",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:35:23.000Z",
+                  "updatedAt": "2026-07-28T01:35:23.000Z",
+                  "uid": "35240-11bb0115-0ade-467c-8478-739364a945a6"
+                },
+                {
+                  "id": "488d1382-ba47-4485-a0a5-e25f778d385a",
+                  "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/node?$select=<string>&$filter=<string>&$top=<integer>&$skip=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "node"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of property names to include in the response.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "OData filter expression to restrict returned resources.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of resources to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of resources to skip before returning results.",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:35:23.000Z",
+                  "updatedAt": "2026-07-28T01:35:23.000Z",
+                  "uid": "35240-488d1382-ba47-4485-a0a5-e25f778d385a"
+                }
+              ],
+              "createdAt": "2026-07-28T01:35:23.000Z",
+              "updatedAt": "2026-07-28T01:35:23.000Z",
+              "uid": "35240-5aa2e548-7dec-4ae7-ab6b-0f84e63eee46"
+            },
+            {
+              "name": "Create a Node",
+              "id": "6d880a30-cf54-4116-96bf-58f3026041a1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"partition\": \"Common\",\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"fqdn\": {\n    \"addressFamily\": \"ipv4\",\n    \"autopopulate\": \"disabled\",\n    \"downInterval\": \"<integer>\",\n    \"interval\": \"<string>\",\n    \"tmName\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ltm/node",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ltm",
+                    "node"
+                  ]
+                },
+                "description": "Creates a new node resource on the BIG-IP system. The name and address are required for creation."
+              },
+              "response": [
+                {
+                  "id": "9d5c4f02-0ccb-478f-92db-70f1b93e27c3",
+                  "name": "Node created successfully.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"partition\": \"Common\",\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"fqdn\": {\n    \"addressFamily\": \"ipv4\",\n    \"autopopulate\": \"disabled\",\n    \"downInterval\": \"<integer>\",\n    \"interval\": \"<string>\",\n    \"tmName\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/node",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "node"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"name\": \"<string>\",\n  \"fullPath\": \"<string>\",\n  \"generation\": \"<integer>\",\n  \"selfLink\": \"<uri>\",\n  \"address\": \"<string>\",\n  \"connectionLimit\": 0,\n  \"description\": \"<string>\",\n  \"dynamicRatio\": 1,\n  \"ephemeral\": \"false\",\n  \"fqdn\": {\n    \"addressFamily\": \"ipv4\",\n    \"autopopulate\": \"disabled\",\n    \"downInterval\": 5,\n    \"interval\": \"3600\",\n    \"tmName\": \"<string>\"\n  },\n  \"logging\": \"disabled\",\n  \"monitor\": \"default\",\n  \"partition\": \"Common\",\n  \"rateLimit\": \"disabled\",\n  \"ratio\": 1,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-down\"\n}",
+                  "createdAt": "2026-07-28T01:35:23.000Z",
+                  "updatedAt": "2026-07-28T01:35:23.000Z",
+                  "uid": "35240-9d5c4f02-0ccb-478f-92db-70f1b93e27c3"
+                },
+                {
+                  "id": "6987c669-d4e7-49ca-9450-1321a6552ac9",
+                  "name": "The request could not be processed due to invalid syntax or missing required parameters.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"partition\": \"Common\",\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"fqdn\": {\n    \"addressFamily\": \"ipv4\",\n    \"autopopulate\": \"disabled\",\n    \"downInterval\": \"<integer>\",\n    \"interval\": \"<string>\",\n    \"tmName\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/node",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "node"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:35:23.000Z",
+                  "updatedAt": "2026-07-28T01:35:23.000Z",
+                  "uid": "35240-6987c669-d4e7-49ca-9450-1321a6552ac9"
+                },
+                {
+                  "id": "53106f9a-31b9-4225-8933-b0a65ecef667",
+                  "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"partition\": \"Common\",\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"fqdn\": {\n    \"addressFamily\": \"ipv4\",\n    \"autopopulate\": \"disabled\",\n    \"downInterval\": \"<integer>\",\n    \"interval\": \"<string>\",\n    \"tmName\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/node",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "node"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:35:23.000Z",
+                  "updatedAt": "2026-07-28T01:35:23.000Z",
+                  "uid": "35240-53106f9a-31b9-4225-8933-b0a65ecef667"
+                },
+                {
+                  "id": "56919e01-f0be-42ef-b020-f494a75743b4",
+                  "name": "The resource already exists or conflicts with an existing configuration.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"partition\": \"Common\",\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"fqdn\": {\n    \"addressFamily\": \"ipv4\",\n    \"autopopulate\": \"disabled\",\n    \"downInterval\": \"<integer>\",\n    \"interval\": \"<string>\",\n    \"tmName\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/node",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "node"
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:35:23.000Z",
+                  "updatedAt": "2026-07-28T01:35:23.000Z",
+                  "uid": "35240-56919e01-f0be-42ef-b020-f494a75743b4"
+                },
+                {
+                  "id": "23b04498-04eb-469c-b5a7-820945854513",
+                  "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"partition\": \"Common\",\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"fqdn\": {\n    \"addressFamily\": \"ipv4\",\n    \"autopopulate\": \"disabled\",\n    \"downInterval\": \"<integer>\",\n    \"interval\": \"<string>\",\n    \"tmName\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ltm/node",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ltm",
+                        "node"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errorStack\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apiError\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:35:23.000Z",
+                  "updatedAt": "2026-07-28T01:35:23.000Z",
+                  "uid": "35240-23b04498-04eb-469c-b5a7-820945854513"
+                }
+              ],
+              "createdAt": "2026-07-28T01:35:23.000Z",
+              "updatedAt": "2026-07-28T01:35:23.000Z",
+              "uid": "35240-6d880a30-cf54-4116-96bf-58f3026041a1"
+            }
+          ],
+          "id": "fb0c67b4-5bf5-45b8-b739-fe3c0d2f6319",
+          "createdAt": "2026-07-28T01:35:23.000Z",
+          "updatedAt": "2026-07-28T01:35:23.000Z",
+          "uid": "35240-fb0c67b4-5bf5-45b8-b739-fe3c0d2f6319"
+        }
+      ],
+      "id": "4e5e3e82-5ded-4553-aa90-49850ded7a78",
+      "createdAt": "2026-07-28T01:35:23.000Z",
+      "updatedAt": "2026-07-28T01:35:23.000Z",
+      "uid": "35240-4e5e3e82-5ded-4553-aa90-49850ded7a78"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "bigip_host",
+      "value": "192.168.1.245"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{bigip_host}}/mgmt/tm"
+    }
+  ]
+}
