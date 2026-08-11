@@ -452,6 +452,11 @@ apis:
   - type: ChangeLog
     url: https://docs.cloud.f5.com/docs-v2/platform/changelogs/saas-release-notes
 common:
+  - type: Releases
+    url: https://github.com/F5Networks/f5-appsvcs-extension/releases
+  - type: License
+    name: Apache-2.0
+    url: https://github.com/F5Networks/f5-appsvcs-extension/blob/main/LICENSE
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/f5-networks/overview
   - type: AgenticAccess
