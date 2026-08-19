@@ -19,7 +19,7 @@ image: https://www.f5.com/content/dam/f5-com/global-assets/images/f5-logo.svg
 url: https://www.f5.com/apis
 created: '2024'
 modified: '2026-05-19'
-specificationVersion: '0.18'
+specificationVersion: '0.23'
 type: Index
 access: 3rd-Party
 position: Consumer
