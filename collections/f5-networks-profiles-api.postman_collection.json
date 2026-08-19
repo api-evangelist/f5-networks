@@ -1,0 +1,2182 @@
+{
+  "item": [
+    {
+      "id": "20bc8b3a-82dc-47a8-87e2-b88e6dfced23",
+      "name": "Profiles",
+      "description": {
+        "content": "Manage profiles that define traffic handling behavior for virtual servers, including HTTP, TCP, UDP, client SSL, and persistence profiles.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "873c8b6b-fb2d-4f31-a1dd-7a8da8d91eed",
+          "name": "List Http Profiles",
+          "request": {
+            "name": "List Http Profiles",
+            "description": {
+              "content": "Returns a collection of all HTTP profile resources configured on the BIG-IP system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "profile",
+                "http"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of property names to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression to restrict returned resources."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e58a55ab-1423-421c-af75-6ddaf415d784",
+              "name": "Successful retrieval of HTTP profile collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "profile",
+                    "http"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,destination,pool"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "partition eq Common"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"example_value\",\n  \"selfLink\": \"https://www.example.com\",\n  \"items\": [\n    {\n      \"kind\": \"example_value\",\n      \"name\": \"Example Title\",\n      \"fullPath\": \"example_value\",\n      \"generation\": 10,\n      \"selfLink\": \"https://www.example.com\",\n      \"acceptXff\": \"enabled\",\n      \"appService\": \"example_value\",\n      \"basicAuthRealm\": \"example_value\",\n      \"defaultsFrom\": \"example_value\",\n      \"description\": \"A sample description.\",\n      \"encryptCookies\": [\n        {}\n      ],\n      \"enforcement\": {\n        \"maxHeaderCount\": 10,\n        \"maxHeaderSize\": 10,\n        \"pipeline\": \"allow\"\n      },\n      \"fallbackHost\": \"example_value\",\n      \"fallbackStatusCodes\": [\n        {}\n      ],\n      \"headerErase\": \"example_value\",\n      \"headerInsert\": \"example_value\",\n      \"insertXforwardedFor\": \"enabled\",\n      \"oneconnectTransformations\": \"enabled\",\n      \"redirectRewrite\": \"none\",\n      \"requestChunking\": \"allow\",\n      \"responseChunking\": \"allow\",\n      \"serverAgentName\": \"example_value\",\n      \"viaHostName\": \"example_value\",\n      \"viaRequest\": \"append\",\n      \"viaResponse\": \"append\",\n      \"xffAlternativeNames\": [\n        {}\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc2f3fbd-4736-42c8-ba81-d87154f21d19",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "profile",
+                    "http"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,destination,pool"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "partition eq Common"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f7b4439-d153-415f-83e2-dd07d124cb2e",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "profile",
+                    "http"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,destination,pool"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "partition eq Common"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "03f81beb-8793-4607-85a4-1a50d35eae3e",
+          "name": "Get an Http Profile",
+          "request": {
+            "name": "Get an Http Profile",
+            "description": {
+              "content": "Returns a single HTTP profile resource identified by name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "profile",
+                "http",
+                ":profileName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profileName",
+                  "description": "(Required) Name of the profile resource."
+                },
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e3653cf4-38aa-43e7-ad10-16eeb9b4a5d1",
+              "name": "Successful retrieval of the HTTP profile.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "profile",
+                    "http",
+                    ":profileName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileName",
+                      "description": "(Required) Name of the profile resource."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"example_value\",\n  \"name\": \"Example Title\",\n  \"fullPath\": \"example_value\",\n  \"generation\": 10,\n  \"selfLink\": \"https://www.example.com\",\n  \"acceptXff\": \"enabled\",\n  \"appService\": \"example_value\",\n  \"basicAuthRealm\": \"example_value\",\n  \"defaultsFrom\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"encryptCookies\": [\n    \"example_value\"\n  ],\n  \"enforcement\": {\n    \"maxHeaderCount\": 10,\n    \"maxHeaderSize\": 10,\n    \"pipeline\": \"allow\"\n  },\n  \"fallbackHost\": \"example_value\",\n  \"fallbackStatusCodes\": [\n    \"example_value\"\n  ],\n  \"headerErase\": \"example_value\",\n  \"headerInsert\": \"example_value\",\n  \"insertXforwardedFor\": \"enabled\",\n  \"oneconnectTransformations\": \"enabled\",\n  \"redirectRewrite\": \"none\",\n  \"requestChunking\": \"allow\",\n  \"responseChunking\": \"allow\",\n  \"serverAgentName\": \"example_value\",\n  \"viaHostName\": \"example_value\",\n  \"viaRequest\": \"append\",\n  \"viaResponse\": \"append\",\n  \"xffAlternativeNames\": [\n    \"example_value\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa5ab56b-78af-4b30-af0a-9b351e3cbfad",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "profile",
+                    "http",
+                    ":profileName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileName",
+                      "description": "(Required) Name of the profile resource."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e60bae3f-c452-4681-94b4-2a4145d04b93",
+              "name": "The requested resource was not found on the BIG-IP system.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "profile",
+                    "http",
+                    ":profileName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileName",
+                      "description": "(Required) Name of the profile resource."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40284d89-1bed-4ff0-98cd-0cb1794934c9",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "profile",
+                    "http",
+                    ":profileName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileName",
+                      "description": "(Required) Name of the profile resource."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d3cd3cb-88e1-4e49-a314-8e0cc89aeabd",
+          "name": "List Tcp Profiles",
+          "request": {
+            "name": "List Tcp Profiles",
+            "description": {
+              "content": "Returns a collection of all TCP profile resources configured on the BIG-IP system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "profile",
+                "tcp"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of property names to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression to restrict returned resources."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7029cd95-1298-4561-a9c4-57441c33da1b",
+              "name": "Successful retrieval of TCP profile collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "profile",
+                    "tcp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,destination,pool"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "partition eq Common"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"example_value\",\n  \"selfLink\": \"https://www.example.com\",\n  \"items\": [\n    {\n      \"kind\": \"example_value\",\n      \"name\": \"Example Title\",\n      \"fullPath\": \"example_value\",\n      \"generation\": 10,\n      \"selfLink\": \"https://www.example.com\",\n      \"abc\": \"enabled\",\n      \"ackOnPush\": \"enabled\",\n      \"closeWaitTimeout\": 10,\n      \"congestionControl\": \"high-speed\",\n      \"defaultsFrom\": \"example_value\",\n      \"deferredAccept\": \"enabled\",\n      \"description\": \"A sample description.\",\n      \"finWaitTimeout\": 10,\n      \"idleTimeout\": 10,\n      \"initCwnd\": 10,\n      \"initRwnd\": 10,\n      \"keepAliveInterval\": 10,\n      \"maxRetrans\": 10,\n      \"maxSegmentSize\": 10,\n      \"nagle\": \"auto\",\n      \"receiveWindowSize\": 10,\n      \"sendBufferSize\": 10,\n      \"synMaxRetrans\": 10,\n      \"timeWaitRecycle\": \"enabled\",\n      \"timeWaitTimeout\": 10\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2640a599-afbe-4f67-95d9-1582e517637e",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "profile",
+                    "tcp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,destination,pool"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "partition eq Common"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "67c8e4a4-9cfb-433c-94c5-a2f6f1c30d01",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "profile",
+                    "tcp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,destination,pool"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "partition eq Common"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0adfff64-d9fc-4026-84aa-679d089fb59a",
+          "name": "Get a Tcp Profile",
+          "request": {
+            "name": "Get a Tcp Profile",
+            "description": {
+              "content": "Returns a single TCP profile resource identified by name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "profile",
+                "tcp",
+                ":profileName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profileName",
+                  "description": "(Required) Name of the profile resource."
+                },
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "00470842-c277-4cac-9cbf-30ae4297bd86",
+              "name": "Successful retrieval of the TCP profile.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "profile",
+                    "tcp",
+                    ":profileName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileName",
+                      "description": "(Required) Name of the profile resource."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"example_value\",\n  \"name\": \"Example Title\",\n  \"fullPath\": \"example_value\",\n  \"generation\": 10,\n  \"selfLink\": \"https://www.example.com\",\n  \"abc\": \"enabled\",\n  \"ackOnPush\": \"enabled\",\n  \"closeWaitTimeout\": 10,\n  \"congestionControl\": \"high-speed\",\n  \"defaultsFrom\": \"example_value\",\n  \"deferredAccept\": \"enabled\",\n  \"description\": \"A sample description.\",\n  \"finWaitTimeout\": 10,\n  \"idleTimeout\": 10,\n  \"initCwnd\": 10,\n  \"initRwnd\": 10,\n  \"keepAliveInterval\": 10,\n  \"maxRetrans\": 10,\n  \"maxSegmentSize\": 10,\n  \"nagle\": \"auto\",\n  \"receiveWindowSize\": 10,\n  \"sendBufferSize\": 10,\n  \"synMaxRetrans\": 10,\n  \"timeWaitRecycle\": \"enabled\",\n  \"timeWaitTimeout\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34b79151-862b-43af-93a9-7b29e9096960",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "profile",
+                    "tcp",
+                    ":profileName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileName",
+                      "description": "(Required) Name of the profile resource."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f34863f-0810-4acd-8574-febaabe96838",
+              "name": "The requested resource was not found on the BIG-IP system.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "profile",
+                    "tcp",
+                    ":profileName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileName",
+                      "description": "(Required) Name of the profile resource."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20d3d955-9c97-47c7-a8ab-3f02d32af2ba",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "profile",
+                    "tcp",
+                    ":profileName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileName",
+                      "description": "(Required) Name of the profile resource."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf64dc4f-8cdf-42cd-8b58-9a28837cf0b1",
+          "name": "List Client Ssl Profiles",
+          "request": {
+            "name": "List Client Ssl Profiles",
+            "description": {
+              "content": "Returns a collection of all Client SSL profile resources configured on the BIG-IP system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "profile",
+                "client-ssl"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of property names to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression to restrict returned resources."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7956ac88-f7c5-464f-a400-5f29967ff187",
+              "name": "Successful retrieval of Client SSL profile collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "profile",
+                    "client-ssl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,destination,pool"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "partition eq Common"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"example_value\",\n  \"selfLink\": \"https://www.example.com\",\n  \"items\": [\n    {\n      \"kind\": \"example_value\",\n      \"name\": \"Example Title\",\n      \"fullPath\": \"example_value\",\n      \"generation\": 10,\n      \"selfLink\": \"https://www.example.com\",\n      \"alertTimeout\": \"example_value\",\n      \"allowNonSsl\": \"enabled\",\n      \"cert\": \"example_value\",\n      \"certKeyChain\": [\n        {}\n      ],\n      \"ciphers\": \"example_value\",\n      \"defaultsFrom\": \"example_value\",\n      \"description\": \"A sample description.\",\n      \"key\": \"example_value\",\n      \"options\": [\n        {}\n      ],\n      \"peerCertMode\": \"ignore\",\n      \"renegotiation\": \"enabled\",\n      \"secureRenegotiation\": \"require\",\n      \"sniDefault\": \"true\",\n      \"sniRequire\": \"true\",\n      \"sslForwardProxy\": \"enabled\",\n      \"uncleanShutdown\": \"enabled\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "45edcd01-7f7f-4114-ba5a-43115835148f",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "profile",
+                    "client-ssl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,destination,pool"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "partition eq Common"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac049dae-a3b1-41c1-89ae-267944bf68fe",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "profile",
+                    "client-ssl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,destination,pool"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "partition eq Common"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ce988b8-806d-4527-a2af-690a3a75cf17",
+          "name": "Get a Client Ssl Profile",
+          "request": {
+            "name": "Get a Client Ssl Profile",
+            "description": {
+              "content": "Returns a single Client SSL profile resource identified by name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "profile",
+                "client-ssl",
+                ":profileName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profileName",
+                  "description": "(Required) Name of the profile resource."
+                },
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f84b2b4d-2d3a-4d77-b41d-7abc344aaf14",
+              "name": "Successful retrieval of the Client SSL profile.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "profile",
+                    "client-ssl",
+                    ":profileName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileName",
+                      "description": "(Required) Name of the profile resource."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"example_value\",\n  \"name\": \"Example Title\",\n  \"fullPath\": \"example_value\",\n  \"generation\": 10,\n  \"selfLink\": \"https://www.example.com\",\n  \"alertTimeout\": \"example_value\",\n  \"allowNonSsl\": \"enabled\",\n  \"cert\": \"example_value\",\n  \"certKeyChain\": [\n    {\n      \"name\": \"Example Title\",\n      \"cert\": \"example_value\",\n      \"key\": \"example_value\",\n      \"chain\": \"example_value\"\n    }\n  ],\n  \"ciphers\": \"example_value\",\n  \"defaultsFrom\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"key\": \"example_value\",\n  \"options\": [\n    \"example_value\"\n  ],\n  \"peerCertMode\": \"ignore\",\n  \"renegotiation\": \"enabled\",\n  \"secureRenegotiation\": \"require\",\n  \"sniDefault\": \"true\",\n  \"sniRequire\": \"true\",\n  \"sslForwardProxy\": \"enabled\",\n  \"uncleanShutdown\": \"enabled\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b910ea16-2ac5-499b-a52a-e162d9ddebb2",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "profile",
+                    "client-ssl",
+                    ":profileName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileName",
+                      "description": "(Required) Name of the profile resource."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b815859-7368-422b-bf65-48f655742b28",
+              "name": "The requested resource was not found on the BIG-IP system.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "profile",
+                    "client-ssl",
+                    ":profileName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileName",
+                      "description": "(Required) Name of the profile resource."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ef42247-ffae-4aff-868b-f29a0ae2bf5e",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "profile",
+                    "client-ssl",
+                    ":profileName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileName",
+                      "description": "(Required) Name of the profile resource."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc0f6578-7b64-4e48-820a-17974667da93",
+          "name": "List Cookie Persistence Profiles",
+          "request": {
+            "name": "List Cookie Persistence Profiles",
+            "description": {
+              "content": "Returns a collection of all cookie persistence profile resources.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "persistence",
+                "cookie"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of property names to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression to restrict returned resources."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "82fe0ef4-f783-45b3-b466-01588b277062",
+              "name": "Successful retrieval of cookie persistence profiles.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "persistence",
+                    "cookie"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,destination,pool"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "partition eq Common"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"example_value\",\n  \"selfLink\": \"https://www.example.com\",\n  \"items\": [\n    {\n      \"kind\": \"example_value\",\n      \"name\": \"Example Title\",\n      \"fullPath\": \"example_value\",\n      \"generation\": 10,\n      \"selfLink\": \"https://www.example.com\",\n      \"alwaysSend\": \"enabled\",\n      \"cookieEncryption\": \"required\",\n      \"cookieName\": \"example_value\",\n      \"defaultsFrom\": \"example_value\",\n      \"description\": \"A sample description.\",\n      \"expiration\": \"example_value\",\n      \"hashLength\": 10,\n      \"hashOffset\": 10,\n      \"httponly\": \"enabled\",\n      \"matchAcrossPools\": \"enabled\",\n      \"matchAcrossServices\": \"enabled\",\n      \"matchAcrossVirtuals\": \"enabled\",\n      \"method\": \"insert\",\n      \"mirror\": \"enabled\",\n      \"overrideConnectionLimit\": \"enabled\",\n      \"secure\": \"enabled\",\n      \"timeout\": \"example_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1aeac437-97b3-4df4-b53c-7df31b3dec49",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "persistence",
+                    "cookie"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,destination,pool"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "partition eq Common"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4be3475c-5d0b-4624-a6a6-6f68541b699f",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "persistence",
+                    "cookie"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,destination,pool"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "partition eq Common"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0f58e16-699c-44b5-8636-8e232e7516bf",
+          "name": "Get a Cookie Persistence Profile",
+          "request": {
+            "name": "Get a Cookie Persistence Profile",
+            "description": {
+              "content": "Returns a single cookie persistence profile resource identified by name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "persistence",
+                "cookie",
+                ":profileName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profileName",
+                  "description": "(Required) Name of the profile resource."
+                },
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a419d468-d40c-4823-8305-4a4eb10446cb",
+              "name": "Successful retrieval of the cookie persistence profile.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "persistence",
+                    "cookie",
+                    ":profileName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileName",
+                      "description": "(Required) Name of the profile resource."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"example_value\",\n  \"name\": \"Example Title\",\n  \"fullPath\": \"example_value\",\n  \"generation\": 10,\n  \"selfLink\": \"https://www.example.com\",\n  \"alwaysSend\": \"enabled\",\n  \"cookieEncryption\": \"required\",\n  \"cookieName\": \"example_value\",\n  \"defaultsFrom\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"expiration\": \"example_value\",\n  \"hashLength\": 10,\n  \"hashOffset\": 10,\n  \"httponly\": \"enabled\",\n  \"matchAcrossPools\": \"enabled\",\n  \"matchAcrossServices\": \"enabled\",\n  \"matchAcrossVirtuals\": \"enabled\",\n  \"method\": \"insert\",\n  \"mirror\": \"enabled\",\n  \"overrideConnectionLimit\": \"enabled\",\n  \"secure\": \"enabled\",\n  \"timeout\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "beb554de-9783-4e7e-a750-beda3a3291c9",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "persistence",
+                    "cookie",
+                    ":profileName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileName",
+                      "description": "(Required) Name of the profile resource."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c9306003-8fe9-4ca8-bf39-3e4178682160",
+              "name": "The requested resource was not found on the BIG-IP system.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "persistence",
+                    "cookie",
+                    ":profileName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileName",
+                      "description": "(Required) Name of the profile resource."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "51621883-1b5b-4f62-ba20-2bd94e917549",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "persistence",
+                    "cookie",
+                    ":profileName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileName",
+                      "description": "(Required) Name of the profile resource."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname or IP address of the BIG-IP device",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "192.168.1.245",
+      "key": "bigip_host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{bigip_host}}/mgmt/tm",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "65a264af-619d-461b-b0c4-86504605ed76",
+    "name": "F5 BIG-IP iControl REST Nodes Profiles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The iControl REST API provides programmatic access to manage and configure F5 BIG-IP devices. It enables automation of Local Traffic Manager (LTM) resources including virtual servers, pools, nodes, pool members, and profiles for application delivery, load balancing, and network management.\n\nContact Support:\n Name: F5 Support\n Email: support@f5.com",
+      "type": "text/plain"
+    }
+  }
+}

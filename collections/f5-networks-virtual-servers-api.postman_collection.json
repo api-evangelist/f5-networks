@@ -1,0 +1,2090 @@
+{
+  "item": [
+    {
+      "id": "f8c6bfdc-a0b9-4eb7-9b37-f0e4b89878c0",
+      "name": "Virtual Servers",
+      "description": {
+        "content": "Manage virtual servers that direct client traffic to appropriate server pools based on configured rules and profiles.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7010e5c2-ce14-428b-8d0c-0b876a6f41bc",
+          "name": "List All Virtual Servers",
+          "request": {
+            "name": "List All Virtual Servers",
+            "description": {
+              "content": "Returns a collection of all virtual server resources configured on the BIG-IP system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "virtual"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of property names to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression to restrict returned resources."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of resources to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of resources to skip before returning results."
+                },
+                {
+                  "disabled": false,
+                  "key": "expandSubcollections",
+                  "value": "<string>",
+                  "description": "When set to true, expands all subcollections inline within the response."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "db3122b4-a1b3-4484-98ea-f6bf513c9c69",
+              "name": "Successful retrieval of virtual server collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,destination,pool"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "partition eq Common"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "10"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "expandSubcollections",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"example_value\",\n  \"selfLink\": \"https://www.example.com\",\n  \"items\": [\n    {\n      \"kind\": \"example_value\",\n      \"name\": \"Example Title\",\n      \"fullPath\": \"example_value\",\n      \"generation\": 10,\n      \"selfLink\": \"https://www.example.com\",\n      \"addressStatus\": \"yes\",\n      \"autoLasthop\": \"default\",\n      \"cmpEnabled\": \"yes\",\n      \"connectionLimit\": 10,\n      \"description\": \"A sample description.\",\n      \"destination\": \"example_value\",\n      \"disabled\": true,\n      \"enabled\": true,\n      \"fallbackPersistence\": \"example_value\",\n      \"gtmScore\": 10,\n      \"ipProtocol\": \"tcp\",\n      \"mask\": \"example_value\",\n      \"mirror\": \"enabled\",\n      \"nat64\": \"enabled\",\n      \"partition\": \"example_value\",\n      \"persist\": [\n        {}\n      ],\n      \"pool\": \"example_value\",\n      \"profiles\": [\n        {}\n      ],\n      \"rateLimit\": \"example_value\",\n      \"rateLimitMode\": \"object\",\n      \"rules\": [\n        {}\n      ],\n      \"source\": \"example_value\",\n      \"sourcePort\": \"preserve\",\n      \"synCookieStatus\": \"not-activated\",\n      \"translateAddress\": \"enabled\",\n      \"translatePort\": \"enabled\",\n      \"vlansEnabled\": true,\n      \"vlansDisabled\": true,\n      \"vlans\": [\n        {}\n      ],\n      \"vsIndex\": 10\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "73831edc-db4d-4d7c-abea-50bfddd5d206",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,destination,pool"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "partition eq Common"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "10"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "expandSubcollections",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2a2ac42-b73b-48f0-be0d-817052de382e",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,destination,pool"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "partition eq Common"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "10"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "expandSubcollections",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80b8635e-995c-47b7-9ef2-39b0456eb8a9",
+          "name": "Create a Virtual Server",
+          "request": {
+            "name": "Create a Virtual Server",
+            "description": {
+              "content": "Creates a new virtual server resource on the BIG-IP system. At minimum, a name and destination address:port must be specified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "virtual"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"partition\": \"Common\",\n  \"description\": \"<string>\",\n  \"ipProtocol\": \"<string>\",\n  \"mask\": \"<string>\",\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"<string>\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    }\n  ],\n  \"source\": \"0.0.0.0/0\",\n  \"sourcePort\": \"<string>\",\n  \"translateAddress\": \"<string>\",\n  \"translatePort\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9ade9cde-7711-4904-b201-d542fd2f0d95",
+              "name": "Virtual server created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"partition\": \"example_value\",\n  \"destination\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"example_value\",\n  \"pool\": \"example_value\",\n  \"profiles\": [\n    {\n      \"name\": \"Example Title\",\n      \"context\": \"all\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"Example Title\",\n      \"tmDefault\": \"yes\"\n    }\n  ],\n  \"source\": \"example_value\",\n  \"sourcePort\": \"preserve\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"connectionLimit\": 10,\n  \"rules\": [\n    \"example_value\"\n  ],\n  \"vlans\": [\n    \"example_value\"\n  ],\n  \"vlansEnabled\": true,\n  \"vlansDisabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"example_value\",\n  \"name\": \"Example Title\",\n  \"fullPath\": \"example_value\",\n  \"generation\": 10,\n  \"selfLink\": \"https://www.example.com\",\n  \"addressStatus\": \"yes\",\n  \"autoLasthop\": \"default\",\n  \"cmpEnabled\": \"yes\",\n  \"connectionLimit\": 10,\n  \"description\": \"A sample description.\",\n  \"destination\": \"example_value\",\n  \"disabled\": true,\n  \"enabled\": true,\n  \"fallbackPersistence\": \"example_value\",\n  \"gtmScore\": 10,\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"example_value\",\n  \"mirror\": \"enabled\",\n  \"nat64\": \"enabled\",\n  \"partition\": \"example_value\",\n  \"persist\": [\n    {\n      \"name\": \"Example Title\",\n      \"tmDefault\": \"yes\"\n    }\n  ],\n  \"pool\": \"example_value\",\n  \"profiles\": [\n    {\n      \"name\": \"Example Title\",\n      \"context\": \"all\",\n      \"fullPath\": \"example_value\"\n    }\n  ],\n  \"rateLimit\": \"example_value\",\n  \"rateLimitMode\": \"object\",\n  \"rules\": [\n    \"example_value\"\n  ],\n  \"source\": \"example_value\",\n  \"sourcePort\": \"preserve\",\n  \"synCookieStatus\": \"not-activated\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"vlansEnabled\": true,\n  \"vlansDisabled\": true,\n  \"vlans\": [\n    \"example_value\"\n  ],\n  \"vsIndex\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2275464c-c136-43a5-9363-fa9ad01789f3",
+              "name": "The request could not be processed due to invalid syntax or missing required parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"partition\": \"example_value\",\n  \"destination\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"example_value\",\n  \"pool\": \"example_value\",\n  \"profiles\": [\n    {\n      \"name\": \"Example Title\",\n      \"context\": \"all\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"Example Title\",\n      \"tmDefault\": \"yes\"\n    }\n  ],\n  \"source\": \"example_value\",\n  \"sourcePort\": \"preserve\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"connectionLimit\": 10,\n  \"rules\": [\n    \"example_value\"\n  ],\n  \"vlans\": [\n    \"example_value\"\n  ],\n  \"vlansEnabled\": true,\n  \"vlansDisabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2b07eb3-61a8-435e-8421-4a6ebfba8cc7",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"partition\": \"example_value\",\n  \"destination\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"example_value\",\n  \"pool\": \"example_value\",\n  \"profiles\": [\n    {\n      \"name\": \"Example Title\",\n      \"context\": \"all\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"Example Title\",\n      \"tmDefault\": \"yes\"\n    }\n  ],\n  \"source\": \"example_value\",\n  \"sourcePort\": \"preserve\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"connectionLimit\": 10,\n  \"rules\": [\n    \"example_value\"\n  ],\n  \"vlans\": [\n    \"example_value\"\n  ],\n  \"vlansEnabled\": true,\n  \"vlansDisabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b6d48a8-9d2b-4acf-a6cd-eaea9051e755",
+              "name": "The resource already exists or conflicts with an existing configuration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"partition\": \"example_value\",\n  \"destination\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"example_value\",\n  \"pool\": \"example_value\",\n  \"profiles\": [\n    {\n      \"name\": \"Example Title\",\n      \"context\": \"all\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"Example Title\",\n      \"tmDefault\": \"yes\"\n    }\n  ],\n  \"source\": \"example_value\",\n  \"sourcePort\": \"preserve\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"connectionLimit\": 10,\n  \"rules\": [\n    \"example_value\"\n  ],\n  \"vlans\": [\n    \"example_value\"\n  ],\n  \"vlansEnabled\": true,\n  \"vlansDisabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7bdcbe85-6ef4-4098-aec5-f9242e74b7de",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"partition\": \"example_value\",\n  \"destination\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"example_value\",\n  \"pool\": \"example_value\",\n  \"profiles\": [\n    {\n      \"name\": \"Example Title\",\n      \"context\": \"all\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"Example Title\",\n      \"tmDefault\": \"yes\"\n    }\n  ],\n  \"source\": \"example_value\",\n  \"sourcePort\": \"preserve\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"connectionLimit\": 10,\n  \"rules\": [\n    \"example_value\"\n  ],\n  \"vlans\": [\n    \"example_value\"\n  ],\n  \"vlansEnabled\": true,\n  \"vlansDisabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce4d61da-e304-4a5a-ab2e-3532a2c572aa",
+          "name": "Get a Virtual Server",
+          "request": {
+            "name": "Get a Virtual Server",
+            "description": {
+              "content": "Returns a single virtual server resource identified by name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "virtual",
+                ":virtualName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expandSubcollections",
+                  "value": "<string>",
+                  "description": "When set to true, expands all subcollections inline within the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "virtualName",
+                  "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                },
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c5a3282f-d932-42c1-a7df-3d4ef9777729",
+              "name": "Successful retrieval of the virtual server.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual",
+                    ":virtualName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expandSubcollections",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "virtualName",
+                      "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"example_value\",\n  \"name\": \"Example Title\",\n  \"fullPath\": \"example_value\",\n  \"generation\": 10,\n  \"selfLink\": \"https://www.example.com\",\n  \"addressStatus\": \"yes\",\n  \"autoLasthop\": \"default\",\n  \"cmpEnabled\": \"yes\",\n  \"connectionLimit\": 10,\n  \"description\": \"A sample description.\",\n  \"destination\": \"example_value\",\n  \"disabled\": true,\n  \"enabled\": true,\n  \"fallbackPersistence\": \"example_value\",\n  \"gtmScore\": 10,\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"example_value\",\n  \"mirror\": \"enabled\",\n  \"nat64\": \"enabled\",\n  \"partition\": \"example_value\",\n  \"persist\": [\n    {\n      \"name\": \"Example Title\",\n      \"tmDefault\": \"yes\"\n    }\n  ],\n  \"pool\": \"example_value\",\n  \"profiles\": [\n    {\n      \"name\": \"Example Title\",\n      \"context\": \"all\",\n      \"fullPath\": \"example_value\"\n    }\n  ],\n  \"rateLimit\": \"example_value\",\n  \"rateLimitMode\": \"object\",\n  \"rules\": [\n    \"example_value\"\n  ],\n  \"source\": \"example_value\",\n  \"sourcePort\": \"preserve\",\n  \"synCookieStatus\": \"not-activated\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"vlansEnabled\": true,\n  \"vlansDisabled\": true,\n  \"vlans\": [\n    \"example_value\"\n  ],\n  \"vsIndex\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89f02092-9ffd-47bc-9aa5-2c61186d3fc0",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual",
+                    ":virtualName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expandSubcollections",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "virtualName",
+                      "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ed11928-7df5-4d82-a17b-19d1d84aca4b",
+              "name": "The requested resource was not found on the BIG-IP system.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual",
+                    ":virtualName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expandSubcollections",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "virtualName",
+                      "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9aaa4e73-cfa9-42bc-bc63-edc7f856f478",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual",
+                    ":virtualName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expandSubcollections",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "virtualName",
+                      "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "963e70ed-c0f9-46df-bf89-6cad78ef7e19",
+          "name": "Update a Virtual Server",
+          "request": {
+            "name": "Update a Virtual Server",
+            "description": {
+              "content": "Replaces the entire virtual server resource. All writable properties must be included in the request body.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "virtual",
+                ":virtualName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "virtualName",
+                  "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                },
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"ipProtocol\": \"<string>\",\n  \"mask\": \"<string>\",\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"<string>\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"sourcePort\": \"<string>\",\n  \"translateAddress\": \"<string>\",\n  \"translatePort\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"enabled\": \"<boolean>\",\n  \"disabled\": \"<boolean>\",\n  \"mirror\": \"<string>\",\n  \"rateLimit\": \"<string>\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\",\n  \"fallbackPersistence\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3cf59e53-c689-4577-8470-2beb0c7e48a9",
+              "name": "Virtual server updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual",
+                    ":virtualName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "virtualName",
+                      "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"destination\": \"example_value\",\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"example_value\",\n  \"pool\": \"example_value\",\n  \"profiles\": [\n    {\n      \"name\": \"Example Title\",\n      \"context\": \"all\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"Example Title\",\n      \"tmDefault\": \"example_value\"\n    }\n  ],\n  \"source\": \"example_value\",\n  \"sourcePort\": \"preserve\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"connectionLimit\": 10,\n  \"enabled\": true,\n  \"disabled\": true,\n  \"mirror\": \"enabled\",\n  \"rateLimit\": \"example_value\",\n  \"rules\": [\n    \"example_value\"\n  ],\n  \"vlans\": [\n    \"example_value\"\n  ],\n  \"vlansEnabled\": true,\n  \"vlansDisabled\": true,\n  \"fallbackPersistence\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"example_value\",\n  \"name\": \"Example Title\",\n  \"fullPath\": \"example_value\",\n  \"generation\": 10,\n  \"selfLink\": \"https://www.example.com\",\n  \"addressStatus\": \"yes\",\n  \"autoLasthop\": \"default\",\n  \"cmpEnabled\": \"yes\",\n  \"connectionLimit\": 10,\n  \"description\": \"A sample description.\",\n  \"destination\": \"example_value\",\n  \"disabled\": true,\n  \"enabled\": true,\n  \"fallbackPersistence\": \"example_value\",\n  \"gtmScore\": 10,\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"example_value\",\n  \"mirror\": \"enabled\",\n  \"nat64\": \"enabled\",\n  \"partition\": \"example_value\",\n  \"persist\": [\n    {\n      \"name\": \"Example Title\",\n      \"tmDefault\": \"yes\"\n    }\n  ],\n  \"pool\": \"example_value\",\n  \"profiles\": [\n    {\n      \"name\": \"Example Title\",\n      \"context\": \"all\",\n      \"fullPath\": \"example_value\"\n    }\n  ],\n  \"rateLimit\": \"example_value\",\n  \"rateLimitMode\": \"object\",\n  \"rules\": [\n    \"example_value\"\n  ],\n  \"source\": \"example_value\",\n  \"sourcePort\": \"preserve\",\n  \"synCookieStatus\": \"not-activated\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"vlansEnabled\": true,\n  \"vlansDisabled\": true,\n  \"vlans\": [\n    \"example_value\"\n  ],\n  \"vsIndex\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6627e300-374d-4dd5-ae0e-44381dfb9966",
+              "name": "The request could not be processed due to invalid syntax or missing required parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual",
+                    ":virtualName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "virtualName",
+                      "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"destination\": \"example_value\",\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"example_value\",\n  \"pool\": \"example_value\",\n  \"profiles\": [\n    {\n      \"name\": \"Example Title\",\n      \"context\": \"all\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"Example Title\",\n      \"tmDefault\": \"example_value\"\n    }\n  ],\n  \"source\": \"example_value\",\n  \"sourcePort\": \"preserve\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"connectionLimit\": 10,\n  \"enabled\": true,\n  \"disabled\": true,\n  \"mirror\": \"enabled\",\n  \"rateLimit\": \"example_value\",\n  \"rules\": [\n    \"example_value\"\n  ],\n  \"vlans\": [\n    \"example_value\"\n  ],\n  \"vlansEnabled\": true,\n  \"vlansDisabled\": true,\n  \"fallbackPersistence\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d922328d-a280-4ed2-9421-2f7d58b64138",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual",
+                    ":virtualName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "virtualName",
+                      "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"destination\": \"example_value\",\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"example_value\",\n  \"pool\": \"example_value\",\n  \"profiles\": [\n    {\n      \"name\": \"Example Title\",\n      \"context\": \"all\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"Example Title\",\n      \"tmDefault\": \"example_value\"\n    }\n  ],\n  \"source\": \"example_value\",\n  \"sourcePort\": \"preserve\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"connectionLimit\": 10,\n  \"enabled\": true,\n  \"disabled\": true,\n  \"mirror\": \"enabled\",\n  \"rateLimit\": \"example_value\",\n  \"rules\": [\n    \"example_value\"\n  ],\n  \"vlans\": [\n    \"example_value\"\n  ],\n  \"vlansEnabled\": true,\n  \"vlansDisabled\": true,\n  \"fallbackPersistence\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "205df6e3-a7ec-49a8-992c-21d33d51f65a",
+              "name": "The requested resource was not found on the BIG-IP system.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual",
+                    ":virtualName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "virtualName",
+                      "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"destination\": \"example_value\",\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"example_value\",\n  \"pool\": \"example_value\",\n  \"profiles\": [\n    {\n      \"name\": \"Example Title\",\n      \"context\": \"all\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"Example Title\",\n      \"tmDefault\": \"example_value\"\n    }\n  ],\n  \"source\": \"example_value\",\n  \"sourcePort\": \"preserve\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"connectionLimit\": 10,\n  \"enabled\": true,\n  \"disabled\": true,\n  \"mirror\": \"enabled\",\n  \"rateLimit\": \"example_value\",\n  \"rules\": [\n    \"example_value\"\n  ],\n  \"vlans\": [\n    \"example_value\"\n  ],\n  \"vlansEnabled\": true,\n  \"vlansDisabled\": true,\n  \"fallbackPersistence\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "409f690b-7194-4e72-ae4e-b98b04b84a8b",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual",
+                    ":virtualName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "virtualName",
+                      "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"destination\": \"example_value\",\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"example_value\",\n  \"pool\": \"example_value\",\n  \"profiles\": [\n    {\n      \"name\": \"Example Title\",\n      \"context\": \"all\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"Example Title\",\n      \"tmDefault\": \"example_value\"\n    }\n  ],\n  \"source\": \"example_value\",\n  \"sourcePort\": \"preserve\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"connectionLimit\": 10,\n  \"enabled\": true,\n  \"disabled\": true,\n  \"mirror\": \"enabled\",\n  \"rateLimit\": \"example_value\",\n  \"rules\": [\n    \"example_value\"\n  ],\n  \"vlans\": [\n    \"example_value\"\n  ],\n  \"vlansEnabled\": true,\n  \"vlansDisabled\": true,\n  \"fallbackPersistence\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43b9d594-c749-45a8-b6af-628c2aa73ab7",
+          "name": "Patch a Virtual Server",
+          "request": {
+            "name": "Patch a Virtual Server",
+            "description": {
+              "content": "Partially updates a virtual server resource. Only specified properties are modified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "virtual",
+                ":virtualName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "virtualName",
+                  "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                },
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"destination\": \"<string>\",\n  \"ipProtocol\": \"<string>\",\n  \"mask\": \"<string>\",\n  \"pool\": \"<string>\",\n  \"profiles\": [\n    {\n      \"name\": \"<string>\",\n      \"context\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"context\": \"<string>\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tmDefault\": \"<string>\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"sourcePort\": \"<string>\",\n  \"translateAddress\": \"<string>\",\n  \"translatePort\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"enabled\": \"<boolean>\",\n  \"disabled\": \"<boolean>\",\n  \"mirror\": \"<string>\",\n  \"rateLimit\": \"<string>\",\n  \"rules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlans\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vlansEnabled\": \"<boolean>\",\n  \"vlansDisabled\": \"<boolean>\",\n  \"fallbackPersistence\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a86e46a5-48dc-4396-bf94-2f8c20566c7c",
+              "name": "Virtual server patched successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual",
+                    ":virtualName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "virtualName",
+                      "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"destination\": \"example_value\",\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"example_value\",\n  \"pool\": \"example_value\",\n  \"profiles\": [\n    {\n      \"name\": \"Example Title\",\n      \"context\": \"all\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"Example Title\",\n      \"tmDefault\": \"example_value\"\n    }\n  ],\n  \"source\": \"example_value\",\n  \"sourcePort\": \"preserve\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"connectionLimit\": 10,\n  \"enabled\": true,\n  \"disabled\": true,\n  \"mirror\": \"enabled\",\n  \"rateLimit\": \"example_value\",\n  \"rules\": [\n    \"example_value\"\n  ],\n  \"vlans\": [\n    \"example_value\"\n  ],\n  \"vlansEnabled\": true,\n  \"vlansDisabled\": true,\n  \"fallbackPersistence\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"example_value\",\n  \"name\": \"Example Title\",\n  \"fullPath\": \"example_value\",\n  \"generation\": 10,\n  \"selfLink\": \"https://www.example.com\",\n  \"addressStatus\": \"yes\",\n  \"autoLasthop\": \"default\",\n  \"cmpEnabled\": \"yes\",\n  \"connectionLimit\": 10,\n  \"description\": \"A sample description.\",\n  \"destination\": \"example_value\",\n  \"disabled\": true,\n  \"enabled\": true,\n  \"fallbackPersistence\": \"example_value\",\n  \"gtmScore\": 10,\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"example_value\",\n  \"mirror\": \"enabled\",\n  \"nat64\": \"enabled\",\n  \"partition\": \"example_value\",\n  \"persist\": [\n    {\n      \"name\": \"Example Title\",\n      \"tmDefault\": \"yes\"\n    }\n  ],\n  \"pool\": \"example_value\",\n  \"profiles\": [\n    {\n      \"name\": \"Example Title\",\n      \"context\": \"all\",\n      \"fullPath\": \"example_value\"\n    }\n  ],\n  \"rateLimit\": \"example_value\",\n  \"rateLimitMode\": \"object\",\n  \"rules\": [\n    \"example_value\"\n  ],\n  \"source\": \"example_value\",\n  \"sourcePort\": \"preserve\",\n  \"synCookieStatus\": \"not-activated\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"vlansEnabled\": true,\n  \"vlansDisabled\": true,\n  \"vlans\": [\n    \"example_value\"\n  ],\n  \"vsIndex\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d48cda0-73e9-42f2-adbb-1e612d272b54",
+              "name": "The request could not be processed due to invalid syntax or missing required parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual",
+                    ":virtualName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "virtualName",
+                      "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"destination\": \"example_value\",\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"example_value\",\n  \"pool\": \"example_value\",\n  \"profiles\": [\n    {\n      \"name\": \"Example Title\",\n      \"context\": \"all\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"Example Title\",\n      \"tmDefault\": \"example_value\"\n    }\n  ],\n  \"source\": \"example_value\",\n  \"sourcePort\": \"preserve\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"connectionLimit\": 10,\n  \"enabled\": true,\n  \"disabled\": true,\n  \"mirror\": \"enabled\",\n  \"rateLimit\": \"example_value\",\n  \"rules\": [\n    \"example_value\"\n  ],\n  \"vlans\": [\n    \"example_value\"\n  ],\n  \"vlansEnabled\": true,\n  \"vlansDisabled\": true,\n  \"fallbackPersistence\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0be8e70-4e88-4768-a5a4-f6eca13b4bd7",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual",
+                    ":virtualName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "virtualName",
+                      "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"destination\": \"example_value\",\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"example_value\",\n  \"pool\": \"example_value\",\n  \"profiles\": [\n    {\n      \"name\": \"Example Title\",\n      \"context\": \"all\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"Example Title\",\n      \"tmDefault\": \"example_value\"\n    }\n  ],\n  \"source\": \"example_value\",\n  \"sourcePort\": \"preserve\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"connectionLimit\": 10,\n  \"enabled\": true,\n  \"disabled\": true,\n  \"mirror\": \"enabled\",\n  \"rateLimit\": \"example_value\",\n  \"rules\": [\n    \"example_value\"\n  ],\n  \"vlans\": [\n    \"example_value\"\n  ],\n  \"vlansEnabled\": true,\n  \"vlansDisabled\": true,\n  \"fallbackPersistence\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a854211d-99a7-4ae8-a7f4-79e0657734fb",
+              "name": "The requested resource was not found on the BIG-IP system.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual",
+                    ":virtualName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "virtualName",
+                      "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"destination\": \"example_value\",\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"example_value\",\n  \"pool\": \"example_value\",\n  \"profiles\": [\n    {\n      \"name\": \"Example Title\",\n      \"context\": \"all\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"Example Title\",\n      \"tmDefault\": \"example_value\"\n    }\n  ],\n  \"source\": \"example_value\",\n  \"sourcePort\": \"preserve\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"connectionLimit\": 10,\n  \"enabled\": true,\n  \"disabled\": true,\n  \"mirror\": \"enabled\",\n  \"rateLimit\": \"example_value\",\n  \"rules\": [\n    \"example_value\"\n  ],\n  \"vlans\": [\n    \"example_value\"\n  ],\n  \"vlansEnabled\": true,\n  \"vlansDisabled\": true,\n  \"fallbackPersistence\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77765118-19e3-400c-bf78-553b4ad16c9b",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual",
+                    ":virtualName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "virtualName",
+                      "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"destination\": \"example_value\",\n  \"ipProtocol\": \"tcp\",\n  \"mask\": \"example_value\",\n  \"pool\": \"example_value\",\n  \"profiles\": [\n    {\n      \"name\": \"Example Title\",\n      \"context\": \"all\"\n    }\n  ],\n  \"persist\": [\n    {\n      \"name\": \"Example Title\",\n      \"tmDefault\": \"example_value\"\n    }\n  ],\n  \"source\": \"example_value\",\n  \"sourcePort\": \"preserve\",\n  \"translateAddress\": \"enabled\",\n  \"translatePort\": \"enabled\",\n  \"connectionLimit\": 10,\n  \"enabled\": true,\n  \"disabled\": true,\n  \"mirror\": \"enabled\",\n  \"rateLimit\": \"example_value\",\n  \"rules\": [\n    \"example_value\"\n  ],\n  \"vlans\": [\n    \"example_value\"\n  ],\n  \"vlansEnabled\": true,\n  \"vlansDisabled\": true,\n  \"fallbackPersistence\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f586b44a-c898-4775-be77-bab3e3b9a7e2",
+          "name": "Delete a Virtual Server",
+          "request": {
+            "name": "Delete a Virtual Server",
+            "description": {
+              "content": "Removes a virtual server resource from the BIG-IP system. Active connections will be terminated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "virtual",
+                ":virtualName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "virtualName",
+                  "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                },
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9ec1522e-0d56-480a-88f9-a04fe72c1938",
+              "name": "Virtual server deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual",
+                    ":virtualName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "virtualName",
+                      "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "79a3bc5b-75a5-489a-8a93-73ca012f71a7",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual",
+                    ":virtualName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "virtualName",
+                      "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44737878-800a-4b93-9d0a-89ff279070a7",
+              "name": "The requested resource was not found on the BIG-IP system.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual",
+                    ":virtualName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "virtualName",
+                      "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b355b2f6-6150-4401-a712-c9926d5df9bb",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "virtual",
+                    ":virtualName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "virtualName",
+                      "description": "(Required) Name of the virtual server resource. Use ~Common~ prefix for partition-qualified names (e.g., ~Common~my_virtual)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname or IP address of the BIG-IP device",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "192.168.1.245",
+      "key": "bigip_host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{bigip_host}}/mgmt/tm",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "755488d3-a566-4c9a-b889-7c4bcfe516c3",
+    "name": "F5 BIG-IP iControl REST Nodes Virtual Servers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The iControl REST API provides programmatic access to manage and configure F5 BIG-IP devices. It enables automation of Local Traffic Manager (LTM) resources including virtual servers, pools, nodes, pool members, and profiles for application delivery, load balancing, and network management.\n\nContact Support:\n Name: F5 Support\n Email: support@f5.com",
+      "type": "text/plain"
+    }
+  }
+}

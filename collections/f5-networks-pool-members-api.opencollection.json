@@ -1,0 +1,187 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "F5 BIG-IP iControl REST Nodes Pool Members API",
+    "version": "15.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pool Members",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Pool Members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/pool/:poolName/members",
+            "params": [
+              {
+                "name": "poolName",
+                "value": "my_pool",
+                "type": "path",
+                "description": "Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+              },
+              {
+                "name": "$select",
+                "value": "name,destination,pool",
+                "type": "query",
+                "description": "Comma-separated list of property names to include in the response."
+              },
+              {
+                "name": "$filter",
+                "value": "partition eq Common",
+                "type": "query",
+                "description": "OData filter expression to restrict returned resources."
+              }
+            ]
+          },
+          "docs": "Returns a collection of all members within the specified pool."
+        },
+        {
+          "info": {
+            "name": "Add a Pool Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/pool/:poolName/members",
+            "params": [
+              {
+                "name": "poolName",
+                "value": "my_pool",
+                "type": "path",
+                "description": "Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a new member to the specified pool. The member name must be in the format address:port (e.g., 10.0.0.1:80)."
+        },
+        {
+          "info": {
+            "name": "Get a Pool Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/pool/:poolName/members/:memberName",
+            "params": [
+              {
+                "name": "poolName",
+                "value": "my_pool",
+                "type": "path",
+                "description": "Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+              },
+              {
+                "name": "memberName",
+                "value": "10.0.0.1:80",
+                "type": "path",
+                "description": "Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+              }
+            ]
+          },
+          "docs": "Returns a single pool member identified by name."
+        },
+        {
+          "info": {
+            "name": "Update a Pool Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/pool/:poolName/members/:memberName",
+            "params": [
+              {
+                "name": "poolName",
+                "value": "my_pool",
+                "type": "path",
+                "description": "Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+              },
+              {
+                "name": "memberName",
+                "value": "10.0.0.1:80",
+                "type": "path",
+                "description": "Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replaces the entire pool member resource configuration."
+        },
+        {
+          "info": {
+            "name": "Patch a Pool Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/pool/:poolName/members/:memberName",
+            "params": [
+              {
+                "name": "poolName",
+                "value": "my_pool",
+                "type": "path",
+                "description": "Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+              },
+              {
+                "name": "memberName",
+                "value": "10.0.0.1:80",
+                "type": "path",
+                "description": "Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Partially updates a pool member resource configuration."
+        },
+        {
+          "info": {
+            "name": "Delete a Pool Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{bigip_host}/mgmt/tm/ltm/pool/:poolName/members/:memberName",
+            "params": [
+              {
+                "name": "poolName",
+                "value": "my_pool",
+                "type": "path",
+                "description": "Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+              },
+              {
+                "name": "memberName",
+                "value": "10.0.0.1:80",
+                "type": "path",
+                "description": "Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+              }
+            ]
+          },
+          "docs": "Removes a member from the specified pool."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

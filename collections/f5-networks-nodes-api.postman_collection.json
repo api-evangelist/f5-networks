@@ -1,0 +1,2045 @@
+{
+  "item": [
+    {
+      "id": "d86630d4-14ee-4ebe-87e3-b8bbebdfeb9f",
+      "name": "Nodes",
+      "description": {
+        "content": "Manage nodes representing individual backend servers by IP address or FQDN.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "30ca521c-5ba1-41d0-ad5d-87866f6de199",
+          "name": "List All Nodes",
+          "request": {
+            "name": "List All Nodes",
+            "description": {
+              "content": "Returns a collection of all node resources configured on the BIG-IP system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "node"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of property names to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression to restrict returned resources."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of resources to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of resources to skip before returning results."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bba8f276-0731-4b9c-b405-ce88afd4df49",
+              "name": "Successful retrieval of node collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,destination,pool"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "partition eq Common"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "10"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"example_value\",\n  \"selfLink\": \"https://www.example.com\",\n  \"items\": [\n    {\n      \"kind\": \"example_value\",\n      \"name\": \"Example Title\",\n      \"fullPath\": \"example_value\",\n      \"generation\": 10,\n      \"selfLink\": \"https://www.example.com\",\n      \"address\": \"example_value\",\n      \"connectionLimit\": 10,\n      \"description\": \"A sample description.\",\n      \"dynamicRatio\": 10,\n      \"ephemeral\": \"true\",\n      \"fqdn\": {\n        \"addressFamily\": \"ipv4\",\n        \"autopopulate\": \"enabled\",\n        \"downInterval\": 10,\n        \"interval\": \"example_value\",\n        \"tmName\": \"example_value\"\n      },\n      \"logging\": \"enabled\",\n      \"monitor\": \"example_value\",\n      \"partition\": \"example_value\",\n      \"rateLimit\": \"example_value\",\n      \"ratio\": 10,\n      \"session\": \"user-enabled\",\n      \"state\": \"user-up\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b391dc2-0547-4682-9214-159fe04f48e5",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,destination,pool"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "partition eq Common"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "10"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "874effde-ab46-4255-8317-d5fba5b95a22",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,destination,pool"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "partition eq Common"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "10"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "900ff3dc-187f-47ef-b7a4-112152948c80",
+          "name": "Create a Node",
+          "request": {
+            "name": "Create a Node",
+            "description": {
+              "content": "Creates a new node resource on the BIG-IP system. The name and address are required for creation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "node"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"partition\": \"Common\",\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"fqdn\": {\n    \"addressFamily\": \"<string>\",\n    \"autopopulate\": \"<string>\",\n    \"downInterval\": \"<integer>\",\n    \"interval\": \"<string>\",\n    \"tmName\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "21810ca1-78c2-4f06-9219-e7f1e8ae5a2c",
+              "name": "Node created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"address\": \"example_value\",\n  \"partition\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"fqdn\": {\n    \"addressFamily\": \"ipv4\",\n    \"autopopulate\": \"enabled\",\n    \"downInterval\": 10,\n    \"interval\": \"example_value\",\n    \"tmName\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"example_value\",\n  \"name\": \"Example Title\",\n  \"fullPath\": \"example_value\",\n  \"generation\": 10,\n  \"selfLink\": \"https://www.example.com\",\n  \"address\": \"example_value\",\n  \"connectionLimit\": 10,\n  \"description\": \"A sample description.\",\n  \"dynamicRatio\": 10,\n  \"ephemeral\": \"true\",\n  \"fqdn\": {\n    \"addressFamily\": \"ipv4\",\n    \"autopopulate\": \"enabled\",\n    \"downInterval\": 10,\n    \"interval\": \"example_value\",\n    \"tmName\": \"example_value\"\n  },\n  \"logging\": \"enabled\",\n  \"monitor\": \"example_value\",\n  \"partition\": \"example_value\",\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a2db1e03-235d-4ce9-8183-284a9c52f384",
+              "name": "The request could not be processed due to invalid syntax or missing required parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"address\": \"example_value\",\n  \"partition\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"fqdn\": {\n    \"addressFamily\": \"ipv4\",\n    \"autopopulate\": \"enabled\",\n    \"downInterval\": 10,\n    \"interval\": \"example_value\",\n    \"tmName\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b931375-cb2d-40ba-8e81-c927cb4c0393",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"address\": \"example_value\",\n  \"partition\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"fqdn\": {\n    \"addressFamily\": \"ipv4\",\n    \"autopopulate\": \"enabled\",\n    \"downInterval\": 10,\n    \"interval\": \"example_value\",\n    \"tmName\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "957b6b31-3abb-47b8-9c4f-a9e8edda6aed",
+              "name": "The resource already exists or conflicts with an existing configuration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"address\": \"example_value\",\n  \"partition\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"fqdn\": {\n    \"addressFamily\": \"ipv4\",\n    \"autopopulate\": \"enabled\",\n    \"downInterval\": 10,\n    \"interval\": \"example_value\",\n    \"tmName\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "de3cd8bc-1806-4c77-9abe-5d831d6ee84f",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"address\": \"example_value\",\n  \"partition\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"fqdn\": {\n    \"addressFamily\": \"ipv4\",\n    \"autopopulate\": \"enabled\",\n    \"downInterval\": 10,\n    \"interval\": \"example_value\",\n    \"tmName\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "55152316-2b22-40c3-9c54-98bfb73c46eb",
+          "name": "Get a Node",
+          "request": {
+            "name": "Get a Node",
+            "description": {
+              "content": "Returns a single node resource identified by name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "node",
+                ":nodeName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "nodeName",
+                  "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                },
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b3d1df79-27ad-4199-8f24-b1e11c533fcb",
+              "name": "Successful retrieval of node.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node",
+                    ":nodeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeName",
+                      "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"example_value\",\n  \"name\": \"Example Title\",\n  \"fullPath\": \"example_value\",\n  \"generation\": 10,\n  \"selfLink\": \"https://www.example.com\",\n  \"address\": \"example_value\",\n  \"connectionLimit\": 10,\n  \"description\": \"A sample description.\",\n  \"dynamicRatio\": 10,\n  \"ephemeral\": \"true\",\n  \"fqdn\": {\n    \"addressFamily\": \"ipv4\",\n    \"autopopulate\": \"enabled\",\n    \"downInterval\": 10,\n    \"interval\": \"example_value\",\n    \"tmName\": \"example_value\"\n  },\n  \"logging\": \"enabled\",\n  \"monitor\": \"example_value\",\n  \"partition\": \"example_value\",\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3f273ad4-8aaf-4c3b-b596-eeee2c1f8e94",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node",
+                    ":nodeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeName",
+                      "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "654bbec7-3251-4275-acd1-2be842c32001",
+              "name": "The requested resource was not found on the BIG-IP system.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node",
+                    ":nodeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeName",
+                      "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f17472a-61e2-40d3-bde0-3667b91ef244",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node",
+                    ":nodeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeName",
+                      "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee275b65-3717-4463-b674-b72a27cc248c",
+          "name": "Update a Node",
+          "request": {
+            "name": "Update a Node",
+            "description": {
+              "content": "Replaces the entire node resource configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "node",
+                ":nodeName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "nodeName",
+                  "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                },
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"<string>\",\n  \"state\": \"<string>\",\n  \"logging\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3c409565-1269-4288-aead-fbfa8bbd3689",
+              "name": "Node updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node",
+                    ":nodeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeName",
+                      "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\",\n  \"logging\": \"enabled\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"example_value\",\n  \"name\": \"Example Title\",\n  \"fullPath\": \"example_value\",\n  \"generation\": 10,\n  \"selfLink\": \"https://www.example.com\",\n  \"address\": \"example_value\",\n  \"connectionLimit\": 10,\n  \"description\": \"A sample description.\",\n  \"dynamicRatio\": 10,\n  \"ephemeral\": \"true\",\n  \"fqdn\": {\n    \"addressFamily\": \"ipv4\",\n    \"autopopulate\": \"enabled\",\n    \"downInterval\": 10,\n    \"interval\": \"example_value\",\n    \"tmName\": \"example_value\"\n  },\n  \"logging\": \"enabled\",\n  \"monitor\": \"example_value\",\n  \"partition\": \"example_value\",\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa777d0a-b6f4-4a70-aed2-0aacb2b58420",
+              "name": "The request could not be processed due to invalid syntax or missing required parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node",
+                    ":nodeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeName",
+                      "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\",\n  \"logging\": \"enabled\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48c1ae78-c7e7-4a8f-b5c8-f0b01b62c35d",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node",
+                    ":nodeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeName",
+                      "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\",\n  \"logging\": \"enabled\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "885aba68-e834-4ef8-9e74-92c6e0dd778e",
+              "name": "The requested resource was not found on the BIG-IP system.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node",
+                    ":nodeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeName",
+                      "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\",\n  \"logging\": \"enabled\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93ed6d4e-8508-4916-ab86-543c07ca7754",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node",
+                    ":nodeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeName",
+                      "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\",\n  \"logging\": \"enabled\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e43f312b-7de2-46d9-bc46-0210431c82c4",
+          "name": "Patch a Node",
+          "request": {
+            "name": "Patch a Node",
+            "description": {
+              "content": "Partially updates a node resource configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "node",
+                ":nodeName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "nodeName",
+                  "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                },
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"<string>\",\n  \"state\": \"<string>\",\n  \"logging\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4eadf25d-4bc1-4f2b-bd2f-4fe9a724e33e",
+              "name": "Node patched successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node",
+                    ":nodeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeName",
+                      "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\",\n  \"logging\": \"enabled\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"example_value\",\n  \"name\": \"Example Title\",\n  \"fullPath\": \"example_value\",\n  \"generation\": 10,\n  \"selfLink\": \"https://www.example.com\",\n  \"address\": \"example_value\",\n  \"connectionLimit\": 10,\n  \"description\": \"A sample description.\",\n  \"dynamicRatio\": 10,\n  \"ephemeral\": \"true\",\n  \"fqdn\": {\n    \"addressFamily\": \"ipv4\",\n    \"autopopulate\": \"enabled\",\n    \"downInterval\": 10,\n    \"interval\": \"example_value\",\n    \"tmName\": \"example_value\"\n  },\n  \"logging\": \"enabled\",\n  \"monitor\": \"example_value\",\n  \"partition\": \"example_value\",\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f6e9d0f-69a4-4af0-8aa3-45bbab13254d",
+              "name": "The request could not be processed due to invalid syntax or missing required parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node",
+                    ":nodeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeName",
+                      "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\",\n  \"logging\": \"enabled\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40daca7b-cf5d-410c-bd38-dbc1784e8d68",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node",
+                    ":nodeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeName",
+                      "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\",\n  \"logging\": \"enabled\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11d63840-a0a6-439d-a313-c23329006e3b",
+              "name": "The requested resource was not found on the BIG-IP system.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node",
+                    ":nodeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeName",
+                      "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\",\n  \"logging\": \"enabled\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed3f7be3-51c6-4f7d-8507-35ca41df400a",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node",
+                    ":nodeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeName",
+                      "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\",\n  \"logging\": \"enabled\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b6abf064-2f1b-4c6c-a16e-cc8f45d7fe22",
+          "name": "Delete a Node",
+          "request": {
+            "name": "Delete a Node",
+            "description": {
+              "content": "Removes a node resource from the BIG-IP system. The node must not be referenced by any pool member.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "node",
+                ":nodeName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "nodeName",
+                  "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                },
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2556b645-ed13-4c0d-ac62-71f68793ef15",
+              "name": "Node deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node",
+                    ":nodeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeName",
+                      "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "93bcb7d9-e40d-497a-a5d1-ee20479294a0",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node",
+                    ":nodeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeName",
+                      "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5ed1967-7a46-4f81-a04f-e9f283355479",
+              "name": "The requested resource was not found on the BIG-IP system.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node",
+                    ":nodeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeName",
+                      "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03c01a9b-c7fa-42f2-b55f-f851d2aa2bf6",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "node",
+                    ":nodeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeName",
+                      "description": "(Required) Name of the node resource. Can be the IP address or a user-defined name."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname or IP address of the BIG-IP device",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "192.168.1.245",
+      "key": "bigip_host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{bigip_host}}/mgmt/tm",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fbe991ee-9dfb-4281-afe2-2ad4ec4f613e",
+    "name": "F5 BIG-IP iControl REST Nodes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The iControl REST API provides programmatic access to manage and configure F5 BIG-IP devices. It enables automation of Local Traffic Manager (LTM) resources including virtual servers, pools, nodes, pool members, and profiles for application delivery, load balancing, and network management.\n\nContact Support:\n Name: F5 Support\n Email: support@f5.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,2434 @@
+{
+  "item": [
+    {
+      "id": "9af67ba6-d469-4967-95d3-8390be0d915b",
+      "name": "Pool Members",
+      "description": {
+        "content": "Manage individual members within a pool, including their health status, session state, and load balancing weight.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "01ab0231-572a-44c5-b263-66d11e5df9b2",
+          "name": "List Pool Members",
+          "request": {
+            "name": "List Pool Members",
+            "description": {
+              "content": "Returns a collection of all members within the specified pool.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "pool",
+                ":poolName",
+                "members"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of property names to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression to restrict returned resources."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "poolName",
+                  "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                },
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d0b8f229-93d1-4c02-9bbd-bcdfdca08e93",
+              "name": "Successful retrieval of pool member collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,destination,pool"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "partition eq Common"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"example_value\",\n  \"selfLink\": \"https://www.example.com\",\n  \"items\": [\n    {\n      \"kind\": \"example_value\",\n      \"name\": \"Example Title\",\n      \"fullPath\": \"example_value\",\n      \"generation\": 10,\n      \"selfLink\": \"https://www.example.com\",\n      \"address\": \"example_value\",\n      \"connectionLimit\": 10,\n      \"description\": \"A sample description.\",\n      \"dynamicRatio\": 10,\n      \"ephemeral\": \"true\",\n      \"inheritProfile\": \"enabled\",\n      \"logging\": \"enabled\",\n      \"monitor\": \"example_value\",\n      \"partition\": \"example_value\",\n      \"priorityGroup\": 10,\n      \"rateLimit\": \"example_value\",\n      \"ratio\": 10,\n      \"session\": \"user-enabled\",\n      \"state\": \"user-up\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49987cf2-6196-4a58-88db-677fb28416b7",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,destination,pool"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "partition eq Common"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1a383015-988a-4b4a-a455-5e9f9ae36fab",
+              "name": "The requested resource was not found on the BIG-IP system.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,destination,pool"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "partition eq Common"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "094bae09-0786-49ce-8ee8-994144e5eedb",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,destination,pool"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "partition eq Common"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba6a7675-a6b1-4849-a575-4d5019d61f32",
+          "name": "Add a Pool Member",
+          "request": {
+            "name": "Add a Pool Member",
+            "description": {
+              "content": "Adds a new member to the specified pool. The member name must be in the format address:port (e.g., 10.0.0.1:80).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "pool",
+                ":poolName",
+                "members"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "poolName",
+                  "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                },
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"priorityGroup\": \"<integer>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"<string>\",\n  \"state\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ca527c69-7a6d-425e-8e75-eb9235eb66c8",
+              "name": "Pool member added successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"address\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"priorityGroup\": 10,\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"example_value\",\n  \"name\": \"Example Title\",\n  \"fullPath\": \"example_value\",\n  \"generation\": 10,\n  \"selfLink\": \"https://www.example.com\",\n  \"address\": \"example_value\",\n  \"connectionLimit\": 10,\n  \"description\": \"A sample description.\",\n  \"dynamicRatio\": 10,\n  \"ephemeral\": \"true\",\n  \"inheritProfile\": \"enabled\",\n  \"logging\": \"enabled\",\n  \"monitor\": \"example_value\",\n  \"partition\": \"example_value\",\n  \"priorityGroup\": 10,\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "875f2e2b-ea0e-4409-9798-a2a88c5ab4b3",
+              "name": "The request could not be processed due to invalid syntax or missing required parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"address\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"priorityGroup\": 10,\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a40a949f-d3e6-4cd2-9755-20ab4dd84571",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"address\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"priorityGroup\": 10,\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "73f79797-9c99-4a23-a2da-eac62db53abb",
+              "name": "The requested resource was not found on the BIG-IP system.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"address\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"priorityGroup\": 10,\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1c53c800-1dc0-4cc8-bc07-17bacb5eed2b",
+              "name": "The resource already exists or conflicts with an existing configuration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"address\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"priorityGroup\": 10,\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ac6a52e-e5cf-4031-a7fd-3831d9f05428",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"address\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"priorityGroup\": 10,\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "659c65e2-65e8-4279-928a-b897e6f74c38",
+          "name": "Get a Pool Member",
+          "request": {
+            "name": "Get a Pool Member",
+            "description": {
+              "content": "Returns a single pool member identified by name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "pool",
+                ":poolName",
+                "members",
+                ":memberName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "poolName",
+                  "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "memberName",
+                  "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                },
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "157c3cb4-0e70-4885-9b90-bc3c177de4dc",
+              "name": "Successful retrieval of pool member.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members",
+                    ":memberName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "memberName",
+                      "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"example_value\",\n  \"name\": \"Example Title\",\n  \"fullPath\": \"example_value\",\n  \"generation\": 10,\n  \"selfLink\": \"https://www.example.com\",\n  \"address\": \"example_value\",\n  \"connectionLimit\": 10,\n  \"description\": \"A sample description.\",\n  \"dynamicRatio\": 10,\n  \"ephemeral\": \"true\",\n  \"inheritProfile\": \"enabled\",\n  \"logging\": \"enabled\",\n  \"monitor\": \"example_value\",\n  \"partition\": \"example_value\",\n  \"priorityGroup\": 10,\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b438f338-a31c-454d-9b4b-0765c7d7fdb3",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members",
+                    ":memberName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "memberName",
+                      "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "267e1cf1-10f4-4dc9-a82a-04caeedca22b",
+              "name": "The requested resource was not found on the BIG-IP system.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members",
+                    ":memberName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "memberName",
+                      "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "701fd32c-ab3b-468b-b5e9-7fa3b3117440",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members",
+                    ":memberName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "memberName",
+                      "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c1905f3-b469-439d-bee5-bdcecf10e21c",
+          "name": "Update a Pool Member",
+          "request": {
+            "name": "Update a Pool Member",
+            "description": {
+              "content": "Replaces the entire pool member resource configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "pool",
+                ":poolName",
+                "members",
+                ":memberName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "poolName",
+                  "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "memberName",
+                  "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                },
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"priorityGroup\": \"<integer>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"<string>\",\n  \"state\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c2dde035-f8f1-4c39-9083-1bf8a6af8ea3",
+              "name": "Pool member updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members",
+                    ":memberName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "memberName",
+                      "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"priorityGroup\": 10,\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"example_value\",\n  \"name\": \"Example Title\",\n  \"fullPath\": \"example_value\",\n  \"generation\": 10,\n  \"selfLink\": \"https://www.example.com\",\n  \"address\": \"example_value\",\n  \"connectionLimit\": 10,\n  \"description\": \"A sample description.\",\n  \"dynamicRatio\": 10,\n  \"ephemeral\": \"true\",\n  \"inheritProfile\": \"enabled\",\n  \"logging\": \"enabled\",\n  \"monitor\": \"example_value\",\n  \"partition\": \"example_value\",\n  \"priorityGroup\": 10,\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd32b8dc-813f-492a-95a9-0825ad51773c",
+              "name": "The request could not be processed due to invalid syntax or missing required parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members",
+                    ":memberName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "memberName",
+                      "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"priorityGroup\": 10,\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5def05a2-d19f-415c-a42d-fbb87256e855",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members",
+                    ":memberName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "memberName",
+                      "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"priorityGroup\": 10,\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3594e0a0-8832-48ee-af1c-eb805d0902eb",
+              "name": "The requested resource was not found on the BIG-IP system.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members",
+                    ":memberName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "memberName",
+                      "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"priorityGroup\": 10,\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1061bed1-e8d6-4b41-b05c-7c81b003f393",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members",
+                    ":memberName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "memberName",
+                      "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"priorityGroup\": 10,\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e80ab8ba-8174-4e58-b3b4-ad8172dec24e",
+          "name": "Patch a Pool Member",
+          "request": {
+            "name": "Patch a Pool Member",
+            "description": {
+              "content": "Partially updates a pool member resource configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "pool",
+                ":poolName",
+                "members",
+                ":memberName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "poolName",
+                  "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "memberName",
+                  "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                },
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"connectionLimit\": \"<integer>\",\n  \"monitor\": \"<string>\",\n  \"priorityGroup\": \"<integer>\",\n  \"rateLimit\": \"<string>\",\n  \"ratio\": \"<integer>\",\n  \"session\": \"<string>\",\n  \"state\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bf4f8f72-ca65-456d-a137-50f92f2e61dd",
+              "name": "Pool member patched successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members",
+                    ":memberName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "memberName",
+                      "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"priorityGroup\": 10,\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"example_value\",\n  \"name\": \"Example Title\",\n  \"fullPath\": \"example_value\",\n  \"generation\": 10,\n  \"selfLink\": \"https://www.example.com\",\n  \"address\": \"example_value\",\n  \"connectionLimit\": 10,\n  \"description\": \"A sample description.\",\n  \"dynamicRatio\": 10,\n  \"ephemeral\": \"true\",\n  \"inheritProfile\": \"enabled\",\n  \"logging\": \"enabled\",\n  \"monitor\": \"example_value\",\n  \"partition\": \"example_value\",\n  \"priorityGroup\": 10,\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "33832b1d-4679-4fff-a021-d0e7dd94a3ec",
+              "name": "The request could not be processed due to invalid syntax or missing required parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members",
+                    ":memberName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "memberName",
+                      "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"priorityGroup\": 10,\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab277d61-f59a-4565-8a06-e7564581738f",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members",
+                    ":memberName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "memberName",
+                      "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"priorityGroup\": 10,\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "729426ac-fc26-47b6-a286-fad23d8638c5",
+              "name": "The requested resource was not found on the BIG-IP system.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members",
+                    ":memberName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "memberName",
+                      "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"priorityGroup\": 10,\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2377cf93-b391-4b30-97c0-cd7f4e91aac9",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members",
+                    ":memberName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "memberName",
+                      "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"A sample description.\",\n  \"connectionLimit\": 10,\n  \"monitor\": \"example_value\",\n  \"priorityGroup\": 10,\n  \"rateLimit\": \"example_value\",\n  \"ratio\": 10,\n  \"session\": \"user-enabled\",\n  \"state\": \"user-up\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d209521c-4b64-4161-9e40-94c1e6ff1a5b",
+          "name": "Delete a Pool Member",
+          "request": {
+            "name": "Delete a Pool Member",
+            "description": {
+              "content": "Removes a member from the specified pool.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ltm",
+                "pool",
+                ":poolName",
+                "members",
+                ":memberName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "poolName",
+                  "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "memberName",
+                  "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                },
+                {
+                  "description": "Hostname or IP address of the BIG-IP device",
+                  "type": "any",
+                  "value": "{{bigip_host}}",
+                  "key": "bigip_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "68f7a311-390c-4959-b4ba-7c68702f6fa0",
+              "name": "Pool member deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members",
+                    ":memberName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "memberName",
+                      "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7aef67bf-12ab-4af6-ad6a-cc024678957f",
+              "name": "Authentication failed. Provide valid credentials via Basic Auth or X-F5-Auth-Token header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members",
+                    ":memberName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "memberName",
+                      "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b84fdb1a-06cf-4b01-8a8d-2dd32c945b9d",
+              "name": "The requested resource was not found on the BIG-IP system.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members",
+                    ":memberName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "memberName",
+                      "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78257c91-031a-426e-9660-b0a520a53c13",
+              "name": "An unexpected error occurred on the BIG-IP system while processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ltm",
+                    "pool",
+                    ":poolName",
+                    "members",
+                    ":memberName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolName",
+                      "description": "(Required) Name of the pool resource. Use ~Common~ prefix for partition-qualified names."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "memberName",
+                      "description": "(Required) Name of the pool member in the format address:port (e.g., 10.0.0.1:80)."
+                    },
+                    {
+                      "description": "Hostname or IP address of the BIG-IP device",
+                      "type": "any",
+                      "value": "{{bigip_host}}",
+                      "key": "bigip_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"The requested Pool (/Common/my_pool) was not found.\",\n  \"apiError\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname or IP address of the BIG-IP device",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "192.168.1.245",
+      "key": "bigip_host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{bigip_host}}/mgmt/tm",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a4cdb833-9aeb-46ec-ab4b-5a474bb30259",
+    "name": "F5 BIG-IP iControl REST Nodes Pool Members API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The iControl REST API provides programmatic access to manage and configure F5 BIG-IP devices. It enables automation of Local Traffic Manager (LTM) resources including virtual servers, pools, nodes, pool members, and profiles for application delivery, load balancing, and network management.\n\nContact Support:\n Name: F5 Support\n Email: support@f5.com",
+      "type": "text/plain"
+    }
+  }
+}
