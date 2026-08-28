@@ -1,0 +1,63 @@
+slug: f5-networks
+provider: F5 Networks
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: Pools
+  spec_file: f5-networks-pools-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: Create a Pool ... automation of Local Traffic Manager (LTM) resources including virtual servers,
+    pools, nodes, pool members ... for application delivery, load balancing, and network management
+  reason: Load-balancer pool configuration is network infrastructure management, an IT Infrastructure
+    capability; no business-domain capability applies.
+- tag: Virtual Servers
+  spec_file: f5-networks-virtual-servers-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: Create a Virtual Server ... for application delivery, load balancing, and network management
+  reason: LTM virtual server CRUD is configuration of network/application-delivery infrastructure.
+- tag: Profiles
+  spec_file: f5-networks-profiles-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.75
+  evidence: List Http Profiles ... List Client Ssl Profiles ... List Cookie Persistence Profiles
+  reason: HTTP/TCP/SSL profiles on a BIG-IP device are network device configuration objects — IT infrastructure
+    management, not any customer-profile business capability.
+- tag: Nodes
+  spec_file: f5-networks-nodes-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.72
+  evidence: '"manage and configure F5 BIG-IP devices ... Local Traffic Manager (LTM) resources including
+    virtual servers, pools, nodes"; POST /ltm/node createNode'
+  reason: Configuration of load-balancer backend nodes on network devices — network/compute infrastructure
+    management. 'Nodes' here are IP endpoints, not business entities.
+- tag: Pool Members
+  spec_file: f5-networks-pool-members-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.72
+  evidence: 'GET /ltm/pool/{poolName}/members listPoolMembers; description: "load balancing, and network
+    management"'
+  reason: CRUD over load-balancing pool members on BIG-IP devices — IT network infrastructure configuration;
+    'members' are servers, not customers.

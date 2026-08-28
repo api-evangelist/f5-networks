@@ -2,6 +2,20 @@ name: F5 Networks
 description: >-
   F5 Networks is a leader in application delivery networking technology that specializes in application availability,
   acceleration, and security solutions.
+deliveryModel:
+  model: open-core
+  license: Apache-2.0
+  open_source: true
+  commercial: true
+  callable_host: false
+  label: Open core · an OSS project plus a commercial hosted product
+  confidence: high
+  source:
+  - license
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -452,6 +466,9 @@ apis:
   - type: ChangeLog
     url: https://docs.cloud.f5.com/docs-v2/platform/changelogs/saas-release-notes
 common:
+  - type: CapabilityMap
+    url: capabilities/f5-networks-capability-edges.yml
+    name: F5 Networks Business Capability Map
   - type: Releases
     url: https://github.com/F5Networks/f5-appsvcs-extension/releases
   - type: License
